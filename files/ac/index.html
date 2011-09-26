@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title> Autômatos Celulares </title>
+
+        <link type="text/css" href="lib/css/smoothness/jquery-ui-1.8.13.custom.css" rel="stylesheet" />     
+        <script type="text/javascript" src="lib/js/jquery-1.5.1.min.js"></script>
+        <script type="text/javascript" src="lib/js/jquery-ui-1.8.13.custom.min.js"></script>
+        
+        <script type="text/javascript" src="lib/js/processing-1.1.0.js"></script>
+        <script type="text/javascript" src="lib/js/init.js"></script>
+		
+	<script>
+	  $(document).ready(function (){
+            $( "#tabs" ).tabs();
+	    $('#ctrl_velocidade').slider({
+	      max:20,
+	      min:0,
+	      slide: function(event, ui) { 
+	        $('#val_velocidade').val(ui.value);
+	      }
+	     });
+	  });
+	</script>
+
+	<style>
+          h1 {
+          font-size: 14pt;
+          font-family: Arial;
+          }
+	  .slider{
+	  width:150px;	
+	  }
+	  #controles{
+	  border:1px solid #EEE;
+	  padding:15px;	
+	  }
+	</style>
+
+    </head>
+    <body>
+      <div id="titulo">
+        <h1>Estudo sobre Autômatos Celulares - Gabriela Salvador Thumé - IA 2011/01</h1>
+      </div>
+      <div id="tabs">
+        <ul>
+	  <li><a href="#tabs-1">1 Dimensão</a></li>
+	  <li><a href="#tabs-2">2 Dimensões</a></li>
+	  <li><a href="#tabs-3">Epidemia</a></li>
+	</ul>
+        <div id="tabs-1">
+	  <p>Clique na região do autômato para alternar entre as regras.</p>
+          <script type="application/processing" target="canvas-ac1d" ></script>
+          <canvas id="canvas-ac1d" style="border: solid 1px black" datasrc="ac1d.js"></canvas>
+	  <p>Código-fonte: <a href="ac1d.js">ac1d.js</a></p>
+        </div>
+        <div id="tabs-2">
+	  <p>Clique e arraste para desenhar novos estados.</p>
+          <div id="controles">
+	    Velocidade
+	    <input type="hidden" id="val_velocidade" name="val_velocidade" value="6">
+	    <div class="slider" id="ctrl_velocidade"></div>
+	    
+          </div>
+          <script type="application/processing" target="canvas-ac2d" ></script>
+          <canvas id="canvas-ac2d" style="border: solid 1px black" datasrc="ac2d.js"></canvas>
+	  <p>Código-fonte: <a href="ac2d.js">ac2d.js</a></p>
+        </div>
+        <div id="tabs-3">
+	  <p>Clique e arraste para inserir novos indivíduos infectados. Legenda: 
+	  <span style="background-color: #ff0000; color: #fff">INFECTADOS</span> 
+	  <span style="background-color: #666666; color: #fff">SUCETÍVEIS</span> 
+	  <span style="background-color: #0000ff; color: #fff">RECUPERADOS</span>
+	  <span style="background-color: #000000; color: #fff">MORTOS</span></p>
+          <script type="application/processing" target="canvas-epidemia" ></script>
+          <canvas id="canvas-epidemia" style="border: solid 1px black" datasrc="epidemia.js"></canvas>
+	  <p>Código-fonte: <a href="epidemia.js">epidemia.js</a></p>
+        </div>
+      </div>
+
+    </body>
+</html>
+
+

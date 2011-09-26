@@ -1,0 +1,26 @@
+/*  
+Theme Name: WP-Creativix
+Theme URI: http://www.wp-themix.org/themes/wp-creativix-free-premium-portfolio-wordpress-theme/
+Description: WP-Creativix is a beautifull business & portfolio Wordpress Theme. It has unlimited variations due to the possibility to define a custom color code as highlight color.
+It comes with a Portfolio Template already included which may display your latest work with nice Lightbox support. On the Frontpage it has a nice working Javascript Slideshow.
+This Theme comes with a Javascript 3-Level Dropdown Menu. Of course there are many more features such as Custom Logo Uploader and a Big Options set! Have fun while discovering. (Please use my theme DEMO to see how the Theme looks).
+Version: 1.5.5
+Author: Dennis Nissle
+Author URI: http://www.wp-themix.org/
+Tags: white, silver, purple, light, three-columns, two-columns, fixed-width, right-sidebar, left-sidebar, theme-options, purple, front-page-post-form, photoblogging, custom-colors, custom-header, sticky-post, microformats
+*/
+
+.aligncenter {
+display: block;
+margin-left: auto;
+margin-right: auto;
+}
+
+.alignleft {
+float: left;
+}
+
+.alignright {
+float: right;
+}
+
