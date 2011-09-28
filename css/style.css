@@ -126,7 +126,7 @@ a, a:visited, a:active, a:hover {
     margin-left:20px;
     margin-right:auto;
     float: left;
-    width:800px;
+    width:85	%;
     height: 100%;
     padding: 20px;
     background: white;
@@ -207,7 +207,7 @@ Blue {
 
 #boxImg{
     text-align: center;
-    width: 400px;
+    width: 49%;
     height: 340px;
     float:left;
 }
