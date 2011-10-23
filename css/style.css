@@ -25,7 +25,8 @@ body {
     font-family:'Gochi Hand', cursive; 
     font-size: 100px; text-transform: uppercase;
     color: #CF8BCD;
-    text-shadow: 3px 3px 0px #eee, 7px 7px 0px #707070;
+    text-shadow	: 3px 3px 0px #eee, 7px 7px 0px #707070;
+    background-color: #87A8CF;
 }
 
 #vintage text2{
@@ -34,6 +35,8 @@ body {
     font-size: 100px; text-transform: uppercase;
     color: #87A8CF;
     text-shadow: 3px 3px 0px #eee, 7px 7px 0px #707070;
+    background-color: #A0CF97;
+
 }
 
 #vintage text3{
@@ -42,11 +45,15 @@ body {
     font-size: 100px; text-transform: uppercase;
     color: #A0CF97;
     text-shadow: 3px 3px 0px #eee, 7px 7px 0px #707070;
+    background-color:  #CF8BCD;
 }
 
 #vintage:hover {
-    -webkit-box-shadow: 0px 0px 30px #000;
-    -moz-box-shadow: 0px 0px 30px #000;
+    	-webkit-box-shadow: 0px 0px 30px #000;
+    	-moz-box-shadow: 0px 0px 30px white;
+	
+/*	background-color: #99EBFA;*/
+
 }
 
 a, a:visited, a:active, a:hover {
