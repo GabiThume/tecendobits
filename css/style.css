@@ -19,27 +19,30 @@ body {
     -webkit-transition: all 1s linear;
     -moz-transition: all 1s linear;
     background-color: #87A8CF;
-   box-shadow: 0 0 30px #000000;
-opacity:0.8;
+   box-shadow: 0 0 30px white;
+  opacity:0.7;
+   z-index:1;
 }
 #vintage2 {
     -webkit-transition: all 1s linear;
     -moz-transition: all 1s linear;
     background-color: #A0CF97;
-   box-shadow: 0 0 30px #000000;
-opacity:0.8;
+   box-shadow: 0 0 30px white;
+   opacity:0.7; 
+   z-index:2;
 }
 #vintage3 {
     -webkit-transition: all 1s linear;
     -moz-transition: all 1s linear;
    background-color: #CF8BCD;
-   box-shadow: 0 0 30px #000000;
-opacity:0.8;
+   box-shadow: 0 0 30px white;
+   opacity:0.7;
+   z-index:3;
 }
 #vintage text1 {
     padding:25px;
     font-family:'Gochi Hand', cursive; 
-    font-size: 100px; text-transform: uppercase;
+    font-size: 80px; text-transform: uppercase;
     color: #CF8BCD;
     text-shadow	: 3px 3px 0px #eee, 7px 7px 0px #707070;
 }
@@ -47,7 +50,7 @@ opacity:0.8;
 #vintage2 text2{
     padding:25px;
     font-family:'Gochi Hand', cursive; 
-    font-size: 100px; text-transform: uppercase;
+    font-size: 80px; text-transform: uppercase;
     color: #87A8CF;
     text-shadow: 3px 3px 0px #eee, 7px 7px 0px #707070;
 }
@@ -55,25 +58,31 @@ opacity:0.8;
 #vintage3 text3{
     padding:25px;
     font-family:'Gochi Hand', cursive; 
-    font-size: 100px; text-transform: uppercase;
+    font-size: 80px; text-transform: uppercase;
     color: #A0CF97;
     text-shadow: 3px 3px 0px #eee, 7px 7px 0px #707070;
 }
 
 #vintage:hover {
-    	-webkit-box-shadow: 0px 0px 30px #000;
-    	-moz-box-shadow: 0px 0px 30px #000;
+    	-webkit-box-shadow: 0px 0px 30px white;
+	-moz-box-shadow: 0px 0px 30px white;    	
+    	-moz-transform: translate(0px, -5px);
 	opacity:1;
+        z-index:1;
 }
 #vintage2:hover {
-    	-webkit-box-shadow: 0px 0px 30px #000;
-    	-moz-box-shadow: 0px 0px 30px #000;
+    	-webkit-box-shadow: 0px 0px 30px white;
+      -moz-box-shadow: 0px 0px 30px white;    	    	
+     -moz-transform: translate(0px, -5px);
 	opacity:1;
+       z-index:2;
 }
 #vintage3:hover {
-    	-webkit-box-shadow: 0px 0px 30px #000;
-    	-moz-box-shadow: 0px 0px 30px #000;
+    	-webkit-box-shadow: 0px 0px 30px white;
+       -moz-box-shadow: 0px 0px 30px white;    	    
+	-moz-transform: translate(0px, -5px);
 	opacity:1;
+       z-index:3;
 }
 a, a:visited, a:active, a:hover {
     color: #CF8BCD;
