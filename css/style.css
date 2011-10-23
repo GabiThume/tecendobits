@@ -1,5 +1,5 @@
 body {
-    background-image:url('../images/paper6.gif');
+    background-image:url('../images/paper5.gif');
 }
 
 #neon {
@@ -17,45 +17,57 @@ body {
 #vintage {
     -webkit-transition: all 1s linear;
     -moz-transition: all 1s linear;
-    border-radius: 1em;
+    border-radius: 0.5em;
+    background-color: #87A8CF;
 }
-
+#vintage2 {
+    -webkit-transition: all 1s linear;
+    -moz-transition: all 1s linear;
+    border-radius: 0.5em;
+    background-color: #A0CF97;
+}
+#vintage3 {
+    -webkit-transition: all 1s linear;
+    -moz-transition: all 1s linear;
+    border-radius: 0.5em;
+	background-color: #CF8BCD;
+}
 #vintage text1 {
     padding:25px;
     font-family:'Gochi Hand', cursive; 
     font-size: 100px; text-transform: uppercase;
     color: #CF8BCD;
     text-shadow	: 3px 3px 0px #eee, 7px 7px 0px #707070;
-    background-color: #87A8CF;
 }
 
-#vintage text2{
+#vintage2 text2{
     padding:25px;
     font-family:'Gochi Hand', cursive; 
     font-size: 100px; text-transform: uppercase;
     color: #87A8CF;
     text-shadow: 3px 3px 0px #eee, 7px 7px 0px #707070;
-    background-color: #A0CF97;
-
 }
 
-#vintage text3{
+#vintage3 text3{
     padding:25px;
     font-family:'Gochi Hand', cursive; 
     font-size: 100px; text-transform: uppercase;
     color: #A0CF97;
     text-shadow: 3px 3px 0px #eee, 7px 7px 0px #707070;
-    background-color:  #CF8BCD;
 }
 
 #vintage:hover {
     	-webkit-box-shadow: 0px 0px 30px #000;
-    	-moz-box-shadow: 0px 0px 30px white;
-	
-/*	background-color: #99EBFA;*/
-
+    	-moz-box-shadow: 0px 0px 30px #000;
 }
-
+#vintage2:hover {
+    	-webkit-box-shadow: 0px 0px 30px #000;
+    	-moz-box-shadow: 0px 0px 30px #000;
+}
+#vintage3:hover {
+    	-webkit-box-shadow: 0px 0px 30px #000;
+    	-moz-box-shadow: 0px 0px 30px #000;
+}
 a, a:visited, a:active, a:hover {
     color: #CF8BCD;
     text-decoration: none;
