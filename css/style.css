@@ -143,6 +143,7 @@ a, a:visited, a:active, a:hover {
     padding: 20px;
     background: white;
     border-radius: 2em;
+   opacity:0.9;
 }
 
 textix{
