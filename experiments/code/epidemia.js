@@ -1,5 +1,5 @@
 //
-// Autômato Celular 2D para Modelo de Epidemia
+// Automata Celular 2D 
 //
 
 AutomataCelular2D ac;
@@ -8,8 +8,6 @@ int alturaMatriz = 40;
 int larguraMatriz = 60;
 int tamCelula = 10;
 int maxGen = 100;
-
-// métodos processing
 
 void setup() {
     size(larguraMatriz * tamCelula, alturaMatriz * tamCelula);
@@ -47,8 +45,6 @@ void acaoMouse() {
         ac.desenhaCelula(x, y);
     }
 }
-
-// classe principal
 
 class AutomataCelular2D {
     int[][] celulas;
