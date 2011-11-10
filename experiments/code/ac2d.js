@@ -1,5 +1,5 @@
 //
-// Autômato Celular 2D
+// Automata Celular 2D
 //
 
 AutomataCelular2D ac;
@@ -7,8 +7,6 @@ AutomataCelular2D ac;
 int alturaMatriz = 40;
 int larguraMatriz = 60;
 int tamCelula = 10;
-
-// métodos processing
 
 void setup() {
     size(larguraMatriz * tamCelula, alturaMatriz * tamCelula);
@@ -46,8 +44,6 @@ void acaoMouse() {
         ac.desenhaCelula(x, y);
     }
 }
-
-// classe principal
 
 class AutomataCelular2D {
     int[][] celulas;
@@ -115,8 +111,6 @@ class AutomataCelular2D {
         }
     }
     
-    // métodos auxiliares
- 
     void desenhaCelula(int x, int y) {
         fill(255);
         rect(x * tamCelula, y * tamCelula, tamCelula, tamCelula);
