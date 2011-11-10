@@ -138,7 +138,7 @@ a, a:visited, a:active, a:hover {
     margin-left:20px;
     margin-right:auto;
     float: left;
-    width: 85%;
+    width: 80%;
     height: 100%;
     padding: 20px;
     background: white;
@@ -212,7 +212,7 @@ Blue {
 } 
 
 #published{
-    font-size: 10px;
+    font-size: 11px;
     color: black;
     float: left;
     position: relative;
@@ -229,7 +229,7 @@ Blue {
 .littleImg{
     border-radius: 2em;   
     height: 200px;
-    margin: 20px;
+    margin: 2% 30% 30%;
     opacity: 1;
     padding: 20px;
     position: relative;
@@ -244,7 +244,7 @@ Blue {
 .bigImg{
     border-radius: 2em;   
     height: 280px;
-    margin: 50px;
+    margin: 2% 29% 3%;
     opacity: 1;
     position: relative;
     width: 640px;
