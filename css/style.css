@@ -229,8 +229,8 @@ Blue {
 .littleImg{
     border-radius: 2em;   
     height: 200px;
-    margin-right: 20%;
-    margin-left: 20%;
+    margin-right: auto;
+    margin-left: auto;
     margin-top: 4px;
     float: right;
     opacity: 1;
@@ -245,7 +245,8 @@ Blue {
 .bigImg{
     border-radius: 2em;   
     height: 280px;
-    margin: 2% 29% 3%;
+    margin-right: auto;
+    margin-left: auto;
     opacity: 1;
     position: relative;
     width: 640px;
