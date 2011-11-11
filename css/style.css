@@ -232,6 +232,7 @@ Blue {
     margin-right: 20%;
     margin-left: 20%;
     margin-top: 4px;
+    float: right;
     opacity: 1;
     padding: 20px;
     position: relative;
@@ -239,8 +240,6 @@ Blue {
     -webkit-box-shadow: 0px 0px 15px #000;
     -moz-box-shadow: 0px 0px 15px #000;
 }
-#inLeft {float: left;}
-#inRight{float: right;}
 #inCenter{margin-right: 10%;margin-left: 50%;}
 
 .bigImg{
