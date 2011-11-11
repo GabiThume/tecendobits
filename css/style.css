@@ -114,7 +114,6 @@ a, a:visited, a:active, a:hover {
     text-shadow: 3px 3px 1px #87A8CF;
 }
 
-
 #texto textLeft{
     font-family:'Gochi Hand', cursive; 
     float: left;
@@ -143,7 +142,7 @@ a, a:visited, a:active, a:hover {
     padding: 20px;
     background: white;
     border-radius: 2em;
-   opacity:0.9;
+    opacity:0.9;
 }
 
 textix{
@@ -240,7 +239,6 @@ Blue {
     -webkit-box-shadow: 0px 0px 15px #000;
     -moz-box-shadow: 0px 0px 15px #000;
 }
-#inCenter{margin-right: 10%;margin-left: 50%;}
 
 .bigImg{
     border-radius: 2em;   
