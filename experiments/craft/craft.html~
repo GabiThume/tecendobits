@@ -23,7 +23,7 @@
 				</div>
 			</a>
 			<a href="stop-motion_pacman.html">
-				<div  class = "littleBox" style = background-image:url('../../images/crafts/stopmotion_pacman.png')  >
+				<div  class = "littleBox" style = background-image:url('../../images/stopmotion_pacman.png')  >
 					<div class = "textDiag" > <Pink>PACGIRL STOP MOTION</Pink> </div>
 				</div>
 			</a>
