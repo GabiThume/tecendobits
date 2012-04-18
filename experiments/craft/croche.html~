@@ -22,10 +22,10 @@
 				<div class = "textTitle" > Crochê</div> <br>
 				<div id="published"> Published July 13, 2010 </div> <br> <br>
 				<p>Crochê + leds + bateria de 3v:</p>
-				<p> <div id= "bigboxImg"> <div class="reallybigImg" style = background-image:url('../../images/crafts/croche/croche1.jpg')></div></div> </p>
-				<p> <div id= "bigboxImg"> <div  class="reallybigImg" style = background-image:url('../../images/crafts/croche/croche2.jpg')></div></div> </p>
-				<p> <div id= "bigboxImg"> <div  class="reallybigImg" style = background-image:url('../../images/crafts/croche/croche3.jpg')></div></div> </p>
-				<p> <div id= "bigboxImg"> <div class="reallybigImg" style = background-image:url('../../images/crafts/croche/croche4.jpg')></div></div> </p>
+				<p> <div id= "boxImg"> <div class="reallybigImg" style = background-image:url('../../images/crafts/croche/croche1.jpg')></div></div> </p>
+				<p> <div id= "boxImg"> <div  class="reallybigImg" style = background-image:url('../../images/crafts/croche/croche2.jpg')></div></div> </p>
+				<p> <div id= "boxImg"> <div  class="reallybigImg" style = background-image:url('../../images/crafts/croche/croche3.jpg')></div></div> </p>
+				<p> <div id= "boxImg"> <div class="reallybigImg" style = background-image:url('../../images/crafts/croche/croche4.jpg')></div></div> </p>
 				</text4>
 			</div>
 		</div>

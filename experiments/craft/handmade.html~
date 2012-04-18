@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US"><head profile="http://gmpg.org/xfn/11"> 
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+<html>
+	<head>
+		<title>TecendoBits - Crochê</title>
+		<link rel="stylesheet" type="text/css" href="../../css/style.css">
+		<link href='http://fonts.googleapis.com/css?family=Gochi+Hand' rel='stylesheet' type='text/css'>
+  	</head>
+  	<body>
+		<a href = "../../index.html">     
+     			<div id = "tecendobits">
+        			<tecendobits>&larr; TecendoBits</tecendobits> 
+     			</div>
+		</a>
+      		<a href = "craft.html"><div id ="texto">
+			<all>CRAFT</all>
+		</div>  </a>
+ 		<div id = "box">
+			<div id = "texto">
+				<text4>
+				<div class = "textTitle" >Handmade</div> <br>
+				<div id="published"> Published April 16, 2012 </div> <br> <br>
+				<p>and other things...</p>
+				<p> <div id= "bigboxImg"> <div class="reallybigImg" style = background-image:url('../../images/crafts/misc/wearable.jpg')></div></div> </p>
+				<p> <div id= "bigboxImg"> <div class="reallybigImg" style = background-image:url('../../images/crafts/misc/weird.JPG')></div></div> </p>
+				<p> <div id= "bigboxImg"> <div class="reallybigImg" style = background-image:url('../../images/crafts/misc/arduino.jpg')></div></div> </p>
+				<p> <div id= "bigboxImg"> <div class="reallybigImg" style = background-image:url('../../images/crafts/misc/animal-tshirt.JPG')></div></div> </p>
+				<p> <div id= "bigboxImg"> <div class="reallybigImg" style = background-image:url('../../images/crafts/misc/boneca_pano.jpg')></div></div> </p>
+				<p> <div id= "bigboxImg"> <div class="reallybigImg" style = background-image:url('../../images/crafts/misc/ponto-russo.jpg')></div></div> </p>
+				<p> <div id= "bigboxImg"> <div class="reallybigImg" style = background-image:url('../../images/crafts/misc/flores-tecido.jpg')></div></div> </p>
+				<p> <div id= "bigboxImg"> <div class="reallybigImg" style = background-image:url('../../images/crafts/misc/led_fora_roupa.jpg')></div></div> </p>	
+				<p> <div id= "bigboxImg"> <div class="reallybigImg" style = background-image:url('../../images/crafts/misc/flor.JPG')></div></div> </p>
+				<p> <div id= "bigboxImg"> <div class="reallybigImg" style = background-image:url('../../images/crafts/misc/bolsa.jpg')></div></div> </p>
+				<p> <div id= "bigboxImg"> <div class="reallybigImg" style = background-image:url('../../images/crafts/misc/bandeira.jpg')></div></div> </p>
+				<p> <div id= "bigboxImg"> <div class="reallybigImg" style = background-image:url('../../images/crafts/misc/bau.jpg')></div></div> </p>
+				<p> <div id= "bigboxImg"> <div class="reallybigImg" style = background-image:url('../../images/crafts/misc/caixa-coracao.JPG')></div></div> </p>
+				<p> <div id= "bigboxImg"> <div class="reallybigImg" style = background-image:url('../../images/crafts/misc/camiseta-diy.jpg')></div></div> </p>
+				<p> <div id= "bigboxImg"> <div class="reallybigImg" style = background-image:url('../../images/crafts/misc/controlador-midi.jpg')></div></div> </p>
+				<p> <div id= "bigboxImg"> <div class="reallybigImg" style = background-image:url('../../images/crafts/misc/pé_com_pé.jpg')></div></div> </p>
+				<p> <div id= "bigboxImg"> <div class="reallybigImg" style = background-image:url('../../images/crafts/misc/croche.jpg')></div></div> </p>
+				<p> <div id= "bigboxImg"> <div class="reallybigImg" style = background-image:url('../../images/crafts/misc/drawdio.jpg')></div></div> </p>
+				<p> <div id= "bigboxImg"> <div class="reallybigImg" style = background-image:url('../../images/crafts/misc/ocarina.jpg')></div></div> </p>
+				<p> <div id= "bigboxImg"> <div class="reallybigImg" style = background-image:url('../../images/crafts/misc/IMG_0822.JPG')></div></div> </p>
+				<p> <div id= "bigboxImg"> <div class="reallybigImg" style = background-image:url('../../images/crafts/misc/IMG_1903.JPG')></div></div> </p>
+				<p> <div id= "bigboxImg"> <div class="reallybigImg" style = background-image:url('../../images/crafts/misc/anjo.JPG')></div></div> </p>
+				<p> <div id= "bigboxImg"> <div class="reallybigImg" style = background-image:url('../../images/crafts/misc/lembranca-comunhao.JPG')></div></div> </p>
+				<p> <div id= "bigboxImg"> <div class="reallybigImg" style = background-image:url('../../images/crafts/misc/lisp.JPG')></div></div> </p>
+				<p> <div id= "bigboxImg"> <div class="reallybigImg" style = background-image:url('../../images/crafts/misc/luva.jpg')></div></div> </p>
+				<p> <div id= "bigboxImg"> <div class="reallybigImg" style = background-image:url('../../images/crafts/misc/casaquinho.jpg')></div></div> </p>
+				<p> <div id= "bigboxImg"> <div class="reallybigImg" style = background-image:url('../../images/crafts/misc/massa.JPG')></div></div> </p>
+				<p> <div id= "bigboxImg"> <div class="reallybigImg" style = background-image:url('../../images/crafts/misc/luminaria.JPG')></div></div> </p>
+				<p> <div id= "bigboxImg"> <div class="reallybigImg" style = background-image:url('../../images/crafts/misc/caos.jpg')></div></div> </p>
+				<p> <div id= "bigboxImg"> <div class="reallybigImg" style = background-image:url('../../images/crafts/misc/monster.JPG')></div></div> </p>
+				<p> <div id= "bigboxImg"> <div class="reallybigImg" style = background-image:url('../../images/crafts/misc/origami.jpg')></div></div> </p>
+				<p> <div id= "bigboxImg"> <div class="reallybigImg" style = background-image:url('../../images/crafts/misc/porta-retrato2.jpg')></div></div> </p>
+				<p> <div id= "bigboxImg"> <div class="reallybigImg" style = background-image:url('../../images/crafts/misc/flor-tecido.jpg')></div></div> </p>
+				<p> <div id= "bigboxImg"> <div class="reallybigImg" style = background-image:url('../../images/crafts/misc/bolsinhas.jpg')></div></div> </p>
+				<p> <div id= "bigboxImg"> <div class="reallybigImg" style = background-image:url('../../images/crafts/misc/primeira_coelha.jpg')></div></div> </p>
+				<p> <div id= "bigboxImg"> <div class="reallybigImg" style = background-image:url('../../images/crafts/misc/seda.jpg')></div></div> </p>
+				<p> <div id= "bigboxImg"> <div class="reallybigImg" style = background-image:url('../../images/crafts/misc/stopmotion.JPG')></div></div> </p>
+				<p> <div id= "bigboxImg"> <div class="reallybigImg" style = background-image:url('../../images/crafts/misc/coracao.jpg')></div></div> </p>
+				<p> <div id= "bigboxImg"> <div class="reallybigImg" style = background-image:url('../../images/crafts/misc/sutia.png')></div></div> </p>
+				<p> <div id= "bigboxImg"> <div class="reallybigImg" style = background-image:url('../../images/crafts/misc/stopmotion_pacman.png')></div></div> </p>
+				<p> <div id= "bigboxImg"> <div class="reallybigImg" style = background-image:url('../../images/crafts/misc/primeira-pintura.jpg')></div></div> </p>
+				<p> <div id= "bigboxImg"> <div class="reallybigImg" ><p> To be continued... </p></div> </p>
+				</text4>
+			</div>
+		</div>
+  	</body>
+</html>
