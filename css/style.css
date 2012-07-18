@@ -1,11 +1,12 @@
 body {
-    background-image:url('../images/paper15.jpeg');
+    background-image:url('../images/sweet.png');
     margin: 0;
 }
 
 #neon {
     background: #000;
 }
+
 #neon h1 {
     text-align: center;
     margin: 200px auto;
@@ -142,7 +143,7 @@ a, a:visited, a:active, a:hover {
     padding: 20px;
     background: white;
     border-radius: 2em;
-    opacity:0.98;
+    opacity:0.88;
 }
 
 textix{
