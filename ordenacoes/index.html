@@ -1,0 +1,455 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1024" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="description" content="Aplicação multimídia para auxiliar o aprendizado de algoritmos de ordenação" />
+    <meta name="author" content="Gabriela Thumé" />
+    <title> Algoritmos de Ordenação </title>
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+    <script src="http://popcornjs.org/code/dist/popcorn-complete.min.js"></script>
+
+    <script>
+slide_ativo = '';
+saida = [];
+function imprime(str, target) {
+    var c = document.getElementById('console_' + target);
+    c.innerHTML = str;
+}
+
+function aleatorio(min, max) {  
+  return Math.floor(Math.random() * (max - min + 1)) + min;  
+}
+
+function ordenado(v) {
+    for (var i=0; i<v.length-1; i++) {
+       if (v[i] > v[i+1]) {
+          return false;
+       }
+    }
+    return true;
+}
+
+function stopAllUnless(thisguy) {
+   var slides = ['intro', 'bogosort', 'bubblesort', 'quicksort', 'mergesort', 'shellsort'];
+   for (var i=0; i<slides.length; i++) {
+      if (slides[i] !== thisguy) {
+         var pop = Popcorn('#video_' + slides[i]);
+         pop.pause();
+      }                                 
+   }
+   slide_ativo = thisguy;
+   var pop = Popcorn('#video_' + thisguy);
+   pop.play();
+}
+
+      document.addEventListener("DOMContentLoaded", function () {
+          var pop_intro = Popcorn("#video_intro");
+          pop_intro.preload('auto');
+          //pop_intro.play();
+
+          ////////////// BOGO SORT //////////////////////
+
+          var pop_bogosort = Popcorn("#video_bogosort");
+
+          pop_bogosort.wikipedia({
+             start: 1,
+             src: "http://pt.wikipedia.org/wiki/Bogosort",
+             title: "Bogo Sort <br /><i>(definição da Wikipedia)</i>",
+             target: "info_bogosort",
+             lang: "pt",
+             numberofwords: 200
+          });
+
+          // essa outra mostra o titulo em paralelo aos videos
+          pop_bogosort.footnote({
+             start: 2,
+             text: '<a href="http://youtube.com/results?search_query=bogosort">Vídeos relacionados<br />(clique nas miniaturas abaixo para visualizá-las no Youtube)</a><br /><br />',
+             target: "youtube_bogosort"
+          });  
+
+          // e essa outra, mostra os thumbs do youtube como resultado da busca
+          pop_bogosort.code({
+             start: 2,
+             onStart: function (options) {
+                 ytEmbed.init({'block':'youtube_bogosort','q':'bogosort','type':'search','results':10,'order':'most_relevance','player':'link', 'layout':'full'});
+             },
+             onEnd: function (options) {
+                 document.getElementById("youtube_bogosort").innerHtml = "";
+             }
+          });
+
+          pop_bogosort.preload('auto');
+
+
+          ////////////// BUBBLE SORT //////////////////////
+
+          var pop_bubblesort = Popcorn("#video_bubblesort");
+
+          pop_bubblesort.wikipedia({
+             start: 1,
+             src: "http://pt.wikipedia.org/wiki/Bubble_sort",
+             title: "Bubble Sort <br /><i>(definição da Wikipedia)</i>",
+             target: "info_bubblesort",
+             lang: "pt",
+             numberofwords: 200
+          });
+
+          pop_bubblesort.footnote({
+             start: 2,
+             text: '<a href="http://youtube.com/results?search_query=bubblesort">Vídeos relacionados<br />(clique nas miniaturas abaixo para visualizá-las no Youtube)</a><br /><br />',
+             target: "youtube_bubblesort"
+          });  
+
+          // e essa outra, mostra os thumbs do youtube como resultado da busca
+          pop_bubblesort.code({
+             start: 2,
+             onStart: function (options) {
+                 ytEmbed.init({'block':'youtube_bubblesort','q':'bubblesort','type':'search','results':10,'order':'most_relevance','player':'link', 'layout':'full'});
+             },
+             onEnd: function (options) {
+                 document.getElementById("youtube_bubblesort").innerHtml = "";
+             }
+          });
+
+          pop_bubblesort.preload('auto');
+
+          ////////////// QUICK SORT //////////////////////
+
+          var pop_quicksort = Popcorn("#video_quicksort");
+
+          pop_quicksort.wikipedia({
+             start: 1,
+             src: "http://pt.wikipedia.org/wiki/Quicksort",
+             title: "Quick Sort <br /><i>(definição da Wikipedia)</i>",
+             target: "info_quicksort",
+             lang: "pt",
+             numberofwords: 200
+          });
+
+          pop_quicksort.footnote({
+             start: 2,
+             text: '<a href="http://youtube.com/results?search_query=quicksort">Vídeos relacionados<br />(clique nas miniaturas abaixo para visualizá-las no Youtube)</a><br /><br />',
+             target: "youtube_quicksort"
+          });  
+
+          // e essa outra, mostra os thumbs do youtube como resultado da busca
+          pop_quicksort.code({
+             start: 2,
+             onStart: function (options) {
+                 ytEmbed.init({'block':'youtube_quicksort','q':'quicksort','type':'search','results':10,'order':'most_relevance','player':'link', 'layout':'full'});
+             },
+             onEnd: function (options) {
+                 document.getElementById("youtube_quicksort").innerHtml = "";
+             }
+          });
+
+          pop_quicksort.preload('auto');
+
+          ////////////// MERGE SORT //////////////////////
+
+          var pop_mergesort = Popcorn("#video_mergesort");
+
+          pop_mergesort.wikipedia({
+             start: 1,
+             src: "http://pt.wikipedia.org/wiki/Merge_sort",
+             title: "Merge Sort <br /><i>(definição da Wikipedia)</i>",
+             target: "info_mergesort",
+             lang: "pt",
+             numberofwords: 200
+          });
+
+          pop_mergesort.footnote({
+             start: 2,
+             text: '<a href="http://youtube.com/results?search_query=mergesort">Vídeos relacionados<br />(clique nas miniaturas abaixo para visualizá-las no Youtube)</a><br /><br />',
+             target: "youtube_mergesort"
+          });  
+
+          // e essa outra, mostra os thumbs do youtube como resultado da busca
+          pop_mergesort.code({
+             start: 2,
+             onStart: function (options) {
+                 ytEmbed.init({'block':'youtube_mergesort','q':'mergesort','type':'search','results':10,'order':'most_relevance','player':'link', 'layout':'full'});
+             },
+             onEnd: function (options) {
+                 document.getElementById("youtube_mergesort").innerHtml = "";
+             }
+          });
+
+          pop_mergesort.preload('auto');
+
+
+          ////////////// SHELL SORT //////////////////////
+
+          var pop_shellsort = Popcorn("#video_shellsort");
+
+          pop_shellsort.wikipedia({
+             start: 1,
+             src: "http://pt.wikipedia.org/wiki/Shell_sort",
+             title: "Shell Sort <br /><i>(definição da Wikipedia)</i>",
+             target: "info_shellsort",
+             lang: "pt",
+             numberofwords: 200
+          });
+
+          pop_shellsort.footnote({
+             start: 2,
+             text: '<a href="http://youtube.com/results?search_query=shellsort">Vídeos relacionados<br />(clique nas miniaturas abaixo para visualizá-las no Youtube)</a><br /><br />',
+             target: "youtube_shellsort"
+          });  
+
+          // e essa outra, mostra os thumbs do youtube como resultado da busca
+          pop_shellsort.code({
+             start: 2,
+             onStart: function (options) {
+                 ytEmbed.init({'block':'youtube_shellsort','q':'shellsort','type':'search','results':10,'order':'most_relevance','player':'link', 'layout':'full'});
+             },
+             onEnd: function (options) {
+                 document.getElementById("youtube_shellsort").innerHtml = "";
+             }
+          });
+
+          pop_shellsort.preload('auto');
+
+      }, false);
+    </script>
+  </head>
+
+<body>
+
+<div class="fallback-message">
+  <p>Infelizmente o seu browser <b>não suporta as características requeridas</b> por essa página Web, então apresentaremos para você uma versão reduzida dessa aplicação.</p>
+  <p>Para uma melhor experiência, por favor use a última versão dos navegadores <b>Firefox</b>, <b>Chrome</b> ou <b>Safari</b>.
+  <p>Your browser <b>doesn't support the features required</b> by this Web page, so you are presented with a simplified version of this application.</p>
+  <p>For the best experience please use the latest <b>Firefox</b>, <b>Chrome</b>or <b>Safari</b> browser.</p>
+</div>
+
+<div id="navigation">
+  <ul>
+    <li><a href="javascript:void(0)" onclick="impress().goto('introducao'); stopAllUnless('intro'); return false;">Introdução</a></li>
+    <li><a href="javascript:void(0)" onclick="impress().goto('bogosort'); stopAllUnless('bogosort'); return false;">Bogo Sort</a></li>
+    <li><a href="javascript:void(0)" onclick="impress().goto('bubblesort'); stopAllUnless('bubblesort'); return false;">Bubble Sort</a></li>
+    <li><a href="javascript:void(0)" onclick="impress().goto('quicksort'); stopAllUnless('quicksort'); return false;">Quick Sort</a></li>
+    <li><a href="javascript:void(0)" onclick="impress().goto('mergesort'); stopAllUnless('mergesort'); return false;">Merge Sort</a></li>
+    <li><a href="javascript:void(0)" onclick="impress().goto('shellsort'); stopAllUnless('shellsort'); return false;">Shell Sort</a></li>
+  </ul>
+</div>
+
+<div id="impress">
+
+  <!---------- INTRODUCAO -------------->
+
+  <div id="introducao" class="step slide" data-x="-2000" data-y="-1500">
+    <div class="video_center">
+      <video id="video_intro" class="video_intro" controls="controls" loop="loop">
+        <source src="./videos/video_introducao.mp4" type="video/mp4"></source>
+	<source src="./videos/video_introducao.webm" type="video/webm"></source>
+	</video>
+    </div>
+  </div>
+
+  <!---------- BOGO SORT -------------->
+
+  <div id="bogosort" class="step slide" data-x="0" data-y="-1500">
+    <div>
+      <video id="video_bogosort" class="video" controls="controls">
+      <source src="./videos/video_bogosort.mp4"
+    type="video/mp4"></source>
+      <source src="./videos/video_bogosort.webm"
+    type="video/webm"></source>
+      
+      </video>
+    </div>
+    <div class="codigo" id="codigo_bogosort">
+<pre>
+var saida = [4,2,6,1,5];
+
+while (!ordenado(saida)) {
+  for (i=0; i&lt;saida.length; i = i + 1) {
+     posicao = aleatorio(0,saida.length);
+     aux = saida[i];
+     saida[i] = saida[posicao];
+     saida[posicao]=aux;
+     imprime(saida,bogosort)
+  }
+}
+</pre>
+    </div>
+    <div class="legenda" id="legenda_bogosort"><p>Na ordenação com o algoritmo bogo sort, enquanto a lista de números não estiver ordenada, será embaralhada. É considerado o algoritmo de ordenação mais ineficiente pois não oferece uma abordagem realista ao problema, sendo utilizado apenas para fins educacionais.</p></div>
+    <div class="info" id="info_bogosort"></div>
+    <div class="youtube" id="youtube_bogosort"></div>
+  </div>
+
+  <!---------- BUBBLE SORT ------------>
+
+  <div id="bubblesort" class="step slide" data-x="2000" data-y="-1500">
+    <div>
+      <video id="video_bubblesort" class="video" controls="controls">
+        <source src="./videos/video_bubblesort.mp4"
+    type="video/mpg4"></source>
+      <source src="./videos/video_bubblesort.webm"
+    type="video/webm"></source>
+      
+      </video>
+    </div>
+    <div class="codigo" id="codigo_bubblesort">
+      <pre>
+var saida = [4,2,6,1,5];
+
+for (var i = 1; i &lt; saida.length; i++) {
+   if (saida[i - 1] &gt; saida[i]) {
+      var aux = saida[i - 1];
+      saida[i - 1] = saida[i];
+      saida[i] = aux;
+   }
+}
+      </pre>
+    </div> 
+
+    <div class="legenda" id="legenda_bubblesort"><p>Na ordenação com o algoritmo bubble sort, são comparados os pares adjacentes e trocados quando o elemento anterior for maior que o posterior, de forma a ordenar a lista da direita para a esquerda. Embora seja pouco eficiente,  é de simples implementação e interessante quando o número de elementos a serem ordenados é pequeno.</p></div>
+    <div class="info" id="info_bubblesort"></div>
+    <div class="youtube" id="youtube_bubblesort"></div>
+  </div>
+
+  <!----------- QUICK SORT ------------>
+
+  <div id="quicksort" class="step slide" data-x="4000" data-y="-1500">
+    <div>
+      <video id="video_quicksort" class="video" controls="controls">
+        <source src="./videos/video_quicksort.mp4"
+    type="video/mpg4"></source>
+      <source src="./videos/video_quicksort.webm"
+    type="video/webm"></source>
+
+
+      </video>
+    </div>
+    <div class="codigo" id="codigo_quicksort">
+<pre>
+var saida = [4,2,6,1,5];
+
+function partition(saida, begin, end, pivot) {
+   var piv=saida[pivot];
+   var aux = end-1;
+   end-1 = pivot;
+   pivot = aux;
+   var store=begin;
+   for (var foo=begin; foo&lt;end-1; foo++) {
+      if (saida[ix]&lt;=piv) {
+         aux = foo;
+         foo= store;
+         store = aux;
+         store++;
+      }
+   }
+   aux = end-1;
+   end-1 = store;
+   store = aux;
+   return store;
+}
+
+function qsort(saida, begin, end){
+   if (end-1&gt;begin) {
+      var pivot=begin+aleatorio(begin, end);
+      pivot=partition(saida, begin, end, pivot);
+      qsort(saida, begin, pivot);
+      qsort(saida, pivot+1, end);
+   }
+}
+
+qsort(saida, 0, saida.length);
+</pre>
+    </div>
+    <!-- <div class="console" id="console_quicksort"></div> -->
+    <div class="legenda" id="legenda_quicksort"><p>Na ordenação com o algoritmo quick sort, é escolhido um elemento para pivô, e a lista é reordenada em elementos menores e maiores do que este pivô. Esse processo é repetido recursivamente para cada uma das partições. É um algoritmo que usa a estratégia de dividir para conquistar.</p></div>
+    <div class="info" id="info_quicksort"></div>
+    <div class="youtube" id="youtube_quicksort"></div>
+  </div>
+
+  <!----------- MERGE SORT ------------>
+
+  <div id="mergesort" class="step slide" data-x="6000" data-y="-1500">
+    <div>
+      <video id="video_mergesort" class="video" controls="controls">
+        <source src="./videos/video_mergesort.mp4"
+    type="video/mpg4"></source>
+      <source src="./videos/video_mergesort.webm"
+    type="video/webm"></source>
+    </div>
+    <div class="codigo" id="codigo_mergesort">
+<pre>
+var saida = [4,2,6,1,5];
+
+function merge(left,right,saida){
+   var a=0;
+   while(left.length&&right.length)
+      saida[a++]=right[0]&lt;left[0] ? right.shift(): left.shift();
+   while(left.length)
+      saida[a++]=left.shift();
+   while(right.length)
+   saida[a++]=right.shift();
+}
+
+function mSort(saida,tmp,l){
+   if(l==1) return;
+   var m=Math.floor(l/2), tmp_l=tmp.slice(0,m), tmp_r=tmp.slice(m);
+   mSort(tmp_l,saida.slice(0,m),m);
+   mSort(tmp_r,saida.slice(m),l-m);
+   merge(tmp_l,tmp_r,saida);
+}
+
+mSort(saida,saida.slice(),saida.length);
+</pre>
+    </div>
+
+    <div class="legenda" id="legenda_mergesort"><p>Na ordenação com o algoritmo merge sort, divide-se a sequência original em conjuntos de dois elementos e os ordena, depois os agrupa em conjuntos de quatro elementos e ordena esses conjuntos, aí então agrupa em conjuntos maiores e os ordena até ter uma divisão em apenas duas partes que juntas formam a sequência ordenada. É um algoritmo de dividir para conquistar.</p></div>
+    <div class="info" id="info_mergesort"></div>
+    <div class="youtube" id="youtube_mergesort"></div>
+  </div>
+
+  <!----------- SHELL SORT ------------>
+
+  <div id="shellsort" class="step slide" data-x="8000" data-y="-1500">
+    <div>
+      <video id="video_shellsort" class="video" controls="controls">
+        <source src="./videos/video_shellsort.mp4"
+    type="video/mpg4"></source>
+      <source src="./videos/video_shellsort.webm"
+    type="video/webm"></source>
+    </div>
+    <div class="codigo" id="codigo_shellsort">
+<pre>
+var saida = [4,2,6,1,5];
+
+function shellSort (saida) {
+   for (var h = saida.length; h = parseInt(h / 2);) {
+      for (var i = h; i &lt; a.length; i++) {
+         var k = saida[i];
+         for (var j = i; j &gt;= h && k &lt; a[j - h]; j -= h)
+            saida[j] = saida[j - h];
+         a[j] = k;
+      }
+   }
+   return a;
+}
+
+shellSort(saida);
+</pre>
+    </div>
+    <!-- <div class="console" id="console_shellsort"></div> -->
+    <div class="legenda" id="legenda_shellsort"><p>Na ordenação com o algoritmo shell sort, os itens separados por um certo número de posições h são rearranjados a partir do primeiro elemento, depois a partir do segundo e assim por diante, quanto todos tiverem passado por essa ordenação inicial o h vai diminuindo até chegar em igual a 1. Separar a sequência em linhas de tamanho igual a h e ordenar pelas colunas facilita o entendimento. Esse algoritmo é uma melhoria do algoritmo de inserção.</p></div>
+    <div class="info" id="info_shellsort"></div>
+    <div class="youtube" id="youtube_shellsort"></div>
+  </div>
+
+</div>
+
+<script src="js/impress.js"></script>
+<script>impress().init();</script>
+<script src="js/ytembed.js" ></script>
+
+</body>
+</html>
+
