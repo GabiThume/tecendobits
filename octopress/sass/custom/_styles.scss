@@ -1,8 +1,16 @@
 // This File is imported last, and will override other styles in the cascade
 // Add styles here to make changes without digging in too much
 
+p { 
+font-size: 0.8em;
+}
+
 article header p {
     color: #3B8686;
     font-size: 0.7em;
     margin: 0;
+}
+
+#content .blog-index article h1 {
+    font-size: 1.5em;
 }
