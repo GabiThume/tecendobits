@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
+    <url>
+        <loc>http://tecendobits.cc/blog/blog/first-post-with-octopress/</loc>
+        <lastmod>2013-04-19T00:21:15-03:00</lastmod>
+    </url>
+    <url>
+        <loc>http://tecendobits.cc/blog/blog/archives/</loc>
+        <lastmod>2013-04-19T00:21:15-03:00</lastmod>
+    </url>
+    <url>
+        <loc>http://tecendobits.cc/blog/</loc>
+        <lastmod>2013-04-19T00:21:15-03:00</lastmod>
+    </url>
+    <url>
+        <loc>http://tecendobits.cc/blog/robots.txt</loc>
+        <lastmod>2013-04-18T23:53:52-03:00</lastmod>
+    </url>
+</urlset>

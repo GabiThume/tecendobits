@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: test | TecendoBits Blog]]></title>
+  <link href="http://tecendobits.cc/blog/blog/categories/test/atom.xml" rel="self"/>
+  <link href="http://tecendobits.cc/blog/"/>
+  <updated>2013-04-19T00:23:04-03:00</updated>
+  <id>http://tecendobits.cc/blog/</id>
+  <author>
+    <name><![CDATA[gabithume]]></name>
+    <email><![CDATA[gabithume@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[First Post with Octopress]]></title>
+    <link href="http://tecendobits.cc/blog/blog/first-post-with-octopress/"/>
+    <updated>2013-04-19T00:08:00-03:00</updated>
+    <id>http://tecendobits.cc/blog/blog/first-post-with-octopress</id>
+    <content type="html"><![CDATA[<p>Testing content...</p>
+]]></content>
+  </entry>
+  
+</feed>
