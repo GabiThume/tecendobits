@@ -4,7 +4,7 @@
   <title><![CDATA[TecendoBits Blog]]></title>
   <link href="http://tecendobits.cc/blog/atom.xml" rel="self"/>
   <link href="http://tecendobits.cc/blog/"/>
-  <updated>2013-04-19T01:34:19-03:00</updated>
+  <updated>2013-04-19T02:05:51-03:00</updated>
   <id>http://tecendobits.cc/blog/</id>
   <author>
     <name><![CDATA[gabithume]]></name>
@@ -19,6 +19,31 @@
     <updated>2013-04-19T00:08:00-03:00</updated>
     <id>http://tecendobits.cc/blog/first-post-with-octopress</id>
     <content type="html"><![CDATA[<p>Testing content&#8230;</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="cp"># ----------------------- #</span>
+</span><span class='line'><span class="cp">#      Main Configs       #</span>
+</span><span class='line'><span class="cp"># ----------------------- #</span>
+</span><span class='line'>
+</span><span class='line'><span class="nl">url:</span> <span class="nl">http:</span><span class="c1">//tecendobits.cc/blog</span>
+</span><span class='line'><span class="nl">title:</span> <span class="n">TecendoBits</span> <span class="n">Blog</span>
+</span><span class='line'><span class="nl">subtitle:</span> <span class="n">A</span> <span class="n">place</span> <span class="n">to</span> <span class="n">random</span> <span class="n">thoughts</span><span class="p">.</span>
+</span><span class='line'><span class="nl">author:</span> <span class="n">gabithume</span>
+</span><span class='line'><span class="nl">simple_search:</span> <span class="nl">http:</span><span class="c1">//google.com/search</span>
+</span><span class='line'><span class="nl">subscribe_rss:</span> <span class="o">/</span><span class="n">blog</span><span class="o">/</span><span class="n">atom</span><span class="p">.</span><span class="n">xml</span>
+</span><span class='line'><span class="nl">email:</span> <span class="n">gabithume</span><span class="err">@</span><span class="n">gmail</span><span class="p">.</span><span class="n">com</span>
+</span></code></pre></td></tr></table></div></figure>
+
 ]]></content>
   </entry>
   
