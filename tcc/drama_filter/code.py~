@@ -1,0 +1,541 @@
+# -*- coding: utf-8 -*-
+
+import fuzzy_xml 
+reload(fuzzy_xml)
+import fuzzy_xml as fuzzy
+import operator
+import random
+
+## Abstract class that represents Story Events
+class Event(object):
+	pass
+
+## Abstract class that represents Story Objects
+class Object(object):
+	pass
+
+## Abstract class that represents Story Agents
+class Agent(object):
+	pass
+
+## Represents the Story Environment
+class Environment(object):
+	## Constructor for Environment
+	# @param events A list of Event
+	# @param objects A list of Objects
+	# @param agents A list of agents
+	def __init__(self, events=None, objects=None, agents=None):
+		self.events = events
+		self.objects = objects
+		self.agents = agents
+
+## Represents the Story
+class Story(object):
+	## Constructor for Story
+	# @param story_content A list of story content 
+	def __init__(self, story_content=None):
+		self.story_content = story_content
+
+## Represents the Message
+class Message(object):
+	## Constructor for Message
+	# @param message_content A lits of message content 
+	def __init__(self, message_content=None):
+		self.message_content = message_content
+	pass
+
+## Represents the Story
+class Description(object):
+	## Constructor for Story
+	# @param character_content A list of character content 
+	def __init__(self, character_description =None):
+		self.character_description = character_description 
+
+## Represents the Script Interpretation
+class Script_interpretation(object):
+	## Constructor for Environment
+	# @param message_content A list of Message content 
+	# @param story_contents A list of Story content 
+	# @param character_descriptio nA list of Character content 
+	def __init__(self, message_content=None, story_content=None, character_description =None):
+		self.message_content = message_content
+		self.story_content = story_content
+		self.character_description = character_description 
+
+## Represents the Script
+class Script(object):
+	## Constructor for Environment
+	# @param environment A Story Environment
+	# @param interpretation A Script Interpretation
+	def __init__(self, environment=None, interpretation=None):
+		self.environment = environment
+		self.interpretation = interpretation	
+
+## Represents the Script
+class Personality(object):
+	## Constructor for Environment
+	# @param desires A Desire  State
+	# @param actions A list of Actions
+	def __init__(self, name=None, actions=None):
+		self.desires = DesireState().desires
+		self.actions = actions
+
+		## The self.desires already have all the possible desires (by the class DesireState). What was did here was update some intensities.
+		if(name=="monica"):
+			self.desires.update({'desire(avoid_criticism)':50.0,'desire(thinking)':50.0,'desire(sustenance)':80.0, 'desire(muscle_movement)':20.0,'desire(peer_companionship)':100.0,'desire(safety)':10.0, 'desire(influence)':80.0})
+		if(name=="smudge"):
+			self.desires.update({'desire(avoid_criticism)':20.0,'desire(thinking)':60.0,'desire(sustenance)':60.0,'desire(muscle_movement)':80.0,' desire(collection)':80.0, 'desire(peer_companionship)':80.0, 'desire(safety)':100.0})
+		if(name=="jimmy five"):
+			self.desires.update({'desire(collection)':100,'desire(avoid_criticism)':50.0,'desire(thinking)':100.0,'desire(sustenance)':50.0, 'desire(muscle_movement)':90.0,'desire(peer_companionship)':100.0,'desire(safety)':80.0})
+
+## Represents a Action
+class Action(object):
+	## Constructor for Environment
+	# @param label A string of label
+	# @param precondition A string of preconditions
+	# @param effect A string of effects
+	def __init__(self, label=None, actions=None):
+		self.label = label
+		self.precondition = {}
+		self.effect = {}
+
+## Represents a Plan
+class Plan(object):
+	## Constructor for Environment
+	# @param actions A list of Actions
+	# @param acceptance A value for animator acceptance
+	def __init__(self, actions=None, acceptance=None):
+		self.actions = actions
+		self.acceptance = acceptance
+
+## Represents a Emotional State
+class EmotionalState(object):
+	## Constructor for Environment
+	# @param emotions A list of possible emotions is instanciated
+	def __init__(self, emotions=None):
+		self.emotions ={'emotion(happy_for)':0.0,'emotion(resentment)':0.0,'emotion(gloating)':0.0,'emotion(pity))':0.0,'emotion(hope))':0.0,'emotion(fear))':0.0,'emotion(satisfaction))':0.0,'emotion(fear_confirmed))':0.0,'emotion(relief))':0.0,'emotion(disappointment))':0.0, 'emotion(joy))':0.0, 'emotion(distress))':0.0,'emotion(pride))':0.0,'emotion(shame))':0.0,'emotion(admiration))':0.0,'emotion(reproach))':0.0,'emotion(gratification))':0.0,'emotion(remorse))':0.0, 'emotion(gratitude))':0.0,'emotion(anger))':0.0,'emotion(love))':0.0,'emotion(hate))':0.0}
+
+## Represents a Emotion
+class Emotion(object):
+	## Constructor for Environment
+	# @param label A string of label
+	# @param intensity A value for intensity
+	# @param valence A value for valence
+	def __init__(self, label=None, intensity=None, valence=None):
+		self.label = label
+		self.intensity = intensity
+		self.valence = valence
+
+## Represents a Emotion
+class Belief(object):
+	## Constructor for Environment
+	# @param label A string of label
+	# @param typeof A string for type
+	# @param predicate A string for predicate
+	# @param weight A value for weight
+	def __init__(self, label=None, typeof = None, predicate=None, weight=None):
+		self.label = label
+		self.typeof = typeof 
+		self.predicate = predicate
+		self.weight = weight
+
+## Represents a Desire State
+class DesireState(object):
+	## Constructor for Environment
+	# @param desires A list of possible desires is instanciated
+	def __init__(self, label=None, intensity=None):
+		self.desires ={'desire(avoid_criticism))':0.0,'desire(thinking))':0.0,'desire(sustenance))':0.0,'desire(raise_children))':0.0,'desire(moral_behavior))':0.0,'desire(better_world))':0.0,'desire(self_reliance))':0.0,'desire(structure))':0.0,'desire(muscle_movement))':0.0,' desire(influence))':0.0,'desire(sex)':0.0,'desire(collection)':0.0,'desire(peer_companionship)':0.0,'desire(social_standing)':0.0,'desire(safety)':0.0,'desire(get_even)':0.0}
+
+## Represents a Emotion
+class Desire(object):
+	## Constructor for Environment
+	# @param label A string of label
+	# @param intensity A value for intensity
+	def __init__(self, label=None, intensity=None):
+		self.label = label
+		self.intensity = intensity
+
+## Represents a Intention State
+class IntentionState(object):
+	## Constructor for Environment
+	# @param intention A list of possible intention is instanciated
+	def __init__(self, label=None, intensity=None):
+		self.intentions ={'intention(avoid_criticism)':0.0,'intention(thinking)':0.0,'intention(sustenance)':0.0,'intention(raise_children)':0.0,'intention(moral_behavior)':0.0,'intention(better_world)':0.0,'intention(self_reliance)':0.0,'intention(structure)':0.0, 'intention(muscle_movement)':0.0,' intention(influence)':0.0,'intention(sex)':0.0,'intention(collection)':0.0,'intention(peer_companionship)':0.0,'intention:social_standing)':0.0,'intention:safety)':0.0,'intention:get even)':0.0}
+
+## Represents a Intention
+class Intention(object):
+	## Constructor for Environment
+	# @param label A string of label
+	# @param target A string of target
+	# @param intensity A value for intensity
+	def __init__(self, label=None, target=None, intensity=None):
+		self.label = label
+		self.target = target
+		self.intensity = intensity
+
+## Represents tha ADA agent
+class ADA(object):
+	## Constructor for ADA
+	# @param personality A string of personality
+	# @param emotions A Emotional State
+	# @param beliefs A list of Beliefs
+	# @param desires A Desire State
+	# @param intentions A Intention State
+	# @param actions A list of actions
+	def __init__(self, personality ={}, emotions={}, beliefs={}, desires={}, intentions={}, actions = {}):
+		self.emotions = emotions
+		self.beliefs = beliefs
+		self.desires = desires
+		self.intentions = intentions
+		self.actions=actions
+		self.story = 0
+		self.story_frame = 0
+		self.story_frameTotal = 0
+		self.personality = personality
+		self.plans = {}
+
+	## Sensorial Belief Revised Function. Maps the Environment perception into possible beliefs
+	def sensorial_brf(self, environment):
+		pass
+
+	## Message Belief Revised Function. Maps the Message perception into possible beliefs
+	def msg_brf(self, msg_content):
+		pass
+
+	## Story Belief Revised Function. Maps the Story perception into possible beliefs
+	def story_brf(self, story_content):
+		pass
+
+	## Belief Revised Function. Through contemplation, the Input Belief Revised Function considers intentions and emotions to review current agent beliefs
+	def input_brf(self, emotions, beliefs, beliefs_perceived, intentions):
+		# @param emotions A Emotional State
+		# @param beliefs A list of Beliefs
+		# @param beliefs_perceived A list of Beliefs Perceived
+		# @param intentions A Intention State
+		if(self.story ==1):
+			# Start the beliefs. This is necessary because the beliefs are not been updated, but set manually
+			self.beliefs = {'belief(procedural, proc(agt_self, look, agent, anim1))': 100.0, 'belief(procedural, proc(agt_self, point, agent, anim2))': 100.0, 'belief(procedural, proc(agt_self, fight, agent, anim3))': 100.0, 'belief(episodic, mbuild(theme, type, conversation))': 100.0, 'belief(episodic, mbuild(place, type, open_space))': 100.0, 'belief(episodic, mbuild(time, type, present))': 100.0, 'belief(semantic, object(obj_camera, name, obj_toycamera))': 100.0, 'belief(semantic, event(evt_squirtwater, wet, agt_self))': 100.0, 'belief(semantic, event(obj_toycamera, push_button, evt_squirtwater))':100.0, 'belief(semantic, event(obj_realcamera, push_button, evt_takepicture))':100.0, 'belief(semantic, object(obj_toycamera, type, fake))': 100.0, 'belief(semantic, object(obj_realcamera, type, real))':100.0}
+
+			if (self.name == 'monica'):
+				self.beliefs.update({'belief(semantic, agent(agt_self, name, agt_monica))': 100.0, 'belief(semantic, agent(other, name, agt_smudge))': 100.0, 'belief(semantic, agent(agt_self, age, 9))': 100.0, 'belief(episodic, propel(wet, clean, agt_smudge)) ':100.0, 'belief(episodic, mbuild(agt_self, want, event(agt_self, wet, agt_smudge)))':100.0, 'belief(episodic, grasp(agt_self, hold, obj_toycamera)) ': 100.0})
+			if (self.name == 'smudge'):
+				self.beliefs.update({'belief(semantic, agent(agt_self, name, agt_smudge))': 100.0, 'belief(semantic, agent(other, name, agt_monica))': 100.0, 'belief(semantic, agent(agt_self, age, 10))': 100.0,  'belief(episodic, propel(wet, hurt, agt_self))':100.0, 'belief(episodic, grasp(agt_monica, hold, obj_toycamera))': 100.0})
+
+			# For each frame, set the beliefs
+			if(self.story_frame==1):
+				if (self.name == 'monica'):
+					self.beliefs.update({ 'belief(episodic, mbuild(agt_self, emotion, happy_for))': 95.0, 'belief(episodic, mbuild(obj_toycamera, type, fake))':100.0, 'belief(episodic, mbuild(agt_self, want, event(agt_self, wet, agt_smudge)))':100.0})
+				elif (self.name == 'smudge'):
+					self.beliefs.update({'belief(episodic, attend(agt_monica, emotion, happy_for)))': 90.0, 'belief(episodic, mbuild(obj_toycamera, type, fake))':85.0, 'belief(episodic, mbuild(agt_monica, want, event(agt_monica, wet, agt_self)))': 90.0})
+			if(self.story_frame==2):
+				if (self.name == 'monica'):
+					self.beliefs.update({'belief(episodic, mbuild(agt_smudge, trust, agt_self)) ': 10.0, 'belief(episodic, attend(agt_smudge, emotion, disappointment))': 100.0})		
+				elif (self.name == 'smudge'):
+					self.beliefs.update({ 'belief(episodic, mbuild(agt_self, trust, agt_monica))': 10.0, 'belief(episodic, mbuild(agt_self, emotion, disappointment))': 80.0, 'belief(episodic, mbuild(obj_toycamera, type, fake))': 90.0})
+			if(self.story_frame==3):
+				if (self.name == 'monica'):
+					self.beliefs.update({'belief(episodic, mbuild(agt_smudge, trust, agt_self)) ': 0.0, 'belief(episodic, mbuild(agt_self, emotion, disappointment))': 100.0})	
+				elif (self.name == 'smudge'):
+					self.beliefs.update({'belief(episodic, mbuild(agt_monica, want, event(agt_monica, wet, agt_self)))': 100.0, 'belief(episodic, mbuild(agt_self, trust, agt_monica))': 0.0, 'belief(episodic, mbuild(agt_self, emotion, disappointment))': 100.0, 'belief(episodic, mbuild(obj_toycamera, type, fake))': 100.0})
+			if(self.story_frame==4):
+				if (self.name == 'monica'):
+					self.beliefs.update({'belief(episodic, mbuild(agt_self, emotion, disappointment))': 100.0, 'belief(episodic, mbuild(agt_smudge, trust, agt_self))': 0.0, 'belief(episodic, mbuild(obj_toycamera, type, fake))': 100.0})	
+				elif (self.name == 'smudge'):
+					self.beliefs.update({'belief(episodic, attend(agt_monica, emotion, disappointment))': 100.0, 'belief(episodic, mbuild(obj_toycamera, type, fake))': 100.0})
+			if(self.story_frame==5):
+				if (self.name == 'monica'):
+					self.beliefs.update({ 'belief(episodic, expel(agt_self, cry, tears))': 100.0, 'belief(episodic, mbuild(agt_smudge, trust, agt_self))': 0.0, 'belief(episodic, mbuild(obj_toycamera, type, fake))': 100.0})
+				elif (self.name == 'smudge'):
+					self.beliefs.update({ 'belief(episodic, expel(agt_monica, cry, tears))': 100.0, 'belief(episodic, mbuild(obj_toycamera, type, real))': 100.0})
+			if(self.story_frame==6):
+				if (self.name == 'monica'):
+					self.beliefs.update({ 'belief(episodic, expel(agt_self, cry, tears))': 100.0, 'belief(episodic, mbuild(agt_smudge, trust, agt_self)': 0.0, 'belief(episodic, mbuild(obj_toycamera, type, fake))': 100.0})	
+				elif (self.name == 'smudge'):
+					self.beliefs.update({'belief(episodic, mbuild(agt_self, trust, agt_monica))':0.0, 'belief(episodic, expel(agt_monica, cry, tears))': 100.0, 'belief(episodic, mbuild(obj_toycamera, type, real))': 100.0})
+			if(self.story_frame==7):
+				if (self.name == 'monica'):
+					self.beliefs.update({'belief(episodic, mbuild(agt_smudge, want, event(agt_smudge, take_picture, group(agt_smudge, agt_self))))':100.0,'belief(episodic, attend(agt_smudge, emotion, happy_for))':100.0,'belief(episodic, mbuild(agt_self, emotion, happy_for))':100.0, 'belief(episodic, mbuild(agt_smudge, trust, agt_self)': 100.0,'belief(episodic, mbuild(obj_toycamera, type, fake))': 100.0})		
+				elif (self.name == 'smudge'):
+					self.beliefs.update({'belief(episodic, mbuild(agt_self, want, event(agt_self, take_picture, group(agt_self, agt_monica))))':100.0, 'belief(episodic, mbuild(agt_self, trust, agt_monica)':100.0,'belief(episodic, attend(agt_monica, emotion, happy_for))': 100.0, 'belief(episodic, mbuild(agt_self, emotion, happy_for))': 100.0, 'belief(episodic, mbuild(obj_toycamera, type, real))': 100.0})
+			if(self.story_frame==8):
+				if (self.name == 'monica'):
+					self.beliefs.update({'belief(episodic, mbuild(agt_smudge, want, event(agt_self, take_picture, group(agt_smudge, agt_self))))':100.0,'belief(episodic, attend(agt_smudge, emotion, happy_for))': 100.0,'belief(episodic, mbuild(agt_self, emotion, happy_for))': 100.0,'belief(episodic, mbuild(agt_smudge, trust, agt_self)': 100.0,'belief(episodic, mbuild(obj_toycamera, type, fake))':100.0, 'belief(episodic, atrans(agt_self, search, obj_realcamera))':100.0})		
+				elif (self.name == 'smudge'):
+					self.beliefs.update({'belief(episodic, mbuild(agt_self, want, event(agt_self, take_picture, group(agt_self, agt_monica))))':100.0, 'belief(episodic, atrans(agt_monica, search, obj_realcamera))':100.0, 'belief(episodic, mbuild(obj_toycamera, type, fake))': 100.0, 'belief(episodic, mbuild(agt_self, trust, agt_monica))': 30.0, 'belief(episodic, mbuild(obj_toycamera, type, real))': 100.0, 'belief(episodic, attend(agt_monica, emotion, happy_for))': 100.0})
+
+
+		if(self.story ==2):
+			# Start the beliefs. This is necessary because the beliefs are not been updated, but set manually
+			self.beliefs = {'belief(procedural, proc(agt_self, jump, agent, animation_jump))': 100.0, 'belief(episodic, mbuild(theme, type, conversation))': 100.0, 'belief(episodic, mbuild(place, type, open_space))': 100.0, 'belief(episodic, mbuild(time, type, present))': 100.0}
+
+			if (self.name == 'monica'):
+				self.beliefs.update({'belief(semantic, agent(agt_self, name, agt_monica))': 100.0, 'belief(semantic, agent(other, name, agt_jimmy_five))': 100.0, 'belief(semantic, agent(agt_self, age, 9))': 100.0, 'belief(episodic, mbuild(agt_self, like, event(agt_jimmy_five, tease, agt_self)))': 100.0})
+			if (self.name == 'jimmy five'):
+				self.beliefs.update({'belief(semantic, agent(agt_self, name, agt_jimmy_five))': 100.0, 'belief(semantic, agent(other, name, agt_monica))': 100.0, 'belief(semantic, agent(agt_self, age, 10))': 100.0,  'belief(episodic, mbuild(agt_self, like, event(agt_self, tease, agt_monica)))': 100.0})
+
+
+			# For each frame, set the beliefs
+			if(self.story_frame==1):
+				if (self.name == 'monica'):
+					self.beliefs.update({'belief(episodic, mbuild(agt_jimmy_five, hate, event(agt_self, suspended, agt_jimmy_five)))': 90.0, 'belief(episodic, mbuild(agt_jimmy_five, emotion, emotion(fear_confirmed))))':85.0, 'belief(episodic, mbuild(agt_self, emotion, emotion(joy)))':90.00})
+				elif (self.name == 'jimmy five'):
+					self.beliefs.update({'belief(episodic, mbuild(agt_self, hate, event(agt_monica, suspended, agt_self)))': 90.0, 'belief(episodic, mbuild(agt_self, emotion, emotion(fear_confirmed))))':85.0, 'belief(episodic, mbuild(agt_monica, emotion, emotion(joy)))':90.00})
+
+
+		return self.beliefs
+
+	## Represents Reactive Emotions. Are the reactive emotional responses to a situation, that appear before the conscious thought and are instinctive responses from human brain
+	def reactive_euf(self, emotions, beliefs_perceived, intentions):
+		reactive = EmotionalState()
+
+		if(self.story==1):
+			# For each frame, set the emotions
+			if(self.story_frame==1):
+				if (self.name == 'monica'):
+					reactive.emotions.update({'emotion(happy_for)':70.0, 'emotion(joy)':100.0, 'emotion(hope)':60.0})
+				elif (self.name == 'smudge'):
+					reactive.emotions.update({'emotion(hope)':20.0, 'emotion(fear)':80.0})
+			if(self.story_frame==2):
+				if (self.name == 'monica'):
+					reactive.emotions.update({'emotion(happy_for)':50.0, 'emotion(joy)':50.0, 'emotion(hope)':40.0})
+				elif (self.name == 'smudge'):
+					reactive.emotions.update({'emotion(disappointment)':70.0, 'emotion(resentment)':50.0})
+			if(self.story_frame==3):
+				if (self.name == 'monica'):
+					reactive.emotions.update({'emotion(happy_for)':0.0, 'emotion(joy)':0.0, 'emotion(hope)':40.0, 'emotion(distress)':60.0})
+				elif (self.name == 'smudge'):
+					reactive.emotions.update({'emotion(disappointment)':100.0, 'emotion(resentment)':50.0, 'emotion(distress)':70.0})
+			if(self.story_frame==4):
+				if (self.name == 'monica'):
+					reactive.emotions.update({'emotion(distress)':40.0, 'emotion(resentment)':60.0})
+				elif (self.name == 'smudge'):
+					reactive.emotions.update({'emotion(disappointment)':30.0, 'emotion(resentment)':30.0, 'emotion(distress)':70.0})
+			if(self.story_frame==5):
+				if (self.name == 'monica'):
+					reactive.emotions.update({'emotion(distress)':100.0, 'emotion(resentment)':80.0, 'emotion(disappointment)':90.0})
+				elif (self.name == 'smudge'):
+					reactive.emotions.update({'emotion(disappointment)':10.0, 'emotion(resentment)':10.0, 'emotion(distress)':10.0})
+			if(self.story_frame==6):
+				if (self.name == 'monica'):
+					reactive.emotions.update({'emotion(distress)':100.0, 'emotion(resentment)':80.0, 'emotion(disappointment)':90.0})
+				elif (self.name == 'smudge'):
+					reactive.emotions.update({'emotion(disappointment)':0.0, 'emotion(resentment)':0.0, 'emotion(distress)':10.0, 'emotion(remorse)':80.0, 'emotion(joy)':80.0, 'emotion(relief)':60.0})
+			if(self.story_frame==7):
+				if (self.name == 'monica'):
+					reactive.emotions.update({'emotion(distress)':0.0, 'emotion(resentment)':0.0, 'emotion(disappointment)':0.0,'emotion(joy)':80.0, 'emotion(relief)':80.0})
+				elif (self.name == 'smudge'):
+					reactive.emotions.update({'emotion(distress)':0.0, 'emotion(remorse)':60.0, 'emotion(joy)':90.0, 'emotion(relief)':60.0})
+			if(self.story_frame==8):
+				if (self.name == 'monica'):
+					reactive.emotions.update({'emotion(joy)':100.0, 'emotion(relief)':0.0})
+				elif (self.name == 'smudge'):
+					reactive.emotions.update({'emotion(distress)':0.0, 'emotion(remorse)':60.0, 'emotion(joy)':90.0, 'emotion(relief)':0.0})
+
+
+		if(self.story==2):
+			# For each frame, set the emotions
+			if(self.story_frame==1):
+				if (self.name == 'monica'):
+					reactive.emotions = {'emotion(happy_for)':70.0, 'emotion(satisfaction)':100.0, 'emotion(pride)':60.0}
+				elif (self.name == 'jimmy five'):
+					reactive.emotions = {'emotion(hope)':20.0, 'emotion(remorse)':80.0, 'emotion(fear)':100.0, 'emotion(fear_confirmed)':80.0, 'emotion(disappointment)':90.0, 'emotion(distress)':90.0}
+
+		return reactive.emotions
+
+	## Represents the Cognitive Emotions. They act like the secondary emotions, results of deliberation and may replace the primary emotions.
+	def cognitive_euf(self, emotions, beliefs, intentions):
+		# @param emotions A Emotional State
+		# @param beliefs A list of Beliefs
+		# @param intentions A Intention State
+
+		# In this simulation, are equal to the reactives ones
+		return self.emotions
+
+	## Represents the Filter Procedure. Infer new intentions from current states
+	def Filter(self, emotions={}, beliefs={}, desires={}, intentions={}):
+		# @param emotions A Emotional State
+		# @param beliefs A list of Beliefs
+		# @param desires A Desire State
+		# @param intentions A Intention State
+		system = fuzzy.create_system()
+		input_value = {}
+		input_value.update(emotions)
+		input_value.update(beliefs)
+		input_value.update(desires)
+		input_value.update(intentions)
+		input_value.update({"null": 39.98})
+		output_value = {"intention" : 0.0}
+		print "\n", self.name,"in frame", str(self.story_frame)+":"
+	 	#if self.story_frame == 1:
+		#print input_value, "\n"
+		system.calculate(input=input_value , output = output_value)
+
+		for classes in output_value.values():
+			for classe in classes:
+				print classe + " \t\t\t: %.3f" %classes[classe]
+
+		return dict(sorted(output_value['intention'].iteritems(), key=operator.itemgetter(1), reverse=True))
+
+	# Represents Planning Module. Sugests a sequence os actions.
+	def planning(self, intentions, emotions, behaviors):
+		# @param emotions A Emotional State
+		# @param intentions A Intention State
+		# @param behaviors A list of Actions
+		better = sorted(intentions.iteritems(), key=operator.itemgetter(1), reverse=True)[0]
+
+		equal = []
+		for i in intentions.iteritems():
+			if i[1] == better[1]:
+				equal.append(i)
+	
+		better = random.choice(equal)
+
+		if better[0] == "intention(avoid_criticism)":
+			self.plans = "Demonstrate need of Acceptance"
+		if better[0]  == "intention(thinking)":
+			self.plans = "Demonstrate Curiosity"
+		if better[0] == "intention(sustenance)":
+			self.plans = "Demonstrate Hungry"
+		if better[0]  == "intention(raise_children)":
+			self.plans = "Demonstrate care with Family"
+		if better[0] == "intention(moral_behavior)":
+			self.plans = "Demonstrate Honor"
+		if better[0]  == "intention(better_world)":
+			self.plans = "Demonstrate Idealism"
+		if better[0] == "intention(self_reliance)":
+			self.plans = "Demonstrate Independence"
+		if better[0]  == "intention(structure)":
+			self.plans = "Demonstrate Order"
+		if better[0] == "intention(muscle_movement)":
+			self.plans = "Demonstrate Physical Activity"
+		if better[0] == "intention(influence)":
+			self.plans = "Demonstrate Power"
+		if better[0]  == "intention(sex)":
+			self.plans = "Demonstrate Romance"
+		if better[0] == "intention(collection)":
+			self.plans = "Demonstrate Saving"
+		if better[0]  == "intention(peer_companionship)":
+			self.plans = "Demonstrate need of Social Contact"
+		if better[0] == "intention(social_standing)":
+			self.plans = "Demonstrate Status "
+		if better[0]  == "intention(safety)":
+			self.plans = "Demonstrate Fear"
+		if better[0]  == "intention(get_even)":
+			self.plans = "Demonstrate Vengeance"
+		return self.plans
+
+	## Decision Making Process
+	def decision_making(self):
+
+		# The script interpretation analyzes the story in terms of messages, characteristic of the story and the description of character
+		message = Message("Hi Smudge, Can I take your picture?")
+		story  = Story({"day":"shiny", "theme":"conversation", "time":"present", "place":"open_space"})
+		character_description = Description({"smudge": "athletic","monica": "neurotic"})
+		script_interpretation = Script_interpretation(message, story, character_description )
+
+		# The script perception of environment analyzes the whole story in terms of events, objects and agents
+		events = {}
+		objects = {"bush": {"position":"(5,0,0)"}, "obj_toycamera": {"position":"(0,0,0)"}} 
+		agents = {"self": {"action":"running"}}
+		script_environment = Environment(events, objects, agents)
+
+		# The script perception is divided in two modules: environment and interpretation
+		script = Script(script_environment, script_interpretation)
+
+		# New beliefs are generated by the script perception:
+		new_beliefs = []
+		# From messages by msg_brf
+		beliefs_msg = self.msg_brf(script.interpretation.message_content)
+		# From story by story_brf
+		beliefs_story = self.story_brf(script.interpretation.story_content)	
+		# From senses by sensorial_brf
+		beliefs_sensorial = self.sensorial_brf(script.environment)
+		# All they are in new_beliefs
+		new_beliefs.append(beliefs_msg)
+		new_beliefs.append(beliefs_story)
+		new_beliefs.append(beliefs_sensorial)
+
+		# Reactives Emotions are generated by reactive_euf
+		reactives = self.reactive_euf(self.emotions, new_beliefs, self.intentions)
+		self.emotions = reactives
+
+		# Beliefs of the Perception from input_brf
+		beliefs_perceived = self.input_brf(self.emotions, self.beliefs, new_beliefs, self.intentions)
+		self.beliefs = beliefs_perceived
+
+		# Intentions
+		intentions = self.Filter(self.emotions, self.beliefs, self.desires, self.intentions)
+		self.intentions = intentions
+
+		# Cognitive Emotions
+		cognitives = self.cognitive_euf(self.emotions, self.beliefs, self.intentions)
+
+		# If cognitives emotions are different of reactives
+		if (cognitives!=reactives):
+			# The emotions will be the cognitives
+			self.emotions = cognitives
+			# The beliefs wil be updated, according to cognitives emotions
+			beliefs_perceived = self.input_brf(self.emotions, self.beliefs, new_beliefs, self.intentions)
+			# Update the intentions
+			intention = self.Filter(self.emotions, self.beliefs, self.desires, self.intentions)
+
+		self.plans = self.planning(self.intentions, self.emotions, self.personality.actions)
+
+		self.story_frame+=1
+
+		print "\nPlans:", self.plans
+
+def main():
+
+	# Desires from Personality module
+	person_monica = Personality('monica')
+	# Create the agent Monica
+	monica = ADA(person_monica)
+	monica.name = "monica"
+	monica.desires = monica.personality.desires
+
+	# Create the agent Smudge
+	person_smudge = Personality('smudge')
+	smudge = ADA(person_smudge)
+	smudge.name = "smudge"
+	smudge.desires = smudge.personality.desires
+
+
+	# Create the agent Jimmy Five
+	person_smudge = Personality('jimmy five')
+	jimmy = ADA(person_smudge)
+	jimmy.name = "jimmy five"
+	jimmy.desires = jimmy.personality.desires
+
+	# Story 2 is for validation and 1 for the test
+	story = 1
+	# The story starts in frame 1 and goes till eight
+	story_frame = 1
+	story_frameTotal = 8
+
+	monica.story_frame = story_frame
+	smudge.story_frame = story_frame
+	jimmy.story_frame = story_frame
+
+	monica.story_frameTotal = story_frameTotal 
+	smudge.story_frameTotal = story_frameTotal 
+	jimmy.story_frameTotal = story_frameTotal 
+
+	monica.story = story 
+	smudge.story = story
+	jimmy.story = story
+
+	# While the story is not over, execute the deliberation process
+	while(story_frame <= story_frameTotal):
+		monica.decision_making()
+		if(story==1):
+			smudge.decision_making()
+		if(story==2):
+			jimmy.decision_making()
+		story_frame+=1
+
+	# test
+	#monica.Filter({'emotion:happy)': 90.0}, {'belief:color(sky, blue))': 45.0}, {'desire:eating for sustenance)': 90.0}, {})
+
+if __name__ == "__main__":
+	main()

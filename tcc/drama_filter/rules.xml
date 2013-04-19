@@ -1,0 +1,677 @@
+<?xml version="1.0" encoding="utf-8"?>
+<script>
+	<input label="null"/>
+
+	<input label="belief(semantic, agent(agt_self, name, agt_monica))"/>
+	<input label="belief(semantic, agent(other, name, agt_smudge))"/>
+	<input label="belief(semantic, agent(agt_self, age, 9))"/>
+	<input label="belief(semantic, agent(agt_self, name, agt_smudge))"/>
+	<input label="belief(semantic, agent(other, name, agt_monica))"/>
+	<input label="belief(semantic, agent(agt_self, age, 10))"/>
+	<input label="belief(semantic, event(obj_toycamera, push_button, evt_squirtwater))"/>
+	<input label="belief(semantic, event(obj_realcamera, push_button, evt_takepicture))"/>
+	<input label="belief(semantic, object(obj_toycamera, type, fake))"/>
+	<input label="belief(semantic, object(obj_realcamera, type, real))"/>
+	<input label="belief(semantic, object(obj_camera, name, obj_toycamera))"/>
+	<input label="belief(semantic, event(evt_squirtwater, wet, agt_self))"/>
+
+	<input label="belief(procedural, proc(agt_self, look, agent, anim1))"/>
+	<input label="belief(procedural, proc(agt_self, point, agent, anim2))"/>
+	<input label="belief(procedural, proc(agt_self, fight, agent, anim3))"/>
+
+	<input label="belief(episodic, mbuild(theme, type, conversation))"/>
+	<input label="belief(episodic, mbuild(place, type, open_space))"/>
+	<input label="belief(episodic, mbuild(time, type, present))"/>
+	<input label="belief(episodic, mbuild(agt_self, emotion, happy_for))"/>
+	<input label="belief(episodic, mbuild(agt_self, emotion, disappointment))"/>
+	<input label="belief(episodic, expel(agt_self, cry, tears))"/>
+	<input label="belief(episodic, attend(agt_smudge, emotion, disappointment))"/>
+	<input label="belief(episodic, attend(agt_smudge, emotion, happy_for))"/>
+	<input label="belief(episodic, mbuild(agt_smudge, trust, agt_self))"/>
+	<input label="belief(episodic, mbuild(agt_self, trust, agt_smudge))"/>
+	<input label="belief(episodic, mbuild(agt_smudge, want, event(agt_smudge, take_picture, group(agt_smudge, agt_self))))"/>
+	<input label="belief(episodic, mbuild(agt_self, want, event(agt_self, take_picture, agt_smudge)))"/>
+	<input label="belief(episodic, grasp(agt_self, hold, obj_toycamera))"/>
+	<input label="belief(episodic, mbuild(obj_toycamera, type, fake))"/>
+	<input label="belief(episodic, mbuild(obj_toycamera, type, real))"/>
+	<input label="belief(episodic, atrans(agt_self, search, obj_realcamera))"/>
+	<input label="belief(episodic, propel(wet, clean, agt_smudge))"/>
+	<input label="belief(episodic, mbuild(agt_self, want, event(agt_self, wet, agt_smudge)))"/>
+	<input label="belief(episodic, expel(agt_monica, cry, tears))"/>
+	<input label="belief(episodic, attend(agt_monica, emotion, disappointment))"/>
+	<input label="belief(episodic, attend(agt_monica, emotion, happy_for))"/>
+	<input label="belief(episodic, mbuild(agt_monica, trust, agt_self))"/>
+	<input label="belief(episodic, mbuild(agt_self, trust, agt_monica))"/>
+	<input label="belief(episodic, mbuild(agt_self, want, event(agt_self, take_picture, group(agt_self, agt_monica))))"/>
+	<input label="belief(episodic, grasp(agt_monica, hold, obj_toycamera))"/>
+	<input label="belief(episodic, mbuild(obj_toycamera, type, fake))"/>
+	<input label="belief(episodic, mbuild(obj_toycamera, type, real))"/>
+	<input label="belief(episodic, expel(object(obj_toycamera, type, fake), expel, water))"/>
+	<input label="belief(episodic, expel(object(obj_toycamera, type, fake), make, picture))"/>
+	<input label="belief(episodic, atrans(agt_monica, search, obj_realcamera))"/>
+	<input label="belief(episodic, propel(wet, hurt, agt_self))"/>
+	<input label="belief(episodic, mbuild(agt_monica, want, event(agt_monica, wet, agt_self)))"/>
+
+	<input label="emotion(happy_for)"/>
+	<input label="emotion(resentment)"/>
+	<input label="emotion(gloating)"/>
+	<input label="emotion(pity)"/>
+	<input label="emotion(hope)"/>
+	<input label="emotion(fear)"/>
+	<input label="emotion(satisfaction)"/>
+	<input label="emotion(fear_confirmed)"/>
+	<input label="emotion(relief)"/>
+	<input label="emotion(disappointment)"/>
+	<input label="emotion(joy)"/>
+	<input label="emotion(distress)"/>
+	<input label="emotion(pride)"/>
+	<input label="emotion(shame)"/>
+	<input label="emotion(admiration)"/>
+	<input label="emotion(reproach)"/>
+	<input label="emotion(gratification)"/>
+	<input label="emotion(remorse)"/>
+	<input label="emotion(gratitude)"/>
+	<input label="emotion(anger)"/>
+	<input label="emotion(love)"/>
+	<input label="emotion(hate)"/>
+
+	<input label="desire(sustenance)"/>
+	<input label ="desire(avoid_criticism)"/>
+	<input label ="desire(thinking)"/>
+	<input label ="desire(sustenance)"/>
+	<input label ="desire(raise_children)"/>
+	<input label ="desire(moral_behavior)"/>
+	<input label ="desire(better_world)"/>
+	<input label ="desire(self_reliance)"/>
+	<input label ="desire(structure)"/>
+	<input label ="desire(muscle_movement)"/>
+	<input label ="desire(influence)"/>
+	<input label ="desire(sex)"/>
+	<input label ="desire(collection)"/>
+	<input label ="desire(peer_companionship)"/>
+	<input label ="desire(social_standing)"/>
+	<input label ="desire(safety)"/>
+	<input label ="desire(get_even)"/>
+
+	<input label ="intention(safety)"/>
+	<input label ="intention(avoid_criticism)"/>
+	<input label ="intention(thinking)"/>
+	<input label ="intention(sustenance)"/>
+	<input label ="intention(raise_children)"/>
+	<input label ="intention(moral_behavior)"/>
+	<input label ="intention(better_world)"/>
+	<input label ="intention(self_reliance)"/>
+	<input label ="intention(structure)"/>
+	<input label ="intention(muscle_movement)"/>
+	<input label ="intention(influence)"/>
+	<input label ="intention(sex)"/>
+	<input label ="intention(collection)"/>
+	<input label ="intention(peer_companionship)"/>
+	<input label ="intention(social_standing)"/>
+	<input label ="intention(safety)"/>
+	<input label ="intention(get_even)"/>
+
+	<output label ="intention">
+		<adjective label ="intention(avoid_criticism)"/>
+		<adjective label ="intention(thinking)"/>
+		<adjective label ="intention(sustenance)"/>
+		<adjective label ="intention(raise_children)"/>
+		<adjective label ="intention(moral_behavior)"/>
+		<adjective label ="intention(better_world)"/>
+		<adjective label ="intention(self_reliance)"/>
+		<adjective label ="intention(structure)"/>
+		<adjective label ="intention(muscle_movement)"/>
+		<adjective label ="intention(influence)"/>
+		<adjective label ="intention(sex)"/>
+		<adjective label ="intention(collection)"/>
+		<adjective label ="intention(peer_companionship)"/>
+		<adjective label ="intention(social_standing)"/>
+		<adjective label ="intention(safety)"/>
+		<adjective label ="intention(get_even)"/>
+	</output>
+	<Filter>
+
+		<rule label="default">
+			<input>
+					<in label="null">
+						<adjective label="low"/>
+					 </in>
+			</input>
+			<out label="intention">
+				<adjective label="intention(thinking)"/>
+			 </out>
+ 		</rule>
+              
+
+		<rule label="monica:frame1:rule1">
+			<input>
+				<and>
+					<or>
+						<in label="belief(episodic, mbuild(agt_self, emotion, happy_for))"><adjective label="high"/></in>
+						<in label="emotion(joy)"><adjective label="high"/></in>
+					</or>
+					<and>
+						<in label='desire(peer_companionship)'> <adjective label="high"/></in>
+						<in label="belief(episodic, mbuild(agt_self, want, event(agt_self, wet, agt_smudge)))"><adjective label="high"/></in>
+					</and>
+				</and>
+			</input>
+			<out label="intention">
+				<adjective label="intention(influence)"/>
+			 </out>
+ 		</rule>
+
+		<rule label="monica:frame1:rule2">
+			<input>
+				<or>
+					<in label="emotion(happy_for)"><adjective label="high"/></in>
+					<and>
+						<in label="belief(episodic, mbuild(agt_self, want, event(agt_self, wet, agt_smudge)))"><adjective label="high"/></in>
+						<in label="belief(semantic, agent(agt_self, name, agt_monica))"><adjective label="medium"/></in>
+					</and>
+				</or>
+			</input>
+			<out label="intention">
+				<adjective label="intention(get_even)"/>
+			 </out>
+ 		</rule>
+
+		<rule label="smudge:frame1:rule1">
+			<input>
+				<and>
+					<or>
+						<in label='desire(safety)'> <adjective label="high"/></in>
+						<in label='intention(safety)'> <adjective label="medium"/></in>
+					</or>
+					<and>
+						<in label="belief(episodic, mbuild(agt_monica, want, event(agt_monica, wet, agt_self)))"><adjective label="high"/></in>
+						<in label="belief(episodic, mbuild(obj_toycamera, type, fake))"><adjective label="high"/></in>
+					</and>
+				</and>
+			</input>
+			<out label="intention">
+				<adjective label="intention(safety)"/>
+			 </out>
+ 		</rule>
+
+		
+
+		<rule label="monica:frame2:rule1">
+			<input>
+				<and>
+					<in label="belief(semantic, agent(agt_self, name, agt_monica))"><adjective label="high"/></in>
+					<and>
+						<in label="belief(episodic, mbuild(agt_smudge, trust, agt_self))"><adjective label="low"/></in>
+						<in label="belief(episodic, attend(agt_smudge, emotion, disappointment))"><adjective label="high"/></in>
+					</and>
+				</and>
+			</input>
+			<out label="intention">
+				<adjective label="intention(avoid_criticism)"/>
+			 </out>
+ 		</rule>
+
+		<rule label="monica:frame2:rule2">
+			<input>
+				<and>
+					<in label="emotion(happy_for)"><adjective label="medium"/></in>
+					<and>
+						<in label="belief(semantic, agent(agt_self, name, agt_monica))"><adjective label="high"/></in>
+						<in label="belief(episodic, grasp(agt_self, hold, obj_toycamera))"><adjective label="high"/></in>
+					</and>
+				</and>
+			</input>
+			<out label="intention">
+				<adjective label="intention(peer_companionship)"/> 
+			 </out>
+ 		</rule>
+
+		<rule label="smudge:frame2:rule1">
+			<input>
+				<and>
+					<in label='desire(peer_companionship)'> <adjective label="high"/></in>
+					<and>
+						<in label="belief(episodic, mbuild(agt_monica, want, event(agt_monica, wet, agt_self)))"><adjective label="high"/></in>
+						<and>
+							<in label="belief(episodic, mbuild(agt_self, trust, agt_monica))"><adjective label="low"/></in>
+							<and>
+								<in label="belief(episodic, mbuild(agt_self, emotion, disappointment))"><adjective label="high"/></in>
+								<in label="belief(episodic, mbuild(obj_toycamera, type, fake))"><adjective label="high"/></in>
+							</and>
+						</and>
+					</and>
+				</and>
+			</input>
+			<out label="intention">
+				<adjective label="intention(safety)"/>
+			 </out>
+ 		</rule>
+
+		<rule label="smudge:frame2:rule2">
+			<input>
+				<and>
+					<in label="emotion(disappointment)"><adjective label="high"/></in>
+					<in label="emotion(resentment)"><adjective label="high"/></in>
+				</and>
+			</input>
+			<out label="intention">
+				<adjective label="intention(muscle_movement)"/>
+			 </out>
+ 		</rule>
+
+		
+
+		<rule label="monica:frame3:rule1">
+			<input>
+				<and>
+					<in label='belief(episodic, mbuild(agt_smudge, trust, agt_self))'> <adjective label="low"/></in>
+					<and>
+						<in label="belief(episodic, mbuild(agt_self, emotion, disappointment))"><adjective label="high"/></in>
+						<and>
+							<in label="emotion(distress)"><adjective label="medium"/></in>
+							<in label="belief(semantic, agent(agt_self, name, agt_monica))"><adjective label="high"/></in>
+						</and>
+					</and>
+				</and>
+			</input>
+			<out label="intention">
+				<adjective label="intention(self_reliance)"/>
+			 </out>
+ 		</rule>
+
+		<rule label="monica:frame3:rule2">
+			<input>
+				<and>
+					<in label="belief(semantic, agent(agt_self, name, agt_monica))"><adjective label="low"/></in>
+					<and>
+						<in label="emotion(joy)"><adjective label="low"/></in>
+						<and>
+							<in label="emotion(hope)"><adjective label="medium"/></in>
+							<in label="emotion(distress)"><adjective label="high"/></in>
+						</and>
+					</and>
+				</and>
+			</input>
+			<out label="intention">
+				<adjective label="intention(self_reliance)"/> 
+			 </out>
+ 		</rule>
+
+		<rule label="smudge:frame3:rule1">
+			<input>
+				<and>
+					<in label='desire(peer_companionship)'> <adjective label="high"/></in>
+					<and>
+						<in label="belief(episodic, mbuild(agt_monica, want, event(agt_monica, wet, agt_self)))"><adjective label="high"/></in>
+						<and>
+							<in label="belief(episodic, mbuild(agt_self, trust, agt_monica))"><adjective label="low"/></in>
+							<and>
+								<in label="belief(episodic, mbuild(agt_self, emotion, disappointment))"><adjective label="high"/></in>
+								<and>									
+									<in label="belief(episodic, mbuild(obj_toycamera, type, fake))"><adjective label="high"/></in>
+									<and>
+										<in label="desire(peer_companionship)"><adjective label="high"/></in>
+										<in label="belief(semantic, agent(agt_self, name, agt_smudge))"><adjective label="high"/></in>
+									</and>		
+								</and>
+							</and>
+						</and>
+					</and>
+				</and>
+			</input>
+			<out label="intention">
+				<adjective label="intention(moral_behavior)"/>
+			 </out>
+ 		</rule>
+
+		<rule label="smudge:frame3:rule2">
+			<input>
+				<and>
+					<in label="emotion(disappointment)"><adjective label="high"/></in>
+					<and>
+						<in label="emotion(resentment)"><adjective label="high"/></in>
+						<in label="emotion(distress)"><adjective label="medium"/></in>
+					</and>
+				</and>
+			</input>
+			<out label="intention">
+				<adjective label="intention(get_even)"/> 
+			 </out>
+ 		</rule>
+
+		
+
+		<rule label="monica:frame4:rule1">
+			<input>
+				<and>
+					<in label='belief(episodic, mbuild(agt_self, emotion, disappointment))'> <adjective label="high"/></in>
+					<and>
+						<in label="belief(episodic, mbuild(agt_smudge, trust, agt_self))"><adjective label="low"/></in>
+						<and>
+							<in label="belief(episodic, mbuild(obj_toycamera, type, fake))"><adjective label="high"/></in>
+							<and>
+								<in label="emotion(resentment)"><adjective label="medium"/></in>
+								<and>									
+									<in label="emotion(distress)"><adjective label="medium"/></in>
+									<in label="belief(semantic, agent(agt_self, name, agt_monica))"><adjective label="high"/></in>
+								</and>							
+							</and>
+						</and>
+					</and>
+				</and>
+			</input>
+			<out label="intention">
+				<adjective label="intention(moral_behavior)"/>
+			 </out>
+ 		</rule>
+
+		<rule label="monica:frame4:rule2">
+			<input>
+				<and>
+					<in label="belief(semantic, agent(agt_self, name, agt_monica))"><adjective label="high"/></in>
+					<and>
+						<in label="emotion(distress)"><adjective label="low"/></in>
+						<in label="emotion(resentment)"><adjective label="medium"/></in>
+					</and>
+				</and>
+			</input>
+			<out label="intention">
+				<adjective label="intention(social_standing)"/> 
+			 </out>
+ 		</rule>
+
+		<rule label="smudge:frame4:rule1">
+			<input>
+				<and>
+					<in label="belief(semantic, agent(agt_self, name, agt_smudge))"><adjective label="high"/></in>
+					<and>
+						<in label="belief(episodic, attend(agt_monica, emotion, disappointment))"><adjective label="high"/></in>		
+						<and>
+							<in label="belief(episodic, mbuild(obj_toycamera, type, fake))"><adjective label="high"/></in>
+								<and>
+									<in label="emotion(resentment)"><adjective label="low"/></in>
+									<in label="emotion(distress)"><adjective label="high"/></in>
+								</and>
+						</and>
+					</and>
+				</and>
+			</input>
+			<out label="intention">
+				<adjective label="intention(thinking)"/> 
+			 </out>
+ 		</rule>
+
+		<rule label="smudge:frame4:rule2">
+			<input>
+				<and>
+					<in label="belief(semantic, agent(agt_self, name, agt_smudge))"><adjective label="high"/></in>
+					<and>
+						<in label="emotion(disappointment)"><adjective label="low"/></in>
+						<and>
+							<in label="emotion(resentment)"><adjective label="low"/></in>
+							<in label="emotion(distress)"><adjective label="high"/></in>
+						</and>
+					</and>
+				</and>
+			</input>
+			<out label="intention">
+				<adjective label="intention(social_standing)"/> 
+			 </out>
+ 		</rule>
+
+		
+
+		<rule label="monica:frame5:rule1">
+			<input>
+				<and>
+					<in label='belief(episodic, expel(agt_self, cry, tears))'> <adjective label="high"/></in>
+					<and>
+						<in label="belief(episodic, mbuild(agt_smudge, trust, agt_self))"><adjective label="low"/></in>
+						<in label="belief(episodic, mbuild(obj_toycamera, type, fake))"><adjective label="high"/></in>
+					</and>
+				</and>
+			</input>
+			<out label="intention">
+				<adjective label="intention(self_reliance)"/> 
+			 </out>
+ 		</rule>
+
+		<rule label="monica:frame5:rule2">
+			<input>
+				<and>
+					<in label="belief(episodic, expel(agt_self, cry, tears))"><adjective label="high"/></in>
+					<and>
+						<in label="emotion(resentment)"><adjective label="high"/></in>
+						<in label="emotion(disappointment)"><adjective label="medium"/></in>
+					</and>
+				</and>
+			</input>
+			<out label="intention">
+				<adjective label="intention(moral_behavior)"/> 
+			 </out>
+ 		</rule>
+
+		<rule label="smudge:frame5:rule1">
+			<input>
+				<and>
+					<in label='belief(episodic, expel(agt_monica, cry, tears))'> <adjective label="high"/></in>
+					<in label="belief(episodic, mbuild(obj_toycamera, type, real))"><adjective label="high"/></in>
+				</and>
+			</input>
+			<out label="intention">
+				<adjective label="intention(peer_companionship)"/> 
+			 </out>
+ 		</rule>
+
+		<rule label="monica:frame6:rule1">
+			<input>
+				<and>
+					<in label='belief(episodic, expel(agt_self, cry, tears))'> <adjective label="high"/></in>
+					<and>
+						<in label="belief(episodic, mbuild(agt_smudge, trust, agt_self))"><adjective label="low"/></in>
+						<in label="belief(episodic, mbuild(obj_toycamera, type, fake))"><adjective label="high"/></in>
+					</and>
+				</and>
+			</input>
+			<out label="intention">
+				<adjective label="intention(moral_behavior)"/> 
+			 </out>
+ 		</rule>
+
+		<rule label="smudge:frame6:rule1">
+			<input>
+				<and>
+					<in label='belief(episodic, mbuild(agt_self, trust, agt_monica))'> <adjective label="high"/></in>
+					<and>
+						<in label="belief(episodic, expel(agt_monica, cry, tears))"><adjective label="high"/></in>
+						<in label="belief(episodic, mbuild(obj_toycamera, type, real))"><adjective label="high"/></in>
+					</and>
+				</and>
+			</input>
+			<out label="intention">
+				<adjective label="intention(peer_companionship)"/> 
+			 </out>
+ 		</rule>
+
+		<rule label="smudge:frame6:rule2">
+			<input>
+				<and>
+					<in label="emotion(disappointment)"><adjective label="low"/></in>
+					<and>
+						<in label="emotion(resentment)"><adjective label="low"/></in>
+						<and>
+							<in label="emotion(remorse)"><adjective label="high"/></in>
+							<and>
+								<in label="emotion(joy)"><adjective label="high"/></in>
+								<in label="emotion(relief)"><adjective label="medium"/></in>
+							</and>
+						</and>
+					</and>
+				</and>
+			</input>
+			<out label="intention">
+				<adjective label="intention(peer_companionship)"/> 
+			 </out>
+ 		</rule>
+
+
+		<rule label="monica:frame7:rule1">
+			<input>
+				<and>
+					<in label='belief(episodic, mbuild(agt_smudge, want, event(agt_smudge, take_picture, group(agt_smudge, agt_self))))'><adjective label="high"/></in>
+					<and>
+						<in label="belief(episodic, attend(agt_smudge, emotion, happy_for))"><adjective label="high"/></in>
+						<and>
+							<in label="belief(episodic, mbuild(agt_self, emotion, happy_for))"><adjective label="high"/></in>
+							<and>
+								<in label="belief(episodic, mbuild(agt_smudge, trust, agt_self))"><adjective label="high"/></in>
+								<in label="belief(episodic, mbuild(obj_toycamera, type, fake))"><adjective label="high"/></in>
+							</and>
+						</and>
+					</and>
+				</and>
+			</input>
+			<out label="intention">
+				<adjective label="intention(peer_companionship)"/> 
+			 </out>
+ 		</rule>
+
+		<rule label="monica:frame7:rule2">
+			<input>
+				<and>
+					<in label="emotion(distress)"><adjective label="low"/></in>
+					<and>
+						<in label="emotion(resentment)"><adjective label="low"/></in>
+						<and>
+							<in label="emotion(disappointment)"><adjective label="low"/></in>
+							<and>
+								<in label="emotion(joy)"><adjective label="high"/></in>
+								<in label="emotion(relief)"><adjective label="high"/></in>
+							</and>
+						</and>
+					</and>
+				</and>
+			</input>
+			<out label="intention">
+				<adjective label="intention(peer_companionship)"/> 
+			 </out>
+ 		</rule>
+
+		<rule label="smudge:frame7:rule1">
+			<input>
+				<and>
+					<in label='belief(episodic, mbuild(agt_self, want, event(agt_self, take_picture, group(agt_self, agt_monica))))'> <adjective label="high"/></in>
+					<and>
+						<in label="belief(episodic, mbuild(agt_self, trust, agt_monica))"><adjective label="high"/></in>
+						<and>
+							<in label="belief(episodic, attend(agt_monica, emotion, happy_for))"><adjective label="high"/></in>
+							<and>
+								<in label="belief(episodic, mbuild(agt_self, emotion, happy_for))"><adjective label="high"/></in>
+								<in label="belief(episodic, mbuild(obj_toycamera, type, real))"><adjective label="high"/></in>
+							</and>
+						</and>
+					</and>
+				</and>
+			</input>
+			<out label="intention">
+				<adjective label="intention(peer_companionship)"/> 
+			 </out>
+ 		</rule>
+
+		<rule label="smudge:frame7:rule2">
+			<input>
+				<and>
+					<in label="emotion(distress)"><adjective label="low"/></in>
+					<and>
+						<in label="emotion(remorse)"><adjective label="medium"/></in>
+						<and>
+							<in label="emotion(remorse)"><adjective label="high"/></in>
+							<and>
+								<in label="emotion(joy)"><adjective label="high"/></in>
+								<in label="emotion(relief)"><adjective label="medium"/></in>
+							</and>
+						</and>
+					</and>
+				</and>
+			</input>
+			<out label="intention">
+				<adjective label="intention(peer_companionship)"/> 
+			 </out>
+ 		</rule>
+
+		
+
+		<rule label="monica:frame8:rule1">
+			<input>
+				<and>
+					<in label='belief(episodic, mbuild(agt_smudge, want, event(agt_smudge, take_picture, group(agt_smudge, agt_self))))'><adjective label="high"/></in>
+					<and>
+						<in label="belief(episodic, attend(agt_smudge, emotion, happy_for))"><adjective label="high"/></in>
+						<and>
+							<in label="belief(episodic, mbuild(agt_self, emotion, happy_for))"><adjective label="high"/></in>
+							<and>
+								<in label="belief(episodic, mbuild(agt_smudge, trust, agt_self))"><adjective label="high"/></in>
+								<and>
+									<in label="belief(episodic, mbuild(obj_toycamera, type, fake))"><adjective label="high"/></in>
+									<in label="belief(episodic, atrans(agt_self, search, obj_realcamera))"><adjective label="high"/></in>
+								</and>
+							</and>
+						</and>
+					</and>
+				</and>
+			</input>
+			<out label="intention">
+				<adjective label="intention(peer_companionship)"/> 
+			 </out>
+ 		</rule>
+
+		<rule label="monica:frame8:rule2">
+			<input>
+				<and>
+					<in label="emotion(joy)"><adjective label="high"/></in>
+					<and>
+						<in label="belief(episodic, mbuild(agt_smudge, want, event(agt_smudge, take_picture, group(agt_smudge, agt_self))))"><adjective label="low"/></in>
+						<in label="belief(semantic, agent(agt_self, name, agt_monica))"><adjective label="high"/></in>
+					</and>
+				</and>
+			</input>
+			<out label="intention">
+				<adjective label="intention(influence)"/> 
+			 </out>
+ 		</rule>
+
+		<rule label="smudge:frame8:rule1">
+			<input>
+				<and>
+					<in label='belief(episodic, mbuild(agt_self, want, event(agt_self, take_picture, group(agt_self, agt_monica))))'> <adjective label="high"/></in>
+					<and>
+						<in label="belief(episodic, atrans(agt_monica, search, obj_realcamera))"><adjective label="high"/></in>
+						<and>
+							<in label="belief(episodic, mbuild(obj_toycamera, type, fake))"><adjective label="high"/></in>
+							<and>
+								<in label="belief(episodic, mbuild(agt_self, trust, agt_monica))"><adjective label="high"/></in>
+								<in label="belief(episodic, attend(agt_monica, emotion, happy_for))"><adjective label="high"/></in>
+							</and>
+						</and>
+					</and>
+				</and>
+			</input>
+			<out label="intention">
+				<adjective label="intention(safety)"/> 
+			 </out>
+ 		</rule>
+
+		<rule label="smudge:frame8:rule2">
+			<input>
+				<and>
+					<in label="belief(semantic, agent(agt_self, name, agt_smudge))"><adjective label="high"/></in>
+					<in label="emotion(remorse)"><adjective label="high"/></in>
+				</and>
+			</input>
+			<out label="intention">
+				<adjective label="intention(safety)"/>
+			 </out>
+ 		</rule>
+
+	</Filter>
+</script>
