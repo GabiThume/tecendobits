@@ -4,7 +4,7 @@
   <title><![CDATA[Category: test | TecendoBits Blog]]></title>
   <link href="http://tecendobits.cc/blog/blog/categories/test/atom.xml" rel="self"/>
   <link href="http://tecendobits.cc/blog/"/>
-  <updated>2013-04-19T02:05:51-03:00</updated>
+  <updated>2013-04-19T17:59:48-03:00</updated>
   <id>http://tecendobits.cc/blog/</id>
   <author>
     <name><![CDATA[gabithume]]></name>
@@ -19,6 +19,106 @@
     <updated>2013-04-19T00:08:00-03:00</updated>
     <id>http://tecendobits.cc/blog/first-post-with-octopress</id>
     <content type="html"><![CDATA[<p>Testing content...</p>
+
+<p>Instalação do octopress (http://octopress.org/) "A blogging framework for hackers" no tecendobits.cc.</p>
+
+<p>Primeiramente, seguir os passos de setup de http://octopress.org/docs/setup/.
+O git já tenho instalado, preciso instalar o Ruby. Para isso, via git no terminal (os comandos estão para instalar em home):</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">git</span> <span class="n">clone</span> <span class="nl">git:</span><span class="c1">//github.com/sstephenson/rbenv.git .rbenv</span>
+</span><span class='line'><span class="n">echo</span> <span class="err">&#39;</span><span class="n">export</span> <span class="n">PATH</span><span class="o">=</span><span class="s">&quot;$HOME/.rbenv/bin:$PATH&quot;</span><span class="err">&#39;</span> <span class="o">&gt;&gt;</span> <span class="o">~/</span><span class="p">.</span><span class="n">bash_profile</span>
+</span><span class='line'><span class="n">echo</span> <span class="err">&#39;</span><span class="n">eval</span> <span class="s">&quot;$(rbenv init -)&quot;</span><span class="err">&#39;</span> <span class="o">&gt;&gt;</span> <span class="o">~/</span><span class="p">.</span><span class="n">bash_profile</span>
+</span><span class='line'><span class="n">git</span> <span class="n">clone</span> <span class="nl">git:</span><span class="c1">//github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build</span>
+</span><span class='line'><span class="n">source</span> <span class="o">~/</span><span class="p">.</span><span class="n">bash_profile</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Dica: não dá pra instalar por Rbenv tendo o rvm instalado! Lembre-se de remover se for o caso.</p>
+
+<p>Próximo passo: Instalar Ruby 1.9.3.
+Vergonhosamente, deu erro no meu gcc (ainda estou aprendendo a lidar com o OSX) :P</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="nl">DETAILS:</span> <span class="n">Apple</span> <span class="n">no</span> <span class="n">longer</span> <span class="n">includes</span> <span class="n">the</span> <span class="n">official</span> <span class="n">GCC</span> <span class="n">compiler</span> <span class="n">with</span> <span class="n">Xcode</span>
+</span><span class='line'><span class="n">as</span> <span class="n">of</span> <span class="n">version</span> <span class="mf">4.2</span><span class="p">.</span> <span class="n">Instead</span><span class="p">,</span> <span class="n">the</span> <span class="o">&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="n">gcc</span><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;</span> <span class="n">executable</span> <span class="n">is</span> <span class="n">a</span> <span class="n">symlink</span> <span class="n">to</span>
+</span><span class='line'><span class="o">&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="n">llvm</span><span class="o">-</span><span class="n">gcc</span><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">a</span> <span class="n">modified</span> <span class="n">version</span> <span class="n">of</span> <span class="n">GCC</span> <span class="n">which</span> <span class="n">outputs</span> <span class="n">LLVM</span> <span class="n">bytecode</span><span class="p">.</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">For</span> <span class="n">most</span> <span class="n">programs</span> <span class="n">the</span> <span class="o">&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="n">llvm</span><span class="o">-</span><span class="n">gcc</span><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;</span> <span class="n">compiler</span> <span class="n">works</span> <span class="n">fine</span><span class="p">.</span> <span class="n">However</span><span class="p">,</span>
+</span><span class='line'><span class="n">versions</span> <span class="n">of</span> <span class="n">Ruby</span> <span class="n">older</span> <span class="n">than</span> <span class="mf">1.9.3</span><span class="o">-</span><span class="n">p125</span> <span class="n">are</span> <span class="n">incompatible</span> <span class="n">with</span>
+</span><span class='line'><span class="o">&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="n">llvm</span><span class="o">-</span><span class="n">gcc</span><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;</span><span class="p">.</span> <span class="n">To</span> <span class="n">build</span> <span class="n">older</span> <span class="n">versions</span> <span class="n">of</span> <span class="n">Ruby</span> <span class="n">you</span> <span class="n">must</span> <span class="n">have</span> <span class="n">the</span> <span class="n">official</span>
+</span><span class='line'><span class="n">GCC</span> <span class="n">compiler</span> <span class="n">installed</span> <span class="n">on</span> <span class="n">your</span> <span class="n">system</span><span class="p">.</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Seguindo as instruções dadas para instalar o GCC executável via homebrew:
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">brew</span> <span class="n">tap</span> <span class="n">homebrew</span><span class="o">/</span><span class="n">dupes</span>
+</span><span class='line'><span class="n">brew</span> <span class="n">install</span> <span class="n">apple</span><span class="o">-</span><span class="n">gcc42</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Feito isso, finalmente instalar Ruby:
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">rbenv</span> <span class="n">install</span> <span class="mf">1.9.3</span><span class="o">-</span><span class="n">p0</span>
+</span><span class='line'><span class="n">rbenv</span> <span class="n">rehash</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Tudo instalado certo, rodo ruby --version e minha versão é a 1.8.7 e
+não a 1.9.3. Um pouco de pesquisa via google:
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">rbenv</span> <span class="n">global</span> <span class="mf">1.9.3</span><span class="o">-</span><span class="n">p0</span>
+</span><span class='line'><span class="n">ruby</span> <span class="o">--</span><span class="n">version</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Agora o sistema reconhece a versão certa (Ruby 1.9.3)!
+Sistema pronto para instalar o Octopress.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">git</span> <span class="n">clone</span> <span class="nl">git:</span><span class="c1">//github.com/imathis/octopress.git octopress</span>
+</span><span class='line'><span class="n">cd</span> <span class="n">octopress</span>
+</span><span class='line'><span class="n">ruby</span> <span class="o">--</span><span class="n">version</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Nesse momento o terminal deve mostrar Ruby 1.9.3. Infelizmente, aqui
+apareceu "rbenv: version `1.9.3-p194' is not installed". Porquê? No
+setup do octopress falam para instalar o 1.9.3-p0, mas o sistema está
+requisitando 1.9.3-p194. O que acho que devemos fazer?
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">rbenv</span> <span class="n">install</span> <span class="mf">1.9.3</span><span class="o">-</span><span class="n">p194</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Felizmente, os próximos passos executaram sem problemas!
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">gem</span> <span class="n">install</span> <span class="n">bundler</span>
+</span><span class='line'><span class="n">rbenv</span> <span class="n">rehash</span>
+</span><span class='line'><span class="n">bundle</span> <span class="n">install</span>
+</span><span class='line'><span class="n">rake</span> <span class="n">install</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p> Hora de subir no servidor!</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">rake</span> <span class="n">generate</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>editar _config.yml para ter blog como subdiretório:</p>
 
 <p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -51,6 +151,68 @@
 </span><span class='line'><span class="nl">subscribe_rss:</span> <span class="o">/</span><span class="n">blog</span><span class="o">/</span><span class="n">atom</span><span class="p">.</span><span class="n">xml</span>
 </span><span class='line'><span class="nl">email:</span> <span class="n">gabithume</span><span class="err">@</span><span class="n">gmail</span><span class="p">.</span><span class="n">com</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="nl">root:</span> <span class="o">/</span><span class="n">blog</span>
+</span><span class='line'><span class="nl">permalink:</span> <span class="o">/:</span><span class="n">title</span><span class="o">/</span>
+</span><span class='line'><span class="nl">destination:</span> <span class="n">public</span><span class="o">/</span><span class="n">blog</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>no config.rb:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="n">Publishing</span> <span class="n">paths</span><span class="o">&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">http_path</span> <span class="o">=</span> <span class="s">&quot;/blog&quot;</span>
+</span><span class='line'><span class="n">http_images_path</span> <span class="o">=</span> <span class="s">&quot;/blog/images&quot;</span>
+</span><span class='line'><span class="n">http_fonts_path</span> <span class="o">=</span> <span class="s">&quot;/blog/fonts&quot;</span>
+</span><span class='line'><span class="n">css_dir</span> <span class="o">=</span> <span class="s">&quot;public/blog/stylesheets&quot;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Rakefile:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">h2</span><span class="o">&gt;--</span> <span class="n">Misc</span> <span class="n">Configs</span> <span class="o">--&lt;/</span><span class="n">h2</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">public_dir</span>      <span class="o">=</span> <span class="s">&quot;public/blog&quot;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>No servidor, permite ter o blog em tecendobits/blog ao invés de tecendobits/blog/blog:
+echo "blog" > .gitignore # o git ignora o blog
+ln -s octopress/public/blog blog # link simbólico do public/blog para blog</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">rake</span> <span class="n">new_post</span><span class="p">[</span><span class="s">&quot;First Post with Octopress&quot;</span><span class="p">]</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>19/04</p>
+
+<p>Como customizar o template do Octopress?</p>
+
+<p>http://www.google.com/fonts/#</p>
+
+<p><link href='http://fonts.googleapis.com/css?family=Gochi+Hand'
+rel='stylesheet' type='text/css'></p>
+
+<p>Para editar, deixo o rake preview rolando e qndo faço modificações,
+rodo rake generate e visualizo em localhost:4000/blog</p>
 ]]></content>
   </entry>
   
