@@ -1,0 +1,9 @@
+#!/bin/bash
+
+cd octopress
+rake generate
+git add .
+git commit -am "blog updated"
+git push origin master
+ssh gabi@void.cc 'cd tecendobits ; git pull'
+echo "blog updated"
