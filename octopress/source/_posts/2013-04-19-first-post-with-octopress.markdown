@@ -23,6 +23,8 @@ source ~/.bash_profile
 
 Dica: não dá pra instalar por Rbenv tendo o rvm instalado! Lembre-se de remover se for o caso.
 
+<!-- more --> 
+
 Próximo passo: Instalar Ruby 1.9.3.
 Vergonhosamente, deu erro no meu gcc (ainda estou aprendendo a lidar com o OSX) :P
 

@@ -4,7 +4,7 @@
   <title><![CDATA[TecendoBits Blog]]></title>
   <link href="http://tecendobits.cc/blog/atom.xml" rel="self"/>
   <link href="http://tecendobits.cc/blog/"/>
-  <updated>2013-04-19T18:25:59-03:00</updated>
+  <updated>2013-04-19T21:36:20-03:00</updated>
   <id>http://tecendobits.cc/blog/</id>
   <author>
     <name><![CDATA[gabithume]]></name>
@@ -39,6 +39,11 @@ O git já tenho instalado, preciso instalar o Ruby. Para isso, via git no termin
 
 
 <p>Dica: não dá pra instalar por Rbenv tendo o rvm instalado! Lembre-se de remover se for o caso.</p>
+
+<!-- more -->
+
+
+<p></p>
 
 <p>Próximo passo: Instalar Ruby 1.9.3.
 Vergonhosamente, deu erro no meu gcc (ainda estou aprendendo a lidar com o OSX) :P</p>
