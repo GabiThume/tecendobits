@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: opw | TecendoBits/WeavingBits Blog]]></title>
+  <link href="http://tecendobits.cc/blog/blog/categories/opw/atom.xml" rel="self"/>
+  <link href="http://tecendobits.cc/blog/"/>
+  <updated>2013-04-22T23:16:37-03:00</updated>
+  <id>http://tecendobits.cc/blog/</id>
+  <author>
+    <name><![CDATA[gabithume]]></name>
+    <email><![CDATA[gabithume@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Mozilla Test Gardener in Mac OS X 10.8]]></title>
+    <link href="http://tecendobits.cc/blog/starting-things-to-opw/"/>
+    <updated>2013-04-21T18:22:00-03:00</updated>
+    <id>http://tecendobits.cc/blog/starting-things-to-opw</id>
+    <content type="html"><![CDATA[<p><a href=https://live.gnome.org/OutreachProgramForWomen>Outreach Program for Women</a> is a amazing program for include women in Free and Open Source Software. I am really interested in applying. So I decided to start by studing the Mozilla Projects to the OPW.</p>
+
+<p>Project <a href=https://wiki.mozilla.org/GNOME_Outreach_Summer2013>Test Gardener</a>: "Write unit and integration tests for Socorro related to database, backend crash storage and middleware."</p>
+
+<p>My first impress by reading the OPW projects to this year, is that this project of Mozilla is the coolest one. To verify that, I want to spend some time installing, running, and maybe solving some bug of <a href=https://wiki.mozilla.org/Socorro>Socorro</a>.</p>
+
+<!-- more -->
+
+
+
+
+<h2> Installation </h2>
+
+
+
+
+<h3> Requirements </h3>
+
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">brew</span> <span class="n">install</span> <span class="n">postgresql</span> <span class="c1">// PostgreSQL 9.2</span>
+</span><span class='line'><span class="n">brew</span> <span class="n">install</span> <span class="n">gpp</span> <span class="c1">// G++ Compiler 2.24</span>
+</span><span class='line'><span class="n">brew</span> <span class="n">install</span> <span class="n">git</span> <span class="c1">// Git</span>
+</span><span class='line'><span class="n">sudo</span> <span class="n">easy_install</span> <span class="n">psycopg2</span> <span class="c1">// PostgreSQL database adapter for the Python programming language.</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Here I have this <a href=https://www.enthought.com/canopy-express/?Download=Download+EPD+Free+7.3-2>Python</a>.</p>
+
+<h3>Configure PostgreSQL</h3>
+
+
+<p>I had a problem with PATH, so when I tried:
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">which</span> <span class="n">psql</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>I saw usr/bin/psql instead of usr/local/bin/psql, so you need to add usr/local/bin to the head of your PATH in your ~/.bash_profile:
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">export</span> <span class="n">PATH</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="nl">bin:</span><span class="n">$PATH</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Then, I received:</p>
+
+<h6>"Could not connect to server: Permission denied
+
+  Is the server running locally and accepting
+
+  connections on Unix domain socket "/var/pgsql_socket/.s.PGSQL.5432"?</h6>
+
+
+<p>To deal with that, I checked where the target was, created the pgsql_socket directory and a symlink:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">sudo</span> <span class="n">find</span> <span class="o">/</span> <span class="o">-</span><span class="n">name</span> <span class="p">.</span><span class="n">s</span><span class="p">.</span><span class="n">PGSQL</span><span class="mf">.5432</span>
+</span><span class='line'><span class="n">mkdir</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">pgsql_socket</span><span class="o">/</span>
+</span><span class='line'><span class="n">ln</span> <span class="o">-</span><span class="n">s</span> <span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="p">.</span><span class="n">s</span><span class="p">.</span><span class="n">PGSQL</span><span class="mf">.5432</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">pgsql_socket</span><span class="o">/</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<!--
+// initdb /usr/local/var/postgres -E utf8
+// postgres -D /usr/local/var/postgres
+//createuser -s -r postgres
+-->
+
+
+<p>Then I booted the PostgreSQL, created a superuser account for myself, and the breakpad_rw account for Socorro:
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">initdb</span> <span class="o">-</span><span class="n">D</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">pgsql</span><span class="o">/</span><span class="n">data</span> <span class="o">-</span><span class="n">E</span> <span class="n">utf8</span>
+</span><span class='line'><span class="n">postgres</span> <span class="o">-</span><span class="n">D</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">pgsql</span><span class="o">/</span><span class="n">data</span>
+</span><span class='line'><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">createuser</span> <span class="o">-</span><span class="n">s</span> <span class="n">$USER</span>
+</span><span class='line'><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">psql</span> <span class="o">-</span><span class="n">c</span> <span class="s">&quot;CREATE USER breakpad_rw&quot;</span> <span class="n">template1</span>
+</span><span class='line'><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">psql</span> <span class="o">-</span><span class="n">c</span> <span class="s">&quot;ALTER USER breakpad_rw WITH ENCRYPTED PASSWORD &#39;aPassword&#39;&quot;</span> <span class="n">template1</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<h2> Socorro </h2>
+
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">git</span> <span class="n">clone</span> <span class="nl">https:</span><span class="c1">//github.com/mozilla/socorro</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<h2> CrashStats </h2>
+
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">git</span> <span class="n">clone</span> <span class="nl">https:</span><span class="c1">//github.com/mozilla/socorro-crashstats</span>
+</span><span class='line'><span class="n">cd</span> <span class="n">socorro</span><span class="o">-</span><span class="n">crashstats</span>
+</span><span class='line'><span class="n">git</span> <span class="n">submodule</span> <span class="n">update</span> <span class="o">--</span><span class="n">init</span> <span class="o">--</span><span class="n">recursive</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<h4> LESS Preprocessor </h4>
+
+
+<p>Node:
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">git</span> <span class="n">clone</span> <span class="nl">https:</span><span class="c1">//github.com/joyent/node.git</span>
+</span><span class='line'><span class="n">cd</span> <span class="n">node</span>
+</span><span class='line'><span class="n">git</span> <span class="n">checkout</span> <span class="n">v0</span><span class="mf">.8.2</span> <span class="p">(</span><span class="n">latest</span> <span class="n">stable</span> <span class="n">version</span> <span class="n">today</span> <span class="o">-</span> <span class="nl">https:</span><span class="c1">//github.com/joyent/node/wiki/Installation)</span>
+</span><span class='line'><span class="n">node</span> <span class="o">-</span><span class="n">v</span>
+</span><span class='line'><span class="n">export</span> <span class="n">PATH</span><span class="o">=</span><span class="n">$HOME</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">node</span><span class="o">/</span><span class="nl">bin:</span><span class="n">$PATH</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>NPM:
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">curl</span> <span class="nl">http:</span><span class="c1">//npmjs.org/install.sh | sh</span>
+</span><span class='line'><span class="n">npm</span> <span class="o">-</span><span class="n">v</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">npm</span> <span class="n">install</span> <span class="o">-</span><span class="n">g</span> <span class="n">less</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<!--
+//cd socorro
+//sudo pip install -r requirements/dev.txt
+-->
+
+
+
+
+<h4> Creating virtualenv and populate it: </h4>
+
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">brew</span> <span class="n">install</span> <span class="n">tcl</span><span class="o">-</span><span class="n">tk</span>
+</span><span class='line'><span class="n">sudo</span> <span class="n">easy_install</span> <span class="n">install</span> <span class="n">virtualenv</span>
+</span><span class='line'><span class="n">sudo</span> <span class="n">easy_install</span> <span class="n">install</span> <span class="n">virtualenvwrapper</span>
+</span><span class='line'><span class="n">virtualenv</span> <span class="o">--</span><span class="n">python</span><span class="o">=</span><span class="n">python2</span><span class="mf">.6</span> <span class="p">.</span><span class="n">virtualenv</span>
+</span><span class='line'><span class="n">source</span> <span class="p">.</span><span class="n">virtualenv</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">activate</span>
+</span><span class='line'><span class="n">cd</span> <span class="n">socorro</span><span class="o">-</span><span class="n">crashstats</span>
+</span><span class='line'><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">/</span><span class="n">compiled</span><span class="p">.</span><span class="n">txt</span>
+</span><span class='line'><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">/</span><span class="n">dev</span><span class="p">.</span><span class="n">txt</span>
+</span><span class='line'><span class="n">cp</span> <span class="n">crashstats</span><span class="o">/</span><span class="n">settings</span><span class="o">/</span><span class="n">local</span><span class="p">.</span><span class="n">py</span><span class="o">-</span><span class="n">dist</span> <span class="n">crashstats</span><span class="o">/</span><span class="n">settings</span><span class="o">/</span><span class="n">local</span><span class="p">.</span><span class="n">py</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<h2> Running tests: </h2>
+
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">cd</span> <span class="n">socorro</span>
+</span><span class='line'><span class="n">make</span> <span class="n">test</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>At this point, I have everything working: The CrashStats Server, the PostgreSQL, the virtual environment... But I am getting this problem below and I really don't know how to solve:</p>
+
+<p><div><script src='https://gist.github.com/5440281.js'></script>
+<noscript><pre><code></code></pre></noscript></div>
+</p>
+
+<p>And after this stage, all the commands did not work.</p>
+
+<p>Well, maybe I will try to install all this again in Linux.</p>
+]]></content>
+  </entry>
+  
+</feed>

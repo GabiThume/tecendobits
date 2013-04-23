@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "First Post with Octopress"
+title: "Installing and using Octopress Framework"
 date: 2013-04-19 00:08
 comments: true
 categories: test
