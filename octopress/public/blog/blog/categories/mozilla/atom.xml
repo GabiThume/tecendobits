@@ -4,7 +4,7 @@
   <title><![CDATA[Category: mozilla | TecendoBits/WeavingBits Blog]]></title>
   <link href="http://tecendobits.cc/blog/blog/categories/mozilla/atom.xml" rel="self"/>
   <link href="http://tecendobits.cc/blog/"/>
-  <updated>2013-04-22T23:16:37-03:00</updated>
+  <updated>2013-04-23T16:21:13-03:00</updated>
   <id>http://tecendobits.cc/blog/</id>
   <author>
     <name><![CDATA[gabithume]]></name>
@@ -62,6 +62,16 @@
 </pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">export</span> <span class="n">PATH</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="nl">bin:</span><span class="n">$PATH</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
+<p>Modify postgresql config to UTC timezone:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">sudo</span> <span class="n">emacs</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">pgsql</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">postgresql</span><span class="p">.</span><span class="n">conf</span>
+</span><span class='line'><span class="n">timezone</span> <span class="o">=</span> <span class="err">&#39;</span><span class="n">UTC</span><span class="err">&#39;</span>
+</span><span class='line'><span class="n">brew</span> <span class="n">service</span> <span class="n">restart</span> <span class="n">postgresql</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
 <p>Then, I received:</p>
 
 <h6>"Could not connect to server: Permission denied
@@ -96,9 +106,9 @@
 <span class='line-number'>5</span>
 </pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">initdb</span> <span class="o">-</span><span class="n">D</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">pgsql</span><span class="o">/</span><span class="n">data</span> <span class="o">-</span><span class="n">E</span> <span class="n">utf8</span>
 </span><span class='line'><span class="n">postgres</span> <span class="o">-</span><span class="n">D</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">pgsql</span><span class="o">/</span><span class="n">data</span>
-</span><span class='line'><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">createuser</span> <span class="o">-</span><span class="n">s</span> <span class="n">$USER</span>
-</span><span class='line'><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">psql</span> <span class="o">-</span><span class="n">c</span> <span class="s">&quot;CREATE USER breakpad_rw&quot;</span> <span class="n">template1</span>
-</span><span class='line'><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">psql</span> <span class="o">-</span><span class="n">c</span> <span class="s">&quot;ALTER USER breakpad_rw WITH ENCRYPTED PASSWORD &#39;aPassword&#39;&quot;</span> <span class="n">template1</span>
+</span><span class='line'><span class="n">createuser</span> <span class="o">-</span><span class="n">s</span> <span class="n">$USER</span>
+</span><span class='line'><span class="n">psql</span> <span class="o">-</span><span class="n">c</span> <span class="s">&quot;CREATE USER breakpad_rw&quot;</span> <span class="n">template1</span>
+</span><span class='line'><span class="n">psql</span> <span class="o">-</span><span class="n">c</span> <span class="s">&quot;ALTER USER breakpad_rw WITH ENCRYPTED PASSWORD &#39;aPassword&#39;&quot;</span> <span class="n">template1</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <h2> Socorro </h2>
@@ -192,9 +202,44 @@
 <noscript><pre><code></code></pre></noscript></div>
 </p>
 
-<p>And after this stage, all the commands did not work.</p>
+<p>To solve this, I ran:
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">psql</span> <span class="o">-</span><span class="n">d</span> <span class="n">postgres</span> <span class="o">-</span><span class="n">f</span> <span class="n">sql</span><span class="o">/</span><span class="n">roles</span><span class="p">.</span><span class="n">sql</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
-<p>Well, maybe I will try to install all this again in Linux.</p>
+<p>Then, I received an error about "jenkins-pg92" and I fixed it using <a href=https://groups.google.com/forum/?fromgroups=#!topic/mozilla.tools.socorro/DDvCjTDQwo8>this topic</a>:</p>
+
+<p>In socorro/unittest/config/commonconfig.py switch:</p>
+
+<p><strong>databaseHost.default = 'jenkins-pg92' to
+databaseHost.default = 'localhost'</strong></p>
+
+<p>After that, I got an error of "permission denied":</p>
+
+<p><div><script src='https://gist.github.com/5440840.js'></script>
+<noscript><pre><code></code></pre></noscript></div>
+</p>
+
+<p>And the command below fix that:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="s">&quot;psql -c &#39;alter user breakpad_rw superuser template1&quot;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Then I get "Ran 588 tests in 27.220s" and a big OK :)</p>
+
+<!--
+sudo dscl . -create /Users/postgres UserShell /usr/bin/false
+brew uninstall postgresql
+brew install postgresql
+
+psql -c 'alter user breakpad_rw superuser'
+
+And after this stage, all the commands did not work.
+
+Well, maybe I will try to install all this again in Linux.
+-->
+
 ]]></content>
   </entry>
   

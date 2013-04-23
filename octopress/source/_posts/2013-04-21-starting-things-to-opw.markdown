@@ -40,6 +40,14 @@ I saw usr/bin/psql instead of usr/local/bin/psql, so you need to add usr/local/b
 export PATH=/usr/local/bin:$PATH
 {% endcodeblock %}
 
+Modify postgresql config to UTC timezone:
+
+{% codeblock lang:objc %}
+sudo emacs /usr/local/pgsql/data/postgresql.conf
+timezone = 'UTC'
+brew service restart postgresql
+{% endcodeblock %}
+
 Then, I received:
 <h6>"Could not connect to server: Permission denied
 
@@ -61,13 +69,14 @@ ln -s /private/tmp/.s.PGSQL.5432 /var/pgsql_socket/
 //createuser -s -r postgres
 -->
 
+
 Then I booted the PostgreSQL, created a superuser account for myself, and the breakpad_rw account for Socorro:
 {% codeblock lang:objc %}
 initdb -D /usr/local/pgsql/data -E utf8
 postgres -D /usr/local/pgsql/data
-/usr/local/bin/createuser -s $USER
-/usr/local/bin/psql -c "CREATE USER breakpad_rw" template1
-/usr/local/bin/psql -c "ALTER USER breakpad_rw WITH ENCRYPTED PASSWORD 'aPassword'" template1
+createuser -s $USER
+psql -c "CREATE USER breakpad_rw" template1
+psql -c "ALTER USER breakpad_rw WITH ENCRYPTED PASSWORD 'aPassword'" template1
 {% endcodeblock %}
 
 <h2> Socorro </h2>
@@ -133,6 +142,38 @@ At this point, I have everything working: The CrashStats Server, the PostgreSQL,
 
 {% gist 5440281 %}
 
+To solve this, I ran:
+{% codeblock lang:objc %}
+psql -d postgres -f sql/roles.sql 
+{% endcodeblock %}
+
+Then, I received an error about "jenkins-pg92" and I fixed it using <a href=https://groups.google.com/forum/?fromgroups=#!topic/mozilla.tools.socorro/DDvCjTDQwo8>this topic</a>:
+
+In socorro/unittest/config/commonconfig.py switch:
+
+<strong>databaseHost.default = 'jenkins-pg92' to 
+databaseHost.default = 'localhost'</strong>
+        
+After that, I got an error of "permission denied":
+
+{% gist 5440840 %}
+
+And the command below fix that:
+
+{% codeblock lang:objc %}
+"psql -c 'alter user breakpad_rw superuser template1"
+{% endcodeblock %}
+ 
+Then I get "Ran 588 tests in 27.220s" and a big OK :)
+
+<!--
+sudo dscl . -create /Users/postgres UserShell /usr/bin/false
+brew uninstall postgresql
+brew install postgresql
+
+psql -c 'alter user breakpad_rw superuser'
+
 And after this stage, all the commands did not work.
 
 Well, maybe I will try to install all this again in Linux.
+-->
