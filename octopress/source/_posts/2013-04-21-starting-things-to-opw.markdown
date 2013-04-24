@@ -166,6 +166,21 @@ And the command below fix that:
  
 Then I get "Ran 588 tests in 27.220s" and a big OK :)
 
+The reported errors can be found at:
+
+https://bugzilla.mozilla.org/show_bug.cgi?id=864070
+
+https://bugzilla.mozilla.org/show_bug.cgi?id=864854
+
+After that, when running "make minidump_stackwalk", I got the error "cc1plus: error: -Werror=vla: No option -Wvla", so I fixed by commenting the line 85 on file <strong>socorro/google-breakpad/Makefile.in</strong>:
+{% codeblock lang:objc %}
+#@GCC_TRUE@	-Werror=vla
+{% endcodeblock %}
+
+Now, after following the steps to populate database and after running Socorro in dev mode (both servers, even the middleware), I am getting <strong>"Page not found (404)"</strong> when pointing Firefox to <strong>http://localhost:8000/home/products/WaterWolf</strong>. 
+
+Hmm, whats the problem now?!
+
 <!--
 sudo dscl . -create /Users/postgres UserShell /usr/bin/false
 brew uninstall postgresql
@@ -176,4 +191,5 @@ psql -c 'alter user breakpad_rw superuser'
 And after this stage, all the commands did not work.
 
 Well, maybe I will try to install all this again in Linux.
+
 -->

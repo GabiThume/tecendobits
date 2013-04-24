@@ -4,7 +4,7 @@
   <title><![CDATA[Category: mozilla | TecendoBits/WeavingBits Blog]]></title>
   <link href="http://tecendobits.cc/blog/blog/categories/mozilla/atom.xml" rel="self"/>
   <link href="http://tecendobits.cc/blog/"/>
-  <updated>2013-04-23T16:21:13-03:00</updated>
+  <updated>2013-04-24T00:29:50-03:00</updated>
   <id>http://tecendobits.cc/blog/</id>
   <author>
     <name><![CDATA[gabithume]]></name>
@@ -228,6 +228,29 @@ databaseHost.default = 'localhost'</strong></p>
 
 <p>Then I get "Ran 588 tests in 27.220s" and a big OK :)</p>
 
+<p>The reported errors can be found at:</p>
+
+<p>https://bugzilla.mozilla.org/show_bug.cgi?id=864070</p>
+
+<p>https://bugzilla.mozilla.org/show_bug.cgi?id=864854</p>
+
+<p>After that, when running "make minidump_stackwalk", I got the error "cc1plus: error: -Werror=vla: No option -Wvla", so I fixed by commenting the line 85 on file <strong>socorro/google-breakpad/Makefile.in</strong>:
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="err">@</span><span class="n">GCC_TRUE</span><span class="err">@</span> <span class="o">-</span><span class="n">Werror</span><span class="o">=</span><span class="n">vla</span><span class="o">&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Now, after following the steps to populate database and after running Socorro in dev mode (both servers, even the middleware), I am getting <strong>"Page not found (404)"</strong> when pointing Firefox to <strong>http://localhost:8000/home/products/WaterWolf</strong>.</p>
+
+<p>Hmm, whats the problem now?!</p>
+
 <!--
 sudo dscl . -create /Users/postgres UserShell /usr/bin/false
 brew uninstall postgresql
@@ -238,6 +261,7 @@ psql -c 'alter user breakpad_rw superuser'
 And after this stage, all the commands did not work.
 
 Well, maybe I will try to install all this again in Linux.
+
 -->
 
 ]]></content>

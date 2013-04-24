@@ -4,7 +4,7 @@
   <title><![CDATA[TecendoBits/WeavingBits Blog]]></title>
   <link href="http://tecendobits.cc/blog/atom.xml" rel="self"/>
   <link href="http://tecendobits.cc/blog/"/>
-  <updated>2013-04-23T16:21:13-03:00</updated>
+  <updated>2013-04-24T00:29:50-03:00</updated>
   <id>http://tecendobits.cc/blog/</id>
   <author>
     <name><![CDATA[gabithume]]></name>
@@ -273,6 +273,23 @@ databaseHost.default = &#8216;localhost&#8217;</strong></p>
 
 <p>Then I get &#8220;Ran 588 tests in 27.220s&#8221; and a big OK :)</p>
 
+<p>The reported errors can be found at:</p>
+
+<p>https://bugzilla.mozilla.org/show_bug.cgi?id=864070</p>
+
+<p>https://bugzilla.mozilla.org/show_bug.cgi?id=864854</p>
+
+<p>After that, when running &#8220;make minidump_stackwalk&#8221;, I got the error &#8220;cc1plus: error: -Werror=vla: No option -Wvla&#8221;, so I fixed by commenting the line 85 on file <strong>socorro/google-breakpad/Makefile.in</strong>:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="cp">#@GCC_TRUE@ -Werror=vla</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now, after following the steps to populate database and after running Socorro in dev mode (both servers, even the middleware), I am getting <strong>&#8220;Page not found (404)&#8221;</strong> when pointing Firefox to <strong>http://localhost:8000/home/products/WaterWolf</strong>.</p>
+
+<p>Hmm, whats the problem now?!</p>
+
 <!--
 sudo dscl . -create /Users/postgres UserShell /usr/bin/false
 brew uninstall postgresql
@@ -283,6 +300,7 @@ psql -c 'alter user breakpad_rw superuser'
 And after this stage, all the commands did not work.
 
 Well, maybe I will try to install all this again in Linux.
+
 -->
 
 ]]></content>
