@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: opw | TecendoBits/WeavingBits Blog]]></title>
+  <title><![CDATA[Category: OPW | TecendoBits/WeavingBits Blog]]></title>
   <link href="http://tecendobits.cc/blog/blog/categories/opw/atom.xml" rel="self"/>
   <link href="http://tecendobits.cc/blog/"/>
-  <updated>2013-04-24T00:29:50-03:00</updated>
+  <updated>2013-05-27T17:55:25-03:00</updated>
   <id>http://tecendobits.cc/blog/</id>
   <author>
     <name><![CDATA[gabithume]]></name>
@@ -12,6 +12,26 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Winter of code]]></title>
+    <link href="http://tecendobits.cc/blog/winter-of-code/"/>
+    <updated>2013-05-27T17:13:00-03:00</updated>
+    <id>http://tecendobits.cc/blog/winter-of-code</id>
+    <content type="html"><![CDATA[<p>OMG! I am so much happy! I was <a href=https://live.gnome.org/OutreachProgramForWomen/2013/JuneSeptember/#Mozilla>accepted</a> for Outreach Program for Women internship in Mozilla Crash Stats Project!</p>
+
+<p>The feeling of being a Mozilla developer is so amazing!
+I am glad for everything!</p>
+
+<p><img class="left" src="../images/mozilla.png"></p>
+
+<p>A big thank you for my mentor Selena Deckelmann!</p>
+
+<p>Also, a thanks to <a href=http://mediagoblin.org/>MediaGoblin</a> guys, other amazing project I had applied for ;)</p>
+
+<p>So this blog now became a day-a-day in my development at <a href=https://wiki.mozilla.org/Socorro>Socorro Project</a> and my contribution could be found at <a href=https://github.com/GabiThume>GitHub</a> :)</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Mozilla Test Gardener in Mac OS X 10.8]]></title>

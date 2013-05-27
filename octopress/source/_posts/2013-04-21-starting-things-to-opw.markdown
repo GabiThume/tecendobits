@@ -3,7 +3,7 @@ layout: post
 title: "Mozilla Test Gardener in Mac OS X 10.8"
 date: 2013-04-21 18:22
 comments: true
-categories: opw mozilla socorro
+categories: [mozilla, socorro, OPW, code, crash stats]
 ---
 
 <a href=https://live.gnome.org/OutreachProgramForWomen>Outreach Program for Women</a> is a amazing program for include women in Free and Open Source Software. I am really interested in applying. So I decided to start by studing the Mozilla Projects to the OPW.
