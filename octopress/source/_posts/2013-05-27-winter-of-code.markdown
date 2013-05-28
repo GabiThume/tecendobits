@@ -6,13 +6,15 @@ comments: true
 categories: [mozilla, socorro, OPW, code, crash stats]
 ---
 
+{% img right http://www.gnome.org/wp-content/themes/gnome-grass/images/gnome-logo.png %}
 
-OMG! I am so much happy! I was <a href=https://live.gnome.org/OutreachProgramForWomen/2013/JuneSeptember/#Mozilla>accepted</a> for Outreach Program for Women internship in Mozilla Crash Stats Project!
+OMG! I am so much happy! I was <a href=https://live.gnome.org/OutreachProgramForWomen/2013/JuneSeptember/#Mozilla>accepted</a> for Outreach Program for Women internship in Mozilla Crash Stats Project! 
 
-The feeling of being a Mozilla developer is so amazing!
-I am glad for everything!
+This program is organized by the <a href=http://www.gnome.org/foundation/>GNOME Foundation</a>! What is awesome! :D   
+And the feeling of being a Mozilla developer is so amazing!    
+I am glad for everything!   
 
-{% img left ../images/mozilla.png %}
+{% img left https://wiki.mozilla.org/extensions/gmo/skins/gmo/img/screen/template/screen/logo_footer.png %}
 
 A big thank you for my mentor Selena Deckelmann!
 
