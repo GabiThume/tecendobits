@@ -2,6 +2,8 @@
 #      Main Configs       #
 # ----------------------- #
 
+category_feeds: true
+
 url: http://tecendobits.cc/blog
 title: TecendoBits/WeavingBits Blog
 subtitle: A place to random thoughts.

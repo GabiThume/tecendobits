@@ -3,7 +3,7 @@ layout: post
 title: "OPW Application for Mozilla"
 date: 2013-05-27 19:40
 comments: true
-categories: 
+categories: [mozilla, socorro, OPW, code, crash stats]
 ---
 
 I am posting here the application for future reference or to help someone :)
