@@ -40,7 +40,7 @@ After that, I ran <code>make test</code> that returned <code>role "breakpad_ro" 
 
 New instructions at installation say to install json_enhancementes to use in PostgreSQL: <code>make json_enhancements_pg_extension</code>. But I got an error when running the following command:  
 {% codeblock lang:objc %}
-$ sudo /home/gabi/Desktop/CODE/repos/socorro/socorro-virtualenv/bin/python -c "from pgxnclient import cli; cli.main(['install', 'json_enhancements'])"
+$ socorro-virtualenv/bin/python -c "from pgxnclient import cli; cli.main(['install', 'json_enhancements'])"
 {% endcodeblock %}
 
 After talking with @selenamarie and @rhelmer, it became clear that a dev package was needed:
@@ -173,7 +173,7 @@ After that, I was reading tests when I found an easy one (I changed a calling fu
 
 There are unit tests on socorro that need more coverage. To know the coverage of socorro files, I ran:
 {% codeblock lang:objc %}
-$ (socorro-virtualenv)gabi@ubuntu:~/Desktop/CODE/repos/socorro/socorro/unittest$  ../../socorro-virtualenv/bin/nosetests --with-coverage --cover-package=socorro
+$ ../../socorro-virtualenv/bin/nosetests --with-coverage --cover-package=socorro
 {% endcodeblock %}
 
 Which gave me the following coverage: <a href=https://gist.github.com/GabiThume/5938460>Gist 5938460</a>
@@ -192,7 +192,11 @@ $ pip install --use-mirrors --download-cache=./pip-cache nose-exclude==0.1.9
 
 Then I had a <a href=https://bitbucket.org/kgrandis/nose-exclude/issue/8/self-test-failing-on-019>problem</a>: the unittest was excluding itself (nothing was being tested). So, I decided to just choose which ones I wanted to cover, instead of exclude them.
 {% codeblock lang:python %}
-$ socorro-virtualenv/bin/nosetests   socorro --with-coverage  --cover-package=socorro.app     --cover-package=socorro.collector  --cover-package=socorro.cron    --cover-package=socorro.database  --cover-package=socorro.external    --cover-package=socorro.lib  --cover-package=socorro.middleware    --cover-package=socorro.monitor  --cover-package=socorro.processor    --cover-package=socorro.services  --cover-package=socorro.storage    --cover-package=socorro.webapi
+$ socorro-virtualenv/bin/nosetests socorro --with-coverage --cover-package=socorro.app /
+--cover-package=socorro.collector --cover-package=socorro.cron --cover-package=socorro.database /
+--cover-package=socorro.external --cover-package=socorro.lib --cover-package=socorro.middleware /
+--cover-package=socorro.monitor --cover-package=socorro.processor --cover-package=socorro.services /
+--cover-package=socorro.storage --cover-package=socorro.webapi
 {% endcodeblock %}
 
 This is a job that will be retaken later.
