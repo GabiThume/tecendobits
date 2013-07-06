@@ -3,7 +3,7 @@ layout: post
 title: "Socorro Project"
 date: 2013-06-16 22:30
 comments: true
-categories: 
+categories: [socorro, opw, gnome]
 ---
 
 Tomorrow is the first day of my Gnome OPW internship! I am anxious and with butterflies in my stomach :)

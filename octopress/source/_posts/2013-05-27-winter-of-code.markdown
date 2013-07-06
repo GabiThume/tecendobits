@@ -20,5 +20,5 @@ A big thank you for my mentor Selena Deckelmann!
 
 Also, a thanks to <a href=http://mediagoblin.org/>MediaGoblin</a> guys, other amazing project I had applied for ;)
 
-So this blog now became a day-a-day in my development at <a href=https://wiki.mozilla.org/Socorro>Socorro Project</a> and my contribution could be found at <a href=https://github.com/GabiThume>GitHub</a> :)
+So this blog now became a day-to-day in my development at <a href=https://wiki.mozilla.org/Socorro>Socorro Project</a> and my contribution could be found at <a href=https://github.com/GabiThume>GitHub</a> :)
 

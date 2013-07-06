@@ -88,7 +88,7 @@
 <time datetime="2013-05-27T19:40:00-03:00" pubdate><span class='month'>May</span> <span class='day'>27</span> <span class='year'>2013</span></time>
 
 <footer>
-  <span class="categories">posted in <a class='category' href='/blog/blog/categories/opw/'>OPW</a>, <a class='category' href='/blog/blog/categories/code/'>code</a>, <a class='category' href='/blog/blog/categories/crash-stats/'>crash stats</a>, <a class='category' href='/blog/blog/categories/mozilla/'>mozilla</a>, <a class='category' href='/blog/blog/categories/socorro/'>socorro</a></span>
+  <span class="categories">posted in <a class='category' href='/blog/blog/categories/code/'>code</a>, <a class='category' href='/blog/blog/categories/crash-stats/'>crash stats</a>, <a class='category' href='/blog/blog/categories/gnome/'>gnome</a>, <a class='category' href='/blog/blog/categories/mozilla/'>mozilla</a>, <a class='category' href='/blog/blog/categories/opw/'>opw</a>, <a class='category' href='/blog/blog/categories/socorro/'>socorro</a></span>
 </footer>
 
 
@@ -116,7 +116,7 @@
 <time datetime="2013-04-21T18:22:00-03:00" pubdate><span class='month'>Apr</span> <span class='day'>21</span> <span class='year'>2013</span></time>
 
 <footer>
-  <span class="categories">posted in <a class='category' href='/blog/blog/categories/opw/'>OPW</a>, <a class='category' href='/blog/blog/categories/code/'>code</a>, <a class='category' href='/blog/blog/categories/crash-stats/'>crash stats</a>, <a class='category' href='/blog/blog/categories/mozilla/'>mozilla</a>, <a class='category' href='/blog/blog/categories/socorro/'>socorro</a></span>
+  <span class="categories">posted in <a class='category' href='/blog/blog/categories/code/'>code</a>, <a class='category' href='/blog/blog/categories/crash-stats/'>crash stats</a>, <a class='category' href='/blog/blog/categories/gnome/'>gnome</a>, <a class='category' href='/blog/blog/categories/mozilla/'>mozilla</a>, <a class='category' href='/blog/blog/categories/opw/'>opw</a>, <a class='category' href='/blog/blog/categories/socorro/'>socorro</a></span>
 </footer>
 
 
@@ -131,9 +131,89 @@
 
 <aside class="sidebar">
   
-    <section>
+    <section id="social">
+<a href="https://github.com/GabiThume/">
+    <div class="social-link">
+          <img src="/blog/images/icons/github.png" width="32" height="32">
+</div>
+</a>
+
+    <a href="http://www.linkedin.com/in/gabithume">
+<div class="social-link">
+      <img src="/blog/images/icons/linkedin.png" width="32" height="32">
+</div>
+    </a>
+
+    <a href="https://www.facebook.com/gabithume">
+<div class="social-link">
+      <img src="/blog/images/icons/facebook.png" width="32" height="32">
+</div>
+    </a>
+
+
+<div class="social-link">
+    <a href="http://tecendobits.tumblr.com/">
+      <img src="/blog/images/icons/tumblr.png" width="32" height="32">
+    </a>
+</div>
+
+<div class="social-link">
+    <a href="http://vimeo.com/gabithume">
+      <img src="/blog/images/icons/vimeo.png" width="32" height="32">
+    </a>
+</div>
+
+<a href="mailto:gabithume@gmail.com">
+    <div class="social-link">
+          <img src="/blog/images/icons/email.png" width="32" height="32">
+</div>
+</a>
+
+<div class="social-link">
+    <a href="atom.xml">
+      <img src="/blog/images/icons/rss.png" width="32" height="32">
+    </a>
+</div>
+
+    <a href="https://plus.google.com/115961070759198455564/posts">
+<div class="social-link">
+      <img src="/blog/images/icons/gplus2.png" width="32" height="32">
+</div>
+    </a>
+
+    <a href="https://twitter.com/gabithume">
+<div class="social-link">
+      <img src="/blog/images/icons/twitter.png" width="32" height="32">
+</div>
+    </a>
+
+<div class="social-link">
+    <a href="http://instagram.com/gabithume#">
+      <img src="/blog/images/icons/instagram.png" width="32" height="32">
+    </a>
+</div>
+
+
+<div class="social-link">
+    <a href="http://pinterest.com/gabithume/following/">
+      <img src="/blog/images/icons/pinterest.png" width="32" height="32">
+    </a>
+</div>
+
+
+<div class="social-link">
+    <a href="https://delicious.com/gabithume">
+      <img src="/blog/images/icons/delicious.png" width="32" height="32">
+    </a>
+</div>
+</section>
+<section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/first-weeks-of-opw/">First weeks of OPW</a>
+      </li>
     
       <li class="post">
         <a href="/blog/mozilla-socorro-project/">Socorro Project</a>
@@ -178,8 +258,8 @@
 
         github.showRepos({
             user: 'GabiThume',
-            count: 0,
-            skip_forks: true,
+            count: 10,
+            skip_forks: false,
             target: '#gh_repos'
         });
     });
@@ -188,9 +268,16 @@
 </section>
 
 
-
-
-
+<section>
+  <h1>On Delicious</h1>
+  <div id="delicious"></div>
+  <script type="text/javascript" src="http://feeds.delicious.com/v2/json/gabithume?count=3&amp;sort=date&amp;callback=renderDeliciousLinks"></script>
+  <p><a href="http://delicious.com/gabithume">My Delicious Bookmarks &raquo;</a></p>
+</section>
+<section>
+  <h1>Tag Cloud</h1>
+    <span id="tag-cloud"><a href='/blog/blogblog/categories/bdd' style='font-size: 112.0%'>bdd</a> <a href='/blog/blogblog/categories/code' style='font-size: 148.0%'>code</a> <a href='/blog/blogblog/categories/crash-stats' style='font-size: 136.0%'>crash stats</a> <a href='/blog/blogblog/categories/crash-stats' style='font-size: 112.0%'>crash-stats</a> <a href='/blog/blogblog/categories/gnome' style='font-size: 148.0%'>gnome</a> <a href='/blog/blogblog/categories/gozilla' style='font-size: 112.0%'>gozilla</a> <a href='/blog/blogblog/categories/mozilla' style='font-size: 136.0%'>mozilla</a> <a href='/blog/blogblog/categories/opw' style='font-size: 148.0%'>opw</a> <a href='/blog/blogblog/categories/opw' style='font-size: 112.0%'>OPW</a> <a href='/blog/blogblog/categories/socorro' style='font-size: 160.0%'>socorro</a> <a href='/blog/blogblog/categories/test' style='font-size: 124.0%'>test</a> </span>
+</section>
   
 </aside>
 
@@ -205,6 +292,15 @@
   
 
 
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 
 
 

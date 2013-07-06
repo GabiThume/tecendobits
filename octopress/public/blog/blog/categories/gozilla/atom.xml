@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: gozilla | TecendoBits/WeavingBits Blog]]></title>
+  <link href="http://tecendobits.cc/blog/blog/categories/gozilla/atom.xml" rel="self"/>
+  <link href="http://tecendobits.cc/blog/"/>
+  <updated>2013-07-06T00:20:02-03:00</updated>
+  <id>http://tecendobits.cc/blog/</id>
+  <author>
+    <name><![CDATA[gabithume]]></name>
+    <email><![CDATA[gabithume@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[First weeks of OPW]]></title>
+    <link href="http://tecendobits.cc/blog/first-weeks-of-opw/"/>
+    <updated>2013-06-30T10:13:00-03:00</updated>
+    <id>http://tecendobits.cc/blog/first-weeks-of-opw</id>
+    <content type="html"><![CDATA[<p>The Outreach Program has began on June 17th. Those were two really cool weeks!</p>
+
+<p>One of my favorite things in the whole world is coding, so I think I am in the right project :) Although i didn't properly code during this time, it was filled with learning (super needed).
+I had contact with a lot of stuff that I had never imagined before. First of all: I followed in a daily basis the work of a development team. They have to deal with a lot of releases and to maintain a huge system that collects, processes, stores and displays crash reports from clients (this is really a hard work!). Besides that, curently they are also migrating some tools (like PHP to Django), work that requer a lot of team work! Which they do brightly :)</p>
+
+<p>I am going to describe here some of the relevant things that happened in these first weeks. If you are curious about knowing everything that is happening, go check my OPW diary: <a href=https://etherpad.mozilla.org/opw2013>https://etherpad.mozilla.org/opw2013</a>.</p>
+
+<!-- more -->
+
+
+<hr />
+
+<h3>Socorro Installation</h3>
+
+<p>The first thing I did was <a href=https://socorro.readthedocs.org/en/latest/installation.html#installation-requirements>installing</a> socorro and socorro-crashstats in my Ubuntu VirtualMachine, instead of Mac OS. I found some problems with the installation:</p>
+
+<p>First, I received an error <code>Peer authentication failed for user "test"</code> when i tried to run tests inside socorro. To solve that, I edited the postgresql file <code>/etc/postgresql/9.2/main/pg_hba.conf</code> changing every connection method field to <code>trust</code>.</p>
+
+<p>Then i got <code>psql: FATAL:  role "test" does not exist</code>. So I created the test user:
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">$</span> <span class="n">createuser</span> <span class="o">-</span><span class="n">s</span> <span class="n">test</span>  <span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>A new error was a little bit weird for me: <code>type "citext" does not exist</code>. But I remembered an error fix made by @selenamarie to a database problem:
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">$</span> <span class="s">&quot;psql -c &#39;alter user breakpad_rw superuselr&#39; template1&quot;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>After that, I ran <code>make test</code> that returned <code>role "breakpad_ro" does not exist</code>, so I fixed it with:
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="s">&quot;psql -d postgres -f sql/roles.sql&quot;</span><span class="p">.</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>New instructions at installation say to install json_enhancementes to use in PostgreSQL: <code>make json_enhancements_pg_extension</code>. But I got an error when running the following command:<br/>
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">$</span> <span class="n">sudo</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">gabi</span><span class="o">/</span><span class="n">Desktop</span><span class="o">/</span><span class="n">CODE</span><span class="o">/</span><span class="n">repos</span><span class="o">/</span><span class="n">socorro</span><span class="o">/</span><span class="n">socorro</span><span class="o">-</span><span class="n">virtualenv</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">python</span> <span class="o">-</span><span class="n">c</span> <span class="s">&quot;from pgxnclient import cli; cli.main([&#39;install&#39;, &#39;json_enhancements&#39;])&quot;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>After talking with @selenamarie and @rhelmer, it became clear that a dev package was needed:
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">$</span> <span class="n">sudo</span> <span class="n">aptitude</span> <span class="n">install</span> <span class="n">postgresql</span><span class="o">-</span><span class="n">server</span><span class="o">-</span><span class="n">dev</span><span class="o">-</span><span class="mf">9.2</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>And then the tests finally ran!</p>
+
+<p>After that, it was needed to <a href=https://socorro.readthedocs.org/en/latest/installation.html#populate-postgresql-database>populate the database</a>. At that time, <code>name</code> was missing at <code>--database_superuser</code> in the command that populate the breakpad database using fakedata at Socorro Install page.</p>
+
+<p>In the end, I had some problems while running the server of socorro-crashstats because I didn't install <a href=http://www.thefourtheye.in/2013/04/installing-python-ldap-in-ubuntu.html>some libraries needed to LDAP</a>.</p>
+
+<hr />
+
+<h3>Git Update</h3>
+
+<p>I am always making changes in my fork to test something or by accident. Sometimes I need to reset it. To ignore all modifications and pull to overwrite local changes, you have to clean the working tree (carefully):
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">$</span> <span class="n">git</span> <span class="n">reset</span> <span class="o">--</span><span class="n">hard</span>
+</span><span class='line'><span class="n">$</span> <span class="n">git</span> <span class="n">pull</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>And to update your fork based on the original repository:
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">$</span> <span class="n">git</span> <span class="n">remote</span> <span class="n">add</span> <span class="n">moz</span> <span class="nl">https:</span><span class="c1">//github.com/mozilla/socorro.git</span>
+</span><span class='line'><span class="n">$</span> <span class="n">git</span> <span class="n">fetch</span> <span class="n">moz</span>
+</span><span class='line'><span class="n">$</span> <span class="n">git</span> <span class="n">merge</span> <span class="n">moz</span><span class="o">/</span><span class="n">master</span>
+</span><span class='line'><span class="n">$</span> <span class="n">git</span> <span class="n">push</span> <span class="n">origin</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<hr />
+
+<h3>Test Development Research</h3>
+
+<p>After that, @selenamarie and I started reading and discussing about <a href=https://etherpad.mozilla.org/socorro-testing>Socorro testing</a>.</p>
+
+<p>By first, I tried to understand the difference between state and behaviour verification tests:</p>
+
+<p>Tests double objects are used instead of real objects mostly when we want to test without change the real environment. Let me make myself clear with an example from the <a href=http://martinfowler.com/articles/mocksArentStubs.html>mocksArentStubs</a> page: <strong><em>"We wanted to send an email message if we failed to fill an order. The problem is that we don't want to send actual email messages out to customers during testing. So instead we create a test double of our email system, one that we can control and manipulate"</em></strong>. That is a really good and complex reference, which the author presents that a test double object can be of four kinds:</p>
+
+<p><strong>Dummy</strong>: "are around but never actually used"</p>
+
+<p><strong>Fake</strong>: "have working implementations, but usually take some shortcut which makes them not suitable for production"</p>
+
+<p><strong>Stubs</strong>: "provide canned answers to calls made during the test"</p>
+
+<p><strong>Mocks</strong>: "objects pre-programmed with expectations which form a specification of the calls they are expected to receive"</p>
+
+<p>But what is the real different between mocks and stubs?  <br/>
+Both are test doubles, which means that they are not calling a real service (like mail or database), but mocks uses behavior verification rather than stubs, which uses state verification.</p>
+
+<p><strong>State verification</strong>: only cares about the final state - and not how that state was derived.</p>
+
+<p><strong>Behaviour verification</strong>: makes you stay focused about what you are testing, it is related to "how should this behave".</p>
+
+<p>There are already mocks in socorro project, so I studied to know more about it and also to understand <a ref=http://dannorth.net/introducing-bdd/>Behavior Driven Development (BDD)</a>, that can be a really great development style. But it can be hard for a team to go from a <code><strong>code => test</strong></code> to a <code><strong>test => code</strong></code> timeline.</p>
+
+<p><strong>Behavior Driven Development (BDD)</strong>:</p>
+
+<p>It is a development style oriented by testing. Like in the traditional TDD, consists in creating a failing test to some new feature, and then implementing the functional feature. The main difference between TDD and BDD is on verification, which is state and behavior respectively.</p>
+
+<p>In BDD we might have a language for feature file named <strong>Gherkin</strong>: "a natural language format describing a feature or part of a feature with representative examples of expected outcomes":</p>
+
+<p><blockquote><p>Given some initial context,  <br/><br/>When an event occurs, <br/><br/>Then ensure some outcomes.</p></blockquote></p>
+
+<p>In other words:  <br/>
+=> <strong>given</strong> a system known state before the user or external system perform some action,  <br/>
+=> <strong>when</strong> the user or the external system interacts (key actions),  <br/>
+=> <strong>then</strong> observe the outcomes.</p>
+
+<p>Which tools can help us?<br/>
+<a href=http://lettuce.it/>Lettuce</a>
+<a href=https://github.com/rlisagor/freshen>Freshen</a>
+<a href=http://behave.readthedocs.org/>Behave</a></p>
+
+<p>So I tried to write an unit test with <a href=http://behave.readthedocs.org/en/latest/tutorial.html>behave</a>, considering files of feature, environment and a test:
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">$</span> <span class="n">sudo</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">behave</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>And I did a test using <code>selenium+behave</code>:
+<div><script src='https://gist.github.com/5880058.js'></script>
+<noscript><pre><code></code></pre></noscript></div>
+</p>
+
+<p>There are already tests in socorro-crashstats with selenium, but they still didn't consider Django tests. In a near future, I might study how that works and create tests for it. For now, those kind of tests are in QA hands at <a href=https://github.com/mozilla/Socorro-Tests/pull/210>Socorro-Tests</a>, so the team is concerned about the idea of bringing those tests inside socorro (in dev hands). A video about socorro tests (dev's and QA's) is presented by Matt Brandt: <a href=http://www.youtube.com/watch?v=usqxFxsmg4o>#SFSE: Continuous Deployment At Mozilla</a></p>
+
+<p>Some usefull links about selenium + django:  <br/>
+<a href=http://www.tdd-django-tutorial.com/tutorial/1/>http://www.tdd-django-tutorial.com/tutorial/1/</a>  <br/>
+<a href=http://theintern.io/#>http://theintern.io/#</a>  <br/>
+<a href=http://lincolnloop.com/blog/2012/nov/2/introduction-django-selenium-testing/>http://lincolnloop.com/blog/2012/nov/2/introduction-django-selenium-testing/</a>  <br/>
+<a href=http://thecodachi.blogspot.com.br/2012/08/django-factory-boy-better-test.html>http://thecodachi.blogspot.com.br/2012/08/django-factory-boy-better-test.html</a>  <br/>
+<a href=http://www.shiningpanda.com/blog/2012/08/14/selenium-tests-django-14/>http://www.shiningpanda.com/blog/2012/08/14/selenium-tests-django-14/</a></p>
+
+<p>What is better for socorro project in test terms? <br/>
+I think it is impossible to have this answer without actually creating some BDD for a socorro module and receiving the team feedback.</p>
+
+<hr />
+
+<h3>Unit test Development</h3>
+
+<p>I searched for some module that I could implement a test for. Then I realized that mostly of the untested lines are related to exceptions. So I decided to learn more about that.</p>
+
+<p>With <a href=http://docs.python.org/2/library/unittest.html>unittest</a> it is possible to test exceptions using <a href=http://docs.python.org/2/library/unittest.html#unittest.TestCase.assertRaises>assertRaise</a>.
+In this function, if the exception is not raised, it gives a failure test.</p>
+
+<p>To understand how to implement an exception test like that, I read <code>test_crash_data.py</code>, which is currently 100% tested, and I found some tests like this:</p>
+
+<pre><code>        # Test 5: crash cannot be found
+        self.assertRaises(
+            ResourceNotFound,
+            service.get,
+            **{'uuid': 'c44245f4-c93b-49b8-86a2-c15dc3a695cb',
+                'datatype': 'processed'}
+        )
+</code></pre>
+
+<p>So, we can say that an exception test have the following format:  <br/>
+<code>assertRaises(nameOfException, functionCalled, *{arguments}, **{keywords})</code></p>
+
+<p>After that, I was reading tests when I found an easy one (I changed a calling function). I implemented it and chant <code>nose coverage</code>. 2 lines are now covered!</p>
+
+<pre><code>         self.assertRaises(CrashIDNotFound,
+                           crashstorage.get_raw_dumps,
+                           '114559a5-d8e6-428c-8b88-1c1f22120314')
+</code></pre>
+
+<hr />
+
+<h3>Socorro Coverage</h3>
+
+<p>There are unit tests on socorro that need more coverage. To know the coverage of socorro files, I ran:
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">$</span> <span class="p">(</span><span class="n">socorro</span><span class="o">-</span><span class="n">virtualenv</span><span class="p">)</span><span class="n">gabi</span><span class="err">@</span><span class="nl">ubuntu:</span><span class="o">~/</span><span class="n">Desktop</span><span class="o">/</span><span class="n">CODE</span><span class="o">/</span><span class="n">repos</span><span class="o">/</span><span class="n">socorro</span><span class="o">/</span><span class="n">socorro</span><span class="o">/</span><span class="n">unittest$</span>  <span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="n">socorro</span><span class="o">-</span><span class="n">virtualenv</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">nosetests</span> <span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">coverage</span> <span class="o">--</span><span class="n">cover</span><span class="o">-</span><span class="n">package</span><span class="o">=</span><span class="n">socorro</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Which gave me the following coverage: <a href=https://gist.github.com/GabiThume/5938460>Gist 5938460</a></p>
+
+<p>After that, I was reading the source files searching for uncoverage tests, and then I created a <a href=https://github.com/mozilla/socorro/pull/1306>Pull Request 1306</a> for one file 20% uncovered, but @lars unfortunately reported that the file was deprecated, so I changed my focus to search deprecated files first then cover unit tests.</p>
+
+<p>To known exactly which are the files that need coverage, we need to find out which are deprecated, so we created an <a href=https://etherpad.mozilla.org/socorro-deprecation-station>etherpad</a> where we put information collected by a script, then I filled in <a href=https://bugzilla.mozilla.org/show_bug.cgi?id=885411>bug #885411</a> about untested files and we asked for the responsable person of the module to help us to indicate the deprecated ones. Considering the team comments, maybe just <code> /socorro/collector/submitter_app.py</code> and <code>/socorro/cron/jobs/buggy.py</code> files should be tested.</p>
+
+<p>Script to search uncovered modules <strong>at all</strong>, considering the whole socorro package:
+<div><script src='https://gist.github.com/5808574.js'></script>
+<noscript><pre><code></code></pre></noscript></div>
+</p>
+
+<p>So I decided to try to exclude directories on nosetests (at least, the ones we know that are deprecated and the unittest directory as well). I used nose-exclude plugin for it:
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">$</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">use</span><span class="o">-</span><span class="n">mirrors</span> <span class="o">--</span><span class="n">download</span><span class="o">-</span><span class="n">cache</span><span class="o">=</span><span class="p">.</span><span class="o">/</span><span class="n">pip</span><span class="o">-</span><span class="n">cache</span> <span class="n">nose</span><span class="o">-</span><span class="n">exclude</span><span class="o">==</span><span class="mf">0.1.9</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Then I had a <a href=https://bitbucket.org/kgrandis/nose-exclude/issue/8/self-test-failing-on-019>problem</a>: the unittest was excluding itself (nothing was being tested). So, I decided to just choose which ones I wanted to cover, instead of exclude them.
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="err">$</span> <span class="n">socorro</span><span class="o">-</span><span class="n">virtualenv</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">nosetests</span>   <span class="n">socorro</span> <span class="o">--</span><span class="k">with</span><span class="o">-</span><span class="n">coverage</span>  <span class="o">--</span><span class="n">cover</span><span class="o">-</span><span class="n">package</span><span class="o">=</span><span class="n">socorro</span><span class="o">.</span><span class="n">app</span>     <span class="o">--</span><span class="n">cover</span><span class="o">-</span><span class="n">package</span><span class="o">=</span><span class="n">socorro</span><span class="o">.</span><span class="n">collector</span>  <span class="o">--</span><span class="n">cover</span><span class="o">-</span><span class="n">package</span><span class="o">=</span><span class="n">socorro</span><span class="o">.</span><span class="n">cron</span>    <span class="o">--</span><span class="n">cover</span><span class="o">-</span><span class="n">package</span><span class="o">=</span><span class="n">socorro</span><span class="o">.</span><span class="n">database</span>  <span class="o">--</span><span class="n">cover</span><span class="o">-</span><span class="n">package</span><span class="o">=</span><span class="n">socorro</span><span class="o">.</span><span class="n">external</span>    <span class="o">--</span><span class="n">cover</span><span class="o">-</span><span class="n">package</span><span class="o">=</span><span class="n">socorro</span><span class="o">.</span><span class="n">lib</span>  <span class="o">--</span><span class="n">cover</span><span class="o">-</span><span class="n">package</span><span class="o">=</span><span class="n">socorro</span><span class="o">.</span><span class="n">middleware</span>    <span class="o">--</span><span class="n">cover</span><span class="o">-</span><span class="n">package</span><span class="o">=</span><span class="n">socorro</span><span class="o">.</span><span class="n">monitor</span>  <span class="o">--</span><span class="n">cover</span><span class="o">-</span><span class="n">package</span><span class="o">=</span><span class="n">socorro</span><span class="o">.</span><span class="n">processor</span>    <span class="o">--</span><span class="n">cover</span><span class="o">-</span><span class="n">package</span><span class="o">=</span><span class="n">socorro</span><span class="o">.</span><span class="n">services</span>  <span class="o">--</span><span class="n">cover</span><span class="o">-</span><span class="n">package</span><span class="o">=</span><span class="n">socorro</span><span class="o">.</span><span class="n">storage</span>    <span class="o">--</span><span class="n">cover</span><span class="o">-</span><span class="n">package</span><span class="o">=</span><span class="n">socorro</span><span class="o">.</span><span class="n">webapi</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>This is a job that will be retaken later.</p>
+
+<hr />
+
+<h3>Other things</h3>
+
+<p>I cleaned the <a href=https://github.com/mozilla/socorro-crashstats/pull/335>Pull Request #335</a> that creates a failling test to <a href=https://bugzilla.mozilla.org/show_bug.cgi?id=533628>bug #533628</a> (I implemented it for the application).</p>
+
+<p>And started to think about how to solve bug <a href=https://bugzilla.mozilla.org/show_bug.cgi?id=888520>#888520</a></p>
+
+<p>In the next week I will start a template test for unittest, those are usefull links about it:
+<a href=https://wiki.mozilla.org/QA/Execution/Web_Testing/Docs/Automation/StyleGuide>https://wiki.mozilla.org/QA/Execution/Web_Testing/Docs/Automation/StyleGuide</a>   <br/>
+<a href=https://github.com/mozilla/mozwebqa-test-templates>https://github.com/mozilla/mozwebqa-test-templates</a></p>
+
+<hr />
+
+<h3>Meetings</h3>
+
+<p>I was presented for the team in <a href=https://wiki.mozilla.org/Breakpad/Status_Meetings/2013-June-19>Socorro Weekly Meeting on June 19th</a>. And on <a href=https://air.mozilla.org/the-monday-meeting-20130624/>Mozilla Monday Meeting Day on June 24th</a> I was introduced to the whole Mozilla YAY! :)  <br/>
+I was not able to watch live streaming, so I filled in bug <a href=https://bugzilla.mozilla.org/show_bug.cgi?id=886462>#886462</a> reporting that. The agenda for that meeting can be found at <a href=https://wiki.mozilla.org/WeeklyUpdates/2013-06-24>https://wiki.mozilla.org/WeeklyUpdates/2013-06-24</a>  <br/>
+And I also called in Weekly meeting on <a href=https://wiki.mozilla.org/Breakpad/Status_Meetings/2013-June-26>June 26</a> during this time.</p>
+]]></content>
+  </entry>
+  
+</feed>

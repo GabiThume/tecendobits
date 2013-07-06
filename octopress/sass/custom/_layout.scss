@@ -19,3 +19,25 @@ $max-width: 1000px;
 //$sidebar-pad-medium: 15px;
 //$sidebar-pad-wide: 20px;
 //$sidebar-width-wide: 300px;
+
+#social{
+    background-repeat: no-repeat;
+    float:left;
+    white-space:nowrap;
+    width:100%;
+    border: 0 none;
+    display:block;
+    padding: 20px 0 10px;
+}
+
+#social a{
+    white-space:nowrap;
+}
+
+.social-link{
+    float:left; 
+    white-space:nowrap;
+    height: 32px;
+    width: 32px;
+    padding:5px;
+}
