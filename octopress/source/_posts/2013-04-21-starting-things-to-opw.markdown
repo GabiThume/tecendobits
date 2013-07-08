@@ -6,16 +6,15 @@ comments: true
 categories: [mozilla, socorro, opw, gnome, code, crash stats]
 ---
 
-<a href=https://live.gnome.org/OutreachProgramForWomen>Outreach Program for Women</a> is a amazing program for include women in Free and Open Source Software. I am really interested in applying. So I decided to start by studing the Mozilla Projects to the OPW.
+<a href=https://live.gnome.org/OutreachProgramForWomen>Outreach Program for Women</a> is an amazing program to include women in Free and Open Source Software. I am really interested in applying. So I decided to start by studing the Mozilla Projects to the OPW.
 
 Project <a href=https://wiki.mozilla.org/GNOME_Outreach_Summer2013>Test Gardener</a>: "Write unit and integration tests for Socorro related to database, backend crash storage and middleware."
 
-My first impress by reading the OPW projects to this year, is that this project of Mozilla is the coolest one. To verify that, I want to spend some time installing, running, and maybe solving some bug of <a href=https://wiki.mozilla.org/Socorro>Socorro</a>.
+My first impress by reading the OPW projects is that this project of Mozilla is the coolest one. To verify that, I want to spend some time installing, running, and maybe solving some bug of <a href=https://wiki.mozilla.org/Socorro>Socorro</a>.
 
 <!-- more -->
 
 <h2> Installation </h2>
-
 
 <h3> Requirements </h3>
 
