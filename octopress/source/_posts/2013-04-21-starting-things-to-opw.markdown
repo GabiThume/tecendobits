@@ -177,9 +177,13 @@ After that, when running "make minidump_stackwalk", I got the error "cc1plus: er
 #@GCC_TRUE@	-Werror=vla
 {% endcodeblock %}
 
-Now, after following the steps to populate database and after running Socorro in dev mode (both servers, even the middleware), I am getting <strong>"Page not found (404)"</strong> when pointing Firefox to <strong>http://localhost:8000/home/products/WaterWolf</strong>. 
+After following the steps to populate database and running Socorro in dev mode (both servers, even the middleware), I got <code>Page not found (404)</code> when pointing Firefox to <code>http://localhost:8000/home/products/WaterWolf</code>. I updated the cvs files and it seems working. Right now, instead of using cvs, it is possible to populate the database PostgreSQL with fakedata: 
+{% codeblock lang:objc %}
+$ ./socorro/external/postgresql/setupdb_app.py --database_name=breakpad \
+--fakedata --dropdb --database_superusername=your_superuser \
+--database_superuserpassword=bPassword</code> 
+{% endcodeblock %}
 
-Hmm, whats the problem now?!
 
 <!--
 sudo dscl . -create /Users/postgres UserShell /usr/bin/false

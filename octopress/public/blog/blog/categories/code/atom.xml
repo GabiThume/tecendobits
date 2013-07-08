@@ -4,7 +4,7 @@
   <title><![CDATA[Category: code | TecendoBits/WeavingBits Blog]]></title>
   <link href="http://tecendobits.cc/blog/blog/categories/code/atom.xml" rel="self"/>
   <link href="http://tecendobits.cc/blog/"/>
-  <updated>2013-07-07T17:26:43-03:00</updated>
+  <updated>2013-07-08T13:08:29-03:00</updated>
   <id>http://tecendobits.cc/blog/</id>
   <author>
     <name><![CDATA[gabithume]]></name>
@@ -646,9 +646,14 @@ databaseHost.default = 'localhost'</strong></p>
 </span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
-<p>Now, after following the steps to populate database and after running Socorro in dev mode (both servers, even the middleware), I am getting <strong>"Page not found (404)"</strong> when pointing Firefox to <strong>http://localhost:8000/home/products/WaterWolf</strong>.</p>
-
-<p>Hmm, whats the problem now?!</p>
+<p>After following the steps to populate database and running Socorro in dev mode (both servers, even the middleware), I got <code>Page not found (404)</code> when pointing Firefox to <code>http://localhost:8000/home/products/WaterWolf</code>. I updated the cvs files and it seems working. Right now, instead of using cvs, it is possible to populate the database PostgreSQL with fakedata:
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">$</span> <span class="p">.</span><span class="o">/</span><span class="n">socorro</span><span class="o">/</span><span class="n">external</span><span class="o">/</span><span class="n">postgresql</span><span class="o">/</span><span class="n">setupdb_app</span><span class="p">.</span><span class="n">py</span> <span class="o">--</span><span class="n">database_name</span><span class="o">=</span><span class="n">breakpad</span> \
+</span><span class='line'><span class="o">--</span><span class="n">fakedata</span> <span class="o">--</span><span class="n">dropdb</span> <span class="o">--</span><span class="n">database_superusername</span><span class="o">=</span><span class="n">your_superuser</span> \
+</span><span class='line'><span class="o">--</span><span class="n">database_superuserpassword</span><span class="o">=</span><span class="n">bPassword</span><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <!--
 sudo dscl . -create /Users/postgres UserShell /usr/bin/false
