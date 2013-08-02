@@ -6,20 +6,19 @@ comments: true
 categories: [opw, mozilla, socorro, code, bug, test, documentation]
 ---
 
-I am finishing the first template version, and it is kind of hard because I am trying to understand how use mocks and keep an easy example on the template...
 ***
 
 ### Test Documentation
 
 I finished a first version of documentation by fixing @peterbe suggestions on my <a href=https://github.com/mozilla/socorro/pull/1336>Pull Request 1336</a> and @selena merged the code into socorro repository :)
 
-<!-- more -->
-
 ***
 
 ### Automatic integration tests
 
 At <a href=https://bugzilla.mozilla.org/show_bug.cgi?id=757447>Bug 757447</a> @adrian suggested me to integrate the two test scripts of ``socorro/integrationtest/`` into our test suite. So I filled in <a href=https://bugzilla.mozilla.org/show_bug.cgi?id=892672>Bug 892672</a>, which aims to automate those tests. 
+
+<!-- more -->
 
 To run automatic emails integration test:
 
