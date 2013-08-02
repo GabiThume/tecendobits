@@ -4,7 +4,7 @@
   <title><![CDATA[Category: code | TecendoBits/WeavingBits Blog]]></title>
   <link href="http://tecendobits.cc/blog/blog/categories/code/atom.xml" rel="self"/>
   <link href="http://tecendobits.cc/blog/"/>
-  <updated>2013-08-01T23:18:03-03:00</updated>
+  <updated>2013-08-02T11:49:13-03:00</updated>
   <id>http://tecendobits.cc/blog/</id>
   <author>
     <name><![CDATA[gabithume]]></name>
@@ -12,6 +12,93 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Test Gardening Report Week 5-6]]></title>
+    <link href="http://tecendobits.cc/blog/test-gardening-report-week-4-5/"/>
+    <updated>2013-07-28T12:07:00-03:00</updated>
+    <id>http://tecendobits.cc/blog/test-gardening-report-week-4-5</id>
+    <content type="html"><![CDATA[<p>I am finishing the first template version, and it is kind of hard because I am trying to understand how use mocks and keep an easy example on the template...</p>
+
+<hr />
+
+<h3>Test Documentation</h3>
+
+<p>I finished a first version of documentation by fixing @peterbe suggestions on my <a href=https://github.com/mozilla/socorro/pull/1336>Pull Request 1336</a> and @selena merged the code into socorro repository :)</p>
+
+<!-- more -->
+
+
+<hr />
+
+<h3>Automatic integration tests</h3>
+
+<p>At <a href=https://bugzilla.mozilla.org/show_bug.cgi?id=757447>Bug 757447</a> @adrian suggested me to integrate the two test scripts of <code>socorro/integrationtest/</code> into our test suite. So I filled in <a href=https://bugzilla.mozilla.org/show_bug.cgi?id=892672>Bug 892672</a>, which aims to automate those tests.</p>
+
+<p>To run automatic emails integration test:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">python</span> <span class="n">socorro</span><span class="o">/</span><span class="n">integrationtest</span><span class="o">/</span><span class="n">test_automatic_emails_app</span><span class="p">.</span><span class="n">py</span> <span class="o">--</span><span class="n">test_email_address</span><span class="o">=</span><span class="n">someone</span><span class="err">@</span><span class="n">example</span><span class="p">.</span><span class="n">com</span> <span class="o">--</span><span class="n">test_mode</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>It sends an email to a specified email address and you have to manually check that the email was received. @rhelmer suggested we use restmail to make it automatic. But I cannot run properly because I don't have permission (user account) to Exact Target, and I am not going to have it. So I need to figure out a way to test restmail without this.</p>
+
+<p>The elastic search integration test (<code>test_elasticsearch_storage_app.py</code>) will require some specific configuration to run on jenkins (to connect to jenkins ES instance). To test it I needed to install elastic search from <a href=http://www.elasticsearch.org/download/>http://www.elasticsearch.org/download/</a> and run the command bellow:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">$</span> <span class="n">python</span> <span class="n">socorro</span><span class="o">/</span><span class="n">integrationtest</span><span class="o">/</span><span class="n">test_elasticsearch_storage_app</span><span class="p">.</span><span class="n">py</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>At this point, I got the following error:</p>
+
+<p><code>pyelasticsearch.exceptions.ElasticHttpError: (400, u'MapperParsingException[failed to parse [client_crash_date]]; nested: MapperParsingException[failed to parse date field [2012-04-08 10:52:42.0], tried both date format [yyyy-MM-dd\'T\'HH:mm:ssZZ||yyyy-MM-dd\'T\'HH:mm:ss.SSSSSSZZ], and timestamp number with locale [null]]; nested: IllegalArgumentException[Invalid format: "2012-04-08 10:52:42.0" is malformed at " 10:52:42.0"]; ')</code></p>
+
+<p>To run it, I needed to change <code>testcrash/processed_crash.json</code> date formats from <code>2012-04-08 10:52:42.0</code> to <code>2012-04-08T10:52:42.0+00:00</code>. For continue those tests I need to run jenkins or at least know what are the configurations that I need to set. I still don't know how to do it, so I am going to come back to this later.</p>
+
+<hr />
+
+<h3>Goals</h3>
+
+<p>I had a great meeting with @selenamarie, we discussed about <a href=https://etherpad.mozilla.org/socorro-testing>socorro-testing</a> goals:</p>
+
+<p>=> I finished a version of the testing documentation: <a href=https://github.com/GabiThume/socorro/blob/test_template/docs/unittesting.rst>https://github.com/GabiThume/socorro/blob/test_template/docs/unittesting.rst</a></p>
+
+<p>=> For more coverage in crashstats, @peterbe created 2 tickets untill now and I already solved them (Pull Request <a href=https://github.com/mozilla/socorro-crashstats/pull/401>401</a> and <a href=https://github.com/mozilla/socorro-crashstats/pull/402>402</a>).</p>
+
+<p>=> About testing postgres procedures, I did the first step, that was to discover how to run backfill_matviews() and @selenamarie is taking care of first steps to implement them.</p>
+
+<p>=> In integration tests I had some problems when i tried to automated it. First, I will not have access to exacttarget for automatic emails, and secondly: after I ran the elasticsearch test, I didnt figure out what configurations I need to set to pass it on jenkins. I am not sure how to continue that, but I am going to see the bugs of  adrian email</p>
+
+<p>=> <a href=https://bugzilla.mozilla.org/show_bug.cgi?id=874650>Refresh Socorro Test Suite</a>:</p>
+
+<p><a href=https://bugzilla.mozilla.org/show_bug.cgi?id=651661>Bug 651661</a> closed <br/>
+<a href=https://bugzilla.mozilla.org/show_bug.cgi?id=817461>Bug 651661</a> closed  <br/>
+<a href=https://bugzilla.mozilla.org/show_bug.cgi?id=864854>Bug 864854</a> closed  <br/>
+<a href=https://bugzilla.mozilla.org/show_bug.cgi?id=874918>Bug 874918</a> skiped for now, if you want to/have time go ahead and add them  <br/>
+<a href=https://bugzilla.mozilla.org/show_bug.cgi?id=874653>Bug 874653</a> leaving open until August workweek   <br/>
+<a href=https://bugzilla.mozilla.org/show_bug.cgi?id=866448>Bug 866448</a> closed   <br/>
+<a href=https://bugzilla.mozilla.org/show_bug.cgi?id=713973>Bug 713973</a> what was the old config system?  <br/>
+<a href=https://bugzilla.mozilla.org/show_bug.cgi?id=820512>Bug 820512</a> go ahead and try it out</p>
+
+<hr />
+
+<h3>Submitter App Test</h3>
+
+<p>Submitter app test is related to <a href=https://bugzilla.mozilla.org/show_bug.cgi?id=820512>Bug 820512</a>. So I wrote the test:</p>
+
+<p><div><script src='https://gist.github.com/6065972.js'></script>
+<noscript><pre><code></code></pre></noscript></div>
+</p>
+
+<p>But Jenkins failed at my <a href=https://github.com/mozilla/socorro/pull/1368>Pull Request 1368</a>. Seems something related to <code>import SubmitterApp</code> (<a href=https://github.com/mozilla/socorro/pull/1368#issuecomment-21886102>here</a>). I don't know how to solve it, maybe I need to wait untill @lars can have a look at it.</p>
+
+<hr />
+
+<h3>Meetings</h3>
+
+<p>I called in Weekly Meetings on <a href=https://wiki.mozilla.org/Breakpad/Status_Meetings/2013-July-17>17th July</a> and <a href=https://wiki.mozilla.org/Breakpad/Status_Meetings/2013-July-31>31st July</a> during this time.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Test Gardening Report Week 3-4]]></title>
@@ -547,265 +634,6 @@ I am glad for everything!</p>
 <p>Also, a thanks to <a href=http://mediagoblin.org/>MediaGoblin</a> guys, other amazing project I had applied for ;)</p>
 
 <p>So this blog now became a day-to-day in my development at <a href=https://wiki.mozilla.org/Socorro>Socorro Project</a> and my contribution could be found at <a href=https://github.com/GabiThume>GitHub</a> :)</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Mozilla Test Gardener in Mac OS X 10.8]]></title>
-    <link href="http://tecendobits.cc/blog/starting-things-to-opw/"/>
-    <updated>2013-04-21T18:22:00-03:00</updated>
-    <id>http://tecendobits.cc/blog/starting-things-to-opw</id>
-    <content type="html"><![CDATA[<p><a href=https://live.gnome.org/OutreachProgramForWomen>Outreach Program for Women</a> is an amazing program to include women in Free and Open Source Software. I am really interested in applying. So I decided to start by studing the Mozilla Projects to the OPW.</p>
-
-<p>Project <a href=https://wiki.mozilla.org/GNOME_Outreach_Summer2013>Test Gardener</a>: "Write unit and integration tests for Socorro related to database, backend crash storage and middleware."</p>
-
-<p>My first impress by reading the OPW projects is that this project of Mozilla is the coolest one. To verify that, I want to spend some time installing, running, and maybe solving some bug of <a href=https://wiki.mozilla.org/Socorro>Socorro</a>.</p>
-
-<!-- more -->
-
-
-
-
-<h2> Installation </h2>
-
-
-
-
-<h3> Requirements </h3>
-
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">brew</span> <span class="n">install</span> <span class="n">postgresql</span> <span class="c1">// PostgreSQL 9.2</span>
-</span><span class='line'><span class="n">brew</span> <span class="n">install</span> <span class="n">gpp</span> <span class="c1">// G++ Compiler 2.24</span>
-</span><span class='line'><span class="n">brew</span> <span class="n">install</span> <span class="n">git</span> <span class="c1">// Git</span>
-</span><span class='line'><span class="n">sudo</span> <span class="n">easy_install</span> <span class="n">psycopg2</span> <span class="c1">// PostgreSQL database adapter for the Python programming language.</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p>Here I have this <a href=https://www.enthought.com/canopy-express/?Download=Download+EPD+Free+7.3-2>Python</a>.</p>
-
-<h3>Configure PostgreSQL</h3>
-
-
-<p>I had a problem with PATH, so when I tried:
-<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">which</span> <span class="n">psql</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p>I saw usr/bin/psql instead of usr/local/bin/psql, so you need to add usr/local/bin to the head of your PATH in your ~/.bash_profile:
-<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">export</span> <span class="n">PATH</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="nl">bin:</span><span class="n">$PATH</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p>Modify postgresql config to UTC timezone:</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">sudo</span> <span class="n">emacs</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">pgsql</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">postgresql</span><span class="p">.</span><span class="n">conf</span>
-</span><span class='line'><span class="n">timezone</span> <span class="o">=</span> <span class="err">&#39;</span><span class="n">UTC</span><span class="err">&#39;</span>
-</span><span class='line'><span class="n">brew</span> <span class="n">service</span> <span class="n">restart</span> <span class="n">postgresql</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p>Then, I received:</p>
-
-<h6>"Could not connect to server: Permission denied
-
-  Is the server running locally and accepting
-
-  connections on Unix domain socket "/var/pgsql_socket/.s.PGSQL.5432"?</h6>
-
-
-<p>To deal with that, I checked where the target was, created the pgsql_socket directory and a symlink:</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">sudo</span> <span class="n">find</span> <span class="o">/</span> <span class="o">-</span><span class="n">name</span> <span class="p">.</span><span class="n">s</span><span class="p">.</span><span class="n">PGSQL</span><span class="mf">.5432</span>
-</span><span class='line'><span class="n">mkdir</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">pgsql_socket</span><span class="o">/</span>
-</span><span class='line'><span class="n">ln</span> <span class="o">-</span><span class="n">s</span> <span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="p">.</span><span class="n">s</span><span class="p">.</span><span class="n">PGSQL</span><span class="mf">.5432</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">pgsql_socket</span><span class="o">/</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<!--
-// initdb /usr/local/var/postgres -E utf8
-// postgres -D /usr/local/var/postgres
-//createuser -s -r postgres
--->
-
-
-<p>Then I booted the PostgreSQL, created a superuser account for myself, and the breakpad_rw account for Socorro:
-<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">initdb</span> <span class="o">-</span><span class="n">D</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">pgsql</span><span class="o">/</span><span class="n">data</span> <span class="o">-</span><span class="n">E</span> <span class="n">utf8</span>
-</span><span class='line'><span class="n">postgres</span> <span class="o">-</span><span class="n">D</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">pgsql</span><span class="o">/</span><span class="n">data</span>
-</span><span class='line'><span class="n">createuser</span> <span class="o">-</span><span class="n">s</span> <span class="n">$USER</span>
-</span><span class='line'><span class="n">psql</span> <span class="o">-</span><span class="n">c</span> <span class="s">&quot;CREATE USER breakpad_rw&quot;</span> <span class="n">template1</span>
-</span><span class='line'><span class="n">psql</span> <span class="o">-</span><span class="n">c</span> <span class="s">&quot;ALTER USER breakpad_rw WITH ENCRYPTED PASSWORD &#39;aPassword&#39;&quot;</span> <span class="n">template1</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<h2> Socorro </h2>
-
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">git</span> <span class="n">clone</span> <span class="nl">https:</span><span class="c1">//github.com/mozilla/socorro</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<h2> CrashStats </h2>
-
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">git</span> <span class="n">clone</span> <span class="nl">https:</span><span class="c1">//github.com/mozilla/socorro-crashstats</span>
-</span><span class='line'><span class="n">cd</span> <span class="n">socorro</span><span class="o">-</span><span class="n">crashstats</span>
-</span><span class='line'><span class="n">git</span> <span class="n">submodule</span> <span class="n">update</span> <span class="o">--</span><span class="n">init</span> <span class="o">--</span><span class="n">recursive</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<h4> LESS Preprocessor </h4>
-
-
-<p>Node:
-<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">git</span> <span class="n">clone</span> <span class="nl">https:</span><span class="c1">//github.com/joyent/node.git</span>
-</span><span class='line'><span class="n">cd</span> <span class="n">node</span>
-</span><span class='line'><span class="n">git</span> <span class="n">checkout</span> <span class="n">v0</span><span class="mf">.8.2</span> <span class="p">(</span><span class="n">latest</span> <span class="n">stable</span> <span class="n">version</span> <span class="n">today</span> <span class="o">-</span> <span class="nl">https:</span><span class="c1">//github.com/joyent/node/wiki/Installation)</span>
-</span><span class='line'><span class="n">node</span> <span class="o">-</span><span class="n">v</span>
-</span><span class='line'><span class="n">export</span> <span class="n">PATH</span><span class="o">=</span><span class="n">$HOME</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">node</span><span class="o">/</span><span class="nl">bin:</span><span class="n">$PATH</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p>NPM:
-<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">curl</span> <span class="nl">http:</span><span class="c1">//npmjs.org/install.sh | sh</span>
-</span><span class='line'><span class="n">npm</span> <span class="o">-</span><span class="n">v</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">npm</span> <span class="n">install</span> <span class="o">-</span><span class="n">g</span> <span class="n">less</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<!--
-//cd socorro
-//sudo pip install -r requirements/dev.txt
--->
-
-
-
-
-<h4> Creating virtualenv and populate it: </h4>
-
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">brew</span> <span class="n">install</span> <span class="n">tcl</span><span class="o">-</span><span class="n">tk</span>
-</span><span class='line'><span class="n">sudo</span> <span class="n">easy_install</span> <span class="n">install</span> <span class="n">virtualenv</span>
-</span><span class='line'><span class="n">sudo</span> <span class="n">easy_install</span> <span class="n">install</span> <span class="n">virtualenvwrapper</span>
-</span><span class='line'><span class="n">virtualenv</span> <span class="o">--</span><span class="n">python</span><span class="o">=</span><span class="n">python2</span><span class="mf">.6</span> <span class="p">.</span><span class="n">virtualenv</span>
-</span><span class='line'><span class="n">source</span> <span class="p">.</span><span class="n">virtualenv</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">activate</span>
-</span><span class='line'><span class="n">cd</span> <span class="n">socorro</span><span class="o">-</span><span class="n">crashstats</span>
-</span><span class='line'><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">/</span><span class="n">compiled</span><span class="p">.</span><span class="n">txt</span>
-</span><span class='line'><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">/</span><span class="n">dev</span><span class="p">.</span><span class="n">txt</span>
-</span><span class='line'><span class="n">cp</span> <span class="n">crashstats</span><span class="o">/</span><span class="n">settings</span><span class="o">/</span><span class="n">local</span><span class="p">.</span><span class="n">py</span><span class="o">-</span><span class="n">dist</span> <span class="n">crashstats</span><span class="o">/</span><span class="n">settings</span><span class="o">/</span><span class="n">local</span><span class="p">.</span><span class="n">py</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<h2> Running tests: </h2>
-
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">cd</span> <span class="n">socorro</span>
-</span><span class='line'><span class="n">make</span> <span class="n">test</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p>At this point, I have everything working: The CrashStats Server, the PostgreSQL, the virtual environment... But I am getting this problem below and I really don't know how to solve:</p>
-
-<p><div><script src='https://gist.github.com/5440281.js'></script>
-<noscript><pre><code></code></pre></noscript></div>
-</p>
-
-<p>To solve this, I ran:
-<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">psql</span> <span class="o">-</span><span class="n">d</span> <span class="n">postgres</span> <span class="o">-</span><span class="n">f</span> <span class="n">sql</span><span class="o">/</span><span class="n">roles</span><span class="p">.</span><span class="n">sql</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p>Then, I received an error about "jenkins-pg92" and I fixed it using <a href=https://groups.google.com/forum/?fromgroups=#!topic/mozilla.tools.socorro/DDvCjTDQwo8>this topic</a>:</p>
-
-<p>In socorro/unittest/config/commonconfig.py switch:</p>
-
-<p><strong>databaseHost.default = 'jenkins-pg92' to
-databaseHost.default = 'localhost'</strong></p>
-
-<p>After that, I got an error of "permission denied":</p>
-
-<p><div><script src='https://gist.github.com/5440840.js'></script>
-<noscript><pre><code></code></pre></noscript></div>
-</p>
-
-<p>And the command below fix that:</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="s">&quot;psql -c &#39;alter user breakpad_rw superuser template1&quot;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p>Then I get "Ran 588 tests in 27.220s" and a big OK :)</p>
-
-<p>The reported errors can be found at:</p>
-
-<p>https://bugzilla.mozilla.org/show_bug.cgi?id=864070</p>
-
-<p>https://bugzilla.mozilla.org/show_bug.cgi?id=864854</p>
-
-<p>After that, when running "make minidump_stackwalk", I got the error "cc1plus: error: -Werror=vla: No option -Wvla", so I fixed by commenting the line 85 on file <strong>socorro/google-breakpad/Makefile.in</strong>:
-<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="err">@</span><span class="n">GCC_TRUE</span><span class="err">@</span> <span class="o">-</span><span class="n">Werror</span><span class="o">=</span><span class="n">vla</span><span class="o">&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p>After following the steps to populate database and running Socorro in dev mode (both servers, even the middleware), I got <code>Page not found (404)</code> when pointing Firefox to <code>http://localhost:8000/home/products/WaterWolf</code>. I updated the cvs files and it seems working. Right now, instead of using cvs, it is possible to populate the database PostgreSQL with fakedata:
-<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">$</span> <span class="p">.</span><span class="o">/</span><span class="n">socorro</span><span class="o">/</span><span class="n">external</span><span class="o">/</span><span class="n">postgresql</span><span class="o">/</span><span class="n">setupdb_app</span><span class="p">.</span><span class="n">py</span> <span class="o">--</span><span class="n">database_name</span><span class="o">=</span><span class="n">breakpad</span> \
-</span><span class='line'><span class="o">--</span><span class="n">fakedata</span> <span class="o">--</span><span class="n">dropdb</span> <span class="o">--</span><span class="n">database_superusername</span><span class="o">=</span><span class="n">your_superuser</span> \
-</span><span class='line'><span class="o">--</span><span class="n">database_superuserpassword</span><span class="o">=</span><span class="n">bPassword</span><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<!--
-sudo dscl . -create /Users/postgres UserShell /usr/bin/false
-brew uninstall postgresql
-brew install postgresql
-
-psql -c 'alter user breakpad_rw superuser'
-
-And after this stage, all the commands did not work.
-
-Well, maybe I will try to install all this again in Linux.
-
--->
-
 ]]></content>
   </entry>
   

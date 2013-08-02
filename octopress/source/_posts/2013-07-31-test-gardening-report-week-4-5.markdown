@@ -3,7 +3,7 @@ layout: post
 title: "Test Gardening Report Week 5-6"
 date: 2013-07-28 12:07
 comments: true
-categories: 
+categories: [opw, mozilla, socorro, code, bug, test, documentation]
 ---
 
 I am finishing the first template version, and it is kind of hard because I am trying to understand how use mocks and keep an easy example on the template...

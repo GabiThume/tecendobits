@@ -4,7 +4,7 @@
   <title><![CDATA[Category: mozilla | TecendoBits/WeavingBits Blog]]></title>
   <link href="http://tecendobits.cc/blog/blog/categories/mozilla/atom.xml" rel="self"/>
   <link href="http://tecendobits.cc/blog/"/>
-  <updated>2013-08-01T23:18:03-03:00</updated>
+  <updated>2013-08-02T11:49:13-03:00</updated>
   <id>http://tecendobits.cc/blog/</id>
   <author>
     <name><![CDATA[gabithume]]></name>
@@ -12,6 +12,466 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Test Gardening Report Week 5-6]]></title>
+    <link href="http://tecendobits.cc/blog/test-gardening-report-week-4-5/"/>
+    <updated>2013-07-28T12:07:00-03:00</updated>
+    <id>http://tecendobits.cc/blog/test-gardening-report-week-4-5</id>
+    <content type="html"><![CDATA[<p>I am finishing the first template version, and it is kind of hard because I am trying to understand how use mocks and keep an easy example on the template...</p>
+
+<hr />
+
+<h3>Test Documentation</h3>
+
+<p>I finished a first version of documentation by fixing @peterbe suggestions on my <a href=https://github.com/mozilla/socorro/pull/1336>Pull Request 1336</a> and @selena merged the code into socorro repository :)</p>
+
+<!-- more -->
+
+
+<hr />
+
+<h3>Automatic integration tests</h3>
+
+<p>At <a href=https://bugzilla.mozilla.org/show_bug.cgi?id=757447>Bug 757447</a> @adrian suggested me to integrate the two test scripts of <code>socorro/integrationtest/</code> into our test suite. So I filled in <a href=https://bugzilla.mozilla.org/show_bug.cgi?id=892672>Bug 892672</a>, which aims to automate those tests.</p>
+
+<p>To run automatic emails integration test:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">python</span> <span class="n">socorro</span><span class="o">/</span><span class="n">integrationtest</span><span class="o">/</span><span class="n">test_automatic_emails_app</span><span class="p">.</span><span class="n">py</span> <span class="o">--</span><span class="n">test_email_address</span><span class="o">=</span><span class="n">someone</span><span class="err">@</span><span class="n">example</span><span class="p">.</span><span class="n">com</span> <span class="o">--</span><span class="n">test_mode</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>It sends an email to a specified email address and you have to manually check that the email was received. @rhelmer suggested we use restmail to make it automatic. But I cannot run properly because I don't have permission (user account) to Exact Target, and I am not going to have it. So I need to figure out a way to test restmail without this.</p>
+
+<p>The elastic search integration test (<code>test_elasticsearch_storage_app.py</code>) will require some specific configuration to run on jenkins (to connect to jenkins ES instance). To test it I needed to install elastic search from <a href=http://www.elasticsearch.org/download/>http://www.elasticsearch.org/download/</a> and run the command bellow:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">$</span> <span class="n">python</span> <span class="n">socorro</span><span class="o">/</span><span class="n">integrationtest</span><span class="o">/</span><span class="n">test_elasticsearch_storage_app</span><span class="p">.</span><span class="n">py</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>At this point, I got the following error:</p>
+
+<p><code>pyelasticsearch.exceptions.ElasticHttpError: (400, u'MapperParsingException[failed to parse [client_crash_date]]; nested: MapperParsingException[failed to parse date field [2012-04-08 10:52:42.0], tried both date format [yyyy-MM-dd\'T\'HH:mm:ssZZ||yyyy-MM-dd\'T\'HH:mm:ss.SSSSSSZZ], and timestamp number with locale [null]]; nested: IllegalArgumentException[Invalid format: "2012-04-08 10:52:42.0" is malformed at " 10:52:42.0"]; ')</code></p>
+
+<p>To run it, I needed to change <code>testcrash/processed_crash.json</code> date formats from <code>2012-04-08 10:52:42.0</code> to <code>2012-04-08T10:52:42.0+00:00</code>. For continue those tests I need to run jenkins or at least know what are the configurations that I need to set. I still don't know how to do it, so I am going to come back to this later.</p>
+
+<hr />
+
+<h3>Goals</h3>
+
+<p>I had a great meeting with @selenamarie, we discussed about <a href=https://etherpad.mozilla.org/socorro-testing>socorro-testing</a> goals:</p>
+
+<p>=> I finished a version of the testing documentation: <a href=https://github.com/GabiThume/socorro/blob/test_template/docs/unittesting.rst>https://github.com/GabiThume/socorro/blob/test_template/docs/unittesting.rst</a></p>
+
+<p>=> For more coverage in crashstats, @peterbe created 2 tickets untill now and I already solved them (Pull Request <a href=https://github.com/mozilla/socorro-crashstats/pull/401>401</a> and <a href=https://github.com/mozilla/socorro-crashstats/pull/402>402</a>).</p>
+
+<p>=> About testing postgres procedures, I did the first step, that was to discover how to run backfill_matviews() and @selenamarie is taking care of first steps to implement them.</p>
+
+<p>=> In integration tests I had some problems when i tried to automated it. First, I will not have access to exacttarget for automatic emails, and secondly: after I ran the elasticsearch test, I didnt figure out what configurations I need to set to pass it on jenkins. I am not sure how to continue that, but I am going to see the bugs of  adrian email</p>
+
+<p>=> <a href=https://bugzilla.mozilla.org/show_bug.cgi?id=874650>Refresh Socorro Test Suite</a>:</p>
+
+<p><a href=https://bugzilla.mozilla.org/show_bug.cgi?id=651661>Bug 651661</a> closed <br/>
+<a href=https://bugzilla.mozilla.org/show_bug.cgi?id=817461>Bug 651661</a> closed  <br/>
+<a href=https://bugzilla.mozilla.org/show_bug.cgi?id=864854>Bug 864854</a> closed  <br/>
+<a href=https://bugzilla.mozilla.org/show_bug.cgi?id=874918>Bug 874918</a> skiped for now, if you want to/have time go ahead and add them  <br/>
+<a href=https://bugzilla.mozilla.org/show_bug.cgi?id=874653>Bug 874653</a> leaving open until August workweek   <br/>
+<a href=https://bugzilla.mozilla.org/show_bug.cgi?id=866448>Bug 866448</a> closed   <br/>
+<a href=https://bugzilla.mozilla.org/show_bug.cgi?id=713973>Bug 713973</a> what was the old config system?  <br/>
+<a href=https://bugzilla.mozilla.org/show_bug.cgi?id=820512>Bug 820512</a> go ahead and try it out</p>
+
+<hr />
+
+<h3>Submitter App Test</h3>
+
+<p>Submitter app test is related to <a href=https://bugzilla.mozilla.org/show_bug.cgi?id=820512>Bug 820512</a>. So I wrote the test:</p>
+
+<p><div><script src='https://gist.github.com/6065972.js'></script>
+<noscript><pre><code></code></pre></noscript></div>
+</p>
+
+<p>But Jenkins failed at my <a href=https://github.com/mozilla/socorro/pull/1368>Pull Request 1368</a>. Seems something related to <code>import SubmitterApp</code> (<a href=https://github.com/mozilla/socorro/pull/1368#issuecomment-21886102>here</a>). I don't know how to solve it, maybe I need to wait untill @lars can have a look at it.</p>
+
+<hr />
+
+<h3>Meetings</h3>
+
+<p>I called in Weekly Meetings on <a href=https://wiki.mozilla.org/Breakpad/Status_Meetings/2013-July-17>17th July</a> and <a href=https://wiki.mozilla.org/Breakpad/Status_Meetings/2013-July-31>31st July</a> during this time.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Test Gardening Report Week 3-4]]></title>
+    <link href="http://tecendobits.cc/blog/test-gardening/"/>
+    <updated>2013-07-14T20:19:00-03:00</updated>
+    <id>http://tecendobits.cc/blog/test-gardening</id>
+    <content type="html"><![CDATA[<p>I started to run deeply on Test Gardening. I initiate to understand the architecture and the behavior of Socorro Project, but it is a project that constantly is changing technologies, so it is important to keep learning about it.</p>
+
+<hr />
+
+<h3>Bugs</h3>
+
+<p>I begin these weeks smashing some bugs related to Socorro Crashstats, dealing with mocks, urls and json:</p>
+
+<p><a href=https://bugzilla.mozilla.org/show_bug.cgi?id=888520>Bug 888520:</a> Add test for exploitable_crashes view. <a href=https://github.com/mozilla/socorro-crashstats/pull/401>Pull Request 401</a>. Was to create a <code>test_exploitable_crashes</code> function for <code>crashstats.exploitable_crashes</code> url:</p>
+
+<!-- more -->
+
+
+<p><div><script src='https://gist.github.com/5902363.js'></script>
+<noscript><pre><code></code></pre></noscript></div>
+</p>
+
+<p><a href=https://bugzilla.mozilla.org/show_bug.cgi?id=888952>Bug 888952:</a> Add test coverage for crontabber_state_json() view. <a href=https://github.com/mozilla/socorro-crashstats/pull/402>Pull Request 402</a>. I created a <code>test_crontabber_state_json</code> function to test <code>crontabber_state_json</code>:</p>
+
+<p><div><script src='https://gist.github.com/6118039.js'></script>
+<noscript><pre><code></code></pre></noscript></div>
+</p>
+
+<p>Socorro <a href=https://bugzilla.mozilla.org/show_bug.cgi?id=817461>Bug 817461</a> was open, but I tested it on my computer and worked, so I searched for the test and I found that Selena had already <a href=https://github.com/mozilla/socorro/commit/ade562e91c26d6c6c2f8c28cd8297d72a77d70bf>solved</a> but not had closed yet.</p>
+
+<p>In my OPW application I created a failing test for rank column in Topcrashes CSV, which was starting with 0 instead of 1 (<a href=https://bugzilla.mozilla.org/show_bug.cgi?id=533628>Bug 533628</a>). Then on time to actually fix it I had some problems because I needed to read each file of crashstats that uses <code>currentRank</code> variable and test its value. But when I found it, was just one simple operation <code>+1</code> that fixed it (<a href=https://github.com/mozilla/socorro-crashstats/pull/418>PR 418</a>).</p>
+
+<p>In <a href=https://bugzilla.mozilla.org/show_bug.cgi?id=757447>Bug 757447</a> the fillDB.py file was already deleted. But there were some instructions in socorro/integrationtest/README.txt about running fillDB, that doesn't exist. So I deleted that readme file (<a href=https://github.com/mozilla/socorro/pull/1334>PR 1334</a>). In this bug we started a discussion about making how to automate integration tests.</p>
+
+<hr />
+
+<h3>Git Branch</h3>
+
+<p>The best way to write code contribution to an external repository is by creating a <code>git branch</code>. The modifications have more sense when they are related to bug tickets. The following commands can be used to create a branch, go inside it, add the modifications, commit and push your contribution related to some bug in remote repository:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">git</span> <span class="n">checkout</span> <span class="o">-</span><span class="n">b</span> <span class="n">bug_bugnumber</span>
+</span><span class='line'><span class="n">make</span> <span class="n">your</span> <span class="n">modifications</span>
+</span><span class='line'><span class="n">git</span> <span class="n">add</span> <span class="n">changed_files</span>
+</span><span class='line'><span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">am</span> <span class="s">&quot;bug_bugnumber - message&quot;</span>
+</span><span class='line'><span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="n">branch_name</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<hr />
+
+<h3>Goals</h3>
+
+<p>I had my first meeting with @selenamarie through Skype. She asked me to take a look at <a href=https://etherpad.mozilla.org/webtools-q32013>Q3 team goals</a> and we discussed about my goals for this quarter, so became clear that I need to focus on some points (we are writing about it at <a href=https://etherpad.mozilla.org/socorro-testing>Socorro-Testing etherpad</a>):</p>
+
+<p>=> Documentation about test (some kind of a template: mocks usage, decorators, how to run (specific ones), requirements)  <br/>
+=> Testing postgres store procedures  <br/>
+=> More testing in socorro-crashstats  <br/>
+=> More coverage in socorro (wait for <a href=https://etherpad.mozilla.org/socorro-deprecation-station>deprecation</a>)  <br/>
+=> Selenium tests + django  <br/>
+=> Refresh Socorro Test Suite</p>
+
+<h4>Testing Postgres Store Procedures Goal</h4>
+
+<p>The first step was to have a look at the postgres stored procedures and how to run <code>backfill_matviews()</code>. So I read about backfills and updates on <code>socorro/external/postgresql/raw_sql/procs</code>. Then I asked myself: what is backfill?</p>
+
+<p>=> <strong>Backfill</strong> is to populate missing data from previous date when data was available. So, when we have a <code>NULL</code> data, we can fill it with some previous known. For example:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">ID</span>   <span class="n">Date</span> <span class="n">ID</span>    <span class="n">Value</span>
+</span><span class='line'><span class="n">id1</span>  <span class="mi">7</span><span class="o">/</span><span class="mo">01</span><span class="o">/</span><span class="mi">2013</span> <span class="mi">100</span>
+</span><span class='line'><span class="n">id2</span>  <span class="mi">7</span><span class="o">/</span><span class="mo">02</span><span class="o">/</span><span class="mi">2013</span> <span class="nb">NULL</span>
+</span><span class='line'><span class="n">id3</span>  <span class="mi">7</span><span class="o">/</span><span class="mo">03</span><span class="o">/</span><span class="mi">2013</span> <span class="mi">200</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>After backfill, this table became:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">ID</span>   <span class="n">Date</span> <span class="n">ID</span>    <span class="n">Value</span>
+</span><span class='line'><span class="n">id1</span>  <span class="mi">7</span><span class="o">/</span><span class="mo">01</span><span class="o">/</span><span class="mi">2013</span> <span class="mi">100</span>
+</span><span class='line'><span class="n">id2</span>  <span class="mi">7</span><span class="o">/</span><span class="mo">02</span><span class="o">/</span><span class="mi">2013</span> <span class="mi">100</span>
+</span><span class='line'><span class="n">id3</span>  <span class="mi">7</span><span class="o">/</span><span class="mo">03</span><span class="o">/</span><span class="mi">2013</span> <span class="mi">200</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>There is in socorro repository a <code>backfill</code> related to an update file. But how to run backfill of matviews (<code>socorro/external/postgresql/fakedata.py</code>)?   <br/>
+Setupdb file will call the backfill function, which will populate the matview:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">$</span> <span class="p">.</span><span class="o">/</span><span class="n">socorro</span><span class="o">/</span><span class="n">external</span><span class="o">/</span><span class="n">postgresql</span><span class="o">/</span><span class="n">setupdb_app</span><span class="p">.</span><span class="n">py</span>    <span class="o">--</span><span class="n">database_name</span><span class="o">=</span><span class="n">breakpad</span> <span class="o">--</span><span class="n">fakedata</span> <span class="o">--</span><span class="n">dropdb</span> <span class="o">--</span><span class="n">database_superusername</span><span class="o">=</span><span class="n">test</span> <span class="o">--</span><span class="n">database_superuserpassword</span><span class="o">=</span><span class="n">bPassword</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Or we can directly call <code>backfills_matviews</code>:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">$</span> <span class="n">psql</span> <span class="o">-</span><span class="n">d</span> <span class="s">&quot;breakpad&quot;</span> <span class="o">-</span><span class="n">c</span> <span class="s">&quot;SELECT backfill_matviews(date &#39;2013-06-30&#39;, current_date)&quot;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<h4>Test Documentation Goal</h4>
+
+<p>I discovered how to run specific tests in socorro-crashstats:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">$</span> <span class="n">virtualenv</span> <span class="o">--</span><span class="n">python</span><span class="o">=</span><span class="n">python2</span><span class="mf">.6</span> <span class="p">.</span><span class="n">virtualenv</span>
+</span><span class='line'><span class="n">$</span> <span class="n">source</span> <span class="p">.</span><span class="n">virtualenv</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">activate</span>
+</span><span class='line'><span class="n">$</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">/</span><span class="n">compiled</span><span class="p">.</span><span class="n">txt</span>
+</span><span class='line'><span class="n">$</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">/</span><span class="n">dev</span><span class="p">.</span><span class="n">txt</span>
+</span><span class='line'><span class="n">$</span> <span class="p">.</span><span class="o">/</span><span class="n">manage</span><span class="p">.</span><span class="n">py</span> <span class="n">test</span> <span class="n">crashstats</span><span class="o">/</span><span class="n">crashstats</span><span class="o">/</span><span class="n">tests</span><span class="o">/</span><span class="n">test_views</span><span class="p">.</span><span class="nl">py:</span><span class="n">TestViews</span><span class="p">.</span><span class="n">test_crontabber_state_json</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>And I started to <a href=https://github.com/GabiThume/socorro/commit/1d07aed15ed0b0a0bfa3b84355b6eb198c0c68ee>update</a> the testing documentation, which can be found at <a href=http://socorro.readthedocs.org/en/latest/unittesting.html>Socorro readthedocs</a>. I am going to publish this documentation at my blog later. It is really important for Socorro testing that it can works as a guide for write or run new tests.</p>
+
+<hr />
+
+<h3>Miscellany</h3>
+
+<p>A nice blog post about Socorro crash reports can be found at <a href=http://people.mozilla.org/~sguha/species.crash.report.html>http://people.mozilla.org/~sguha/species.crash.report.html</a>. It have some graphics to show how accurate the samples are estimates, their accuracy and sample rates of the Crash Report Signatures.</p>
+
+<hr />
+
+<h3>Meetings</h3>
+
+<p>I called in Weekly Meetings on <a href=https://wiki.mozilla.org/Breakpad/Status_Meetings/2013-July-03>3rd July</a> and <a href=https://wiki.mozilla.org/Breakpad/Status_Meetings/2013-July-10>10th July</a> during this time.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Test Gardening Report Week 1-2]]></title>
+    <link href="http://tecendobits.cc/blog/first-weeks-of-opw/"/>
+    <updated>2013-06-30T10:13:00-03:00</updated>
+    <id>http://tecendobits.cc/blog/first-weeks-of-opw</id>
+    <content type="html"><![CDATA[<p>The Outreach Program has began on June 17th. Those were two really cool weeks!</p>
+
+<p>One of my favorite things in the whole world is coding, so I think I am in the right project :) Although i didn't properly code during this time, it was filled with learning (super needed).
+I had contact with a lot of stuff that I had never imagined before. First of all: I followed in a daily basis the work of a development team. They have to deal with a lot of releases and to maintain a huge system that collects, processes, stores and displays crash reports from clients (this is really a hard work!). Besides that, curently they are also migrating some tools (like PHP to Django), work that requer a lot of team work! Which they do brightly :)</p>
+
+<p>I am going to describe here some of the relevant things that happened in these first weeks. If you are curious about knowing everything that is happening, go check my OPW diary: <a href=https://etherpad.mozilla.org/opw2013>https://etherpad.mozilla.org/opw2013</a>.</p>
+
+<!-- more -->
+
+
+<hr />
+
+<h3>Socorro Installation</h3>
+
+<p>The first thing I did was <a href=https://socorro.readthedocs.org/en/latest/installation.html#installation-requirements>installing</a> socorro and socorro-crashstats in my Ubuntu VirtualMachine, instead of Mac OS. I found some problems with the installation:</p>
+
+<p>First, I received an error <code>Peer authentication failed for user "test"</code> when i tried to run tests inside socorro. To solve that, I edited the postgresql file <code>/etc/postgresql/9.2/main/pg_hba.conf</code> changing every connection method field to <code>trust</code>.</p>
+
+<p>Then i got <code>psql: FATAL:  role "test" does not exist</code>. So I created the test user:
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">$</span> <span class="n">createuser</span> <span class="o">-</span><span class="n">s</span> <span class="n">test</span>  <span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>A new error was a little bit weird for me: <code>type "citext" does not exist</code>. But I remembered an error fix made by @selenamarie to a database problem:
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">$</span> <span class="s">&quot;psql -c &#39;alter user breakpad_rw superuselr&#39; template1&quot;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>After that, I ran <code>make test</code> that returned <code>role "breakpad_ro" does not exist</code>, so I fixed it with:
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="s">&quot;psql -d postgres -f sql/roles.sql&quot;</span><span class="p">.</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>New instructions at installation say to install json_enhancementes to use in PostgreSQL: <code>make json_enhancements_pg_extension</code>. But I got an error when running the following command:<br/>
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">$</span> <span class="n">socorro</span><span class="o">-</span><span class="n">virtualenv</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">python</span> <span class="o">-</span><span class="n">c</span> <span class="s">&quot;from pgxnclient import cli; cli.main([&#39;install&#39;, &#39;json_enhancements&#39;])&quot;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>After talking with @selenamarie and @rhelmer, it became clear that a dev package was needed:
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">$</span> <span class="n">sudo</span> <span class="n">aptitude</span> <span class="n">install</span> <span class="n">postgresql</span><span class="o">-</span><span class="n">server</span><span class="o">-</span><span class="n">dev</span><span class="o">-</span><span class="mf">9.2</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>And then the tests finally ran!</p>
+
+<p>After that, it was needed to <a href=https://socorro.readthedocs.org/en/latest/installation.html#populate-postgresql-database>populate the database</a>. At that time, <code>name</code> was missing at <code>--database_superuser</code> in the command that populate the breakpad database using fakedata at Socorro Install page.</p>
+
+<p>In the end, I had some problems while running the server of socorro-crashstats because I didn't install <a href=http://www.thefourtheye.in/2013/04/installing-python-ldap-in-ubuntu.html>some libraries needed to LDAP</a>.</p>
+
+<hr />
+
+<h3>Git Update</h3>
+
+<p>I am always making changes in my fork to test something or by accident. Sometimes I need to reset it. To ignore all modifications and pull to overwrite local changes, you have to clean the working tree (carefully):
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">$</span> <span class="n">git</span> <span class="n">reset</span> <span class="o">--</span><span class="n">hard</span>
+</span><span class='line'><span class="n">$</span> <span class="n">git</span> <span class="n">pull</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>And to update your fork based on the original repository:
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">$</span> <span class="n">git</span> <span class="n">remote</span> <span class="n">add</span> <span class="n">moz</span> <span class="nl">https:</span><span class="c1">//github.com/mozilla/socorro.git</span>
+</span><span class='line'><span class="n">$</span> <span class="n">git</span> <span class="n">fetch</span> <span class="n">moz</span>
+</span><span class='line'><span class="n">$</span> <span class="n">git</span> <span class="n">merge</span> <span class="n">moz</span><span class="o">/</span><span class="n">master</span>
+</span><span class='line'><span class="n">$</span> <span class="n">git</span> <span class="n">push</span> <span class="n">origin</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<hr />
+
+<h3>Test Development Research</h3>
+
+<p>After that, @selenamarie and I started reading and discussing about <a href=https://etherpad.mozilla.org/socorro-testing>Socorro testing</a>.</p>
+
+<p>By first, I tried to understand the difference between state and behaviour verification tests:</p>
+
+<p>Tests double objects are used instead of real objects mostly when we want to test without change the real environment. Let me make myself clear with an example from the <a href=http://martinfowler.com/articles/mocksArentStubs.html>mocksArentStubs</a> page: <strong><em>"We wanted to send an email message if we failed to fill an order. The problem is that we don't want to send actual email messages out to customers during testing. So instead we create a test double of our email system, one that we can control and manipulate"</em></strong>. That is a really good and complex reference, which the author presents that a test double object can be of four kinds:</p>
+
+<p><strong>Dummy</strong>: "are around but never actually used"</p>
+
+<p><strong>Fake</strong>: "have working implementations, but usually take some shortcut which makes them not suitable for production"</p>
+
+<p><strong>Stubs</strong>: "provide canned answers to calls made during the test"</p>
+
+<p><strong>Mocks</strong>: "objects pre-programmed with expectations which form a specification of the calls they are expected to receive"</p>
+
+<p>But what is the real different between mocks and stubs?  <br/>
+Both are test doubles, which means that they are not calling a real service (like mail or database), but mocks uses behavior verification rather than stubs, which uses state verification.</p>
+
+<p><strong>State verification</strong>: only cares about the final state - and not how that state was derived.</p>
+
+<p><strong>Behaviour verification</strong>: makes you stay focused about what you are testing, it is related to "how should this behave".</p>
+
+<p>There are already mocks in socorro project, so I studied to know more about it and also to understand <a ref=http://dannorth.net/introducing-bdd/>Behavior Driven Development (BDD)</a>, that can be a really great development style. But it can be hard for a team to go from a <code><strong>code => test</strong></code> to a <code><strong>test => code</strong></code> timeline.</p>
+
+<p><strong>Behavior Driven Development (BDD)</strong>:</p>
+
+<p>It is a development style oriented by testing. Like in the traditional TDD, consists in creating a failing test to some new feature, and then implementing the functional feature. The main difference between TDD and BDD is on verification, which is state and behavior respectively.</p>
+
+<p>In BDD we might have a language for feature file named <strong>Gherkin</strong>: "a natural language format describing a feature or part of a feature with representative examples of expected outcomes":</p>
+
+<p><blockquote><p>Given some initial context,  <br/><br/>When an event occurs, <br/><br/>Then ensure some outcomes.</p></blockquote></p>
+
+<p>In other words:  <br/>
+=> <strong>given</strong> a system known state before the user or external system perform some action,  <br/>
+=> <strong>when</strong> the user or the external system interacts (key actions),  <br/>
+=> <strong>then</strong> observe the outcomes.</p>
+
+<p>Which tools can help us?<br/>
+<a href=http://lettuce.it/>Lettuce</a>
+<a href=https://github.com/rlisagor/freshen>Freshen</a>
+<a href=http://behave.readthedocs.org/>Behave</a></p>
+
+<p>So I tried to write an unit test with <a href=http://behave.readthedocs.org/en/latest/tutorial.html>behave</a>, considering files of feature, environment and a test:
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">$</span> <span class="n">sudo</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">behave</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>And I did a test using <code>selenium+behave</code>:
+<div><script src='https://gist.github.com/5880058.js'></script>
+<noscript><pre><code></code></pre></noscript></div>
+</p>
+
+<p>There are already tests in socorro-crashstats with selenium, but they still didn't consider Django tests. In a near future, I might study how that works and create tests for it. For now, those kind of tests are in QA hands at <a href=https://github.com/mozilla/Socorro-Tests/pull/210>Socorro-Tests</a>, so the team is concerned about the idea of bringing those tests inside socorro (in dev hands). A video about socorro tests (dev's and QA's) is presented by Matt Brandt: <a href=http://www.youtube.com/watch?v=usqxFxsmg4o>#SFSE: Continuous Deployment At Mozilla</a></p>
+
+<p>Some usefull links about selenium + django:  <br/>
+<a href=http://www.tdd-django-tutorial.com/tutorial/1/>http://www.tdd-django-tutorial.com/tutorial/1/</a>  <br/>
+<a href=http://theintern.io/#>http://theintern.io/#</a>  <br/>
+<a href=http://lincolnloop.com/blog/2012/nov/2/introduction-django-selenium-testing/>http://lincolnloop.com/blog/2012/nov/2/introduction-django-selenium-testing/</a>  <br/>
+<a href=http://thecodachi.blogspot.com.br/2012/08/django-factory-boy-better-test.html>http://thecodachi.blogspot.com.br/2012/08/django-factory-boy-better-test.html</a>  <br/>
+<a href=http://www.shiningpanda.com/blog/2012/08/14/selenium-tests-django-14/>http://www.shiningpanda.com/blog/2012/08/14/selenium-tests-django-14/</a></p>
+
+<p>What is better for socorro project in test terms? <br/>
+I think it is impossible to have this answer without actually creating some BDD for a socorro module and receiving the team feedback.</p>
+
+<hr />
+
+<h3>Unit test Development</h3>
+
+<p>I searched for some module that I could implement a test for. Then I realized that mostly of the untested lines are related to exceptions. So I decided to learn more about that.</p>
+
+<p>With <a href=http://docs.python.org/2/library/unittest.html>unittest</a> it is possible to test exceptions using <a href=http://docs.python.org/2/library/unittest.html#unittest.TestCase.assertRaises>assertRaise</a>.
+In this function, if the exception is not raised, it gives a failure test.</p>
+
+<p>To understand how to implement an exception test like that, I read <code>test_crash_data.py</code>, which is currently 100% tested, and I found some tests like this:</p>
+
+<pre><code>        # Test 5: crash cannot be found
+        self.assertRaises(
+            ResourceNotFound,
+            service.get,
+            **{'uuid': 'c44245f4-c93b-49b8-86a2-c15dc3a695cb',
+                'datatype': 'processed'}
+        )
+</code></pre>
+
+<p>So, we can say that an exception test have the following format:  <br/>
+<code>assertRaises(nameOfException, functionCalled, *{arguments}, **{keywords})</code></p>
+
+<p>After that, I was reading tests when I found an easy one (I changed a calling function). I implemented it and chant <code>nose coverage</code>. 2 lines are now covered!</p>
+
+<pre><code>         self.assertRaises(CrashIDNotFound,
+                           crashstorage.get_raw_dumps,
+                           '114559a5-d8e6-428c-8b88-1c1f22120314')
+</code></pre>
+
+<hr />
+
+<h3>Socorro Coverage</h3>
+
+<p>There are unit tests on socorro that need more coverage. To know the coverage of socorro files, I ran:
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">$</span> <span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="n">socorro</span><span class="o">-</span><span class="n">virtualenv</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">nosetests</span> <span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">coverage</span> <span class="o">--</span><span class="n">cover</span><span class="o">-</span><span class="n">package</span><span class="o">=</span><span class="n">socorro</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Which gave me the following coverage: <a href=https://gist.github.com/GabiThume/5938460>Gist 5938460</a></p>
+
+<p>After that, I was reading the source files searching for uncoverage tests, and then I created a <a href=https://github.com/mozilla/socorro/pull/1306>Pull Request 1306</a> for one file 20% uncovered, but @lars unfortunately reported that the file was deprecated, so I changed my focus to search deprecated files first then cover unit tests.</p>
+
+<p>To known exactly which are the files that need coverage, we need to find out which are deprecated, so we created an <a href=https://etherpad.mozilla.org/socorro-deprecation-station>etherpad</a> where we put information collected by a script, then I filled in <a href=https://bugzilla.mozilla.org/show_bug.cgi?id=885411>bug #885411</a> about untested files and we asked for the responsable person of the module to help us to indicate the deprecated ones. Considering the team comments, maybe just <code> /socorro/collector/submitter_app.py</code> and <code>/socorro/cron/jobs/buggy.py</code> files should be tested.</p>
+
+<p>Script to search uncovered modules <strong>at all</strong>, considering the whole socorro package:
+<div><script src='https://gist.github.com/5808574.js'></script>
+<noscript><pre><code></code></pre></noscript></div>
+</p>
+
+<p>So I decided to try to exclude directories on nosetests (at least, the ones we know that are deprecated and the unittest directory as well). I used nose-exclude plugin for it:
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">$</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">use</span><span class="o">-</span><span class="n">mirrors</span> <span class="o">--</span><span class="n">download</span><span class="o">-</span><span class="n">cache</span><span class="o">=</span><span class="p">.</span><span class="o">/</span><span class="n">pip</span><span class="o">-</span><span class="n">cache</span> <span class="n">nose</span><span class="o">-</span><span class="n">exclude</span><span class="o">==</span><span class="mf">0.1.9</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Then I had a <a href=https://bitbucket.org/kgrandis/nose-exclude/issue/8/self-test-failing-on-019>problem</a>: the unittest was excluding itself (nothing was being tested). So, I decided to just choose which ones I wanted to cover, instead of exclude them.
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="err">$</span> <span class="n">socorro</span><span class="o">-</span><span class="n">virtualenv</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">nosetests</span> <span class="n">socorro</span> <span class="o">--</span><span class="k">with</span><span class="o">-</span><span class="n">coverage</span> <span class="o">--</span><span class="n">cover</span><span class="o">-</span><span class="n">package</span><span class="o">=</span><span class="n">socorro</span><span class="o">.</span><span class="n">app</span> <span class="o">/</span>
+</span><span class='line'><span class="o">--</span><span class="n">cover</span><span class="o">-</span><span class="n">package</span><span class="o">=</span><span class="n">socorro</span><span class="o">.</span><span class="n">collector</span> <span class="o">--</span><span class="n">cover</span><span class="o">-</span><span class="n">package</span><span class="o">=</span><span class="n">socorro</span><span class="o">.</span><span class="n">cron</span> <span class="o">--</span><span class="n">cover</span><span class="o">-</span><span class="n">package</span><span class="o">=</span><span class="n">socorro</span><span class="o">.</span><span class="n">database</span> <span class="o">/</span>
+</span><span class='line'><span class="o">--</span><span class="n">cover</span><span class="o">-</span><span class="n">package</span><span class="o">=</span><span class="n">socorro</span><span class="o">.</span><span class="n">external</span> <span class="o">--</span><span class="n">cover</span><span class="o">-</span><span class="n">package</span><span class="o">=</span><span class="n">socorro</span><span class="o">.</span><span class="n">lib</span> <span class="o">--</span><span class="n">cover</span><span class="o">-</span><span class="n">package</span><span class="o">=</span><span class="n">socorro</span><span class="o">.</span><span class="n">middleware</span> <span class="o">/</span>
+</span><span class='line'><span class="o">--</span><span class="n">cover</span><span class="o">-</span><span class="n">package</span><span class="o">=</span><span class="n">socorro</span><span class="o">.</span><span class="n">monitor</span> <span class="o">--</span><span class="n">cover</span><span class="o">-</span><span class="n">package</span><span class="o">=</span><span class="n">socorro</span><span class="o">.</span><span class="n">processor</span> <span class="o">--</span><span class="n">cover</span><span class="o">-</span><span class="n">package</span><span class="o">=</span><span class="n">socorro</span><span class="o">.</span><span class="n">services</span> <span class="o">/</span>
+</span><span class='line'><span class="o">--</span><span class="n">cover</span><span class="o">-</span><span class="n">package</span><span class="o">=</span><span class="n">socorro</span><span class="o">.</span><span class="n">storage</span> <span class="o">--</span><span class="n">cover</span><span class="o">-</span><span class="n">package</span><span class="o">=</span><span class="n">socorro</span><span class="o">.</span><span class="n">webapi</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>This is a job that will be retaken later.</p>
+
+<hr />
+
+<h3>Other things</h3>
+
+<p>I cleaned the <a href=https://github.com/mozilla/socorro-crashstats/pull/335>Pull Request #335</a> that creates a failling test to <a href=https://bugzilla.mozilla.org/show_bug.cgi?id=533628>bug #533628</a> (I implemented it for the application).</p>
+
+<p>And started to think about how to solve bug <a href=https://bugzilla.mozilla.org/show_bug.cgi?id=888520>#888520</a></p>
+
+<p>In the next week I will start a template test for unittest, those are usefull links about it:
+<a href=https://wiki.mozilla.org/QA/Execution/Web_Testing/Docs/Automation/StyleGuide>https://wiki.mozilla.org/QA/Execution/Web_Testing/Docs/Automation/StyleGuide</a>   <br/>
+<a href=https://github.com/mozilla/mozwebqa-test-templates>https://github.com/mozilla/mozwebqa-test-templates</a></p>
+
+<hr />
+
+<h3>Meetings</h3>
+
+<p>I was presented for the team in <a href=https://wiki.mozilla.org/Breakpad/Status_Meetings/2013-June-19>Socorro Weekly Meeting on June 19th</a>. And on <a href=https://air.mozilla.org/the-monday-meeting-20130624/>Mozilla Monday Meeting Day on June 24th</a> I was introduced to the whole Mozilla YAY! :)  <br/>
+I was not able to watch live streaming, so I filled in bug <a href=https://bugzilla.mozilla.org/show_bug.cgi?id=886462>#886462</a> reporting that. The agenda for that meeting can be found at <a href=https://wiki.mozilla.org/WeeklyUpdates/2013-06-24>https://wiki.mozilla.org/WeeklyUpdates/2013-06-24</a>  <br/>
+And I also called in Weekly meeting on <a href=https://wiki.mozilla.org/Breakpad/Status_Meetings/2013-June-26>June 26</a> during this time.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[OPW Application for Mozilla]]></title>
@@ -174,265 +634,6 @@ I am glad for everything!</p>
 <p>Also, a thanks to <a href=http://mediagoblin.org/>MediaGoblin</a> guys, other amazing project I had applied for ;)</p>
 
 <p>So this blog now became a day-to-day in my development at <a href=https://wiki.mozilla.org/Socorro>Socorro Project</a> and my contribution could be found at <a href=https://github.com/GabiThume>GitHub</a> :)</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Mozilla Test Gardener in Mac OS X 10.8]]></title>
-    <link href="http://tecendobits.cc/blog/starting-things-to-opw/"/>
-    <updated>2013-04-21T18:22:00-03:00</updated>
-    <id>http://tecendobits.cc/blog/starting-things-to-opw</id>
-    <content type="html"><![CDATA[<p><a href=https://live.gnome.org/OutreachProgramForWomen>Outreach Program for Women</a> is an amazing program to include women in Free and Open Source Software. I am really interested in applying. So I decided to start by studing the Mozilla Projects to the OPW.</p>
-
-<p>Project <a href=https://wiki.mozilla.org/GNOME_Outreach_Summer2013>Test Gardener</a>: "Write unit and integration tests for Socorro related to database, backend crash storage and middleware."</p>
-
-<p>My first impress by reading the OPW projects is that this project of Mozilla is the coolest one. To verify that, I want to spend some time installing, running, and maybe solving some bug of <a href=https://wiki.mozilla.org/Socorro>Socorro</a>.</p>
-
-<!-- more -->
-
-
-
-
-<h2> Installation </h2>
-
-
-
-
-<h3> Requirements </h3>
-
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">brew</span> <span class="n">install</span> <span class="n">postgresql</span> <span class="c1">// PostgreSQL 9.2</span>
-</span><span class='line'><span class="n">brew</span> <span class="n">install</span> <span class="n">gpp</span> <span class="c1">// G++ Compiler 2.24</span>
-</span><span class='line'><span class="n">brew</span> <span class="n">install</span> <span class="n">git</span> <span class="c1">// Git</span>
-</span><span class='line'><span class="n">sudo</span> <span class="n">easy_install</span> <span class="n">psycopg2</span> <span class="c1">// PostgreSQL database adapter for the Python programming language.</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p>Here I have this <a href=https://www.enthought.com/canopy-express/?Download=Download+EPD+Free+7.3-2>Python</a>.</p>
-
-<h3>Configure PostgreSQL</h3>
-
-
-<p>I had a problem with PATH, so when I tried:
-<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">which</span> <span class="n">psql</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p>I saw usr/bin/psql instead of usr/local/bin/psql, so you need to add usr/local/bin to the head of your PATH in your ~/.bash_profile:
-<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">export</span> <span class="n">PATH</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="nl">bin:</span><span class="n">$PATH</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p>Modify postgresql config to UTC timezone:</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">sudo</span> <span class="n">emacs</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">pgsql</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">postgresql</span><span class="p">.</span><span class="n">conf</span>
-</span><span class='line'><span class="n">timezone</span> <span class="o">=</span> <span class="err">&#39;</span><span class="n">UTC</span><span class="err">&#39;</span>
-</span><span class='line'><span class="n">brew</span> <span class="n">service</span> <span class="n">restart</span> <span class="n">postgresql</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p>Then, I received:</p>
-
-<h6>"Could not connect to server: Permission denied
-
-  Is the server running locally and accepting
-
-  connections on Unix domain socket "/var/pgsql_socket/.s.PGSQL.5432"?</h6>
-
-
-<p>To deal with that, I checked where the target was, created the pgsql_socket directory and a symlink:</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">sudo</span> <span class="n">find</span> <span class="o">/</span> <span class="o">-</span><span class="n">name</span> <span class="p">.</span><span class="n">s</span><span class="p">.</span><span class="n">PGSQL</span><span class="mf">.5432</span>
-</span><span class='line'><span class="n">mkdir</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">pgsql_socket</span><span class="o">/</span>
-</span><span class='line'><span class="n">ln</span> <span class="o">-</span><span class="n">s</span> <span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="p">.</span><span class="n">s</span><span class="p">.</span><span class="n">PGSQL</span><span class="mf">.5432</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">pgsql_socket</span><span class="o">/</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<!--
-// initdb /usr/local/var/postgres -E utf8
-// postgres -D /usr/local/var/postgres
-//createuser -s -r postgres
--->
-
-
-<p>Then I booted the PostgreSQL, created a superuser account for myself, and the breakpad_rw account for Socorro:
-<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">initdb</span> <span class="o">-</span><span class="n">D</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">pgsql</span><span class="o">/</span><span class="n">data</span> <span class="o">-</span><span class="n">E</span> <span class="n">utf8</span>
-</span><span class='line'><span class="n">postgres</span> <span class="o">-</span><span class="n">D</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">pgsql</span><span class="o">/</span><span class="n">data</span>
-</span><span class='line'><span class="n">createuser</span> <span class="o">-</span><span class="n">s</span> <span class="n">$USER</span>
-</span><span class='line'><span class="n">psql</span> <span class="o">-</span><span class="n">c</span> <span class="s">&quot;CREATE USER breakpad_rw&quot;</span> <span class="n">template1</span>
-</span><span class='line'><span class="n">psql</span> <span class="o">-</span><span class="n">c</span> <span class="s">&quot;ALTER USER breakpad_rw WITH ENCRYPTED PASSWORD &#39;aPassword&#39;&quot;</span> <span class="n">template1</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<h2> Socorro </h2>
-
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">git</span> <span class="n">clone</span> <span class="nl">https:</span><span class="c1">//github.com/mozilla/socorro</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<h2> CrashStats </h2>
-
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">git</span> <span class="n">clone</span> <span class="nl">https:</span><span class="c1">//github.com/mozilla/socorro-crashstats</span>
-</span><span class='line'><span class="n">cd</span> <span class="n">socorro</span><span class="o">-</span><span class="n">crashstats</span>
-</span><span class='line'><span class="n">git</span> <span class="n">submodule</span> <span class="n">update</span> <span class="o">--</span><span class="n">init</span> <span class="o">--</span><span class="n">recursive</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<h4> LESS Preprocessor </h4>
-
-
-<p>Node:
-<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">git</span> <span class="n">clone</span> <span class="nl">https:</span><span class="c1">//github.com/joyent/node.git</span>
-</span><span class='line'><span class="n">cd</span> <span class="n">node</span>
-</span><span class='line'><span class="n">git</span> <span class="n">checkout</span> <span class="n">v0</span><span class="mf">.8.2</span> <span class="p">(</span><span class="n">latest</span> <span class="n">stable</span> <span class="n">version</span> <span class="n">today</span> <span class="o">-</span> <span class="nl">https:</span><span class="c1">//github.com/joyent/node/wiki/Installation)</span>
-</span><span class='line'><span class="n">node</span> <span class="o">-</span><span class="n">v</span>
-</span><span class='line'><span class="n">export</span> <span class="n">PATH</span><span class="o">=</span><span class="n">$HOME</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">node</span><span class="o">/</span><span class="nl">bin:</span><span class="n">$PATH</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p>NPM:
-<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">curl</span> <span class="nl">http:</span><span class="c1">//npmjs.org/install.sh | sh</span>
-</span><span class='line'><span class="n">npm</span> <span class="o">-</span><span class="n">v</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">npm</span> <span class="n">install</span> <span class="o">-</span><span class="n">g</span> <span class="n">less</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<!--
-//cd socorro
-//sudo pip install -r requirements/dev.txt
--->
-
-
-
-
-<h4> Creating virtualenv and populate it: </h4>
-
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">brew</span> <span class="n">install</span> <span class="n">tcl</span><span class="o">-</span><span class="n">tk</span>
-</span><span class='line'><span class="n">sudo</span> <span class="n">easy_install</span> <span class="n">install</span> <span class="n">virtualenv</span>
-</span><span class='line'><span class="n">sudo</span> <span class="n">easy_install</span> <span class="n">install</span> <span class="n">virtualenvwrapper</span>
-</span><span class='line'><span class="n">virtualenv</span> <span class="o">--</span><span class="n">python</span><span class="o">=</span><span class="n">python2</span><span class="mf">.6</span> <span class="p">.</span><span class="n">virtualenv</span>
-</span><span class='line'><span class="n">source</span> <span class="p">.</span><span class="n">virtualenv</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">activate</span>
-</span><span class='line'><span class="n">cd</span> <span class="n">socorro</span><span class="o">-</span><span class="n">crashstats</span>
-</span><span class='line'><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">/</span><span class="n">compiled</span><span class="p">.</span><span class="n">txt</span>
-</span><span class='line'><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">/</span><span class="n">dev</span><span class="p">.</span><span class="n">txt</span>
-</span><span class='line'><span class="n">cp</span> <span class="n">crashstats</span><span class="o">/</span><span class="n">settings</span><span class="o">/</span><span class="n">local</span><span class="p">.</span><span class="n">py</span><span class="o">-</span><span class="n">dist</span> <span class="n">crashstats</span><span class="o">/</span><span class="n">settings</span><span class="o">/</span><span class="n">local</span><span class="p">.</span><span class="n">py</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<h2> Running tests: </h2>
-
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">cd</span> <span class="n">socorro</span>
-</span><span class='line'><span class="n">make</span> <span class="n">test</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p>At this point, I have everything working: The CrashStats Server, the PostgreSQL, the virtual environment... But I am getting this problem below and I really don't know how to solve:</p>
-
-<p><div><script src='https://gist.github.com/5440281.js'></script>
-<noscript><pre><code></code></pre></noscript></div>
-</p>
-
-<p>To solve this, I ran:
-<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">psql</span> <span class="o">-</span><span class="n">d</span> <span class="n">postgres</span> <span class="o">-</span><span class="n">f</span> <span class="n">sql</span><span class="o">/</span><span class="n">roles</span><span class="p">.</span><span class="n">sql</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p>Then, I received an error about "jenkins-pg92" and I fixed it using <a href=https://groups.google.com/forum/?fromgroups=#!topic/mozilla.tools.socorro/DDvCjTDQwo8>this topic</a>:</p>
-
-<p>In socorro/unittest/config/commonconfig.py switch:</p>
-
-<p><strong>databaseHost.default = 'jenkins-pg92' to
-databaseHost.default = 'localhost'</strong></p>
-
-<p>After that, I got an error of "permission denied":</p>
-
-<p><div><script src='https://gist.github.com/5440840.js'></script>
-<noscript><pre><code></code></pre></noscript></div>
-</p>
-
-<p>And the command below fix that:</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="s">&quot;psql -c &#39;alter user breakpad_rw superuser template1&quot;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p>Then I get "Ran 588 tests in 27.220s" and a big OK :)</p>
-
-<p>The reported errors can be found at:</p>
-
-<p>https://bugzilla.mozilla.org/show_bug.cgi?id=864070</p>
-
-<p>https://bugzilla.mozilla.org/show_bug.cgi?id=864854</p>
-
-<p>After that, when running "make minidump_stackwalk", I got the error "cc1plus: error: -Werror=vla: No option -Wvla", so I fixed by commenting the line 85 on file <strong>socorro/google-breakpad/Makefile.in</strong>:
-<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="err">@</span><span class="n">GCC_TRUE</span><span class="err">@</span> <span class="o">-</span><span class="n">Werror</span><span class="o">=</span><span class="n">vla</span><span class="o">&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p>After following the steps to populate database and running Socorro in dev mode (both servers, even the middleware), I got <code>Page not found (404)</code> when pointing Firefox to <code>http://localhost:8000/home/products/WaterWolf</code>. I updated the cvs files and it seems working. Right now, instead of using cvs, it is possible to populate the database PostgreSQL with fakedata:
-<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">$</span> <span class="p">.</span><span class="o">/</span><span class="n">socorro</span><span class="o">/</span><span class="n">external</span><span class="o">/</span><span class="n">postgresql</span><span class="o">/</span><span class="n">setupdb_app</span><span class="p">.</span><span class="n">py</span> <span class="o">--</span><span class="n">database_name</span><span class="o">=</span><span class="n">breakpad</span> \
-</span><span class='line'><span class="o">--</span><span class="n">fakedata</span> <span class="o">--</span><span class="n">dropdb</span> <span class="o">--</span><span class="n">database_superusername</span><span class="o">=</span><span class="n">your_superuser</span> \
-</span><span class='line'><span class="o">--</span><span class="n">database_superuserpassword</span><span class="o">=</span><span class="n">bPassword</span><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<!--
-sudo dscl . -create /Users/postgres UserShell /usr/bin/false
-brew uninstall postgresql
-brew install postgresql
-
-psql -c 'alter user breakpad_rw superuser'
-
-And after this stage, all the commands did not work.
-
-Well, maybe I will try to install all this again in Linux.
-
--->
-
 ]]></content>
   </entry>
   
