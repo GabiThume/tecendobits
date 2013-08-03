@@ -3,7 +3,7 @@ layout: post
 title: "Test Gardening Report Week 3-4"
 date: 2013-07-14 20:19
 comments: true
-categories: [opw, mozilla, socorro, code, bug, test, documentation]
+categories: [opw, mozilla, gnome, socorro, code, bug, test, documentation]
 ---
 
 I started to run deeply on Test Gardening. I initiate to understand the architecture and the behavior of Socorro Project, but it is a project that constantly is changing technologies, so it is important to keep learning about it. 

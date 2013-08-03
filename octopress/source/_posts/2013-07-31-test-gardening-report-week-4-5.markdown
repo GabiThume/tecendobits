@@ -3,7 +3,7 @@ layout: post
 title: "Test Gardening Report Week 5-6"
 date: 2013-07-28 12:07
 comments: true
-categories: [opw, mozilla, socorro, code, bug, test, documentation]
+categories: [opw, mozilla, gnome, socorro, code, bug, test, documentation]
 ---
 
 ***
