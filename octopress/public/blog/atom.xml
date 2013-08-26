@@ -4,7 +4,7 @@
   <title><![CDATA[TecendoBits/WeavingBits Blog]]></title>
   <link href="http://tecendobits.cc/blog/atom.xml" rel="self"/>
   <link href="http://tecendobits.cc/blog/"/>
-  <updated>2013-08-26T18:40:59-03:00</updated>
+  <updated>2013-08-26T20:14:02-03:00</updated>
   <id>http://tecendobits.cc/blog/</id>
   <author>
     <name><![CDATA[gabithume]]></name>
@@ -18,7 +18,7 @@
     <link href="http://tecendobits.cc/blog/test-gardening-report-week-9-10/"/>
     <updated>2013-08-25T15:30:00-03:00</updated>
     <id>http://tecendobits.cc/blog/test-gardening-report-week-9-10</id>
-    <content type="html"><![CDATA[<p>This week closed a cycle of 2 month in this amazing OPW experience. I am so glad to be part of a incredible team like Socorro. I was reflecting about our hopes and expectations, sometimes we feel that we don&#8217;t have to dream huge because the risk of the dream come true is little, but if we always dream at the lower limit, we never are going to experience the happiness of doing something that really challenges you. I know that do challenging things all the time can be frustrating, but the gratification is so much higher than the fear of not getting whatever you want.</p>
+    <content type="html"><![CDATA[<p>This week closed a cycle of 2 months in this amazing OPW experience. I am so glad to be part of an incredible team like Socorro. I was reflecting about our hopes and expectations, sometimes we feel that we don&#8217;t have to dream huge because the risk of the dream come true is little, but if we always dream at the lower limit, we never are going to experience the happiness of doing something that really challenges you. I know that doing challenging things all the time can be frustrating, but the gratification is so much higher than the fear of do not getting whatever you want.</p>
 
 <p>I am digressing into this because I have just one month till the end of the OPW and I am enjoying so much that I don&#8217;t want it to end. But I am sure that because of this awesome experience I am rethinking a lot of thoughts that I have about myself, like my capability of doing what I really want (maybe sometimes I feel a little about getting into the impostor syndrome).</p>
 
@@ -35,7 +35,7 @@
 
 <h3>Middleware service</h3>
 
-<p>The middleware facilitates communications with a database from an application. So, we can create a new service and call it from the Socorro Public API. I created a simple service that calls some &#8220;backfill_(.*)&#8221; function in PostgreSQL according to its parameters and the tests to check if the service is working well. The main problem was in the treatment of the parameters passed to the service.</p>
+<p>The middleware facilitates communications with a database from an application. So we can create a new service and then &#8220;call&#8221; it from the Socorro Public API by uri. I created a simple service that calls some &#8220;backfill_(.*)&#8221; function in PostgreSQL according to its parameters and the tests to check if the service is working well. The main problem was in the treatment of the parameters passed to the service.</p>
 
 <p>To link the new service in the middleware, I had to edit some files and create test in the middleware to see if it works as expected. The Bug related is the <a href=https://bugzilla.mozilla.org/show_bug.cgi?id=906962>906962</a> and all the code can be found at the <a href=https://github.com/mozilla/socorro/pull/1413>Pull Request 1413</a>. The files needed to create a new service in middleware are:</p>
 
@@ -56,7 +56,7 @@
 
 <hr />
 
-<h3>When your branch need to be rebased</h3>
+<h3>When your branch has to be rebased</h3>
 
 <p>The following commands can be used to update the master branch and then rebase your branch with the master branch:</p>
 
@@ -85,7 +85,7 @@
 
 <h3>Work week</h3>
 
-<p>The team was located at Mountain View for a, what seems <em>awesome</em>, work week:</p>
+<p>The team was located at Mountain View for a (what seems <em>awesome</em>) work week:</p>
 
 <p><a href=https://etherpad.mozilla.org/StabilityWeek2013-Notes>https://etherpad.mozilla.org/StabilityWeek2013-Notes</a>   <br/>
 <a href=https://etherpad.mozilla.org/ux-stability-workweek>https://etherpad.mozilla.org/ux-stability-workweek</a>       <br/>
