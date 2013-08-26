@@ -4,7 +4,7 @@
   <title><![CDATA[Category: documentation | TecendoBits/WeavingBits Blog]]></title>
   <link href="http://tecendobits.cc/blog/blog/categories/documentation/atom.xml" rel="self"/>
   <link href="http://tecendobits.cc/blog/"/>
-  <updated>2013-08-03T18:54:44-03:00</updated>
+  <updated>2013-08-26T15:25:59-03:00</updated>
   <id>http://tecendobits.cc/blog/</id>
   <author>
     <name><![CDATA[gabithume]]></name>
@@ -12,6 +12,140 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Test Gardening Report Week 7-8]]></title>
+    <link href="http://tecendobits.cc/blog/test-gardening-report-week-7-8/"/>
+    <updated>2013-08-11T12:52:00-03:00</updated>
+    <id>http://tecendobits.cc/blog/test-gardening-report-week-7-8</id>
+    <content type="html"><![CDATA[<p>This is a short post about my seven and eight weeks contributing for Socorro. It is brief because I had problems with my etherpad-diary and I lost some of the comments, so I wrote here my code contributions during this time.</p>
+
+<hr />
+
+<h3>Automatic elastic search tests</h3>
+
+<p>Thanks to @adrian I made the integration test <code>test_elasticsearch_storage_app.py</code> be automatic and I closed the <a href = https://bugzilla.mozilla.org/show_bug.cgi?id=892672>Bug 892672</a>. The Pull Request related was the <a href=https://github.com/mozilla/socorro/pull/1383>1383</a>. Basically, what I did was to call the test code inside a shell script run by Jenkins. To elastic search test works, I configured the host to be <code>jenkins-es20</code> and set up the environment before to call the test itself.</p>
+
+<!-- more -->
+
+
+<hr />
+
+<h3>Database tests</h3>
+
+<p>How to test code that uses database?</p>
+
+<p>By first, when dealing with database values we need to populate tables we are going to use in <code>setUp</code> function. This function runs before any test, so it is the best place for doing this.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">cursor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+</span><span class='line'><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s">&quot;&quot;&quot;&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="s">&lt;pre&gt;&lt;code&gt;INSERT INTO products</span>
+</span><span class='line'><span class="s">(product_name, sort, rapid_release_version, release_name)</span>
+</span><span class='line'><span class="s">VALUES</span>
+</span><span class='line'><span class="s">(&#39;Firefox&#39;, 1, &#39;8.0&#39;, &#39;firefox&#39;),</span>
+</span><span class='line'><span class="s">(&#39;Fennec&#39;, 2, &#39;11.0&#39;, &#39;mobile&#39;);</span>
+</span><span class='line'><span class="s">&lt;/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="s">&lt;p&gt;&quot;&quot;&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>After populate the tables with some fake data, we can manipulate the data to test what we want. For example: we have a product name, its version and a date for which we want to know what is the latest entry related to that product before the date we provided. In following case, given the today date, the latest entry was seven days ago:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">def</span> <span class="nf">test_latestEntryBeforeOrEqualTo</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="n">cursor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">product</span> <span class="o">=</span> <span class="s">&#39;Firefox&#39;</span>
+</span><span class='line'><span class="n">version</span> <span class="o">=</span> <span class="s">&#39;8.0&#39;</span>
+</span><span class='line'><span class="n">now</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">now</span><span class="o">.</span><span class="n">date</span><span class="p">()</span>
+</span><span class='line'><span class="n">to_date</span> <span class="o">=</span> <span class="n">now</span> <span class="o">-</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span><span class='line'><span class="n">lastweek</span> <span class="o">=</span> <span class="n">now</span> <span class="o">-</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">res</span> <span class="o">=</span> <span class="n">tcbs</span><span class="o">.</span><span class="n">latestEntryBeforeOrEqualTo</span><span class="p">(</span><span class="n">cursor</span><span class="p">,</span> <span class="n">to_date</span><span class="p">,</span> <span class="n">product</span><span class="p">,</span> <span class="n">version</span><span class="p">)</span>
+</span><span class='line'><span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="n">lastweek</span><span class="p">)</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>And at end of test, the<code>tearDown</code> method can be used to drop the tables, cleaning the database:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">def</span> <span class="nf">tearDown</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="s">&quot;&quot;&quot; Cleanup the database, delete tables and functions &quot;&quot;&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">cursor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+</span><span class='line'><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s">&quot;&quot;&quot;</span>
+</span><span class='line'><span class="s">    TRUNCATE tcbs, products, signatures</span>
+</span><span class='line'><span class="s">    CASCADE;</span>
+</span><span class='line'><span class="s">&quot;&quot;&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+</span><span class='line'>
+</span><span class='line'><span class="nb">super</span><span class="p">(</span><span class="n">IntegrationTestTCBS</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">tearDown</span><span class="p">()</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Knowing that, it is really interesting to develop tests for functions that manipulate databases. The <a href=https://github.com/mozilla/socorro/pull/1396>Pull Request 1396</a> and <a href=https://bugzilla.mozilla.org/show_bug.cgi?id=904243>Bug 904243</a> are related to a test of TopCrashers by Signature (TCBS).</p>
+
+<hr />
+
+<h3>Submitter App Test</h3>
+
+<p>Related to <a href=https://bugzilla.mozilla.org/show_bug.cgi?id=820512>Bug 820512</a> and my <a href=https://github.com/mozilla/socorro/pull/1368>Pull Request 1368</a>, @lars solved the problem I had by asking me to insert <code>force=True</code> on required configuration for the context of <code>socorro/processor/processor_app.py</code>. Merged :)</p>
+
+<hr />
+
+<h3>Test Documentation</h3>
+
+<p>Some instructions on socorro installation weren't working anymore, so I updated it at <a href=https://github.com/mozilla/socorro/pull/1381>Pull Request 1381</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Test Gardening Report Week 5-6]]></title>

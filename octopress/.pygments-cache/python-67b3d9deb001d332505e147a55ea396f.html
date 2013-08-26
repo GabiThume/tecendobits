@@ -1,0 +1,13 @@
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">test_latestEntryBeforeOrEqualTo</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+    <span class="n">cursor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+
+    <span class="n">product</span> <span class="o">=</span> <span class="s">&#39;Firefox&#39;</span>
+    <span class="n">version</span> <span class="o">=</span> <span class="s">&#39;8.0&#39;</span>
+    <span class="n">now</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">now</span><span class="o">.</span><span class="n">date</span><span class="p">()</span>
+    <span class="n">to_date</span> <span class="o">=</span> <span class="n">now</span> <span class="o">-</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">lastweek</span> <span class="o">=</span> <span class="n">now</span> <span class="o">-</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
+
+    <span class="n">res</span> <span class="o">=</span> <span class="n">tcbs</span><span class="o">.</span><span class="n">latestEntryBeforeOrEqualTo</span><span class="p">(</span><span class="n">cursor</span><span class="p">,</span> <span class="n">to_date</span><span class="p">,</span> <span class="n">product</span><span class="p">,</span> <span class="n">version</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="n">lastweek</span><span class="p">)</span>
+</pre></div>

@@ -1,0 +1,13 @@
+<div class="highlight"><pre><span class="n">cursor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+<span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s">&quot;&quot;&quot;&lt;/p&gt;</span>
+
+<span class="s">&lt;pre&gt;&lt;code&gt;INSERT INTO products</span>
+<span class="s">(product_name, sort, rapid_release_version, release_name)</span>
+<span class="s">VALUES</span>
+<span class="s">(&#39;Firefox&#39;, 1, &#39;8.0&#39;, &#39;firefox&#39;),</span>
+<span class="s">(&#39;Fennec&#39;, 2, &#39;11.0&#39;, &#39;mobile&#39;);</span>
+<span class="s">&lt;/code&gt;&lt;/pre&gt;</span>
+
+<span class="s">&lt;p&gt;&quot;&quot;&quot;</span><span class="p">)</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+</pre></div>
