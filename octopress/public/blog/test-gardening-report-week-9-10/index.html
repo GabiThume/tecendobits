@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Category: gnome - TecendoBits/WeavingBits Blog</title>
+  <title>Test Gardening Report Week 9-10 - TecendoBits/WeavingBits Blog</title>
   <meta name="author" content="gabithume">
 
   
-  <meta name="description" content="Category: gnome">
+  <meta name="description" content="This week closed a cycle of 2 month in this amazing OPW experience. I am so glad to be part of a incredible team like Socorro. I was reflecting about &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://tecendobits.cc/blogblog/categories/gnome">
+  <link rel="canonical" href="http://tecendobits.cc/blog/test-gardening-report-week-9-10">
   <link href="/blog/favicon.png" rel="icon">
   <link href="/blog/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/blog/atom.xml" rel="alternate" title="TecendoBits/WeavingBits Blog" type="application/atom+xml">
@@ -68,134 +68,166 @@
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">Category: Gnome</h1>
+    
+      <h1 class="entry-title">Test Gardening Report Week 9-10</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-08-25T15:30:00-03:00" pubdate data-updated="true">Aug 25<span>th</span>, 2013</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
     
   </header>
-  
-  <div id="blog-archives" class="category">
 
 
+<div class="entry-content"><p>This week closed a cycle of 2 month in this amazing OPW experience. I am so glad to be part of a incredible team like Socorro. I was reflecting about our hopes and expectations, sometimes we feel that we don&#8217;t have to dream huge because the risk of the dream come true is little, but if we always dream at the lower limit, we never are going to experience the happiness of doing something that really challenges you. I know that do challenging things all the time can be frustrating, but the gratification is so much higher than the fear of not getting whatever you want.</p>
 
-  
-  <h2>2013</h2>
+<p>I am digressing into this because I have just one month till the end of the OPW and I am enjoying so much that I don&#8217;t want it to end. But I am sure that because of this awesome experience I am rethinking a lot of thoughts that I have about myself, like my capability of doing what I really want (maybe sometimes I feel a little about getting into the impostor syndrome).</p>
 
-<article>
-  
-<h1><a href="/blog/test-gardening-report-week-9-10/">Test Gardening Report Week 9-10</a></h1>
-<time datetime="2013-08-25T15:30:00-03:00" pubdate><span class='month'>Aug</span> <span class='day'>25</span> <span class='year'>2013</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/blog/categories/bug/'>bug</a>, <a class='category' href='/blog/blog/categories/code/'>code</a>, <a class='category' href='/blog/blog/categories/documentation/'>documentation</a>, <a class='category' href='/blog/blog/categories/gnome/'>gnome</a>, <a class='category' href='/blog/blog/categories/mozilla/'>mozilla</a>, <a class='category' href='/blog/blog/categories/opw/'>opw</a>, <a class='category' href='/blog/blog/categories/socorro/'>socorro</a>, <a class='category' href='/blog/blog/categories/test/'>test</a></span>
-</footer>
+<!-- more -->
 
 
-</article>
+<hr />
+
+<h3>Test for postgresql/utils.py</h3>
+
+<p>I wrote the tests for this code related to <a href=https://bugzilla.mozilla.org/show_bug.cgi?id=904238>Bug</a> in <a href=https://github.com/mozilla/socorro/pull/1398>Pull Request 1398</a>.</p>
+
+<hr />
+
+<h3>Middleware service</h3>
+
+<p>The middleware facilitates communications with a database from an application. So, we can create a new service and call it from the Socorro Public API. I created a simple service that calls some &#8220;backfill_(.*)&#8221; function in PostgreSQL according to its parameters and the tests to check if the service is working well. The main problem was in the treatment of the parameters passed to the service.</p>
+
+<p>To link the new service in the middleware, I had to edit some files and create test in the middleware to see if it works as expected. The Bug related is the <a href=https://bugzilla.mozilla.org/show_bug.cgi?id=906962>906962</a> and all the code can be found at the <a href=https://github.com/mozilla/socorro/pull/1413>Pull Request 1413</a>. The files needed to create a new service in middleware are:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">docs</span><span class="o">/</span><span class="n">middleware</span><span class="p">.</span><span class="n">rst</span>
+</span><span class='line'><span class="n">scripts</span><span class="o">/</span><span class="n">config</span><span class="o">/</span><span class="n">webapiconfig</span><span class="p">.</span><span class="n">py</span><span class="p">.</span><span class="n">dist</span>
+</span><span class='line'><span class="n">socorro</span><span class="o">/</span><span class="n">external</span><span class="o">/</span><span class="n">postgresql</span><span class="o">/</span><span class="n">backfill</span><span class="p">.</span><span class="n">py</span>
+</span><span class='line'><span class="n">socorro</span><span class="o">/</span><span class="n">middleware</span><span class="o">/</span><span class="n">backfill_service</span><span class="p">.</span><span class="n">py</span>
+</span><span class='line'><span class="n">socorro</span><span class="o">/</span><span class="n">middleware</span><span class="o">/</span><span class="n">middleware_app</span><span class="p">.</span><span class="n">py</span>
+</span><span class='line'><span class="n">socorro</span><span class="o">/</span><span class="n">unittest</span><span class="o">/</span><span class="n">external</span><span class="o">/</span><span class="n">postgresql</span><span class="o">/</span><span class="n">test_backfill</span><span class="p">.</span><span class="n">py</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
+<hr />
 
-<article>
-  
-<h1><a href="/blog/test-gardening-report-week-7-8/">Test Gardening Report Week 7-8</a></h1>
-<time datetime="2013-08-11T12:52:00-03:00" pubdate><span class='month'>Aug</span> <span class='day'>11</span> <span class='year'>2013</span></time>
+<h3>When your branch need to be rebased</h3>
 
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/blog/categories/bug/'>bug</a>, <a class='category' href='/blog/blog/categories/code/'>code</a>, <a class='category' href='/blog/blog/categories/documentation/'>documentation</a>, <a class='category' href='/blog/blog/categories/gnome/'>gnome</a>, <a class='category' href='/blog/blog/categories/mozilla/'>mozilla</a>, <a class='category' href='/blog/blog/categories/opw/'>opw</a>, <a class='category' href='/blog/blog/categories/socorro/'>socorro</a>, <a class='category' href='/blog/blog/categories/test/'>test</a></span>
-</footer>
+<p>The following commands can be used to update the master branch and then rebase your branch with the master branch:</p>
 
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/blog/test-gardening-report-week-4-5/">Test Gardening Report Week 5-6</a></h1>
-<time datetime="2013-07-28T12:07:00-03:00" pubdate><span class='month'>Jul</span> <span class='day'>28</span> <span class='year'>2013</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/blog/categories/bug/'>bug</a>, <a class='category' href='/blog/blog/categories/code/'>code</a>, <a class='category' href='/blog/blog/categories/documentation/'>documentation</a>, <a class='category' href='/blog/blog/categories/gnome/'>gnome</a>, <a class='category' href='/blog/blog/categories/mozilla/'>mozilla</a>, <a class='category' href='/blog/blog/categories/opw/'>opw</a>, <a class='category' href='/blog/blog/categories/socorro/'>socorro</a>, <a class='category' href='/blog/blog/categories/test/'>test</a></span>
-</footer>
-
-
-</article>
-
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">git</span> <span class="n">checkout</span> <span class="n">master</span>
+</span><span class='line'><span class="n">git</span> <span class="n">fetch</span> <span class="n">moz</span>
+</span><span class='line'><span class="n">git</span> <span class="n">merge</span> <span class="n">moz</span><span class="o">/</span><span class="n">master</span>
+</span><span class='line'><span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="n">master</span>
+</span><span class='line'><span class="n">git</span> <span class="n">status</span>
+</span><span class='line'><span class="n">git</span> <span class="n">checkout</span> <span class="n">your_branch</span>
+</span><span class='line'><span class="n">git</span> <span class="n">fetch</span> <span class="n">origin</span>
+</span><span class='line'><span class="n">git</span> <span class="n">rebase</span> <span class="n">origin</span><span class="o">/</span><span class="n">master</span>
+</span><span class='line'><span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="n">your_branch</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
-<article>
-  
-<h1><a href="/blog/test-gardening/">Test Gardening Report Week 3-4</a></h1>
-<time datetime="2013-07-14T20:19:00-03:00" pubdate><span class='month'>Jul</span> <span class='day'>14</span> <span class='year'>2013</span></time>
+<hr />
 
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/blog/categories/bug/'>bug</a>, <a class='category' href='/blog/blog/categories/code/'>code</a>, <a class='category' href='/blog/blog/categories/documentation/'>documentation</a>, <a class='category' href='/blog/blog/categories/gnome/'>gnome</a>, <a class='category' href='/blog/blog/categories/mozilla/'>mozilla</a>, <a class='category' href='/blog/blog/categories/opw/'>opw</a>, <a class='category' href='/blog/blog/categories/socorro/'>socorro</a>, <a class='category' href='/blog/blog/categories/test/'>test</a></span>
-</footer>
+<h3>Work week</h3>
 
+<p>The team was located at Mountain View for a, what seems <em>awesome</em>, work week:</p>
 
-</article>
-
-
-
-<article>
-  
-<h1><a href="/blog/first-weeks-of-opw/">Test Gardening Report Week 1-2</a></h1>
-<time datetime="2013-06-30T10:13:00-03:00" pubdate><span class='month'>Jun</span> <span class='day'>30</span> <span class='year'>2013</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/blog/categories/bdd/'>bdd</a>, <a class='category' href='/blog/blog/categories/code/'>code</a>, <a class='category' href='/blog/blog/categories/crash-stats/'>crash-stats</a>, <a class='category' href='/blog/blog/categories/gnome/'>gnome</a>, <a class='category' href='/blog/blog/categories/mozilla/'>mozilla</a>, <a class='category' href='/blog/blog/categories/opw/'>opw</a>, <a class='category' href='/blog/blog/categories/socorro/'>socorro</a>, <a class='category' href='/blog/blog/categories/test/'>test</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/blog/mozilla-socorro-project/">Socorro Project</a></h1>
-<time datetime="2013-06-16T22:30:00-03:00" pubdate><span class='month'>Jun</span> <span class='day'>16</span> <span class='year'>2013</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/blog/categories/gnome/'>gnome</a>, <a class='category' href='/blog/blog/categories/opw/'>opw</a>, <a class='category' href='/blog/blog/categories/socorro/'>socorro</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/blog/opw-application-for-mozilla/">OPW Application for Mozilla</a></h1>
-<time datetime="2013-05-27T19:40:00-03:00" pubdate><span class='month'>May</span> <span class='day'>27</span> <span class='year'>2013</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/blog/categories/code/'>code</a>, <a class='category' href='/blog/blog/categories/crash-stats/'>crash stats</a>, <a class='category' href='/blog/blog/categories/gnome/'>gnome</a>, <a class='category' href='/blog/blog/categories/mozilla/'>mozilla</a>, <a class='category' href='/blog/blog/categories/opw/'>opw</a>, <a class='category' href='/blog/blog/categories/socorro/'>socorro</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/blog/starting-things-to-opw/">Mozilla Test Gardener in Mac OS X 10.8</a></h1>
-<time datetime="2013-04-21T18:22:00-03:00" pubdate><span class='month'>Apr</span> <span class='day'>21</span> <span class='year'>2013</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/blog/categories/code/'>code</a>, <a class='category' href='/blog/blog/categories/crash-stats/'>crash stats</a>, <a class='category' href='/blog/blog/categories/gnome/'>gnome</a>, <a class='category' href='/blog/blog/categories/mozilla/'>mozilla</a>, <a class='category' href='/blog/blog/categories/opw/'>opw</a>, <a class='category' href='/blog/blog/categories/socorro/'>socorro</a></span>
-</footer>
-
-
-</article>
-
+<p><a href=https://etherpad.mozilla.org/StabilityWeek2013-Notes>https://etherpad.mozilla.org/StabilityWeek2013-Notes</a>   <br/>
+<a href=https://etherpad.mozilla.org/ux-stability-workweek>https://etherpad.mozilla.org/ux-stability-workweek</a>       <br/>
+<a href=https://etherpad.mozilla.org/StabWeek-SocorroBreakouts>https://etherpad.mozilla.org/StabWeek-SocorroBreakouts</a></p>
 </div>
 
+
+  <footer>
+    <p class="meta">
+      
   
+
+<span class="byline author vcard">Posted by <span class="fn">gabithume</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-08-25T15:30:00-03:00" pubdate data-updated="true">Aug 25<span>th</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/blog/categories/bug/'>bug</a>, <a class='category' href='/blog/blog/categories/code/'>code</a>, <a class='category' href='/blog/blog/categories/documentation/'>documentation</a>, <a class='category' href='/blog/blog/categories/gnome/'>gnome</a>, <a class='category' href='/blog/blog/categories/mozilla/'>mozilla</a>, <a class='category' href='/blog/blog/categories/opw/'>opw</a>, <a class='category' href='/blog/blog/categories/socorro/'>socorro</a>, <a class='category' href='/blog/blog/categories/test/'>test</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://tecendobits.cc/blog/test-gardening-report-week-9-10/" data-via="gabithume" data-counturl="http://tecendobits.cc/blog/test-gardening-report-week-9-10/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/test-gardening-report-week-7-8/" title="Previous Post: Test Gardening Report Week 7-8">&laquo; Test Gardening Report Week 7-8</a>
+      
+      
+    </p>
+  </footer>
 </article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
 
 </div>
 
@@ -381,7 +413,10 @@
       var disqus_shortname = 'tecendobits';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://tecendobits.cc/blog/test-gardening-report-week-9-10/';
+        var disqus_url = 'http://tecendobits.cc/blog/test-gardening-report-week-9-10/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: gnome | TecendoBits/WeavingBits Blog]]></title>
   <link href="http://tecendobits.cc/blog/blog/categories/gnome/atom.xml" rel="self"/>
   <link href="http://tecendobits.cc/blog/"/>
-  <updated>2013-08-26T15:25:59-03:00</updated>
+  <updated>2013-08-26T18:40:59-03:00</updated>
   <id>http://tecendobits.cc/blog/</id>
   <author>
     <name><![CDATA[gabithume]]></name>
@@ -12,6 +12,84 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Test Gardening Report Week 9-10]]></title>
+    <link href="http://tecendobits.cc/blog/test-gardening-report-week-9-10/"/>
+    <updated>2013-08-25T15:30:00-03:00</updated>
+    <id>http://tecendobits.cc/blog/test-gardening-report-week-9-10</id>
+    <content type="html"><![CDATA[<p>This week closed a cycle of 2 month in this amazing OPW experience. I am so glad to be part of a incredible team like Socorro. I was reflecting about our hopes and expectations, sometimes we feel that we don't have to dream huge because the risk of the dream come true is little, but if we always dream at the lower limit, we never are going to experience the happiness of doing something that really challenges you. I know that do challenging things all the time can be frustrating, but the gratification is so much higher than the fear of not getting whatever you want.</p>
+
+<p>I am digressing into this because I have just one month till the end of the OPW and I am enjoying so much that I don't want it to end. But I am sure that because of this awesome experience I am rethinking a lot of thoughts that I have about myself, like my capability of doing what I really want (maybe sometimes I feel a little about getting into the impostor syndrome).</p>
+
+<!-- more -->
+
+
+<hr />
+
+<h3>Test for postgresql/utils.py</h3>
+
+<p>I wrote the tests for this code related to <a href=https://bugzilla.mozilla.org/show_bug.cgi?id=904238>Bug</a> in <a href=https://github.com/mozilla/socorro/pull/1398>Pull Request 1398</a>.</p>
+
+<hr />
+
+<h3>Middleware service</h3>
+
+<p>The middleware facilitates communications with a database from an application. So, we can create a new service and call it from the Socorro Public API. I created a simple service that calls some "backfill_(.*)" function in PostgreSQL according to its parameters and the tests to check if the service is working well. The main problem was in the treatment of the parameters passed to the service.</p>
+
+<p>To link the new service in the middleware, I had to edit some files and create test in the middleware to see if it works as expected. The Bug related is the <a href=https://bugzilla.mozilla.org/show_bug.cgi?id=906962>906962</a> and all the code can be found at the <a href=https://github.com/mozilla/socorro/pull/1413>Pull Request 1413</a>. The files needed to create a new service in middleware are:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">docs</span><span class="o">/</span><span class="n">middleware</span><span class="p">.</span><span class="n">rst</span>
+</span><span class='line'><span class="n">scripts</span><span class="o">/</span><span class="n">config</span><span class="o">/</span><span class="n">webapiconfig</span><span class="p">.</span><span class="n">py</span><span class="p">.</span><span class="n">dist</span>
+</span><span class='line'><span class="n">socorro</span><span class="o">/</span><span class="n">external</span><span class="o">/</span><span class="n">postgresql</span><span class="o">/</span><span class="n">backfill</span><span class="p">.</span><span class="n">py</span>
+</span><span class='line'><span class="n">socorro</span><span class="o">/</span><span class="n">middleware</span><span class="o">/</span><span class="n">backfill_service</span><span class="p">.</span><span class="n">py</span>
+</span><span class='line'><span class="n">socorro</span><span class="o">/</span><span class="n">middleware</span><span class="o">/</span><span class="n">middleware_app</span><span class="p">.</span><span class="n">py</span>
+</span><span class='line'><span class="n">socorro</span><span class="o">/</span><span class="n">unittest</span><span class="o">/</span><span class="n">external</span><span class="o">/</span><span class="n">postgresql</span><span class="o">/</span><span class="n">test_backfill</span><span class="p">.</span><span class="n">py</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<hr />
+
+<h3>When your branch need to be rebased</h3>
+
+<p>The following commands can be used to update the master branch and then rebase your branch with the master branch:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">git</span> <span class="n">checkout</span> <span class="n">master</span>
+</span><span class='line'><span class="n">git</span> <span class="n">fetch</span> <span class="n">moz</span>
+</span><span class='line'><span class="n">git</span> <span class="n">merge</span> <span class="n">moz</span><span class="o">/</span><span class="n">master</span>
+</span><span class='line'><span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="n">master</span>
+</span><span class='line'><span class="n">git</span> <span class="n">status</span>
+</span><span class='line'><span class="n">git</span> <span class="n">checkout</span> <span class="n">your_branch</span>
+</span><span class='line'><span class="n">git</span> <span class="n">fetch</span> <span class="n">origin</span>      <span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span>
+</span><span class='line'><span class="n">git</span> <span class="n">rebase</span> <span class="n">origin</span><span class="o">/</span><span class="n">master</span>
+</span><span class='line'><span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="n">your_branch</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<hr />
+
+<h3>Work week</h3>
+
+<p>The team was located at Mountain View for a, what seems <em>awesome</em>, work week:</p>
+
+<p><a href=https://etherpad.mozilla.org/StabilityWeek2013-Notes>https://etherpad.mozilla.org/StabilityWeek2013-Notes</a>   <br/>
+<a href=https://etherpad.mozilla.org/ux-stability-workweek>https://etherpad.mozilla.org/ux-stability-workweek</a>       <br/>
+<a href=https://etherpad.mozilla.org/StabWeek-SocorroBreakouts>https://etherpad.mozilla.org/StabWeek-SocorroBreakouts</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Test Gardening Report Week 7-8]]></title>
@@ -602,53 +680,6 @@ In this function, if the exception is not raised, it gives a failure test.</p>
 <p>I was presented for the team in <a href=https://wiki.mozilla.org/Breakpad/Status_Meetings/2013-June-19>Socorro Weekly Meeting on June 19th</a>. And on <a href=https://air.mozilla.org/the-monday-meeting-20130624/>Mozilla Monday Meeting Day on June 24th</a> I was introduced to the whole Mozilla YAY! :)  <br/>
 I was not able to watch live streaming, so I filled in bug <a href=https://bugzilla.mozilla.org/show_bug.cgi?id=886462>#886462</a> reporting that. The agenda for that meeting can be found at <a href=https://wiki.mozilla.org/WeeklyUpdates/2013-06-24>https://wiki.mozilla.org/WeeklyUpdates/2013-06-24</a>  <br/>
 And I also called in Weekly meeting on <a href=https://wiki.mozilla.org/Breakpad/Status_Meetings/2013-June-26>June 26</a> during this time.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Socorro Project]]></title>
-    <link href="http://tecendobits.cc/blog/mozilla-socorro-project/"/>
-    <updated>2013-06-16T22:30:00-03:00</updated>
-    <id>http://tecendobits.cc/blog/mozilla-socorro-project</id>
-    <content type="html"><![CDATA[<p>Tomorrow is the first day of my Gnome OPW internship! I am anxious and with butterflies in my stomach :)
-So to warm up my brain, I am going to make a review about the project.</p>
-
-<p>In Mozilla Corporation, there is a Crash Stats Project that is called <a href=https://wiki.mozilla.org/Socorro>Socorro</a>. It is an open source project, so other companies are also using, like B2G and Thunderbird. The production for Firefox is hosted at <a href=https://crash-stats.mozilla.com/products/Firefox>https://crash-stats.mozilla.com/products/Firefox</a>.</p>
-
-<p>(Right now I was reading about crashing reports and my Firefox Nightly crashed. I reported the crash, so it is easy to tell why this project is useful and interesting :D)</p>
-
-<!-- more -->
-
-
-<p>Socorro is a set of components for collecting, processing, storing and displaying crash dumps generated by remote clients. In the client-side is used the <a href=http://code.google.com/p/google-breakpad/>Breakpad</a> set of libraries for crash reporting. And the other components are:</p>
-
-<p><strong></p>
-
-<p> Collector: collects breakpad minidump crashes (over HTTP POST);</p>
-
-<p> Monitor: watch for incoming crashes, feed to processor;</p>
-
-<p> Processor: turn breakpad minidump crashes into stack traces and other info;</p>
-
-<p> Middleware: provide HTTP REST interface for JSON reports and real-time crash data;</p>
-
-<p> Web UI: django-based application for visualizing and reporting.</p>
-
-<p></strong></p>
-
-<p>The latest documentation is avaliable at <a href=http://socorro.readthedocs.org/en/latest/index.html>http://socorro.readthedocs.org/en/latest/index.html</a> where is placed the <a href=http://socorro.readthedocs.org/en/latest/installation.html>Installation Guide</a>.</p>
-
-<p>If you are interested in development or need some help to use, the Socorro/Breakpad IRC channel is a great place to start: irc://irc.mozilla.org/breakpad. And the mailing list is also very welcome to share: https://lists.mozilla.org/listinfo/tools-socorro :)</p>
-
-<h2>Test Gardener</h2>
-
-<p>Inside Socorro, I am going to work at Test Gardener Project with my mentor <a href=https://mozillians.org/en-US/u/sdeckelmann/>Selena Deckelmann</a>. The details about what is going to be are aavaiable at <a href=https://wiki.mozilla.org/GNOME_Outreach_Summer2013> Mozilla - Gnome Outreach Summer 2013 </a> page:</p>
-
-<p><strong><em>"Write unit and integration tests for Socorro related to database, backend crash storage and middleware. Through this project, you will learn all about how a high performance data warehouse application works, which technologies were chosen for different types of storage, what the limitations are of our existing system and how a modern development group works with continuous integration and production deployments. If accepted to this project, you'd be working with the WebTools team, a group of developers distributed throughout the world."</em></strong></p>
-
-<p>So I am very happy about it! I am aiming for learn more about how a big project like this works and mostly how to write useful tests!</p>
-
-<p>And let the winter of code begin!!</p>
 ]]></content>
   </entry>
   
