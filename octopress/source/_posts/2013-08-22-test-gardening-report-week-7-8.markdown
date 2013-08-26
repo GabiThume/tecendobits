@@ -12,7 +12,7 @@ This is a short post about my seven and eight weeks contributing for Socorro. It
 
 ### Automatic elastic search tests
 
-Thanks to @adrian I made the integration test `test_elasticsearch_storage_app.py` be automatic and I closed the <a href = https://bugzilla.mozilla.org/show_bug.cgi?id=892672>Bug 892672</a>. The Pull Request related was the <a href=https://github.com/mozilla/socorro/pull/1383>1383</a>. Basically, what I did was to call the test code inside a shell script run by Jenkins. To elastic search test works, I configured the host to be `jenkins-es20` and set up the environment before to call the test itself.
+Thanks to @adrian I made the integration test `test_elasticsearch_storage_app.py` be automatic and I closed the <a href = https://bugzilla.mozilla.org/show_bug.cgi?id=892672>Bug 892672</a>. The Pull Request related was the <a href=https://github.com/mozilla/socorro/pull/1383>1383</a>. Basically, what I did was to call the test code inside a shell script that Jenkins runs. To make elastic search test works, I configured the host to be `jenkins-es20` and setted up the environment before to call the test itself.
 
 <!-- more -->
 

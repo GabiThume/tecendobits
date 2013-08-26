@@ -4,7 +4,7 @@
   <title><![CDATA[Category: gnome | TecendoBits/WeavingBits Blog]]></title>
   <link href="http://tecendobits.cc/blog/blog/categories/gnome/atom.xml" rel="self"/>
   <link href="http://tecendobits.cc/blog/"/>
-  <updated>2013-08-26T20:14:02-03:00</updated>
+  <updated>2013-08-26T20:21:51-03:00</updated>
   <id>http://tecendobits.cc/blog/</id>
   <author>
     <name><![CDATA[gabithume]]></name>
@@ -102,7 +102,7 @@
 
 <h3>Automatic elastic search tests</h3>
 
-<p>Thanks to @adrian I made the integration test <code>test_elasticsearch_storage_app.py</code> be automatic and I closed the <a href = https://bugzilla.mozilla.org/show_bug.cgi?id=892672>Bug 892672</a>. The Pull Request related was the <a href=https://github.com/mozilla/socorro/pull/1383>1383</a>. Basically, what I did was to call the test code inside a shell script run by Jenkins. To elastic search test works, I configured the host to be <code>jenkins-es20</code> and set up the environment before to call the test itself.</p>
+<p>Thanks to @adrian I made the integration test <code>test_elasticsearch_storage_app.py</code> be automatic and I closed the <a href = https://bugzilla.mozilla.org/show_bug.cgi?id=892672>Bug 892672</a>. The Pull Request related was the <a href=https://github.com/mozilla/socorro/pull/1383>1383</a>. Basically, what I did was to call the test code inside a shell script that Jenkins runs. To make elastic search test works, I configured the host to be <code>jenkins-es20</code> and setted up the environment before to call the test itself.</p>
 
 <!-- more -->
 
