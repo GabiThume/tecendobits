@@ -1,0 +1,17 @@
+<div class="highlight"><pre><span class="nl">Goal:</span> <span class="n">Clear</span> <span class="n">login</span> <span class="n">session</span> <span class="n">cookies</span> <span class="n">and</span> <span class="n">logout</span> <span class="n">any</span> <span class="n">active</span> <span class="n">logins</span>
+
+<span class="mi">1</span> <span class="n">Go</span> <span class="n">to</span> <span class="n">bugzilla</span><span class="p">.</span><span class="n">mozilla</span><span class="p">.</span><span class="n">org</span> <span class="n">and</span> <span class="n">sign</span> <span class="k">in</span> <span class="n">using</span> <span class="n">a</span> <span class="n">valid</span> <span class="n">Persona</span><span class="o">/</span><span class="n">Login</span>   
+  <span class="n">account</span>     
+   <span class="o">-&gt;</span> <span class="n">The</span> <span class="n">user</span> <span class="n">can</span> <span class="n">sign</span> <span class="k">in</span>
+
+<span class="mi">2</span> <span class="n">Go</span> <span class="n">to</span> <span class="s">&quot;Clear private data&quot;</span>     
+   <span class="o">-&gt;</span> <span class="n">The</span> <span class="n">Clear</span> <span class="n">private</span> <span class="n">data</span> <span class="n">dialog</span> <span class="n">is</span> <span class="n">displayed</span>
+
+<span class="mi">3</span> <span class="n">Uncheck</span> <span class="n">all</span> <span class="n">options</span> <span class="n">except</span> <span class="s">&quot;Browsing&amp;download history&quot;</span> <span class="n">and</span> <span class="n">tap</span> <span class="n">the</span>   
+  <span class="s">&quot;Clear data&quot;</span> <span class="n">button</span>     
+   <span class="o">-&gt;</span> <span class="n">The</span> <span class="n">dialog</span> <span class="n">is</span> <span class="n">displayed</span> <span class="n">and</span> <span class="n">after</span> <span class="n">a</span> <span class="n">few</span> <span class="n">seconds</span> <span class="n">a</span> <span class="n">toast</span>    
+      <span class="n">notification</span> <span class="n">displays</span> <span class="s">&quot;Private data cleared&quot;</span>
+
+<span class="mi">4</span> <span class="n">Go</span> <span class="n">back</span> <span class="n">to</span> <span class="n">bugzilla</span><span class="p">.</span><span class="n">mozilla</span><span class="p">.</span><span class="n">org</span> <span class="n">and</span> <span class="n">reload</span> <span class="n">the</span> <span class="n">page</span>      
+   <span class="o">-&gt;</span> <span class="n">The</span> <span class="n">user</span> <span class="n">is</span> <span class="n">logged</span> <span class="n">out</span>
+</pre></div>

@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Category: documentation - TecendoBits/WeavingBits Blog</title>
+  <title>Manual Testing - TecendoBits/WeavingBits Blog</title>
   <meta name="author" content="gabithume">
 
   
-  <meta name="description" content="Category: documentation">
+  <meta name="description" content="What is it? It is the process of an manually test the software to see if it works as expected. The key is to find correct behavior even when doing &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://tecendobits.cc/blogblog/categories/documentation">
+  <link rel="canonical" href="http://tecendobits.cc/blog/manual-testing">
   <link href="/blog/favicon.png" rel="icon">
   <link href="/blog/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/blog/atom.xml" rel="alternate" title="TecendoBits/WeavingBits Blog" type="application/atom+xml">
@@ -68,78 +68,155 @@
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">Category: Documentation</h1>
+    
+      <h1 class="entry-title">Manual Testing</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-08-27T16:17:00-03:00" pubdate data-updated="true">Aug 27<span>th</span>, 2013</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
     
   </header>
-  
-  <div id="blog-archives" class="category">
 
 
+<div class="entry-content"><h3>What is it?</h3>
 
-  
-  <h2>2013</h2>
+<p>It is the process of an manually test the software to see if it works as expected. The key is to find correct behavior even when doing unexpected use of the software (like filling a wrong username). It is really important to do before release to end users.</p>
 
-<article>
-  
-<h1><a href="/blog/test-gardening-report-week-9-10/">Test Gardening Report Week 9-10</a></h1>
-<time datetime="2013-08-25T15:30:00-03:00" pubdate><span class='month'>Aug</span> <span class='day'>25</span> <span class='year'>2013</span></time>
+<p>For small projects, the test can be done in a exploratory way by not following any set of rules, testing the software behavior given what the tester thinks it is important. This works well when you have a software that does not have a variability of different behaviors. For example: you have a code that calculates the sum of two numbers. You need to test what happens if you insert different data types of numbers, if works with integers and floats, negative numbers, large numbers and if the result is correct.</p>
 
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/blog/categories/bug/'>bug</a>, <a class='category' href='/blog/blog/categories/code/'>code</a>, <a class='category' href='/blog/blog/categories/documentation/'>documentation</a>, <a class='category' href='/blog/blog/categories/gnome/'>gnome</a>, <a class='category' href='/blog/blog/categories/mozilla/'>mozilla</a>, <a class='category' href='/blog/blog/categories/opw/'>opw</a>, <a class='category' href='/blog/blog/categories/socorro/'>socorro</a>, <a class='category' href='/blog/blog/categories/test/'>test</a></span>
-</footer>
+<!-- more -->
 
 
-</article>
+<p>Also, important exploratory tests are done at Mozilla by QA team. They are exploratory but involve large projects and lot of tester (even the community), so they provide a set of test cases with the purpose of the tester explore the app as a user might. As an example, there are the <a href=https://etherpad.mozilla.org/testday-2013-08-30>test days</a>, where the community is invited to test some particular project using those test cases.</p>
+
+<p>Henceforth in large projects (or at least larger than small ones) it is important to have a test plan and test cases!</p>
+
+<p><strong>Test Case</strong> is a set of variables or conditions which will be used for test the software. A small example of a test case is the <a href=https://moztrap.allizom.org/manage/cases/>Clear active logins</a> provided by Mozilla:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="nl">Goal:</span> <span class="n">Clear</span> <span class="n">login</span> <span class="n">session</span> <span class="n">cookies</span> <span class="n">and</span> <span class="n">logout</span> <span class="n">any</span> <span class="n">active</span> <span class="n">logins</span>
+</span><span class='line'>
+</span><span class='line'><span class="mi">1</span> <span class="n">Go</span> <span class="n">to</span> <span class="n">bugzilla</span><span class="p">.</span><span class="n">mozilla</span><span class="p">.</span><span class="n">org</span> <span class="n">and</span> <span class="n">sign</span> <span class="k">in</span> <span class="n">using</span> <span class="n">a</span> <span class="n">valid</span> <span class="n">Persona</span><span class="o">/</span><span class="n">Login</span>
+</span><span class='line'>  <span class="n">account</span>
+</span><span class='line'>   <span class="o">-&gt;</span> <span class="n">The</span> <span class="n">user</span> <span class="n">can</span> <span class="n">sign</span> <span class="k">in</span>
+</span><span class='line'>
+</span><span class='line'><span class="mi">2</span> <span class="n">Go</span> <span class="n">to</span> <span class="s">&quot;Clear private data&quot;</span>
+</span><span class='line'>   <span class="o">-&gt;</span> <span class="n">The</span> <span class="n">Clear</span> <span class="n">private</span> <span class="n">data</span> <span class="n">dialog</span> <span class="n">is</span> <span class="n">displayed</span>
+</span><span class='line'>
+</span><span class='line'><span class="mi">3</span> <span class="n">Uncheck</span> <span class="n">all</span> <span class="n">options</span> <span class="n">except</span> <span class="s">&quot;Browsing&amp;download history&quot;</span> <span class="n">and</span> <span class="n">tap</span> <span class="n">the</span>
+</span><span class='line'>  <span class="s">&quot;Clear data&quot;</span> <span class="n">button</span>
+</span><span class='line'>   <span class="o">-&gt;</span> <span class="n">The</span> <span class="n">dialog</span> <span class="n">is</span> <span class="n">displayed</span> <span class="n">and</span> <span class="n">after</span> <span class="n">a</span> <span class="n">few</span> <span class="n">seconds</span> <span class="n">a</span> <span class="n">toast</span>
+</span><span class='line'>      <span class="n">notification</span> <span class="n">displays</span> <span class="s">&quot;Private data cleared&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="mi">4</span> <span class="n">Go</span> <span class="n">back</span> <span class="n">to</span> <span class="n">bugzilla</span><span class="p">.</span><span class="n">mozilla</span><span class="p">.</span><span class="n">org</span> <span class="n">and</span> <span class="n">reload</span> <span class="n">the</span> <span class="n">page</span>
+</span><span class='line'>   <span class="o">-&gt;</span> <span class="n">The</span> <span class="n">user</span> <span class="n">is</span> <span class="n">logged</span> <span class="n">out</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
+<p>The <strong>Test Plan/Strategy</strong> defines the approach to testing the software. Describes what is being tested to validate the quality before the release. An example is the <a href=https://wiki.mozilla.org/Releases/Firefox_23/Test_Plan>test plan for Firefox 23</a></p>
 
-<article>
-  
-<h1><a href="/blog/test-gardening-report-week-7-8/">Test Gardening Report Week 7-8</a></h1>
-<time datetime="2013-08-11T12:52:00-03:00" pubdate><span class='month'>Aug</span> <span class='day'>11</span> <span class='year'>2013</span></time>
+<h3>Why use it?</h3>
 
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/blog/categories/bug/'>bug</a>, <a class='category' href='/blog/blog/categories/code/'>code</a>, <a class='category' href='/blog/blog/categories/documentation/'>documentation</a>, <a class='category' href='/blog/blog/categories/gnome/'>gnome</a>, <a class='category' href='/blog/blog/categories/mozilla/'>mozilla</a>, <a class='category' href='/blog/blog/categories/opw/'>opw</a>, <a class='category' href='/blog/blog/categories/socorro/'>socorro</a>, <a class='category' href='/blog/blog/categories/test/'>test</a></span>
-</footer>
+<p>It is specially useful in softwares that change frequently, so it is hard to make it automatically. It is commonly used when the tests are not so hard (does not have millions of database values to evaluate, for example) or it needs to be run just a few times. The manual test can also aim testing like a everyday user.</p>
 
+<h3>References</h3>
 
-</article>
-
-
-
-<article>
-  
-<h1><a href="/blog/test-gardening-report-week-4-5/">Test Gardening Report Week 5-6</a></h1>
-<time datetime="2013-07-28T12:07:00-03:00" pubdate><span class='month'>Jul</span> <span class='day'>28</span> <span class='year'>2013</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/blog/categories/bug/'>bug</a>, <a class='category' href='/blog/blog/categories/code/'>code</a>, <a class='category' href='/blog/blog/categories/documentation/'>documentation</a>, <a class='category' href='/blog/blog/categories/gnome/'>gnome</a>, <a class='category' href='/blog/blog/categories/mozilla/'>mozilla</a>, <a class='category' href='/blog/blog/categories/opw/'>opw</a>, <a class='category' href='/blog/blog/categories/socorro/'>socorro</a>, <a class='category' href='/blog/blog/categories/test/'>test</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/blog/test-gardening/">Test Gardening Report Week 3-4</a></h1>
-<time datetime="2013-07-14T20:19:00-03:00" pubdate><span class='month'>Jul</span> <span class='day'>14</span> <span class='year'>2013</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/blog/categories/bug/'>bug</a>, <a class='category' href='/blog/blog/categories/code/'>code</a>, <a class='category' href='/blog/blog/categories/documentation/'>documentation</a>, <a class='category' href='/blog/blog/categories/gnome/'>gnome</a>, <a class='category' href='/blog/blog/categories/mozilla/'>mozilla</a>, <a class='category' href='/blog/blog/categories/opw/'>opw</a>, <a class='category' href='/blog/blog/categories/socorro/'>socorro</a>, <a class='category' href='/blog/blog/categories/test/'>test</a></span>
-</footer>
-
-
-</article>
-
+<p><a href=https://quality.mozilla.org/teams/web-qa/#Manual>https://quality.mozilla.org/teams/web-qa/#Manual</a><br/>
+<a href=http://en.wikipedia.org/wiki/Manual_testing>http://en.wikipedia.org/wiki/Manual_testing</a> <br/>
+<a href=https://quality.mozilla.org/2012/11/exploratory-testing-on-moztrap-job-board-posting-1/>https://quality.mozilla.org/2012/11/exploratory-testing-on-moztrap-job-board-posting-1/</a></p>
 </div>
 
+
+  <footer>
+    <p class="meta">
+      
   
+
+<span class="byline author vcard">Posted by <span class="fn">gabithume</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-08-27T16:17:00-03:00" pubdate data-updated="true">Aug 27<span>th</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/blog/categories/code/'>code</a>, <a class='category' href='/blog/blog/categories/test/'>test</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://tecendobits.cc/blog/manual-testing/" data-via="gabithume" data-counturl="http://tecendobits.cc/blog/manual-testing/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/test-gardening-report-week-9-10/" title="Previous Post: Test Gardening Report Week 9-10">&laquo; Test Gardening Report Week 9-10</a>
+      
+      
+    </p>
+  </footer>
 </article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
 
 </div>
 
@@ -325,7 +402,10 @@
       var disqus_shortname = 'tecendobits';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://tecendobits.cc/blog/manual-testing/';
+        var disqus_url = 'http://tecendobits.cc/blog/manual-testing/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
