@@ -38,7 +38,7 @@ socorro/unittest/external/postgresql/test_backfill.py
 
 ***
 
-### When your branch has to be rebased
+### When your branch has to be rebased (I use this a LOT!)
 
 The following commands can be used to update the master branch and then rebase your branch with the master branch:
 

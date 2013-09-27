@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Category: crash-stats - TecendoBits/WeavingBits Blog</title>
+  <title>Test Gardening Report Week 13 - TecendoBits/WeavingBits Blog</title>
   <meta name="author" content="gabithume">
 
   
-  <meta name="description" content="Category: crash-stats">
+  <meta name="description" content="Bugs Bug 913583 - Remove commonconfig from Elastic Search tests. To smash this bug, I had to create a configuration using Configman very similar to &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://tecendobits.cc/blogblog/categories/crash-stats">
+  <link rel="canonical" href="http://tecendobits.cc/blog/test-gardening-report-week-13-14">
   <link href="/blog/favicon.png" rel="icon">
   <link href="/blog/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/blog/atom.xml" rel="alternate" title="TecendoBits/WeavingBits Blog" type="application/atom+xml">
@@ -68,36 +68,137 @@
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">Category: Crash-stats</h1>
+    
+      <h1 class="entry-title">Test Gardening Report Week 13</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-09-23T21:50:00-03:00" pubdate data-updated="true">Sep 23<span>rd</span>, 2013</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
     
   </header>
-  
-  <div id="blog-archives" class="category">
 
 
+<div class="entry-content"><h3>Bugs</h3>
 
-  
-  <h2>2013</h2>
+<p><a href=https://bugzilla.mozilla.org/show_bug.cgi?id=913583>Bug 913583</a> - Remove commonconfig from Elastic Search tests.  <br/>
+To smash this bug, I had to create a configuration using Configman very similar to the one I created in PostgreSQL tests. This bug was way easy than the first one, because there are just two tests of Elastic Search. <a href=https://github.com/mozilla/socorro/pull/1533>Pull Request 1533</a>.</p>
 
-<article>
-  
-<h1><a href="/blog/first-weeks-of-opw/">Test Gardening Report Week 1-2</a></h1>
-<time datetime="2013-06-30T10:13:00-03:00" pubdate><span class='month'>Jun</span> <span class='day'>30</span> <span class='year'>2013</span></time>
+<p>But for solve <a href=https://bugzilla.mozilla.org/show_bug.cgi?id=913581>Bug 913581</a> I subclassed middleware_app of the PostgreSQL test configuration.</p>
 
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/blog/categories/bdd/'>bdd</a>, <a class='category' href='/blog/blog/categories/code/'>code</a>, <a class='category' href='/blog/blog/categories/crash-stats/'>crash-stats</a>, <a class='category' href='/blog/blog/categories/gnome/'>gnome</a>, <a class='category' href='/blog/blog/categories/mozilla/'>mozilla</a>, <a class='category' href='/blog/blog/categories/opw/'>opw</a>, <a class='category' href='/blog/blog/categories/socorro/'>socorro</a>, <a class='category' href='/blog/blog/categories/test/'>test</a></span>
-</footer>
+<!-- more -->
 
 
-</article>
+<p>Related to <a href=https://bugzilla.mozilla.org/show_bug.cgi?id=875106>Bug 875106</a> it was asked to write integration test for a skiplist entry test. The test already existed so I just completed it to solve the bug (a minor thing). <a href=https://github.com/mozilla/socorro/pull/1531>Pull Request 1531</a>.</p>
 
+<p>Too many Graphite metrics (related to statsd) were noticed from Socorro and reported in <a href=https://bugzilla.mozilla.org/show_bug.cgi?id=916905>Bug 916905</a>. I created <a href=https://github.com/mozilla/socorro/pull/1514>Pull Request 1514</a> that excludes UUIDs and replaces dates from <code>2013-09-23</code> to <code>XXXX-XX-XX</code>.</p>
+
+<p>Also, @adrian asked me to &#8220;rework middleware exceptions&#8221; (<a href=https://bugzilla.mozilla.org/show_bug.cgi?id=913428>Bug 913428</a>). This was good for the improvement of log content coming from middleware. <a href=https://github.com/mozilla/socorro/pull/1496>Pull Request 1496</a>.</p>
+
+<hr />
+
+<h3>Future bugs</h3>
+
+<p>I am stuck having a look at a bug and don&#8217;t knowing how to solve it <a href=https://bugzilla.mozilla.org/show_bug.cgi?id=912727>Bug 912727</a>. I asked @rhelmer about it and I am waiting for more information.</p>
+
+<p>I need some time to think better on <a href=https://bugzilla.mozilla.org/show_bug.cgi?id=908722>Bug 908722</a>. Hopefully I will smash this one soon.</p>
+
+<hr />
+
+<h3>OPW Wrap-up IRC Meeting</h3>
+
+<p>A meeting organized by @marina at server <code>irc.gnome.org</code> channel <code>#opw</code> taked place on September 18th. It is really nice to see how the others interns dealt with this amazing experience. I sent a <a href=https://etherpad.mozilla.org/opw2013-wrapup>etherpad</a> where I put some bugs and PRs I made so far, but I still need to review the list.</p>
+
+<hr />
+
+<h3>Miscellany</h3>
+
+<p>@stephend asked me to look an error so I made a <a href=https://gist.github.com/GabiThume/6617400>test</a> to check it, and I am receiving a status code 200 in dev. Unfortunately I don&#8217;t have a clue of how to debug this kind of thing, besides I don&#8217;t have access to stage and etc (<a href=https://bugzilla.mozilla.org/show_bug.cgi?id=918153>Bug 918153</a>).</p>
+
+<p>A interesting note it this week I was CAPABLE of creating a test that broke another test!  <br/>
+And the best of all, I spend a good time trying to solve it!</p>
+
+<p>September 13th was my pretty B-day!! :)  <br/>
+I took the day off to enjoy it with my parents (I travelled to my mom&#8217;s house for this day). A photo for you:</p>
+
+<p><img class="center" src="http://imgur.com/lOQcogU.jpg"></p>
 </div>
 
+
+  <footer>
+    <p class="meta">
+      
   
+
+<span class="byline author vcard">Posted by <span class="fn">gabithume</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-09-23T21:50:00-03:00" pubdate data-updated="true">Sep 23<span>rd</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/blog/categories/bug/'>bug</a>, <a class='category' href='/blog/blog/categories/code/'>code</a>, <a class='category' href='/blog/blog/categories/gnome/'>gnome</a>, <a class='category' href='/blog/blog/categories/mozilla/'>mozilla</a>, <a class='category' href='/blog/blog/categories/opw/'>opw</a>, <a class='category' href='/blog/blog/categories/socorro/'>socorro</a>, <a class='category' href='/blog/blog/categories/test/'>test</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://tecendobits.cc/blog/test-gardening-report-week-13-14/" data-via="gabithume" data-counturl="http://tecendobits.cc/blog/test-gardening-report-week-13-14/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/test-gardening-report-week-11-12/" title="Previous Post: Test Gardening Report Week 11-12">&laquo; Test Gardening Report Week 11-12</a>
+      
+      
+    </p>
+  </footer>
 </article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
 
 </div>
 
@@ -283,7 +384,10 @@
       var disqus_shortname = 'tecendobits';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://tecendobits.cc/blog/test-gardening-report-week-13-14/';
+        var disqus_url = 'http://tecendobits.cc/blog/test-gardening-report-week-13-14/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

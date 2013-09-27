@@ -4,7 +4,7 @@
   <title><![CDATA[TecendoBits/WeavingBits Blog]]></title>
   <link href="http://tecendobits.cc/blog/atom.xml" rel="self"/>
   <link href="http://tecendobits.cc/blog/"/>
-  <updated>2013-09-26T21:48:38-03:00</updated>
+  <updated>2013-09-27T01:51:22-03:00</updated>
   <id>http://tecendobits.cc/blog/</id>
   <author>
     <name><![CDATA[gabithume]]></name>
@@ -12,6 +12,57 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Test Gardening Report Week 13]]></title>
+    <link href="http://tecendobits.cc/blog/test-gardening-report-week-13-14/"/>
+    <updated>2013-09-23T21:50:00-03:00</updated>
+    <id>http://tecendobits.cc/blog/test-gardening-report-week-13-14</id>
+    <content type="html"><![CDATA[<h3>Bugs</h3>
+
+<p><a href=https://bugzilla.mozilla.org/show_bug.cgi?id=913583>Bug 913583</a> - Remove commonconfig from Elastic Search tests.  <br/>
+To smash this bug, I had to create a configuration using Configman very similar to the one I created in PostgreSQL tests. This bug was way easy than the first one, because there are just two tests of Elastic Search. <a href=https://github.com/mozilla/socorro/pull/1533>Pull Request 1533</a>.</p>
+
+<p>But for solve <a href=https://bugzilla.mozilla.org/show_bug.cgi?id=913581>Bug 913581</a> I subclassed middleware_app of the PostgreSQL test configuration.</p>
+
+<!-- more -->
+
+
+<p>Related to <a href=https://bugzilla.mozilla.org/show_bug.cgi?id=875106>Bug 875106</a> it was asked to write integration test for a skiplist entry test. The test already existed so I just completed it to solve the bug (a minor thing). <a href=https://github.com/mozilla/socorro/pull/1531>Pull Request 1531</a>.</p>
+
+<p>Too many Graphite metrics (related to statsd) were noticed from Socorro and reported in <a href=https://bugzilla.mozilla.org/show_bug.cgi?id=916905>Bug 916905</a>. I created <a href=https://github.com/mozilla/socorro/pull/1514>Pull Request 1514</a> that excludes UUIDs and replaces dates from <code>2013-09-23</code> to <code>XXXX-XX-XX</code>.</p>
+
+<p>Also, @adrian asked me to &#8220;rework middleware exceptions&#8221; (<a href=https://bugzilla.mozilla.org/show_bug.cgi?id=913428>Bug 913428</a>). This was good for the improvement of log content coming from middleware. <a href=https://github.com/mozilla/socorro/pull/1496>Pull Request 1496</a>.</p>
+
+<hr />
+
+<h3>Future bugs</h3>
+
+<p>I am stuck having a look at a bug and don&#8217;t knowing how to solve it <a href=https://bugzilla.mozilla.org/show_bug.cgi?id=912727>Bug 912727</a>. I asked @rhelmer about it and I am waiting for more information.</p>
+
+<p>I need some time to think better on <a href=https://bugzilla.mozilla.org/show_bug.cgi?id=908722>Bug 908722</a>. Hopefully I will smash this one soon.</p>
+
+<hr />
+
+<h3>OPW Wrap-up IRC Meeting</h3>
+
+<p>A meeting organized by @marina at server <code>irc.gnome.org</code> channel <code>#opw</code> taked place on September 18th. It is really nice to see how the others interns dealt with this amazing experience. I sent a <a href=https://etherpad.mozilla.org/opw2013-wrapup>etherpad</a> where I put some bugs and PRs I made so far, but I still need to review the list.</p>
+
+<hr />
+
+<h3>Miscellany</h3>
+
+<p>@stephend asked me to look an error so I made a <a href=https://gist.github.com/GabiThume/6617400>test</a> to check it, and I am receiving a status code 200 in dev. Unfortunately I don&#8217;t have a clue of how to debug this kind of thing, besides I don&#8217;t have access to stage and etc (<a href=https://bugzilla.mozilla.org/show_bug.cgi?id=918153>Bug 918153</a>).</p>
+
+<p>A interesting note it this week I was CAPABLE of creating a test that broke another test!  <br/>
+And the best of all, I spend a good time trying to solve it!</p>
+
+<p>September 13th was my pretty B-day!! :)  <br/>
+I took the day off to enjoy it with my parents (I travelled to my mom&#8217;s house for this day). A photo for you:</p>
+
+<p><img class="center" src="http://imgur.com/lOQcogU.jpg"></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Test Gardening Report Week 11-12]]></title>
@@ -170,7 +221,7 @@ No bug, just removing one of two psycopg2 requirements in Socorro installation: 
 
 <hr />
 
-<h3>When your branch has to be rebased</h3>
+<h3>When your branch has to be rebased (I use this a LOT!)</h3>
 
 <p>The following commands can be used to update the master branch and then rebase your branch with the master branch:</p>
 

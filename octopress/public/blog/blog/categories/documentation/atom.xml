@@ -4,7 +4,7 @@
   <title><![CDATA[Category: documentation | TecendoBits/WeavingBits Blog]]></title>
   <link href="http://tecendobits.cc/blog/blog/categories/documentation/atom.xml" rel="self"/>
   <link href="http://tecendobits.cc/blog/"/>
-  <updated>2013-09-26T21:48:38-03:00</updated>
+  <updated>2013-09-27T01:51:22-03:00</updated>
   <id>http://tecendobits.cc/blog/</id>
   <author>
     <name><![CDATA[gabithume]]></name>
@@ -55,7 +55,7 @@
 
 <hr />
 
-<h3>When your branch has to be rebased</h3>
+<h3>When your branch has to be rebased (I use this a LOT!)</h3>
 
 <p>The following commands can be used to update the master branch and then rebase your branch with the master branch:</p>
 
