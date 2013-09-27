@@ -4,7 +4,7 @@
   <title><![CDATA[TecendoBits/WeavingBits Blog]]></title>
   <link href="http://tecendobits.cc/blog/atom.xml" rel="self"/>
   <link href="http://tecendobits.cc/blog/"/>
-  <updated>2013-09-26T21:32:06-03:00</updated>
+  <updated>2013-09-26T21:48:38-03:00</updated>
   <id>http://tecendobits.cc/blog/</id>
   <author>
     <name><![CDATA[gabithume]]></name>
@@ -55,24 +55,6 @@
 No bug, just removing one of two psycopg2 requirements in Socorro installation: <a href=https://github.com/mozilla/socorro/pull/1466>Pull Request 1466</a></p>
 
 <p>There is an awesome Laura Thomson&#8217;s brownbag on Air Mozilla, where she discusses about the management of a huge project like Socorro: <a href=https://air.mozilla.org/minimum-viable-bureaucracy/?>Minimum Viable Bureaucracy</a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Software Testing]]></title>
-    <link href="http://tecendobits.cc/blog/software-testing/"/>
-    <updated>2013-08-29T20:28:00-03:00</updated>
-    <id>http://tecendobits.cc/blog/software-testing</id>
-    <content type="html"><![CDATA[<p>Testing can be throught
-black-box testing: tester is unaware of the internal structure of the code
-white-box testing: tester has full knowledge of the internals
-grey-box testing: internals relevant to testing are known</p>
-
-<p>Static test: verify requirements, syntax and others that do not require running the code
-Dynamic test: verify the results by running it</p>
-
-<p>Functional: check if the code is running according to the requirements. It is performed using white-box techniques and testing GUI, controw flow, input domain, output, manipulation and database.
-Non-Functional: check performance, compatibility, security, usability and others.</p>
 ]]></content>
   </entry>
   
