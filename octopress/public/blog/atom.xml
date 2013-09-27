@@ -4,7 +4,7 @@
   <title><![CDATA[TecendoBits/WeavingBits Blog]]></title>
   <link href="http://tecendobits.cc/blog/atom.xml" rel="self"/>
   <link href="http://tecendobits.cc/blog/"/>
-  <updated>2013-08-29T21:05:55-03:00</updated>
+  <updated>2013-09-26T21:18:08-03:00</updated>
   <id>http://tecendobits.cc/blog/</id>
   <author>
     <name><![CDATA[gabithume]]></name>
@@ -12,6 +12,69 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Test Gardening Report Week 11-12]]></title>
+    <link href="http://tecendobits.cc/blog/test-gardening-report-week-11-12/"/>
+    <updated>2013-09-08T18:18:00-03:00</updated>
+    <id>http://tecendobits.cc/blog/test-gardening-report-week-11-12</id>
+    <content type="html"><![CDATA[<h3>Configman</h3>
+
+<p><a href=http://configman.readthedocs.org/en/latest/>Configman</a> it is a great tool for setting up configuration options. It is a new style of configuration used by Socorro, catching options of environment variables is way better than using a <code>commonconfig.ini</code>. The main code contributors are @twobraids and @peterbe :)</p>
+
+<p>@peterbe assign me an issue on Configman related to make <code>+include somefile.ini</code> relative to the source file, instead of the current working directory of the executable. The issue was the <a href=https://github.com/mozilla/configman/issues/88>88</a> and my <a href=https://github.com/mozilla/configman/pull/89>Pull Request 89</a> fixed it.</p>
+
+<!-- more -->
+
+
+<hr />
+
+<h3>Removing old config style</h3>
+
+<p>Socorro Project is migrating from using configuration options to Configman, the project I cited above. So now it was designated to me to remove old config style from tests. By first I had to search for what were the tests using it and I ended with a list with postgresql, elasticsearch and middleware tests.</p>
+
+<p><a href=https://bugzilla.mozilla.org/show_bug.cgi?id=913584>Bug 913584</a> is related to remove uses of commonconfig at unittest/external/postgresql/*. This was a hard one to do, because each file I touched was interacting with many others. I also took to standardize variables like <code>databaseHost</code> for <code>dabase_host</code>, for example. My patch is in <a href=https://github.com/mozilla/socorro/pull/1479>Pull Request 1479</a>.</p>
+
+<hr />
+
+<h3>Statsd</h3>
+
+<p><a href=https://pypi.python.org/pypi/statsd>Statsd</a> is a Python client for the statsd daemon (front-end to <a href=http://graphite.wikidot.com/>Graphite</a> (Scalable Realtime Graphing)).</p>
+
+<p><a href=https://bugzilla.mozilla.org/show_bug.cgi?id=853920>Bug 853920</a> iss related to implement statsd on the internal middleware. The main difficulty of solving it was that the place where the requisition and response needed to be catch was unclear. Knowing that, I tried 3 different ways: <a href=https://github.com/GabiThume/socorro/commit/24a09a7d056c2c8bb3564628876f1c222bf5c6cf>statsd in models using a middleware</a>, <a href=https://github.com/GabiThume/socorro/commit/9b9bc1b1f19860c7aabd1bf56c2bbc4f3e256164>statsd in middleware_app</a> and finally, statsd in models using a function to catch the parameters worked! <a href=https://github.com/mozilla/socorro/pull/1465>Pull Request 1465</a></p>
+
+<p>Note: just an example of the <a href=https://gist.github.com/GabiThume/6373561>output</a> if the metrics were printed. And a good source for wgsi python is <a href=http://pythonpaste.org/do-it-yourself-framework.html>http://pythonpaste.org/do-it-yourself-framework.html</a></p>
+
+<p>Still related to statsd, I fixed Bug 912552 with <a href=https://github.com/mozilla/socorro/pull/1468>Pull Request 1468</a>. It was about having metrics working with non-ascii characters like ッ or シ.</p>
+
+<hr />
+
+<h3>Miscellany</h3>
+
+<p><a href=https://bugzilla.mozilla.org/show_bug.cgi?id=874648>Bug 874648</a> - Evict unittests that touch external resources: <a href=https://github.com/mozilla/socorro/pull/1473>Pull Request 1473</a>
+No bug, just removing one of two psycopg2 requirements in Socorro installation: <a href=https://github.com/mozilla/socorro/pull/1466>Pull Request 1466</a></p>
+
+<p>There is an awesome Laura Thomson&#8217;s brownbag on Air Mozilla, where she discusses about the management of a huge project like Socorro: <a href=https://air.mozilla.org/minimum-viable-bureaucracy/?>Minimum Viable Bureaucracy</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Software Testing]]></title>
+    <link href="http://tecendobits.cc/blog/software-testing/"/>
+    <updated>2013-08-29T20:28:00-03:00</updated>
+    <id>http://tecendobits.cc/blog/software-testing</id>
+    <content type="html"><![CDATA[<p>Testing can be throught
+black-box testing: tester is unaware of the internal structure of the code
+white-box testing: tester has full knowledge of the internals
+grey-box testing: internals relevant to testing are known</p>
+
+<p>Static test: verify requirements, syntax and others that do not require running the code
+Dynamic test: verify the results by running it</p>
+
+<p>Functional: check if the code is running according to the requirements. It is performed using white-box techniques and testing GUI, controw flow, input domain, output, manipulation and database.
+Non-Functional: check performance, compatibility, security, usability and others.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Manual Testing]]></title>

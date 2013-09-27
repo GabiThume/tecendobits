@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Category: crash-stats - TecendoBits/WeavingBits Blog</title>
+  <title>Test Gardening Report Week 11-12 - TecendoBits/WeavingBits Blog</title>
   <meta name="author" content="gabithume">
 
   
-  <meta name="description" content="Category: crash-stats">
+  <meta name="description" content="Configman Configman it is a great tool for setting up configuration options. It is a new style of configuration used by Socorro, catching options of &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://tecendobits.cc/blogblog/categories/crash-stats">
+  <link rel="canonical" href="http://tecendobits.cc/blog/test-gardening-report-week-11-12">
   <link href="/blog/favicon.png" rel="icon">
   <link href="/blog/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/blog/atom.xml" rel="alternate" title="TecendoBits/WeavingBits Blog" type="application/atom+xml">
@@ -68,36 +68,131 @@
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">Category: Crash-stats</h1>
+    
+      <h1 class="entry-title">Test Gardening Report Week 11-12</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-09-08T18:18:00-03:00" pubdate data-updated="true">Sep 8<span>th</span>, 2013</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
     
   </header>
-  
-  <div id="blog-archives" class="category">
 
 
+<div class="entry-content"><h3>Configman</h3>
 
-  
-  <h2>2013</h2>
+<p><a href=http://configman.readthedocs.org/en/latest/>Configman</a> it is a great tool for setting up configuration options. It is a new style of configuration used by Socorro, catching options of environment variables is way better than using a <code>commonconfig.ini</code>. The main code contributors are @twobraids and @peterbe :)</p>
 
-<article>
-  
-<h1><a href="/blog/first-weeks-of-opw/">Test Gardening Report Week 1-2</a></h1>
-<time datetime="2013-06-30T10:13:00-03:00" pubdate><span class='month'>Jun</span> <span class='day'>30</span> <span class='year'>2013</span></time>
+<p>@peterbe assign me an issue on Configman related to make <code>+include somefile.ini</code> relative to the source file, instead of the current working directory of the executable. The issue was the <a href=https://github.com/mozilla/configman/issues/88>88</a> and my <a href=https://github.com/mozilla/configman/pull/89>Pull Request 89</a> fixed it.</p>
 
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/blog/categories/bdd/'>bdd</a>, <a class='category' href='/blog/blog/categories/code/'>code</a>, <a class='category' href='/blog/blog/categories/crash-stats/'>crash-stats</a>, <a class='category' href='/blog/blog/categories/gnome/'>gnome</a>, <a class='category' href='/blog/blog/categories/mozilla/'>mozilla</a>, <a class='category' href='/blog/blog/categories/opw/'>opw</a>, <a class='category' href='/blog/blog/categories/socorro/'>socorro</a>, <a class='category' href='/blog/blog/categories/test/'>test</a></span>
-</footer>
+<!-- more -->
 
 
-</article>
+<hr />
 
+<h3>Removing old config style</h3>
+
+<p>Socorro Project is migrating from using configuration options to Configman, the project I cited above. So now it was designated to me to remove old config style from tests. By first I had to search for what were the tests using it and I ended with a list with postgresql, elasticsearch and middleware tests.</p>
+
+<p><a href=https://bugzilla.mozilla.org/show_bug.cgi?id=913584>Bug 913584</a> is related to remove uses of commonconfig at unittest/external/postgresql/*. This was a hard one to do, because each file I touched was interacting with many others. I also took to standardize variables like <code>databaseHost</code> for <code>dabase_host</code>, for example. My patch is in <a href=https://github.com/mozilla/socorro/pull/1479>Pull Request 1479</a>.</p>
+
+<hr />
+
+<h3>Statsd</h3>
+
+<p><a href=https://pypi.python.org/pypi/statsd>Statsd</a> is a Python client for the statsd daemon (front-end to <a href=http://graphite.wikidot.com/>Graphite</a> (Scalable Realtime Graphing)).</p>
+
+<p><a href=https://bugzilla.mozilla.org/show_bug.cgi?id=853920>Bug 853920</a> iss related to implement statsd on the internal middleware. The main difficulty of solving it was that the place where the requisition and response needed to be catch was unclear. Knowing that, I tried 3 different ways: <a href=https://github.com/GabiThume/socorro/commit/24a09a7d056c2c8bb3564628876f1c222bf5c6cf>statsd in models using a middleware</a>, <a href=https://github.com/GabiThume/socorro/commit/9b9bc1b1f19860c7aabd1bf56c2bbc4f3e256164>statsd in middleware_app</a> and finally, statsd in models using a function to catch the parameters worked! <a href=https://github.com/mozilla/socorro/pull/1465>Pull Request 1465</a></p>
+
+<p>Note: just an example of the <a href=https://gist.github.com/GabiThume/6373561>output</a> if the metrics were printed. And a good source for wgsi python is <a href=http://pythonpaste.org/do-it-yourself-framework.html>http://pythonpaste.org/do-it-yourself-framework.html</a></p>
+
+<p>Still related to statsd, I fixed Bug 912552 with <a href=https://github.com/mozilla/socorro/pull/1468>Pull Request 1468</a>. It was about having metrics working with non-ascii characters like ッ or シ.</p>
+
+<hr />
+
+<h3>Miscellany</h3>
+
+<p><a href=https://bugzilla.mozilla.org/show_bug.cgi?id=874648>Bug 874648</a> - Evict unittests that touch external resources: <a href=https://github.com/mozilla/socorro/pull/1473>Pull Request 1473</a>
+No bug, just removing one of two psycopg2 requirements in Socorro installation: <a href=https://github.com/mozilla/socorro/pull/1466>Pull Request 1466</a></p>
+
+<p>There is an awesome Laura Thomson&#8217;s brownbag on Air Mozilla, where she discusses about the management of a huge project like Socorro: <a href=https://air.mozilla.org/minimum-viable-bureaucracy/?>Minimum Viable Bureaucracy</a></p>
 </div>
 
+
+  <footer>
+    <p class="meta">
+      
   
+
+<span class="byline author vcard">Posted by <span class="fn">gabithume</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-09-08T18:18:00-03:00" pubdate data-updated="true">Sep 8<span>th</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/blog/categories/bug/'>bug</a>, <a class='category' href='/blog/blog/categories/code/'>code</a>, <a class='category' href='/blog/blog/categories/gnome/'>gnome</a>, <a class='category' href='/blog/blog/categories/mozilla/'>mozilla</a>, <a class='category' href='/blog/blog/categories/opw/'>opw</a>, <a class='category' href='/blog/blog/categories/socorro/'>socorro</a>, <a class='category' href='/blog/blog/categories/test/'>test</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://tecendobits.cc/blog/test-gardening-report-week-11-12/" data-via="gabithume" data-counturl="http://tecendobits.cc/blog/test-gardening-report-week-11-12/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/software-testing/" title="Previous Post: Software Testing">&laquo; Software Testing</a>
+      
+      
+    </p>
+  </footer>
 </article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
 
 </div>
 
@@ -283,7 +378,10 @@
       var disqus_shortname = 'tecendobits';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://tecendobits.cc/blog/test-gardening-report-week-11-12/';
+        var disqus_url = 'http://tecendobits.cc/blog/test-gardening-report-week-11-12/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

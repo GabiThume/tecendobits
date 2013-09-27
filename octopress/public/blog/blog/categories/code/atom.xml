@@ -4,7 +4,7 @@
   <title><![CDATA[Category: code | TecendoBits/WeavingBits Blog]]></title>
   <link href="http://tecendobits.cc/blog/blog/categories/code/atom.xml" rel="self"/>
   <link href="http://tecendobits.cc/blog/"/>
-  <updated>2013-08-29T21:05:55-03:00</updated>
+  <updated>2013-09-26T21:18:08-03:00</updated>
   <id>http://tecendobits.cc/blog/</id>
   <author>
     <name><![CDATA[gabithume]]></name>
@@ -12,6 +12,51 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Test Gardening Report Week 11-12]]></title>
+    <link href="http://tecendobits.cc/blog/test-gardening-report-week-11-12/"/>
+    <updated>2013-09-08T18:18:00-03:00</updated>
+    <id>http://tecendobits.cc/blog/test-gardening-report-week-11-12</id>
+    <content type="html"><![CDATA[<h3>Configman</h3>
+
+<p><a href=http://configman.readthedocs.org/en/latest/>Configman</a> it is a great tool for setting up configuration options. It is a new style of configuration used by Socorro, catching options of environment variables is way better than using a <code>commonconfig.ini</code>. The main code contributors are @twobraids and @peterbe :)</p>
+
+<p>@peterbe assign me an issue on Configman related to make <code>+include somefile.ini</code> relative to the source file, instead of the current working directory of the executable. The issue was the <a href=https://github.com/mozilla/configman/issues/88>88</a> and my <a href=https://github.com/mozilla/configman/pull/89>Pull Request 89</a> fixed it.</p>
+
+<!-- more -->
+
+
+<hr />
+
+<h3>Removing old config style</h3>
+
+<p>Socorro Project is migrating from using configuration options to Configman, the project I cited above. So now it was designated to me to remove old config style from tests. By first I had to search for what were the tests using it and I ended with a list with postgresql, elasticsearch and middleware tests.</p>
+
+<p><a href=https://bugzilla.mozilla.org/show_bug.cgi?id=913584>Bug 913584</a> is related to remove uses of commonconfig at unittest/external/postgresql/*. This was a hard one to do, because each file I touched was interacting with many others. I also took to standardize variables like <code>databaseHost</code> for <code>dabase_host</code>, for example. My patch is in <a href=https://github.com/mozilla/socorro/pull/1479>Pull Request 1479</a>.</p>
+
+<hr />
+
+<h3>Statsd</h3>
+
+<p><a href=https://pypi.python.org/pypi/statsd>Statsd</a> is a Python client for the statsd daemon (front-end to <a href=http://graphite.wikidot.com/>Graphite</a> (Scalable Realtime Graphing)).</p>
+
+<p><a href=https://bugzilla.mozilla.org/show_bug.cgi?id=853920>Bug 853920</a> iss related to implement statsd on the internal middleware. The main difficulty of solving it was that the place where the requisition and response needed to be catch was unclear. Knowing that, I tried 3 different ways: <a href=https://github.com/GabiThume/socorro/commit/24a09a7d056c2c8bb3564628876f1c222bf5c6cf>statsd in models using a middleware</a>, <a href=https://github.com/GabiThume/socorro/commit/9b9bc1b1f19860c7aabd1bf56c2bbc4f3e256164>statsd in middleware_app</a> and finally, statsd in models using a function to catch the parameters worked! <a href=https://github.com/mozilla/socorro/pull/1465>Pull Request 1465</a></p>
+
+<p>Note: just an example of the <a href=https://gist.github.com/GabiThume/6373561>output</a> if the metrics were printed. And a good source for wgsi python is <a href=http://pythonpaste.org/do-it-yourself-framework.html>http://pythonpaste.org/do-it-yourself-framework.html</a></p>
+
+<p>Still related to statsd, I fixed Bug 912552 with <a href=https://github.com/mozilla/socorro/pull/1468>Pull Request 1468</a>. It was about having metrics working with non-ascii characters like ッ or シ.</p>
+
+<hr />
+
+<h3>Miscellany</h3>
+
+<p><a href=https://bugzilla.mozilla.org/show_bug.cgi?id=874648>Bug 874648</a> - Evict unittests that touch external resources: <a href=https://github.com/mozilla/socorro/pull/1473>Pull Request 1473</a>
+No bug, just removing one of two psycopg2 requirements in Socorro installation: <a href=https://github.com/mozilla/socorro/pull/1466>Pull Request 1466</a></p>
+
+<p>There is an awesome Laura Thomson's brownbag on Air Mozilla, where she discusses about the management of a huge project like Socorro: <a href=https://air.mozilla.org/minimum-viable-bureaucracy/?>Minimum Viable Bureaucracy</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Manual Testing]]></title>
@@ -379,144 +424,6 @@
 <h3>Meetings</h3>
 
 <p>I called in Weekly Meetings on <a href=https://wiki.mozilla.org/Breakpad/Status_Meetings/2013-July-17>17th July</a> and <a href=https://wiki.mozilla.org/Breakpad/Status_Meetings/2013-July-31>31st July</a> during this time.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Test Gardening Report Week 3-4]]></title>
-    <link href="http://tecendobits.cc/blog/test-gardening/"/>
-    <updated>2013-07-14T20:19:00-03:00</updated>
-    <id>http://tecendobits.cc/blog/test-gardening</id>
-    <content type="html"><![CDATA[<p>I started to run deeply on Test Gardening. I initiate to understand the architecture and the behavior of Socorro Project, but it is a project that constantly is changing technologies, so it is important to keep learning about it.</p>
-
-<hr />
-
-<h3>Bugs</h3>
-
-<p>I begin these weeks smashing some bugs related to Socorro Crashstats, dealing with mocks, urls and json:</p>
-
-<p><a href=https://bugzilla.mozilla.org/show_bug.cgi?id=888520>Bug 888520:</a> Add test for exploitable_crashes view. <a href=https://github.com/mozilla/socorro-crashstats/pull/401>Pull Request 401</a>. Was to create a <code>test_exploitable_crashes</code> function for <code>crashstats.exploitable_crashes</code> url:</p>
-
-<!-- more -->
-
-
-<p><div><script src='https://gist.github.com/5902363.js'></script>
-<noscript><pre><code></code></pre></noscript></div>
-</p>
-
-<p><a href=https://bugzilla.mozilla.org/show_bug.cgi?id=888952>Bug 888952:</a> Add test coverage for crontabber_state_json() view. <a href=https://github.com/mozilla/socorro-crashstats/pull/402>Pull Request 402</a>. I created a <code>test_crontabber_state_json</code> function to test <code>crontabber_state_json</code>:</p>
-
-<p><div><script src='https://gist.github.com/6118039.js'></script>
-<noscript><pre><code></code></pre></noscript></div>
-</p>
-
-<p>Socorro <a href=https://bugzilla.mozilla.org/show_bug.cgi?id=817461>Bug 817461</a> was open, but I tested it on my computer and worked, so I searched for the test and I found that Selena had already <a href=https://github.com/mozilla/socorro/commit/ade562e91c26d6c6c2f8c28cd8297d72a77d70bf>solved</a> but not had closed yet.</p>
-
-<p>In my OPW application I created a failing test for rank column in Topcrashes CSV, which was starting with 0 instead of 1 (<a href=https://bugzilla.mozilla.org/show_bug.cgi?id=533628>Bug 533628</a>). Then on time to actually fix it I had some problems because I needed to read each file of crashstats that uses <code>currentRank</code> variable and test its value. But when I found it, was just one simple operation <code>+1</code> that fixed it (<a href=https://github.com/mozilla/socorro-crashstats/pull/418>PR 418</a>).</p>
-
-<p>In <a href=https://bugzilla.mozilla.org/show_bug.cgi?id=757447>Bug 757447</a> the fillDB.py file was already deleted. But there were some instructions in socorro/integrationtest/README.txt about running fillDB, that doesn't exist. So I deleted that readme file (<a href=https://github.com/mozilla/socorro/pull/1334>PR 1334</a>). In this bug we started a discussion about making how to automate integration tests.</p>
-
-<hr />
-
-<h3>Git Branch</h3>
-
-<p>The best way to write code contribution to an external repository is by creating a <code>git branch</code>. The modifications have more sense when they are related to bug tickets. The following commands can be used to create a branch, go inside it, add the modifications, commit and push your contribution related to some bug in remote repository:</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">git</span> <span class="n">checkout</span> <span class="o">-</span><span class="n">b</span> <span class="n">bug_bugnumber</span>
-</span><span class='line'><span class="n">make</span> <span class="n">your</span> <span class="n">modifications</span>
-</span><span class='line'><span class="n">git</span> <span class="n">add</span> <span class="n">changed_files</span>
-</span><span class='line'><span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">am</span> <span class="s">&quot;bug_bugnumber - message&quot;</span>
-</span><span class='line'><span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="n">branch_name</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<hr />
-
-<h3>Goals</h3>
-
-<p>I had my first meeting with @selenamarie through Skype. She asked me to take a look at <a href=https://etherpad.mozilla.org/webtools-q32013>Q3 team goals</a> and we discussed about my goals for this quarter, so became clear that I need to focus on some points (we are writing about it at <a href=https://etherpad.mozilla.org/socorro-testing>Socorro-Testing etherpad</a>):</p>
-
-<p>=> Documentation about test (some kind of a template: mocks usage, decorators, how to run (specific ones), requirements)  <br/>
-=> Testing postgres store procedures  <br/>
-=> More testing in socorro-crashstats  <br/>
-=> More coverage in socorro (wait for <a href=https://etherpad.mozilla.org/socorro-deprecation-station>deprecation</a>)  <br/>
-=> Selenium tests + django  <br/>
-=> Refresh Socorro Test Suite</p>
-
-<h4>Testing Postgres Store Procedures Goal</h4>
-
-<p>The first step was to have a look at the postgres stored procedures and how to run <code>backfill_matviews()</code>. So I read about backfills and updates on <code>socorro/external/postgresql/raw_sql/procs</code>. Then I asked myself: what is backfill?</p>
-
-<p>=> <strong>Backfill</strong> is to populate missing data from previous date when data was available. So, when we have a <code>NULL</code> data, we can fill it with some previous known. For example:</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">ID</span>   <span class="n">Date</span> <span class="n">ID</span>    <span class="n">Value</span>
-</span><span class='line'><span class="n">id1</span>  <span class="mi">7</span><span class="o">/</span><span class="mo">01</span><span class="o">/</span><span class="mi">2013</span> <span class="mi">100</span>
-</span><span class='line'><span class="n">id2</span>  <span class="mi">7</span><span class="o">/</span><span class="mo">02</span><span class="o">/</span><span class="mi">2013</span> <span class="nb">NULL</span>
-</span><span class='line'><span class="n">id3</span>  <span class="mi">7</span><span class="o">/</span><span class="mo">03</span><span class="o">/</span><span class="mi">2013</span> <span class="mi">200</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p>After backfill, this table became:</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">ID</span>   <span class="n">Date</span> <span class="n">ID</span>    <span class="n">Value</span>
-</span><span class='line'><span class="n">id1</span>  <span class="mi">7</span><span class="o">/</span><span class="mo">01</span><span class="o">/</span><span class="mi">2013</span> <span class="mi">100</span>
-</span><span class='line'><span class="n">id2</span>  <span class="mi">7</span><span class="o">/</span><span class="mo">02</span><span class="o">/</span><span class="mi">2013</span> <span class="mi">100</span>
-</span><span class='line'><span class="n">id3</span>  <span class="mi">7</span><span class="o">/</span><span class="mo">03</span><span class="o">/</span><span class="mi">2013</span> <span class="mi">200</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p>There is in socorro repository a <code>backfill</code> related to an update file. But how to run backfill of matviews (<code>socorro/external/postgresql/fakedata.py</code>)?   <br/>
-Setupdb file will call the backfill function, which will populate the matview:</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">$</span> <span class="p">.</span><span class="o">/</span><span class="n">socorro</span><span class="o">/</span><span class="n">external</span><span class="o">/</span><span class="n">postgresql</span><span class="o">/</span><span class="n">setupdb_app</span><span class="p">.</span><span class="n">py</span>    <span class="o">--</span><span class="n">database_name</span><span class="o">=</span><span class="n">breakpad</span> <span class="o">--</span><span class="n">fakedata</span> <span class="o">--</span><span class="n">dropdb</span> <span class="o">--</span><span class="n">database_superusername</span><span class="o">=</span><span class="n">test</span> <span class="o">--</span><span class="n">database_superuserpassword</span><span class="o">=</span><span class="n">bPassword</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p>Or we can directly call <code>backfills_matviews</code>:</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">$</span> <span class="n">psql</span> <span class="o">-</span><span class="n">d</span> <span class="s">&quot;breakpad&quot;</span> <span class="o">-</span><span class="n">c</span> <span class="s">&quot;SELECT backfill_matviews(date &#39;2013-06-30&#39;, current_date)&quot;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<h4>Test Documentation Goal</h4>
-
-<p>I discovered how to run specific tests in socorro-crashstats:</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">$</span> <span class="n">virtualenv</span> <span class="o">--</span><span class="n">python</span><span class="o">=</span><span class="n">python2</span><span class="mf">.6</span> <span class="p">.</span><span class="n">virtualenv</span>
-</span><span class='line'><span class="n">$</span> <span class="n">source</span> <span class="p">.</span><span class="n">virtualenv</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">activate</span>
-</span><span class='line'><span class="n">$</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">/</span><span class="n">compiled</span><span class="p">.</span><span class="n">txt</span>
-</span><span class='line'><span class="n">$</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">/</span><span class="n">dev</span><span class="p">.</span><span class="n">txt</span>
-</span><span class='line'><span class="n">$</span> <span class="p">.</span><span class="o">/</span><span class="n">manage</span><span class="p">.</span><span class="n">py</span> <span class="n">test</span> <span class="n">crashstats</span><span class="o">/</span><span class="n">crashstats</span><span class="o">/</span><span class="n">tests</span><span class="o">/</span><span class="n">test_views</span><span class="p">.</span><span class="nl">py:</span><span class="n">TestViews</span><span class="p">.</span><span class="n">test_crontabber_state_json</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p>And I started to <a href=https://github.com/GabiThume/socorro/commit/1d07aed15ed0b0a0bfa3b84355b6eb198c0c68ee>update</a> the testing documentation, which can be found at <a href=http://socorro.readthedocs.org/en/latest/unittesting.html>Socorro readthedocs</a>. I am going to publish this documentation at my blog later. It is really important for Socorro testing that it can works as a guide for write or run new tests.</p>
-
-<hr />
-
-<h3>Miscellany</h3>
-
-<p>A nice blog post about Socorro crash reports can be found at <a href=http://people.mozilla.org/~sguha/species.crash.report.html>http://people.mozilla.org/~sguha/species.crash.report.html</a>. It have some graphics to show how accurate the samples are estimates, their accuracy and sample rates of the Crash Report Signatures.</p>
-
-<hr />
-
-<h3>Meetings</h3>
-
-<p>I called in Weekly Meetings on <a href=https://wiki.mozilla.org/Breakpad/Status_Meetings/2013-July-03>3rd July</a> and <a href=https://wiki.mozilla.org/Breakpad/Status_Meetings/2013-July-10>10th July</a> during this time.</p>
 ]]></content>
   </entry>
   
