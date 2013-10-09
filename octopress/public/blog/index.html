@@ -9,7 +9,8 @@
   <meta name="author" content="gabithume">
 
   
-  <meta name="description" content="Bugs Bug 913583 - Remove commonconfig from Elastic Search tests. To smash this bug, I had to create a configuration using Configman very similar to &hellip;">
+  <meta name="description" content="Below are some measurements of interesting stuff I did during the amazing
+OPW internship. Total of days: from June 17th to September 23th = 99 Days &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -75,7 +76,145 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/test-gardening-report-week-13-14/">Test Gardening Report Week 13</a></h1>
+      <h1 class="entry-title"><a href="/blog/test-gardening-report-final-post/">Test Gardening Final Post - in Numbers</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-10-08T14:46:00-03:00" pubdate data-updated="true">Oct 8<span>th</span>, 2013</time>
+        
+         | <a href="/blog/test-gardening-report-final-post/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Below are some measurements of interesting stuff I did during the amazing
+OPW internship.</p>
+
+<p><strong>Total of days</strong>: from June 17th to September 23th = 99 <br/>
+<strong>Days of work</strong>: 71 <br/>
+<strong>Hour per day</strong>: 8 in average<br/>
+<strong>Total hours</strong>: 568</p>
+
+<p><strong>Code lines</strong>: 3939 +-<br/>
+<strong>Code lines added</strong>: 3,150 ++ <br/>
+<strong>Code lines removed</strong>: 789 &#8211; <br/>
+<strong>Commits for Mozilla</strong>: 43 <br/>
+<strong>Pull Requests for Mozilla</strong>: 27</p>
+
+<p><a href=https://github.com/mozilla/socorro><strong>Socorro</strong></a> <br/>
+Pull requests opened (<a
+href=https://github.com/mozilla/socorro/pulls/GabiThume?direction=desc&page=1&sort=created&state=closed>here</a>):
+21 <br/>
+Commits accepted: 34 <br/>
+Code lines added: 3,010 ++ <br/>
+Code lines removed: 769 &#8211;</p>
+
+<p><a href=https://github.com/mozilla/socorro-crashstats><strong>Old Socorro-Crashstats</strong></a>
+(Now it is included in Socorro) <br/>
+Pull requests opened (<a
+href=https://github.com/mozilla/socorro-crashstats/pulls/GabiThume?direction=desc&page=1&sort=created&state=closed>here</a>):
+5 <br/>
+Commits accepted: 6  <br/>
+Code lines added: 75 ++  <br/>
+Code lines removed: 5 &#8211;</p>
+
+<p><a href=https://github.com/mozilla/configman><strong>Configman</strong></a>  <br/>
+Pull requests opened (<a
+href=https://github.com/mozilla/configman/pull/89>here</a>): 1  <br/>
+Commits accepted: 3 <br/>
+Code lines added: 65 ++ <br/>
+Code lines removed: 15 &#8211;</p>
+
+<p><strong>Number of Bugs smashed</strong>: 22 <br/>
+<strong>Number of Bugs touched</strong>: 28</p>
+
+<p>[Bug 874650] [tracker] Refresh Socorro Test Suite   <br/>
+[Bug 913583] The elasticsearch tests shouldn&#8217;t use commonconfig. <a
+href=https://github.com/mozilla/socorro/pull/1533>Pull Request</a> <br/>
+[Bug 913584] The postgresql tests shouldn&#8217;t use commonconfig. <a
+href=https://github.com/mozilla/socorro/pull/1479>Pull Request</a> <br/>
+[Bug 913581] The middleware_app tests shouldn&#8217;t use commonconfig. <a
+href=https://github.com/mozilla/socorro/pull/1495>Pull Request</a> <br/>
+[Bug 713973] rewrite unit tests to not depend on old config <br/>
+[Bug 875106] Write integration test for a skiplist entry test . <a
+href=https://github.com/mozilla/socorro/pull/1531>Pull Request</a>  <br/>
+[Bug 874648] Evict unittests that touch external resources. <a
+href=https://github.com/mozilla/socorro/pull/1473>Pull Request</a> <br/>
+[Bug 906962] We need a service that calls backfill functions of PostgreSQL and
+also tests for it. <a href=https://github.com/mozilla/socorro/pull/1413>Pull Request</a> <br/>
+[Bug 907469] We need the backfill service linked to middleware. <a
+href=https://github.com/mozilla/socorro/pull/1431>Pull Request</a> <br/>
+[Bug 904243] we need tests for socorro/external/postgresql/tcbs.py. <a
+href=https://github.com/mozilla/socorro/pull/1396>Pull Request</a> <br/>
+[Bug 904238] we need tests for socorro/external/postgresql/util.py. <a
+href=https://github.com/mozilla/socorro/pull/1398>Pull Request</a>  <br/>
+[Bug 892672] Integrate socorro/integrationtests in Socorro Test Suite. <a
+href=https://github.com/mozilla/socorro/pull/1383>Pull Request</a> <br/>
+[Bug 820512] submitter_app has no unit tests. <a
+href=https://github.com/mozilla/socorro/pull/1368>Pull Request</a> <br/>
+[Bug 888952] Add test coverage for crontabber_state_json() view. <a
+href=https://github.com/mozilla/socorro-crashstats/pull/402>Pull Request</a> <br/>
+[Bug 888520] Add test for exploitable_crashes view. <a
+href=https://github.com/mozilla/socorro-crashstats/pull/401>Pull Request</a> <br/>
+[Bug 866448] Documentation needed for coverage testing. <a
+href=https://github.com/mozilla/socorro/pull/1336>Pull Request</a> <br/>
+[Bug 913428] Rework middleware exceptions. <a
+href=https://github.com/mozilla/socorro/pull/1496>Pull Request</a> <br/>
+[Bug 916905] Too many graphite metrics from Socorro, some including UUIDs. <a
+href=https://github.com/mozilla/socorro/pull/1514>Pull Request</a> <br/>
+[Bug 853920] Implement statsd on the internal middleware. <a
+href=https://github.com/mozilla/socorro/pull/1465>Pull Request</a> <br/>
+[Bug 912552] Statsd middleware failing on non-ascii characters. <a
+href=https://github.com/mozilla/socorro/pull/1468>Pull Request</a>  <br/>
+[Bug 757447] unittest/cron/fillDB.py deprecated? Can we remove it?. <a
+href=https://github.com/mozilla/socorro/pull/1334>Pull Request</a> <br/>
+[Bug 533628] Rank column in Topcrashers CSV output starts with 0 instead
+of 1. <a href=https://github.com/mozilla/socorro-crashstats/pull/418>Pull
+Request</a> <br/>
+[Bug 864854] permission denied, role monitor does not exist errors when running
+Socorro unit tests on Ubuntu 12.04 LTS <br/>
+[Bug 651661] unit test failure in testGetJsonOrWarn<br/>
+[Bug 817461] &#8220;make test&#8221; does not fail if db timezone is wrong <br/>
+[Bug 874697] Clarify the role of Socorro-Tests vs unit and integration tests
+that are part of core Socorro <br/>
+[Bug 744446] consistency in Socorro unit tests <br/>
+[Bug 912727] Run *-integration-test.sh in parallel to unittests [future]</p>
+
+<p><strong>Lines of irc talk with my awesome mentor</strong>: 2800 till now :)  <br/>
+<strong>Number of words in private irc chat with my mentor</strong>: 38310   <br/>
+<strong>Weekly meetings #breakpad</strong>: 14</p>
+
+<p><strong>Report&#8217;s blog posts</strong>: 7    <br/>
+<strong>Report&#8217;s blog posts characters(no spaces)</strong>: 33719</p>
+
+<p>Please, Let me know if you wanna another measurement included here.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/test-gardening-report-week-13/">Test Gardening Report Week 13</a></h1>
     
     
       <p class="meta">
@@ -93,7 +232,7 @@
 
 <time datetime="2013-09-23T21:50:00-03:00" pubdate data-updated="true">Sep 23<span>rd</span>, 2013</time>
         
-         | <a href="/blog/test-gardening-report-week-13-14/#disqus_thread">Comments</a>
+         | <a href="/blog/test-gardening-report-week-13/#disqus_thread">Comments</a>
         
       </p>
     
@@ -111,7 +250,7 @@ To smash this bug, I had to create a configuration using Configman very similar 
   
   
     <footer>
-      <a rel="full-article" href="/blog/test-gardening-report-week-13-14/">Read on &rarr;</a>
+      <a rel="full-article" href="/blog/test-gardening-report-week-13/">Read on &rarr;</a>
     </footer>
   
 
@@ -311,7 +450,7 @@ To smash this bug, I had to create a configuration using Configman very similar 
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/test-gardening-report-week-4-5/">Test Gardening Report Week 5-6</a></h1>
+      <h1 class="entry-title"><a href="/blog/test-gardening-report-week-5-6/">Test Gardening Report Week 5-6</a></h1>
     
     
       <p class="meta">
@@ -329,7 +468,7 @@ To smash this bug, I had to create a configuration using Configman very similar 
 
 <time datetime="2013-07-28T12:07:00-03:00" pubdate data-updated="true">Jul 28<span>th</span>, 2013</time>
         
-         | <a href="/blog/test-gardening-report-week-4-5/#disqus_thread">Comments</a>
+         | <a href="/blog/test-gardening-report-week-5-6/#disqus_thread">Comments</a>
         
       </p>
     
@@ -352,7 +491,7 @@ To smash this bug, I had to create a configuration using Configman very similar 
   
   
     <footer>
-      <a rel="full-article" href="/blog/test-gardening-report-week-4-5/">Read on &rarr;</a>
+      <a rel="full-article" href="/blog/test-gardening-report-week-5-6/">Read on &rarr;</a>
     </footer>
   
 
@@ -364,7 +503,7 @@ To smash this bug, I had to create a configuration using Configman very similar 
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/test-gardening/">Test Gardening Report Week 3-4</a></h1>
+      <h1 class="entry-title"><a href="/blog/test-gardening-report-week-3-4/">Test Gardening Report Week 3-4</a></h1>
     
     
       <p class="meta">
@@ -382,7 +521,7 @@ To smash this bug, I had to create a configuration using Configman very similar 
 
 <time datetime="2013-07-14T20:19:00-03:00" pubdate data-updated="true">Jul 14<span>th</span>, 2013</time>
         
-         | <a href="/blog/test-gardening/#disqus_thread">Comments</a>
+         | <a href="/blog/test-gardening-report-week-3-4/#disqus_thread">Comments</a>
         
       </p>
     
@@ -403,7 +542,7 @@ To smash this bug, I had to create a configuration using Configman very similar 
   
   
     <footer>
-      <a rel="full-article" href="/blog/test-gardening/">Read on &rarr;</a>
+      <a rel="full-article" href="/blog/test-gardening-report-week-3-4/">Read on &rarr;</a>
     </footer>
   
 
@@ -415,7 +554,7 @@ To smash this bug, I had to create a configuration using Configman very similar 
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/first-weeks-of-opw/">Test Gardening Report Week 1-2</a></h1>
+      <h1 class="entry-title"><a href="/blog/test-gardening-report-week-1-2/">Test Gardening Report Week 1-2</a></h1>
     
     
       <p class="meta">
@@ -433,7 +572,7 @@ To smash this bug, I had to create a configuration using Configman very similar 
 
 <time datetime="2013-06-30T10:13:00-03:00" pubdate data-updated="true">Jun 30<span>th</span>, 2013</time>
         
-         | <a href="/blog/first-weeks-of-opw/#disqus_thread">Comments</a>
+         | <a href="/blog/test-gardening-report-week-1-2/#disqus_thread">Comments</a>
         
       </p>
     
@@ -451,7 +590,7 @@ I had contact with a lot of stuff that I had never imagined before. First of all
   
   
     <footer>
-      <a rel="full-article" href="/blog/first-weeks-of-opw/">Read on &rarr;</a>
+      <a rel="full-article" href="/blog/test-gardening-report-week-1-2/">Read on &rarr;</a>
     </footer>
   
 
@@ -500,68 +639,6 @@ So to warm up my brain, I am going to make a review about the project.</p>
   
     <footer>
       <a rel="full-article" href="/blog/mozilla-socorro-project/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/opw-application-for-mozilla/">OPW Application for Mozilla</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-05-27T19:40:00-03:00" pubdate data-updated="true">May 27<span>th</span>, 2013</time>
-        
-         | <a href="/blog/opw-application-for-mozilla/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I am posting here the application for future reference or to help someone :)</p>
-
-<hr />
-
-<p><strong>[APPLICATION - Mozilla] Gabriela Salvador Thumé</strong></p>
-
-<p><strong>Name:</strong>
-Gabriela Salvador Thumé</p>
-
-<p><strong>E-mail address:</strong>
-gabithume@gmail.com</p>
-
-<p><strong>IRC Nick: </strong>
-gabithume</p>
-
-<p><strong>Web Page / Blog / Microblog:</strong><br/>
-<a href=http://tecendobits.cc>http://tecendobits.cc</a>  <br/>
-<a href=http://tecendobits.cc/blog>http://tecendobits.cc/blog</a>       <br/>
-<a href=http://github.com/GabiThume>http://github.com/GabiThume</a>   <br/>
-<a href=http://gitorious.org/~gabithume>http://gitorious.org/~gabithume</a></p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/opw-application-for-mozilla/">Read on &rarr;</a>
     </footer>
   
 
@@ -659,7 +736,11 @@ gabithume</p>
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/test-gardening-report-week-13-14/">Test Gardening Report Week 13</a>
+        <a href="/blog/test-gardening-report-final-post/">Test Gardening Final Post - in numbers</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/test-gardening-report-week-13/">Test Gardening Report Week 13</a>
       </li>
     
       <li class="post">
@@ -679,23 +760,19 @@ gabithume</p>
       </li>
     
       <li class="post">
-        <a href="/blog/test-gardening-report-week-4-5/">Test Gardening Report Week 5-6</a>
+        <a href="/blog/test-gardening-report-week-5-6/">Test Gardening Report Week 5-6</a>
       </li>
     
       <li class="post">
-        <a href="/blog/test-gardening/">Test Gardening Report Week 3-4</a>
+        <a href="/blog/test-gardening-report-week-3-4/">Test Gardening Report Week 3-4</a>
       </li>
     
       <li class="post">
-        <a href="/blog/first-weeks-of-opw/">Test Gardening Report Week 1-2</a>
+        <a href="/blog/test-gardening-report-week-1-2/">Test Gardening Report Week 1-2</a>
       </li>
     
       <li class="post">
         <a href="/blog/mozilla-socorro-project/">Socorro Project</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/opw-application-for-mozilla/">OPW Application for Mozilla</a>
       </li>
     
   </ul>
@@ -739,7 +816,7 @@ gabithume</p>
 </section>
 <section>
   <h1>Tag Cloud</h1>
-    <span id="tag-cloud"><a href='/blog/blogblog/categories/bdd' style='font-size: 105.45454545454545%'>bdd</a> <a href='/blog/blogblog/categories/bug' style='font-size: 132.72727272727272%'>bug</a> <a href='/blog/blogblog/categories/code' style='font-size: 160.0%'>code</a> <a href='/blog/blogblog/categories/crash-stats' style='font-size: 116.36363636363636%'>crash stats</a> <a href='/blog/blogblog/categories/crash-stats' style='font-size: 105.45454545454545%'>crash-stats</a> <a href='/blog/blogblog/categories/documentation' style='font-size: 121.81818181818181%'>documentation</a> <a href='/blog/blogblog/categories/gnome' style='font-size: 154.54545454545456%'>gnome</a> <a href='/blog/blogblog/categories/mozilla' style='font-size: 154.54545454545456%'>mozilla</a> <a href='/blog/blogblog/categories/opw' style='font-size: 105.45454545454545%'>OPW</a> <a href='/blog/blogblog/categories/opw' style='font-size: 154.54545454545456%'>opw</a> <a href='/blog/blogblog/categories/socorro' style='font-size: 160.0%'>socorro</a> <a href='/blog/blogblog/categories/test' style='font-size: 149.0909090909091%'>test</a> </span>
+    <span id="tag-cloud"><a href='/blog/blogblog/categories/bdd' style='font-size: 105.45454545454545%'>bdd</a> <a href='/blog/blogblog/categories/bug' style='font-size: 132.72727272727272%'>bug</a> <a href='/blog/blogblog/categories/code' style='font-size: 160.0%'>code</a> <a href='/blog/blogblog/categories/crash-stats' style='font-size: 116.36363636363636%'>crash stats</a> <a href='/blog/blogblog/categories/crash-stats' style='font-size: 105.45454545454545%'>crash-stats</a> <a href='/blog/blogblog/categories/documentation' style='font-size: 121.81818181818181%'>documentation</a> <a href='/blog/blogblog/categories/gnome' style='font-size: 160.0%'>gnome</a> <a href='/blog/blogblog/categories/mozilla' style='font-size: 160.0%'>mozilla</a> <a href='/blog/blogblog/categories/opw' style='font-size: 105.45454545454545%'>OPW</a> <a href='/blog/blogblog/categories/opw' style='font-size: 160.0%'>opw</a> <a href='/blog/blogblog/categories/socorro' style='font-size: 160.0%'>socorro</a> <a href='/blog/blogblog/categories/test' style='font-size: 154.54545454545456%'>test</a> </span>
 </section>
   
 </aside>

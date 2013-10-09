@@ -4,7 +4,7 @@
   <title><![CDATA[TecendoBits/WeavingBits Blog]]></title>
   <link href="http://tecendobits.cc/blog/atom.xml" rel="self"/>
   <link href="http://tecendobits.cc/blog/"/>
-  <updated>2013-09-27T01:51:22-03:00</updated>
+  <updated>2013-10-08T23:31:25-03:00</updated>
   <id>http://tecendobits.cc/blog/</id>
   <author>
     <name><![CDATA[gabithume]]></name>
@@ -14,10 +14,119 @@
 
   
   <entry>
+    <title type="html"><![CDATA[Test Gardening Final Post - in numbers]]></title>
+    <link href="http://tecendobits.cc/blog/test-gardening-report-final-post/"/>
+    <updated>2013-10-08T14:46:00-03:00</updated>
+    <id>http://tecendobits.cc/blog/test-gardening-report-final-post</id>
+    <content type="html"><![CDATA[<p>Below are some measurements of interesting stuff I did during the amazing
+OPW internship.</p>
+
+<p><strong>Total of days</strong>: from June 17th to September 23th = 99 <br/>
+<strong>Days of work</strong>: 71 <br/>
+<strong>Hour per day</strong>: 8 in average<br/>
+<strong>Total hours</strong>: 568</p>
+
+<p><strong>Code lines</strong>: 3939 +-<br/>
+<strong>Code lines added</strong>: 3,150 ++ <br/>
+<strong>Code lines removed</strong>: 789 &#8211; <br/>
+<strong>Commits for Mozilla</strong>: 43 <br/>
+<strong>Pull Requests for Mozilla</strong>: 27</p>
+
+<p><a href=https://github.com/mozilla/socorro><strong>Socorro</strong></a> <br/>
+Pull requests opened (<a
+href=https://github.com/mozilla/socorro/pulls/GabiThume?direction=desc&page=1&sort=created&state=closed>here</a>):
+21 <br/>
+Commits accepted: 34 <br/>
+Code lines added: 3,010 ++ <br/>
+Code lines removed: 769 &#8211;</p>
+
+<p><a href=https://github.com/mozilla/socorro-crashstats><strong>Old Socorro-Crashstats</strong></a>
+(Now it is included in Socorro) <br/>
+Pull requests opened (<a
+href=https://github.com/mozilla/socorro-crashstats/pulls/GabiThume?direction=desc&page=1&sort=created&state=closed>here</a>):
+5 <br/>
+Commits accepted: 6  <br/>
+Code lines added: 75 ++  <br/>
+Code lines removed: 5 &#8211;</p>
+
+<p><a href=https://github.com/mozilla/configman><strong>Configman</strong></a>  <br/>
+Pull requests opened (<a
+href=https://github.com/mozilla/configman/pull/89>here</a>): 1  <br/>
+Commits accepted: 3 <br/>
+Code lines added: 65 ++ <br/>
+Code lines removed: 15 &#8211;</p>
+
+<p><strong>Number of Bugs smashed</strong>: 22 <br/>
+<strong>Number of Bugs touched</strong>: 28</p>
+
+<p>[Bug 874650] [tracker] Refresh Socorro Test Suite   <br/>
+[Bug 913583] The elasticsearch tests shouldn&#8217;t use commonconfig. <a
+href=https://github.com/mozilla/socorro/pull/1533>Pull Request</a> <br/>
+[Bug 913584] The postgresql tests shouldn&#8217;t use commonconfig. <a
+href=https://github.com/mozilla/socorro/pull/1479>Pull Request</a> <br/>
+[Bug 913581] The middleware_app tests shouldn&#8217;t use commonconfig. <a
+href=https://github.com/mozilla/socorro/pull/1495>Pull Request</a> <br/>
+[Bug 713973] rewrite unit tests to not depend on old config <br/>
+[Bug 875106] Write integration test for a skiplist entry test . <a
+href=https://github.com/mozilla/socorro/pull/1531>Pull Request</a>  <br/>
+[Bug 874648] Evict unittests that touch external resources. <a
+href=https://github.com/mozilla/socorro/pull/1473>Pull Request</a> <br/>
+[Bug 906962] We need a service that calls backfill functions of PostgreSQL and
+also tests for it. <a href=https://github.com/mozilla/socorro/pull/1413>Pull Request</a> <br/>
+[Bug 907469] We need the backfill service linked to middleware. <a
+href=https://github.com/mozilla/socorro/pull/1431>Pull Request</a> <br/>
+[Bug 904243] we need tests for socorro/external/postgresql/tcbs.py. <a
+href=https://github.com/mozilla/socorro/pull/1396>Pull Request</a> <br/>
+[Bug 904238] we need tests for socorro/external/postgresql/util.py. <a
+href=https://github.com/mozilla/socorro/pull/1398>Pull Request</a>  <br/>
+[Bug 892672] Integrate socorro/integrationtests in Socorro Test Suite. <a
+href=https://github.com/mozilla/socorro/pull/1383>Pull Request</a> <br/>
+[Bug 820512] submitter_app has no unit tests. <a
+href=https://github.com/mozilla/socorro/pull/1368>Pull Request</a> <br/>
+[Bug 888952] Add test coverage for crontabber_state_json() view. <a
+href=https://github.com/mozilla/socorro-crashstats/pull/402>Pull Request</a> <br/>
+[Bug 888520] Add test for exploitable_crashes view. <a
+href=https://github.com/mozilla/socorro-crashstats/pull/401>Pull Request</a> <br/>
+[Bug 866448] Documentation needed for coverage testing. <a
+href=https://github.com/mozilla/socorro/pull/1336>Pull Request</a> <br/>
+[Bug 913428] Rework middleware exceptions. <a
+href=https://github.com/mozilla/socorro/pull/1496>Pull Request</a> <br/>
+[Bug 916905] Too many graphite metrics from Socorro, some including UUIDs. <a
+href=https://github.com/mozilla/socorro/pull/1514>Pull Request</a> <br/>
+[Bug 853920] Implement statsd on the internal middleware. <a
+href=https://github.com/mozilla/socorro/pull/1465>Pull Request</a> <br/>
+[Bug 912552] Statsd middleware failing on non-ascii characters. <a
+href=https://github.com/mozilla/socorro/pull/1468>Pull Request</a>  <br/>
+[Bug 757447] unittest/cron/fillDB.py deprecated? Can we remove it?. <a
+href=https://github.com/mozilla/socorro/pull/1334>Pull Request</a> <br/>
+[Bug 533628] Rank column in Topcrashers CSV output starts with 0 instead
+of 1. <a href=https://github.com/mozilla/socorro-crashstats/pull/418>Pull
+Request</a> <br/>
+[Bug 864854] permission denied, role monitor does not exist errors when running
+Socorro unit tests on Ubuntu 12.04 LTS <br/>
+[Bug 651661] unit test failure in testGetJsonOrWarn<br/>
+[Bug 817461] &#8220;make test&#8221; does not fail if db timezone is wrong <br/>
+[Bug 874697] Clarify the role of Socorro-Tests vs unit and integration tests
+that are part of core Socorro <br/>
+[Bug 744446] consistency in Socorro unit tests <br/>
+[Bug 912727] Run *-integration-test.sh in parallel to unittests [future]</p>
+
+<p><strong>Lines of irc talk with my awesome mentor</strong>: 2800 till now :)  <br/>
+<strong>Number of words in private irc chat with my mentor</strong>: 38310   <br/>
+<strong>Weekly meetings #breakpad</strong>: 14</p>
+
+<p><strong>Report&#8217;s blog posts</strong>: 7    <br/>
+<strong>Report&#8217;s blog posts characters(no spaces)</strong>: 33719</p>
+
+<p>Please, Let me know if you wanna another measurement included here.</p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Test Gardening Report Week 13]]></title>
-    <link href="http://tecendobits.cc/blog/test-gardening-report-week-13-14/"/>
+    <link href="http://tecendobits.cc/blog/test-gardening-report-week-13/"/>
     <updated>2013-09-23T21:50:00-03:00</updated>
-    <id>http://tecendobits.cc/blog/test-gardening-report-week-13-14</id>
+    <id>http://tecendobits.cc/blog/test-gardening-report-week-13</id>
     <content type="html"><![CDATA[<h3>Bugs</h3>
 
 <p><a href=https://bugzilla.mozilla.org/show_bug.cgi?id=913583>Bug 913583</a> - Remove commonconfig from Elastic Search tests.  <br/>
@@ -377,9 +486,9 @@ No bug, just removing one of two psycopg2 requirements in Socorro installation: 
   
   <entry>
     <title type="html"><![CDATA[Test Gardening Report Week 5-6]]></title>
-    <link href="http://tecendobits.cc/blog/test-gardening-report-week-4-5/"/>
+    <link href="http://tecendobits.cc/blog/test-gardening-report-week-5-6/"/>
     <updated>2013-07-28T12:07:00-03:00</updated>
-    <id>http://tecendobits.cc/blog/test-gardening-report-week-4-5</id>
+    <id>http://tecendobits.cc/blog/test-gardening-report-week-5-6</id>
     <content type="html"><![CDATA[<hr />
 
 <h3>Test Documentation</h3>
@@ -464,9 +573,9 @@ No bug, just removing one of two psycopg2 requirements in Socorro installation: 
   
   <entry>
     <title type="html"><![CDATA[Test Gardening Report Week 3-4]]></title>
-    <link href="http://tecendobits.cc/blog/test-gardening/"/>
+    <link href="http://tecendobits.cc/blog/test-gardening-report-week-3-4/"/>
     <updated>2013-07-14T20:19:00-03:00</updated>
-    <id>http://tecendobits.cc/blog/test-gardening</id>
+    <id>http://tecendobits.cc/blog/test-gardening-report-week-3-4</id>
     <content type="html"><![CDATA[<p>I started to run deeply on Test Gardening. I initiate to understand the architecture and the behavior of Socorro Project, but it is a project that constantly is changing technologies, so it is important to keep learning about it.</p>
 
 <hr />
@@ -610,9 +719,9 @@ Setupdb file will call the backfill function, which will populate the matview:</
   
   <entry>
     <title type="html"><![CDATA[Test Gardening Report Week 1-2]]></title>
-    <link href="http://tecendobits.cc/blog/first-weeks-of-opw/"/>
+    <link href="http://tecendobits.cc/blog/test-gardening-report-week-1-2/"/>
     <updated>2013-06-30T10:13:00-03:00</updated>
-    <id>http://tecendobits.cc/blog/first-weeks-of-opw</id>
+    <id>http://tecendobits.cc/blog/test-gardening-report-week-1-2</id>
     <content type="html"><![CDATA[<p>The Outreach Program has began on June 17th. Those were two really cool weeks!</p>
 
 <p>One of my favorite things in the whole world is coding, so I think I am in the right project :) Although i didn&#8217;t properly code during this time, it was filled with learning (super needed).

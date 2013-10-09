@@ -4,7 +4,7 @@
   <title><![CDATA[Category: bug | TecendoBits/WeavingBits Blog]]></title>
   <link href="http://tecendobits.cc/blog/blog/categories/bug/atom.xml" rel="self"/>
   <link href="http://tecendobits.cc/blog/"/>
-  <updated>2013-09-27T01:51:22-03:00</updated>
+  <updated>2013-10-08T23:31:25-03:00</updated>
   <id>http://tecendobits.cc/blog/</id>
   <author>
     <name><![CDATA[gabithume]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Test Gardening Report Week 13]]></title>
-    <link href="http://tecendobits.cc/blog/test-gardening-report-week-13-14/"/>
+    <link href="http://tecendobits.cc/blog/test-gardening-report-week-13/"/>
     <updated>2013-09-23T21:50:00-03:00</updated>
-    <id>http://tecendobits.cc/blog/test-gardening-report-week-13-14</id>
+    <id>http://tecendobits.cc/blog/test-gardening-report-week-13</id>
     <content type="html"><![CDATA[<h3>Bugs</h3>
 
 <p><a href=https://bugzilla.mozilla.org/show_bug.cgi?id=913583>Bug 913583</a> - Remove commonconfig from Elastic Search tests.  <br/>
@@ -323,9 +323,9 @@ No bug, just removing one of two psycopg2 requirements in Socorro installation: 
   
   <entry>
     <title type="html"><![CDATA[Test Gardening Report Week 5-6]]></title>
-    <link href="http://tecendobits.cc/blog/test-gardening-report-week-4-5/"/>
+    <link href="http://tecendobits.cc/blog/test-gardening-report-week-5-6/"/>
     <updated>2013-07-28T12:07:00-03:00</updated>
-    <id>http://tecendobits.cc/blog/test-gardening-report-week-4-5</id>
+    <id>http://tecendobits.cc/blog/test-gardening-report-week-5-6</id>
     <content type="html"><![CDATA[<hr />
 
 <h3>Test Documentation</h3>

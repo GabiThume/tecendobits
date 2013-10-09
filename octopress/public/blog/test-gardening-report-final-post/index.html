@@ -5,11 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Manual Testing - TecendoBits/WeavingBits Blog</title>
+  <title>Test Gardening Final Post - in numbers - TecendoBits/WeavingBits Blog</title>
   <meta name="author" content="gabithume">
 
   
-  <meta name="description" content="What is it? It is the process of an manually test the software to see if it works as expected. The key is to find correct behavior even when doing &hellip;">
+  <meta name="description" content="Below are some measurements of interesting stuff I did during the amazing
+OPW internship. Total of days: from June 17th to September 23th = 99 Days &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://tecendobits.cc/blog/manual-testing">
+  <link rel="canonical" href="http://tecendobits.cc/blog/test-gardening-report-final-post">
   <link href="/blog/favicon.png" rel="icon">
   <link href="/blog/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/blog/atom.xml" rel="alternate" title="TecendoBits/WeavingBits Blog" type="application/atom+xml">
@@ -72,7 +73,7 @@
   
   <header>
     
-      <h1 class="entry-title">Manual Testing</h1>
+      <h1 class="entry-title">Test Gardening Final Post - in Numbers</h1>
     
     
       <p class="meta">
@@ -88,7 +89,7 @@
   
 
 
-<time datetime="2013-08-27T16:17:00-03:00" pubdate data-updated="true">Aug 27<span>th</span>, 2013</time>
+<time datetime="2013-10-08T14:46:00-03:00" pubdate data-updated="true">Oct 8<span>th</span>, 2013</time>
         
          | <a href="#disqus_thread">Comments</a>
         
@@ -97,67 +98,107 @@
   </header>
 
 
-<div class="entry-content"><h3>What is it?</h3>
+<div class="entry-content"><p>Below are some measurements of interesting stuff I did during the amazing
+OPW internship.</p>
 
-<p>It is the process of an manually test the software to see if it works as expected. The key is to find correct behavior even when doing unexpected use of the software (like filling a wrong username). It is really important to do before release to end users.</p>
+<p><strong>Total of days</strong>: from June 17th to September 23th = 99 <br/>
+<strong>Days of work</strong>: 71 <br/>
+<strong>Hour per day</strong>: 8 in average<br/>
+<strong>Total hours</strong>: 568</p>
 
-<p>For small projects, the test can be done in a exploratory way by not following any set of rules, testing the software behavior given what the tester thinks it is important. This works well when you have a software that does not have a variability of different behaviors. For example: you have a code that calculates the sum of two numbers. You need to test what happens if you insert different data types of numbers, if works with integers and floats, negative numbers, large numbers and if the result is correct.</p>
+<p><strong>Code lines</strong>: 3939 +-<br/>
+<strong>Code lines added</strong>: 3,150 ++ <br/>
+<strong>Code lines removed</strong>: 789 &#8211; <br/>
+<strong>Commits for Mozilla</strong>: 43 <br/>
+<strong>Pull Requests for Mozilla</strong>: 27</p>
 
-<!-- more -->
+<p><a href=https://github.com/mozilla/socorro><strong>Socorro</strong></a> <br/>
+Pull requests opened (<a
+href=https://github.com/mozilla/socorro/pulls/GabiThume?direction=desc&page=1&sort=created&state=closed>here</a>):
+21 <br/>
+Commits accepted: 34 <br/>
+Code lines added: 3,010 ++ <br/>
+Code lines removed: 769 &#8211;</p>
 
+<p><a href=https://github.com/mozilla/socorro-crashstats><strong>Old Socorro-Crashstats</strong></a>
+(Now it is included in Socorro) <br/>
+Pull requests opened (<a
+href=https://github.com/mozilla/socorro-crashstats/pulls/GabiThume?direction=desc&page=1&sort=created&state=closed>here</a>):
+5 <br/>
+Commits accepted: 6  <br/>
+Code lines added: 75 ++  <br/>
+Code lines removed: 5 &#8211;</p>
 
-<p>Also, important exploratory tests are done at Mozilla by QA team. They are exploratory but involve large projects and lot of tester (even the community), so they provide a set of test cases with the purpose of the tester explore the app as a user might. As an example, there are the <a href=https://etherpad.mozilla.org/testday-2013-08-30>test days</a>, where the community is invited to test some particular project using those test cases.</p>
+<p><a href=https://github.com/mozilla/configman><strong>Configman</strong></a>  <br/>
+Pull requests opened (<a
+href=https://github.com/mozilla/configman/pull/89>here</a>): 1  <br/>
+Commits accepted: 3 <br/>
+Code lines added: 65 ++ <br/>
+Code lines removed: 15 &#8211;</p>
 
-<p>Henceforth in large projects (or at least larger than small ones) it is important to have a test plan and test cases!</p>
+<p><strong>Number of Bugs smashed</strong>: 22 <br/>
+<strong>Number of Bugs touched</strong>: 28</p>
 
-<p><strong>Test Case</strong> is a set of variables or conditions which will be used for test the software. A small example of a test case is the <a href=https://moztrap.allizom.org/manage/cases/>Clear active logins</a> provided by Mozilla:</p>
+<p>[Bug 874650] [tracker] Refresh Socorro Test Suite   <br/>
+[Bug 913583] The elasticsearch tests shouldn&#8217;t use commonconfig. <a
+href=https://github.com/mozilla/socorro/pull/1533>Pull Request</a> <br/>
+[Bug 913584] The postgresql tests shouldn&#8217;t use commonconfig. <a
+href=https://github.com/mozilla/socorro/pull/1479>Pull Request</a> <br/>
+[Bug 913581] The middleware_app tests shouldn&#8217;t use commonconfig. <a
+href=https://github.com/mozilla/socorro/pull/1495>Pull Request</a> <br/>
+[Bug 713973] rewrite unit tests to not depend on old config <br/>
+[Bug 875106] Write integration test for a skiplist entry test . <a
+href=https://github.com/mozilla/socorro/pull/1531>Pull Request</a>  <br/>
+[Bug 874648] Evict unittests that touch external resources. <a
+href=https://github.com/mozilla/socorro/pull/1473>Pull Request</a> <br/>
+[Bug 906962] We need a service that calls backfill functions of PostgreSQL and
+also tests for it. <a href=https://github.com/mozilla/socorro/pull/1413>Pull Request</a> <br/>
+[Bug 907469] We need the backfill service linked to middleware. <a
+href=https://github.com/mozilla/socorro/pull/1431>Pull Request</a> <br/>
+[Bug 904243] we need tests for socorro/external/postgresql/tcbs.py. <a
+href=https://github.com/mozilla/socorro/pull/1396>Pull Request</a> <br/>
+[Bug 904238] we need tests for socorro/external/postgresql/util.py. <a
+href=https://github.com/mozilla/socorro/pull/1398>Pull Request</a>  <br/>
+[Bug 892672] Integrate socorro/integrationtests in Socorro Test Suite. <a
+href=https://github.com/mozilla/socorro/pull/1383>Pull Request</a> <br/>
+[Bug 820512] submitter_app has no unit tests. <a
+href=https://github.com/mozilla/socorro/pull/1368>Pull Request</a> <br/>
+[Bug 888952] Add test coverage for crontabber_state_json() view. <a
+href=https://github.com/mozilla/socorro-crashstats/pull/402>Pull Request</a> <br/>
+[Bug 888520] Add test for exploitable_crashes view. <a
+href=https://github.com/mozilla/socorro-crashstats/pull/401>Pull Request</a> <br/>
+[Bug 866448] Documentation needed for coverage testing. <a
+href=https://github.com/mozilla/socorro/pull/1336>Pull Request</a> <br/>
+[Bug 913428] Rework middleware exceptions. <a
+href=https://github.com/mozilla/socorro/pull/1496>Pull Request</a> <br/>
+[Bug 916905] Too many graphite metrics from Socorro, some including UUIDs. <a
+href=https://github.com/mozilla/socorro/pull/1514>Pull Request</a> <br/>
+[Bug 853920] Implement statsd on the internal middleware. <a
+href=https://github.com/mozilla/socorro/pull/1465>Pull Request</a> <br/>
+[Bug 912552] Statsd middleware failing on non-ascii characters. <a
+href=https://github.com/mozilla/socorro/pull/1468>Pull Request</a>  <br/>
+[Bug 757447] unittest/cron/fillDB.py deprecated? Can we remove it?. <a
+href=https://github.com/mozilla/socorro/pull/1334>Pull Request</a> <br/>
+[Bug 533628] Rank column in Topcrashers CSV output starts with 0 instead
+of 1. <a href=https://github.com/mozilla/socorro-crashstats/pull/418>Pull
+Request</a> <br/>
+[Bug 864854] permission denied, role monitor does not exist errors when running
+Socorro unit tests on Ubuntu 12.04 LTS <br/>
+[Bug 651661] unit test failure in testGetJsonOrWarn<br/>
+[Bug 817461] &#8220;make test&#8221; does not fail if db timezone is wrong <br/>
+[Bug 874697] Clarify the role of Socorro-Tests vs unit and integration tests
+that are part of core Socorro <br/>
+[Bug 744446] consistency in Socorro unit tests <br/>
+[Bug 912727] Run *-integration-test.sh in parallel to unittests [future]</p>
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="nl">Goal:</span> <span class="n">Clear</span> <span class="n">login</span> <span class="n">session</span> <span class="n">cookies</span> <span class="n">and</span> <span class="n">logout</span> <span class="n">any</span> <span class="n">active</span> <span class="n">logins</span>
-</span><span class='line'>
-</span><span class='line'><span class="mi">1</span> <span class="n">Go</span> <span class="n">to</span> <span class="n">bugzilla</span><span class="p">.</span><span class="n">mozilla</span><span class="p">.</span><span class="n">org</span> <span class="n">and</span> <span class="n">sign</span> <span class="k">in</span> <span class="n">using</span> <span class="n">a</span> <span class="n">valid</span> <span class="n">Persona</span><span class="o">/</span><span class="n">Login</span>
-</span><span class='line'>  <span class="n">account</span>
-</span><span class='line'>   <span class="o">-&gt;</span> <span class="n">The</span> <span class="n">user</span> <span class="n">can</span> <span class="n">sign</span> <span class="k">in</span>
-</span><span class='line'>
-</span><span class='line'><span class="mi">2</span> <span class="n">Go</span> <span class="n">to</span> <span class="s">&quot;Clear private data&quot;</span>
-</span><span class='line'>   <span class="o">-&gt;</span> <span class="n">The</span> <span class="n">Clear</span> <span class="n">private</span> <span class="n">data</span> <span class="n">dialog</span> <span class="n">is</span> <span class="n">displayed</span>
-</span><span class='line'>
-</span><span class='line'><span class="mi">3</span> <span class="n">Uncheck</span> <span class="n">all</span> <span class="n">options</span> <span class="n">except</span> <span class="s">&quot;Browsing&amp;download history&quot;</span> <span class="n">and</span> <span class="n">tap</span> <span class="n">the</span>
-</span><span class='line'>  <span class="s">&quot;Clear data&quot;</span> <span class="n">button</span>
-</span><span class='line'>   <span class="o">-&gt;</span> <span class="n">The</span> <span class="n">dialog</span> <span class="n">is</span> <span class="n">displayed</span> <span class="n">and</span> <span class="n">after</span> <span class="n">a</span> <span class="n">few</span> <span class="n">seconds</span> <span class="n">a</span> <span class="n">toast</span>
-</span><span class='line'>      <span class="n">notification</span> <span class="n">displays</span> <span class="s">&quot;Private data cleared&quot;</span>
-</span><span class='line'>
-</span><span class='line'><span class="mi">4</span> <span class="n">Go</span> <span class="n">back</span> <span class="n">to</span> <span class="n">bugzilla</span><span class="p">.</span><span class="n">mozilla</span><span class="p">.</span><span class="n">org</span> <span class="n">and</span> <span class="n">reload</span> <span class="n">the</span> <span class="n">page</span>
-</span><span class='line'>   <span class="o">-&gt;</span> <span class="n">The</span> <span class="n">user</span> <span class="n">is</span> <span class="n">logged</span> <span class="n">out</span>
-</span></code></pre></td></tr></table></div></figure>
+<p><strong>Lines of irc talk with my awesome mentor</strong>: 2800 till now :)  <br/>
+<strong>Number of words in private irc chat with my mentor</strong>: 38310   <br/>
+<strong>Weekly meetings #breakpad</strong>: 14</p>
 
+<p><strong>Report&#8217;s blog posts</strong>: 7    <br/>
+<strong>Report&#8217;s blog posts characters(no spaces)</strong>: 33719</p>
 
-<p>The <strong>Test Plan/Strategy</strong> defines the approach to testing the software. Describes what is being tested to validate the quality before the release. An example is the <a href=https://wiki.mozilla.org/Releases/Firefox_23/Test_Plan>test plan for Firefox 23</a></p>
-
-<h3>Why use it?</h3>
-
-<p>It is specially useful in softwares that change frequently, so it is hard to make it automatically. It is commonly used when the tests are not so hard (does not have millions of database values to evaluate, for example) or it needs to be run just a few times. The manual test can also aim testing like a everyday user.</p>
-
-<h3>References</h3>
-
-<p><a href=https://quality.mozilla.org/teams/web-qa/#Manual>https://quality.mozilla.org/teams/web-qa/#Manual</a><br/>
-<a href=http://en.wikipedia.org/wiki/Manual_testing>http://en.wikipedia.org/wiki/Manual_testing</a> <br/>
-<a href=https://quality.mozilla.org/2012/11/exploratory-testing-on-moztrap-job-board-posting-1/>https://quality.mozilla.org/2012/11/exploratory-testing-on-moztrap-job-board-posting-1/</a></p>
+<p>Please, Let me know if you wanna another measurement included here.</p>
 </div>
 
 
@@ -180,12 +221,12 @@
   
 
 
-<time datetime="2013-08-27T16:17:00-03:00" pubdate data-updated="true">Aug 27<span>th</span>, 2013</time>
+<time datetime="2013-10-08T14:46:00-03:00" pubdate data-updated="true">Oct 8<span>th</span>, 2013</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/blog/categories/code/'>code</a>, <a class='category' href='/blog/blog/categories/test/'>test</a>
+    <a class='category' href='/blog/blog/categories/gnome/'>gnome</a>, <a class='category' href='/blog/blog/categories/mozilla/'>mozilla</a>, <a class='category' href='/blog/blog/categories/opw/'>opw</a>, <a class='category' href='/blog/blog/categories/test/'>test</a>
   
 </span>
 
@@ -194,7 +235,7 @@
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://tecendobits.cc/blog/manual-testing/" data-via="gabithume" data-counturl="http://tecendobits.cc/blog/manual-testing/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://tecendobits.cc/blog/test-gardening-report-final-post/" data-via="gabithume" data-counturl="http://tecendobits.cc/blog/test-gardening-report-final-post/" >Tweet</a>
   
   
   
@@ -205,10 +246,8 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/test-gardening-report-week-9-10/" title="Previous Post: Test Gardening Report Week 9-10">&laquo; Test Gardening Report Week 9-10</a>
+        <a class="basic-alignment left" href="/blog/test-gardening-report-week-13/" title="Previous Post: Test Gardening Report Week 13">&laquo; Test Gardening Report Week 13</a>
       
-      
-        <a class="basic-alignment right" href="/blog/test-gardening-report-week-11-12/" title="Next Post: Test Gardening Report Week 11-12">Test Gardening Report Week 11-12 &raquo;</a>
       
     </p>
   </footer>
@@ -405,8 +444,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://tecendobits.cc/blog/manual-testing/';
-        var disqus_url = 'http://tecendobits.cc/blog/manual-testing/';
+        var disqus_identifier = 'http://tecendobits.cc/blog/test-gardening-report-final-post/';
+        var disqus_url = 'http://tecendobits.cc/blog/test-gardening-report-final-post/';
         var disqus_script = 'embed.js';
       
     (function () {

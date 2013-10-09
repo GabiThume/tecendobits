@@ -4,7 +4,7 @@
   <title><![CDATA[Category: documentation | TecendoBits/WeavingBits Blog]]></title>
   <link href="http://tecendobits.cc/blog/blog/categories/documentation/atom.xml" rel="self"/>
   <link href="http://tecendobits.cc/blog/"/>
-  <updated>2013-09-27T01:51:22-03:00</updated>
+  <updated>2013-10-08T23:31:25-03:00</updated>
   <id>http://tecendobits.cc/blog/</id>
   <author>
     <name><![CDATA[gabithume]]></name>
@@ -227,9 +227,9 @@
   
   <entry>
     <title type="html"><![CDATA[Test Gardening Report Week 5-6]]></title>
-    <link href="http://tecendobits.cc/blog/test-gardening-report-week-4-5/"/>
+    <link href="http://tecendobits.cc/blog/test-gardening-report-week-5-6/"/>
     <updated>2013-07-28T12:07:00-03:00</updated>
-    <id>http://tecendobits.cc/blog/test-gardening-report-week-4-5</id>
+    <id>http://tecendobits.cc/blog/test-gardening-report-week-5-6</id>
     <content type="html"><![CDATA[<hr />
 
 <h3>Test Documentation</h3>
@@ -312,9 +312,9 @@
   
   <entry>
     <title type="html"><![CDATA[Test Gardening Report Week 3-4]]></title>
-    <link href="http://tecendobits.cc/blog/test-gardening/"/>
+    <link href="http://tecendobits.cc/blog/test-gardening-report-week-3-4/"/>
     <updated>2013-07-14T20:19:00-03:00</updated>
-    <id>http://tecendobits.cc/blog/test-gardening</id>
+    <id>http://tecendobits.cc/blog/test-gardening-report-week-3-4</id>
     <content type="html"><![CDATA[<p>I started to run deeply on Test Gardening. I initiate to understand the architecture and the behavior of Socorro Project, but it is a project that constantly is changing technologies, so it is important to keep learning about it.</p>
 
 <hr />
