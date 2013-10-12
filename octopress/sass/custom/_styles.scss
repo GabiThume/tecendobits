@@ -14,3 +14,86 @@ article header p {
 #content .blog-index article h1 {
     font-size: 1.5em;
 }
+
+
+body > header h2{
+     background-color: #FFF;
+     width: 265px;
+     color: #000;
+     margin: 0.4em 0px 0px;
+}
+
+body > header h1 a, body > header h1 a:visited, body > header h1 a:hover {
+    background-color: #FFF;
+    text-decoration: none;
+    color: #000;
+}
+
+body > header h1 a:hover {
+    background-color: #FFF;
+    text-decoration: none;
+    color: #ccc;
+}
+
+body{
+        max-width: 100%;
+}
+
+#main{
+        margin: 0 55px auto;
+        width: 85%;
+}
+
+body > nav {
+    position: relative;
+    padding-bottom: 0.35em;
+    padding-top: 0em;
+}
+
+.gallery-item {
+    height: 185px;
+    width: 220px;
+    overflow: hidden;
+    padding-bottom: 0;
+    position: relative;
+}
+
+.gallery-item img{
+    border:none;
+}
+
+.img-info h4{
+    padding:0 10px;
+}
+
+.img-info {
+     height: 185px;
+     width: 220px;
+     padding-bottom: 0;
+     background-color:#555;
+     bottom:0;
+     color:#fff;
+     opacity:0;
+     filter: alpha(opacity = 0);
+     position:absolute;
+     z-index:1000;
+}
+
+.gallery-item:hover .img-info{
+    opacity:0.75;
+    filter: alpha(opacity = 75);
+    transition:opacity 0.25s;
+    -moz-transition:opacity 0.25s;
+    -webkit-transition:opacity 0.25s;
+}
+
+.gallery-item a {
+    white-space: normal;
+}
+
+#content > div .gallery-item{
+     height: 185px;
+     width: 220px;
+     padding-top: 0px;
+     padding-bottom: 0px;
+}

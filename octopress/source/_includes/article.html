@@ -15,6 +15,11 @@
     {% endunless %}
   </header>
 {% endunless %}
+  <script type="text/javascript">
+	$(document).ready(function() {
+		$(".fancybox").fancybox();
+	});
+  </script>
 {% if index %}
   <div class="entry-content">{{ content | excerpt }}</div>
   {% capture excerpted %}{{ content | has_excerpt }}{% endcapture %}

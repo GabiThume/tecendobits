@@ -5,7 +5,7 @@
 category_feeds: true
 
 url: http://tecendobits.cc/blog
-title: TecendoBits/WeavingBits Blog
+title: TecendoBits/WeavingBits
 subtitle: A place to random thoughts.
 author: gabithume
 simple_search: http://google.com/search
@@ -59,6 +59,10 @@ default_asides: [custom/asides/social_media.html, asides/recent_posts.html, asid
 # ----------------------- #
 #   3rd Party Settings    #
 # ----------------------- #
+
+# Portfolio
+portfolio_root: /portfolio
+portfolio_path: /Users/chs/Desktop/CODE/src/tecendobits/octopress/source/portfolio
 
 # Github repositories
 github_user: GabiThume
