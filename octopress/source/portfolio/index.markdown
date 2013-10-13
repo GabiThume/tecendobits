@@ -1,6 +1,5 @@
 ---
-layout: page
-title: "portfolio"
+layout: portfolio
 comments: false
 sharing: false
 footer: false

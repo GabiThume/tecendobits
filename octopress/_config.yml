@@ -5,10 +5,10 @@
 category_feeds: true
 
 url: http://tecendobits.cc/blog
-title: TecendoBits/WeavingBits
-subtitle: A place to random thoughts.
+title: TecendoBits
+#subtitle: A place to random thoughts.
 author: gabithume
-simple_search: http://google.com/search
+#simple_search: http://google.com/search
 description:
 
 # Default date format is "ordinal" (resulting in "July 22nd 2007")

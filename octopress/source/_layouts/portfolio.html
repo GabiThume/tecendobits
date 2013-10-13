@@ -1,0 +1,22 @@
+---
+layout: default
+sidebar: false
+footer: false
+body_id: body1
+---
+
+<div>
+<article role="article">
+  {% if page.title %}
+  <header>
+    <h1 class="entry-title">{% if site.titlecase %}{{ page.title | titlecase }}{% else %}{{ page.title }}{% endif %}</h1>
+    {% if page.date %}<p class="meta">{% include post/date.html %}{{ time }}</p>{% endif %}
+  </header>
+  {% endif %}
+  <div id="portfolio">
+    <div id="content">
+      {{ content }}
+    </div>
+  </div>
+</article>
+</div>
