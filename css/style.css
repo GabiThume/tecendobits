@@ -26,19 +26,15 @@ body {
 #vintage {
     -webkit-transition: all 0.2s linear;
     -moz-transition: all 0.2s linear;
-/*    background-color: #87A8CF;
-*/
 }
 #vintage2 {
     -webkit-transition: all 0.2s linear;
     -moz-transition: all 0.2s linear;
-  /*  background-color: #A0CF97;
-*/}
+}
 #vintage3 {
     -webkit-transition: all 0.2s linear;
     -moz-transition: all 0.2s linear;
-   /*background-color: #CF8BCD;
-*/}
+}
 #vintage text1 {
     padding:15px;
     font-family:'Gochi Hand', cursive; 

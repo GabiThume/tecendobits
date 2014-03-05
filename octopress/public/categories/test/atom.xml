@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: test | TecendoBits]]></title>
+  <link href="http://tecendobits.cc/categories/test/atom.xml" rel="self"/>
+  <link href="http://tecendobits.cc/"/>
+  <updated>2014-03-05T17:33:15-03:00</updated>
+  <id>http://tecendobits.cc/</id>
+  <author>
+    <name><![CDATA[gabithume]]></name>
+    <email><![CDATA[gabithume@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Test Gardening Final Post - in numbers]]></title>
+    <link href="http://tecendobits.cc/test-gardening-report-final-post/"/>
+    <updated>2013-10-08T14:46:00-03:00</updated>
+    <id>http://tecendobits.cc/test-gardening-report-final-post</id>
+    <content type="html"><![CDATA[<p>Below are some measurements of interesting stuff I did during the amazing
+OPW internship.</p>
+
+<p><strong>Total of days</strong>: from June 17th to September 23th (99 days) <br/>
+<strong>Days of work/fun</strong>: 71 <br/>
+<strong>Hour per day</strong>: 8 (in average)<br/>
+<strong>Total hours</strong>: 568</p>
+
+<p><strong>Code lines</strong>: 3939 +-<br/>
+<strong>Code lines added</strong>: 3,150 ++ <br/>
+<strong>Code lines removed</strong>: 789 -- <br/>
+<strong>Commits for Mozilla</strong>: 43 <br/>
+<strong>Pull Requests for Mozilla</strong>: 27</p>
+
+<p><a href=https://github.com/mozilla/socorro><strong>Socorro</strong></a> <br/>
+Pull requests opened (<a
+href=https://github.com/mozilla/socorro/pulls/GabiThume?direction=desc&page=1&sort=created&state=closed>here</a>):
+21 <br/>
+Commits accepted: 34 <br/>
+Code lines added: 3,010 ++ <br/>
+Code lines removed: 769 --</p>
+
+<p><a href=https://github.com/mozilla/socorro-crashstats><strong>Old Socorro-Crashstats</strong></a>
+(Now it is included in Socorro) <br/>
+Pull requests opened (<a
+href=https://github.com/mozilla/socorro-crashstats/pulls/GabiThume?direction=desc&page=1&sort=created&state=closed>here</a>):
+5 <br/>
+Commits accepted: 6  <br/>
+Code lines added: 75 ++  <br/>
+Code lines removed: 5 --</p>
+
+<p><a href=https://github.com/mozilla/configman><strong>Configman</strong></a>  <br/>
+Pull requests opened (<a
+href=https://github.com/mozilla/configman/pull/89>here</a>): 1  <br/>
+Commits accepted: 3 <br/>
+Code lines added: 65 ++ <br/>
+Code lines removed: 15 --</p>
+
+<p><strong>Number of Bugs smashed</strong>: 22 <br/>
+<strong>Number of Bugs touched</strong>: 28</p>
+
+<p>[Bug 874650] [tracker] Refresh Socorro Test Suite   <br/>
+[Bug 913583] The elasticsearch tests shouldn't use commonconfig. <a
+href=https://github.com/mozilla/socorro/pull/1533>Pull Request</a> <br/>
+[Bug 913584] The postgresql tests shouldn't use commonconfig. <a
+href=https://github.com/mozilla/socorro/pull/1479>Pull Request</a> <br/>
+[Bug 913581] The middleware_app tests shouldn't use commonconfig. <a
+href=https://github.com/mozilla/socorro/pull/1495>Pull Request</a> <br/>
+[Bug 713973] rewrite unit tests to not depend on old config <br/>
+[Bug 875106] Write integration test for a skiplist entry test . <a
+href=https://github.com/mozilla/socorro/pull/1531>Pull Request</a>  <br/>
+[Bug 874648] Evict unittests that touch external resources. <a
+href=https://github.com/mozilla/socorro/pull/1473>Pull Request</a> <br/>
+[Bug 906962] We need a service that calls backfill functions of PostgreSQL and
+also tests for it. <a href=https://github.com/mozilla/socorro/pull/1413>Pull Request</a> <br/>
+[Bug 907469] We need the backfill service linked to middleware. <a
+href=https://github.com/mozilla/socorro/pull/1431>Pull Request</a> <br/>
+[Bug 904243] we need tests for socorro/external/postgresql/tcbs.py. <a
+href=https://github.com/mozilla/socorro/pull/1396>Pull Request</a> <br/>
+[Bug 904238] we need tests for socorro/external/postgresql/util.py. <a
+href=https://github.com/mozilla/socorro/pull/1398>Pull Request</a>  <br/>
+[Bug 892672] Integrate socorro/integrationtests in Socorro Test Suite. <a
+href=https://github.com/mozilla/socorro/pull/1383>Pull Request</a> <br/>
+[Bug 820512] submitter_app has no unit tests. <a
+href=https://github.com/mozilla/socorro/pull/1368>Pull Request</a> <br/>
+[Bug 888952] Add test coverage for crontabber_state_json() view. <a
+href=https://github.com/mozilla/socorro-crashstats/pull/402>Pull Request</a> <br/>
+[Bug 888520] Add test for exploitable_crashes view. <a
+href=https://github.com/mozilla/socorro-crashstats/pull/401>Pull Request</a> <br/>
+[Bug 866448] Documentation needed for coverage testing. <a
+href=https://github.com/mozilla/socorro/pull/1336>Pull Request</a> <br/>
+[Bug 913428] Rework middleware exceptions. <a
+href=https://github.com/mozilla/socorro/pull/1496>Pull Request</a> <br/>
+[Bug 916905] Too many graphite metrics from Socorro, some including UUIDs. <a
+href=https://github.com/mozilla/socorro/pull/1514>Pull Request</a> <br/>
+[Bug 853920] Implement statsd on the internal middleware. <a
+href=https://github.com/mozilla/socorro/pull/1465>Pull Request</a> <br/>
+[Bug 912552] Statsd middleware failing on non-ascii characters. <a
+href=https://github.com/mozilla/socorro/pull/1468>Pull Request</a>  <br/>
+[Bug 757447] unittest/cron/fillDB.py deprecated? Can we remove it?. <a
+href=https://github.com/mozilla/socorro/pull/1334>Pull Request</a> <br/>
+[Bug 533628] Rank column in Topcrashers CSV output starts with 0 instead
+of 1. <a href=https://github.com/mozilla/socorro-crashstats/pull/418>Pull
+Request</a> <br/>
+[Bug 864854] permission denied, role monitor does not exist errors when running
+Socorro unit tests on Ubuntu 12.04 LTS <br/>
+[Bug 651661] unit test failure in testGetJsonOrWarn<br/>
+[Bug 817461] "make test" does not fail if db timezone is wrong <br/>
+[Bug 874697] Clarify the role of Socorro-Tests vs unit and integration tests
+that are part of core Socorro <br/>
+[Bug 744446] consistency in Socorro unit tests <br/>
+[Bug 912727] Run *-integration-test.sh in parallel to unittests [future]</p>
+
+<p><strong>Lines of irc talk with my awesome mentor</strong>: 2800 till now :)  <br/>
+<strong>Number of words in private irc chat with my mentor</strong>: 38310   <br/>
+<strong>Weekly meetings #breakpad</strong>: 14</p>
+
+<p><strong>Report's blog posts</strong>: 7    <br/>
+<strong>Report's blog posts characters(no spaces)</strong>: 33719</p>
+
+<p>Please, Let me know if you wanna another measurement included here.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Test Gardening Report Week 13]]></title>
+    <link href="http://tecendobits.cc/test-gardening-report-week-13/"/>
+    <updated>2013-09-23T21:50:00-03:00</updated>
+    <id>http://tecendobits.cc/test-gardening-report-week-13</id>
+    <content type="html"><![CDATA[<h3>Bugs</h3>
+
+<p><a href=https://bugzilla.mozilla.org/show_bug.cgi?id=913583>Bug 913583</a> - Remove commonconfig from Elastic Search tests.  <br/>
+To smash this bug, I had to create a configuration using Configman very similar to the one I created in PostgreSQL tests. This bug was way easy than the first one, because there are just two tests of Elastic Search. <a href=https://github.com/mozilla/socorro/pull/1533>Pull Request 1533</a>.</p>
+
+<p>But for solve <a href=https://bugzilla.mozilla.org/show_bug.cgi?id=913581>Bug 913581</a> I subclassed middleware_app of the PostgreSQL test configuration.</p>
+
+<!-- more -->
+
+
+<p>Related to <a href=https://bugzilla.mozilla.org/show_bug.cgi?id=875106>Bug 875106</a> it was asked to write integration test for a skiplist entry test. The test already existed so I just completed it to solve the bug (a minor thing). <a href=https://github.com/mozilla/socorro/pull/1531>Pull Request 1531</a>.</p>
+
+<p>Too many Graphite metrics (related to statsd) were noticed from Socorro and reported in <a href=https://bugzilla.mozilla.org/show_bug.cgi?id=916905>Bug 916905</a>. I created <a href=https://github.com/mozilla/socorro/pull/1514>Pull Request 1514</a> that excludes UUIDs and replaces dates from <code>2013-09-23</code> to <code>XXXX-XX-XX</code>.</p>
+
+<p>Also, @adrian asked me to "rework middleware exceptions" (<a href=https://bugzilla.mozilla.org/show_bug.cgi?id=913428>Bug 913428</a>). This was good for the improvement of log content coming from middleware. <a href=https://github.com/mozilla/socorro/pull/1496>Pull Request 1496</a>.</p>
+
+<hr />
+
+<h3>Future bugs</h3>
+
+<p>I am stuck having a look at a bug and don't knowing how to solve it <a href=https://bugzilla.mozilla.org/show_bug.cgi?id=912727>Bug 912727</a>. I asked @rhelmer about it and I am waiting for more information.</p>
+
+<p>I need some time to think better on <a href=https://bugzilla.mozilla.org/show_bug.cgi?id=908722>Bug 908722</a>. Hopefully I will smash this one soon.</p>
+
+<hr />
+
+<h3>OPW Wrap-up IRC Meeting</h3>
+
+<p>A meeting organized by @marina at server <code>irc.gnome.org</code> channel <code>#opw</code> taked place on September 18th. It is really nice to see how the others interns dealt with this amazing experience. I sent a <a href=https://etherpad.mozilla.org/opw2013-wrapup>etherpad</a> where I put some bugs and PRs I made so far, but I still need to review the list.</p>
+
+<hr />
+
+<h3>Miscellany</h3>
+
+<p>@stephend asked me to look an error so I made a <a href=https://gist.github.com/GabiThume/6617400>test</a> to check it, and I am receiving a status code 200 in dev. Unfortunately I don't have a clue of how to debug this kind of thing, besides I don't have access to stage and etc (<a href=https://bugzilla.mozilla.org/show_bug.cgi?id=918153>Bug 918153</a>).</p>
+
+<p>A interesting note it this week I was CAPABLE of creating a test that broke another test!  <br/>
+And the best of all, I spend a good time trying to solve it!</p>
+
+<p>September 13th was my pretty B-day!! :)  <br/>
+I took the day off to enjoy it with my parents (I travelled to my mom's house for this day). A photo for you:</p>
+
+<p><img class="center" src="http://imgur.com/lOQcogU.jpg"></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Test Gardening Report Week 11-12]]></title>
+    <link href="http://tecendobits.cc/test-gardening-report-week-11-12/"/>
+    <updated>2013-09-08T18:18:00-03:00</updated>
+    <id>http://tecendobits.cc/test-gardening-report-week-11-12</id>
+    <content type="html"><![CDATA[<h3>Configman</h3>
+
+<p><a href=http://configman.readthedocs.org/en/latest/>Configman</a> it is a great tool for setting up configuration options. It is a new style of configuration used by Socorro, catching options of environment variables is way better than using a <code>commonconfig.ini</code>. The main code contributors are @twobraids and @peterbe :)</p>
+
+<p>@peterbe assign me an issue on Configman related to make <code>+include somefile.ini</code> relative to the source file, instead of the current working directory of the executable. The issue was the <a href=https://github.com/mozilla/configman/issues/88>88</a> and my <a href=https://github.com/mozilla/configman/pull/89>Pull Request 89</a> fixed it.</p>
+
+<!-- more -->
+
+
+<hr />
+
+<h3>Removing old config style</h3>
+
+<p>Socorro Project is migrating from using configuration options to Configman, the project I cited above. So now it was designated to me to remove old config style from tests. By first I had to search for what were the tests using it and I ended with a list with postgresql, elasticsearch and middleware tests.</p>
+
+<p><a href=https://bugzilla.mozilla.org/show_bug.cgi?id=913584>Bug 913584</a> is related to remove uses of commonconfig at unittest/external/postgresql/*. This was a hard one to do, because each file I touched was interacting with many others. I also took to standardize variables like <code>databaseHost</code> for <code>dabase_host</code>, for example. My patch is in <a href=https://github.com/mozilla/socorro/pull/1479>Pull Request 1479</a>.</p>
+
+<hr />
+
+<h3>Statsd</h3>
+
+<p><a href=https://pypi.python.org/pypi/statsd>Statsd</a> is a Python client for the statsd daemon (front-end to <a href=http://graphite.wikidot.com/>Graphite</a> (Scalable Realtime Graphing)).</p>
+
+<p><a href=https://bugzilla.mozilla.org/show_bug.cgi?id=853920>Bug 853920</a> iss related to implement statsd on the internal middleware. The main difficulty of solving it was that the place where the requisition and response needed to be catch was unclear. Knowing that, I tried 3 different ways: <a href=https://github.com/GabiThume/socorro/commit/24a09a7d056c2c8bb3564628876f1c222bf5c6cf>statsd in models using a middleware</a>, <a href=https://github.com/GabiThume/socorro/commit/9b9bc1b1f19860c7aabd1bf56c2bbc4f3e256164>statsd in middleware_app</a> and finally, statsd in models using a function to catch the parameters worked! <a href=https://github.com/mozilla/socorro/pull/1465>Pull Request 1465</a></p>
+
+<p>Note: just an example of the <a href=https://gist.github.com/GabiThume/6373561>output</a> if the metrics were printed. And a good source for wgsi python is <a href=http://pythonpaste.org/do-it-yourself-framework.html>http://pythonpaste.org/do-it-yourself-framework.html</a></p>
+
+<p>Still related to statsd, I fixed Bug 912552 with <a href=https://github.com/mozilla/socorro/pull/1468>Pull Request 1468</a>. It was about having metrics working with non-ascii characters like ッ or シ.</p>
+
+<hr />
+
+<h3>Miscellany</h3>
+
+<p><a href=https://bugzilla.mozilla.org/show_bug.cgi?id=874648>Bug 874648</a> - Evict unittests that touch external resources: <a href=https://github.com/mozilla/socorro/pull/1473>Pull Request 1473</a>
+No bug, just removing one of two psycopg2 requirements in Socorro installation: <a href=https://github.com/mozilla/socorro/pull/1466>Pull Request 1466</a></p>
+
+<p>There is an awesome Laura Thomson's brownbag on Air Mozilla, where she discusses about the management of a huge project like Socorro: <a href=https://air.mozilla.org/minimum-viable-bureaucracy/?>Minimum Viable Bureaucracy</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Manual Testing]]></title>
+    <link href="http://tecendobits.cc/manual-testing/"/>
+    <updated>2013-08-27T16:17:00-03:00</updated>
+    <id>http://tecendobits.cc/manual-testing</id>
+    <content type="html"><![CDATA[<h3>What is it?</h3>
+
+<p>It is the process of an manually test the software to see if it works as expected. The key is to find correct behavior even when doing unexpected use of the software (like filling a wrong username). It is really important to do before release to end users.</p>
+
+<p>For small projects, the test can be done in a exploratory way by not following any set of rules, testing the software behavior given what the tester thinks it is important. This works well when you have a software that does not have a variability of different behaviors. For example: you have a code that calculates the sum of two numbers. You need to test what happens if you insert different data types of numbers, if works with integers and floats, negative numbers, large numbers and if the result is correct.</p>
+
+<!-- more -->
+
+
+<p>Also, important exploratory tests are done at Mozilla by QA team. They are exploratory but involve large projects and lot of tester (even the community), so they provide a set of test cases with the purpose of the tester explore the app as a user might. As an example, there are the <a href=https://etherpad.mozilla.org/testday-2013-08-30>test days</a>, where the community is invited to test some particular project using those test cases.</p>
+
+<p>Henceforth in large projects (or at least larger than small ones) it is important to have a test plan and test cases!</p>
+
+<p><strong>Test Case</strong> is a set of variables or conditions which will be used for test the software. A small example of a test case is the <a href=https://moztrap.allizom.org/manage/cases/>Clear active logins</a> provided by Mozilla:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="nl">Goal:</span> <span class="n">Clear</span> <span class="n">login</span> <span class="n">session</span> <span class="n">cookies</span> <span class="n">and</span> <span class="n">logout</span> <span class="n">any</span> <span class="n">active</span> <span class="n">logins</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="mi">1</span> <span class="n">Go</span> <span class="n">to</span> <span class="n">bugzilla</span><span class="p">.</span><span class="n">mozilla</span><span class="p">.</span><span class="n">org</span> <span class="n">and</span> <span class="n">sign</span> <span class="k">in</span> <span class="n">using</span> <span class="n">a</span> <span class="n">valid</span> <span class="n">Persona</span><span class="o">/</span><span class="n">Login</span> <span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span>
+</span><span class='line'>  <span class="n">account</span>   <span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span>
+</span><span class='line'>   <span class="o">-&gt;</span> <span class="n">The</span> <span class="n">user</span> <span class="n">can</span> <span class="n">sign</span> <span class="k">in</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="mi">2</span> <span class="n">Go</span> <span class="n">to</span> <span class="s">&quot;Clear private data&quot;</span>   <span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span>
+</span><span class='line'>   <span class="o">-&gt;</span> <span class="n">The</span> <span class="n">Clear</span> <span class="n">private</span> <span class="n">data</span> <span class="n">dialog</span> <span class="n">is</span> <span class="n">displayed</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="mi">3</span> <span class="n">Uncheck</span> <span class="n">all</span> <span class="n">options</span> <span class="n">except</span> <span class="s">&quot;Browsing&amp;amp;download history&quot;</span> <span class="n">and</span> <span class="n">tap</span> <span class="n">the</span> <span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span>
+</span><span class='line'>  <span class="s">&quot;Clear data&quot;</span> <span class="n">button</span>   <span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span>
+</span><span class='line'>   <span class="o">-&gt;</span> <span class="n">The</span> <span class="n">dialog</span> <span class="n">is</span> <span class="n">displayed</span> <span class="n">and</span> <span class="n">after</span> <span class="n">a</span> <span class="n">few</span> <span class="n">seconds</span> <span class="n">a</span> <span class="n">toast</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span>  <span class="n">notification</span> <span class="n">displays</span> <span class="s">&quot;Private data cleared&quot;</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="mi">4</span> <span class="n">Go</span> <span class="n">back</span> <span class="n">to</span> <span class="n">bugzilla</span><span class="p">.</span><span class="n">mozilla</span><span class="p">.</span><span class="n">org</span> <span class="n">and</span> <span class="n">reload</span> <span class="n">the</span> <span class="n">page</span>    <span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span>
+</span><span class='line'>   <span class="o">-&gt;</span> <span class="n">The</span> <span class="n">user</span> <span class="n">is</span> <span class="n">logged</span> <span class="n">out</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>The <strong>Test Plan/Strategy</strong> defines the approach to testing the software. Describes what is being tested to validate the quality before the release. An example is the <a href=https://wiki.mozilla.org/Releases/Firefox_23/Test_Plan>test plan for Firefox 23</a></p>
+
+<h3>Why use it?</h3>
+
+<p>It is specially useful in softwares that change frequently, so it is hard to make it automatically. It is commonly used when the tests are not so hard (does not have millions of database values to evaluate, for example) or it needs to be run just a few times. The manual test can also aim testing like a everyday user.</p>
+
+<h3>References</h3>
+
+<p><a href=https://quality.mozilla.org/teams/web-qa/#Manual>https://quality.mozilla.org/teams/web-qa/#Manual</a><br/>
+<a href=http://en.wikipedia.org/wiki/Manual_testing>http://en.wikipedia.org/wiki/Manual_testing</a> <br/>
+<a href=https://quality.mozilla.org/2012/11/exploratory-testing-on-moztrap-job-board-posting-1/>https://quality.mozilla.org/2012/11/exploratory-testing-on-moztrap-job-board-posting-1/</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Test Gardening Report Week 9-10]]></title>
+    <link href="http://tecendobits.cc/test-gardening-report-week-9-10/"/>
+    <updated>2013-08-25T15:30:00-03:00</updated>
+    <id>http://tecendobits.cc/test-gardening-report-week-9-10</id>
+    <content type="html"><![CDATA[<p>This week closed a cycle of 2 months in this amazing OPW experience. I am so glad to be part of an incredible team like Socorro. I was reflecting about our hopes and expectations, sometimes we feel that we don't have to dream huge because the risk of the dream come true is little, but if we always dream at the lower limit, we never are going to experience the happiness of doing something that really challenges you. I know that doing challenging things all the time can be frustrating, but the gratification is so much higher than the fear of do not getting whatever you want.</p>
+
+<p>I am digressing into this because I have just one month till the end of the OPW and I am enjoying so much that I don't want it to end. But I am sure that because of this awesome experience I am rethinking a lot of thoughts that I have about myself, like my capability of doing what I really want (maybe sometimes I feel a little about getting into the impostor syndrome).</p>
+
+<!-- more -->
+
+
+<hr />
+
+<h3>Test for postgresql/utils.py</h3>
+
+<p>I wrote the tests for this code related to <a href=https://bugzilla.mozilla.org/show_bug.cgi?id=904238>Bug</a> in <a href=https://github.com/mozilla/socorro/pull/1398>Pull Request 1398</a>.</p>
+
+<hr />
+
+<h3>Middleware service</h3>
+
+<p>The middleware facilitates communications with a database from an application. So we can create a new service and then "call" it from the Socorro Public API by uri. I created a simple service that calls some "backfill_(.*)" function in PostgreSQL according to its parameters and the tests to check if the service is working well. The main problem was in the treatment of the parameters passed to the service.</p>
+
+<p>To link the new service in the middleware, I had to edit some files and create test in the middleware to see if it works as expected. The Bug related is the <a href=https://bugzilla.mozilla.org/show_bug.cgi?id=906962>906962</a> and all the code can be found at the <a href=https://github.com/mozilla/socorro/pull/1413>Pull Request 1413</a>. The files needed to create a new service in middleware are:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">docs</span><span class="o">/</span><span class="n">middleware</span><span class="p">.</span><span class="n">rst</span>
+</span><span class='line'><span class="n">scripts</span><span class="o">/</span><span class="n">config</span><span class="o">/</span><span class="n">webapiconfig</span><span class="p">.</span><span class="n">py</span><span class="p">.</span><span class="n">dist</span>
+</span><span class='line'><span class="n">socorro</span><span class="o">/</span><span class="n">external</span><span class="o">/</span><span class="n">postgresql</span><span class="o">/</span><span class="n">backfill</span><span class="p">.</span><span class="n">py</span>
+</span><span class='line'><span class="n">socorro</span><span class="o">/</span><span class="n">middleware</span><span class="o">/</span><span class="n">backfill_service</span><span class="p">.</span><span class="n">py</span>
+</span><span class='line'><span class="n">socorro</span><span class="o">/</span><span class="n">middleware</span><span class="o">/</span><span class="n">middleware_app</span><span class="p">.</span><span class="n">py</span>
+</span><span class='line'><span class="n">socorro</span><span class="o">/</span><span class="n">unittest</span><span class="o">/</span><span class="n">external</span><span class="o">/</span><span class="n">postgresql</span><span class="o">/</span><span class="n">test_backfill</span><span class="p">.</span><span class="n">py</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<hr />
+
+<h3>When your branch has to be rebased (I use this a LOT!)</h3>
+
+<p>The following commands can be used to update the master branch and then rebase your branch with the master branch:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">git</span> <span class="n">checkout</span> <span class="n">master</span>
+</span><span class='line'><span class="n">git</span> <span class="n">fetch</span> <span class="n">moz</span>
+</span><span class='line'><span class="n">git</span> <span class="n">merge</span> <span class="n">moz</span><span class="o">/</span><span class="n">master</span>
+</span><span class='line'><span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="n">master</span>
+</span><span class='line'><span class="n">git</span> <span class="n">status</span>
+</span><span class='line'><span class="n">git</span> <span class="n">checkout</span> <span class="n">your_branch</span>
+</span><span class='line'><span class="n">git</span> <span class="n">fetch</span> <span class="n">origin</span>      <span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span>
+</span><span class='line'><span class="n">git</span> <span class="n">rebase</span> <span class="n">origin</span><span class="o">/</span><span class="n">master</span>
+</span><span class='line'><span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="n">your_branch</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<hr />
+
+<h3>Work week</h3>
+
+<p>The team was located at Mountain View for a (what seems <em>awesome</em>) work week:</p>
+
+<p><a href=https://etherpad.mozilla.org/StabilityWeek2013-Notes>https://etherpad.mozilla.org/StabilityWeek2013-Notes</a>   <br/>
+<a href=https://etherpad.mozilla.org/ux-stability-workweek>https://etherpad.mozilla.org/ux-stability-workweek</a>       <br/>
+<a href=https://etherpad.mozilla.org/StabWeek-SocorroBreakouts>https://etherpad.mozilla.org/StabWeek-SocorroBreakouts</a></p>
+]]></content>
+  </entry>
+  
+</feed>

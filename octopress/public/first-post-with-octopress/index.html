@@ -1,0 +1,618 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Installing and using Octopress Framework - TecendoBits</title>
+  <meta name="author" content="gabithume">
+
+  
+  <meta name="description" content="Testing content&#8230; Instalação do octopress (http://octopress.org/) &#8220;A blogging framework for hackers&#8221; no tecendobits.cc. &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://tecendobits.cc/first-post-with-octopress">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="TecendoBits" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href= "http://fonts.googleapis.com/css?family=Gochi+Hand:regular,italic,bold,bolditalic" rel='stylesheet' type='text/css'>
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel='stylesheet' type='text/css'>
+
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-48515502-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<ul class="main-navigation">
+  <li><a href="/about">About</a></li>
+  <li><a href="/portfolio">Projects</a></li>
+  <li><a href="/">Blog</a></li>
+  <li><a href="/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <header role="banner"><hgroup>
+  <h1><a href="/">TecendoBits</a></h1>
+  
+
+<!-- Add jQuery library -->
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+<!-- Add mousewheel plugin (this is optional) -->
+<script type="text/javascript" src="/javascripts/fancybox/lib/jquery.mousewheel-3.0.6.pack.js"></script>
+
+<!-- Add fancyBox -->
+<link rel="stylesheet" href="/javascripts/fancybox/source/jquery.fancybox.css?v=2.1.5" type="text/css" media="screen" />
+<script type="text/javascript" src="/javascripts/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+<!-- Optionally add helpers - button, thumbnail and/or media -->
+<link rel="stylesheet" href="/javascripts/fancybox/source/helpers/jquery.fancybox-buttons.css?v=1.0.5" type="text/css" media="screen" />
+<script type="text/javascript" src="/javascripts/fancybox/source/helpers/jquery.fancybox-buttons.js?v=1.0.5"></script>
+<script type="text/javascript" src="/javascripts/fancybox/source/helpers/jquery.fancybox-media.js?v=1.0.6"></script>
+
+<link rel="stylesheet" href="/javascripts/fancybox/source/helpers/jquery.fancybox-thumbs.css?v=1.0.7" type="text/css" media="screen" />
+<script type="text/javascript" src="/javascripts/fancybox/source/helpers/jquery.fancybox-thumbs.js?v=1.0.7"></script>
+</hgroup>
+
+
+</header>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Installing and Using Octopress Framework</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-19T00:08:00-03:00" pubdate data-updated="true">Apr 19<span>th</span>, 2013</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+  <script type="text/javascript">
+	$(document).ready(function() {
+		$(".fancybox").fancybox();
+	});
+  </script>
+
+<div class="entry-content"><p>Testing content&#8230;</p>
+
+<p>Instalação do octopress (http://octopress.org/) &#8220;A blogging framework for hackers&#8221; no tecendobits.cc.</p>
+
+<p>Primeiramente, seguir os passos de setup de http://octopress.org/docs/setup/.
+O git já tenho instalado, preciso instalar o Ruby. Para isso, via git no terminal (os comandos estão para instalar em home):</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">git</span> <span class="n">clone</span> <span class="nl">git:</span><span class="c1">//github.com/sstephenson/rbenv.git .rbenv</span>
+</span><span class='line'><span class="n">echo</span> <span class="err">&#39;</span><span class="n">export</span> <span class="n">PATH</span><span class="o">=</span><span class="s">&quot;$HOME/.rbenv/bin:$PATH&quot;</span><span class="err">&#39;</span> <span class="o">&gt;&gt;</span> <span class="o">~/</span><span class="p">.</span><span class="n">bash_profile</span>
+</span><span class='line'><span class="n">echo</span> <span class="err">&#39;</span><span class="n">eval</span> <span class="s">&quot;$(rbenv init -)&quot;</span><span class="err">&#39;</span> <span class="o">&gt;&gt;</span> <span class="o">~/</span><span class="p">.</span><span class="n">bash_profile</span>
+</span><span class='line'><span class="n">git</span> <span class="n">clone</span> <span class="nl">git:</span><span class="c1">//github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build</span>
+</span><span class='line'><span class="n">source</span> <span class="o">~/</span><span class="p">.</span><span class="n">bash_profile</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Dica: não dá pra instalar por Rbenv tendo o rvm instalado! Lembre-se de remover se for o caso.</p>
+
+<!-- more -->
+
+
+<p></p>
+
+<p>Próximo passo: Instalar Ruby 1.9.3.
+Vergonhosamente, deu erro no meu gcc (ainda estou aprendendo a lidar com o OSX) :P</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="nl">DETAILS:</span> <span class="n">Apple</span> <span class="n">no</span> <span class="n">longer</span> <span class="n">includes</span> <span class="n">the</span> <span class="n">official</span> <span class="n">GCC</span> <span class="n">compiler</span> <span class="n">with</span> <span class="n">Xcode</span>
+</span><span class='line'><span class="n">as</span> <span class="n">of</span> <span class="n">version</span> <span class="mf">4.2</span><span class="p">.</span> <span class="n">Instead</span><span class="p">,</span> <span class="n">the</span> <span class="err">`</span><span class="n">gcc</span><span class="err">`</span> <span class="n">executable</span> <span class="n">is</span> <span class="n">a</span> <span class="n">symlink</span> <span class="n">to</span>
+</span><span class='line'><span class="err">`</span><span class="n">llvm</span><span class="o">-</span><span class="n">gcc</span><span class="err">`</span><span class="p">,</span> <span class="n">a</span> <span class="n">modified</span> <span class="n">version</span> <span class="n">of</span> <span class="n">GCC</span> <span class="n">which</span> <span class="n">outputs</span> <span class="n">LLVM</span> <span class="n">bytecode</span><span class="p">.</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">For</span> <span class="n">most</span> <span class="n">programs</span> <span class="n">the</span> <span class="err">`</span><span class="n">llvm</span><span class="o">-</span><span class="n">gcc</span><span class="err">`</span> <span class="n">compiler</span> <span class="n">works</span> <span class="n">fine</span><span class="p">.</span> <span class="n">However</span><span class="p">,</span>
+</span><span class='line'><span class="n">versions</span> <span class="n">of</span> <span class="n">Ruby</span> <span class="n">older</span> <span class="n">than</span> <span class="mf">1.9.3</span><span class="o">-</span><span class="n">p125</span> <span class="n">are</span> <span class="n">incompatible</span> <span class="n">with</span>
+</span><span class='line'><span class="err">`</span><span class="n">llvm</span><span class="o">-</span><span class="n">gcc</span><span class="err">`</span><span class="p">.</span> <span class="n">To</span> <span class="n">build</span> <span class="n">older</span> <span class="n">versions</span> <span class="n">of</span> <span class="n">Ruby</span> <span class="n">you</span> <span class="n">must</span> <span class="n">have</span> <span class="n">the</span> <span class="n">official</span>
+</span><span class='line'><span class="n">GCC</span> <span class="n">compiler</span> <span class="n">installed</span> <span class="n">on</span> <span class="n">your</span> <span class="n">system</span><span class="p">.</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Seguindo as instruções dadas para instalar o GCC executável via homebrew:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">brew</span> <span class="n">tap</span> <span class="n">homebrew</span><span class="o">/</span><span class="n">dupes</span>
+</span><span class='line'><span class="n">brew</span> <span class="n">install</span> <span class="n">apple</span><span class="o">-</span><span class="n">gcc42</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Feito isso, finalmente instalar Ruby:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">rbenv</span> <span class="n">install</span> <span class="mf">1.9.3</span><span class="o">-</span><span class="n">p0</span>
+</span><span class='line'><span class="n">rbenv</span> <span class="n">rehash</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Tudo instalado certo, rodo ruby &#8211;version e minha versão é a 1.8.7 e
+não a 1.9.3. Um pouco de pesquisa via google:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">rbenv</span> <span class="n">global</span> <span class="mf">1.9.3</span><span class="o">-</span><span class="n">p0</span>
+</span><span class='line'><span class="n">ruby</span> <span class="o">--</span><span class="n">version</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Agora o sistema reconhece a versão certa (Ruby 1.9.3)!
+Sistema pronto para instalar o Octopress.</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">git</span> <span class="n">clone</span> <span class="nl">git:</span><span class="c1">//github.com/imathis/octopress.git octopress</span>
+</span><span class='line'><span class="n">cd</span> <span class="n">octopress</span>
+</span><span class='line'><span class="n">ruby</span> <span class="o">--</span><span class="n">version</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Nesse momento o terminal deve mostrar Ruby 1.9.3. Infelizmente, aqui
+apareceu &#8220;rbenv: version `1.9.3-p194&#8217; is not installed&#8221;. Porquê? No
+setup do octopress falam para instalar o 1.9.3-p0, mas o sistema está
+requisitando 1.9.3-p194. O que acho que devemos fazer?</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">rbenv</span> <span class="n">install</span> <span class="mf">1.9.3</span><span class="o">-</span><span class="n">p194</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Felizmente, os próximos passos executaram sem problemas!</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">gem</span> <span class="n">install</span> <span class="n">bundler</span>
+</span><span class='line'><span class="n">rbenv</span> <span class="n">rehash</span>
+</span><span class='line'><span class="n">bundle</span> <span class="n">install</span>
+</span><span class='line'><span class="n">rake</span> <span class="n">install</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p> Hora de subir no servidor!</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">rake</span> <span class="n">generate</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>editar _config.yml para ter blog como subdiretório:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="cp"># ----------------------- #</span>
+</span><span class='line'><span class="cp">#      Main Configs       #</span>
+</span><span class='line'><span class="cp"># ----------------------- #</span>
+</span><span class='line'>
+</span><span class='line'><span class="nl">url:</span> <span class="nl">http:</span><span class="c1">//tecendobits.cc/blog</span>
+</span><span class='line'><span class="nl">title:</span> <span class="n">TecendoBits</span> <span class="n">Blog</span>
+</span><span class='line'><span class="nl">subtitle:</span> <span class="n">A</span> <span class="n">place</span> <span class="n">to</span> <span class="n">random</span> <span class="n">thoughts</span><span class="p">.</span>
+</span><span class='line'><span class="nl">author:</span> <span class="n">gabithume</span>
+</span><span class='line'><span class="nl">simple_search:</span> <span class="nl">http:</span><span class="c1">//google.com/search</span>
+</span><span class='line'><span class="nl">subscribe_rss:</span> <span class="o">/</span><span class="n">blog</span><span class="o">/</span><span class="n">atom</span><span class="p">.</span><span class="n">xml</span>
+</span><span class='line'><span class="nl">email:</span> <span class="n">gabithume</span><span class="err">@</span><span class="n">gmail</span><span class="p">.</span><span class="n">com</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="nl">root:</span> <span class="o">/</span><span class="n">blog</span>
+</span><span class='line'><span class="nl">permalink:</span> <span class="o">/:</span><span class="n">title</span><span class="o">/</span>
+</span><span class='line'><span class="nl">destination:</span> <span class="n">public</span><span class="o">/</span><span class="n">blog</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>no config.rb:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="cp"># Publishing paths                                                                           </span>
+</span><span class='line'><span class="n">http_path</span> <span class="o">=</span> <span class="s">&quot;/blog&quot;</span>
+</span><span class='line'><span class="n">http_images_path</span> <span class="o">=</span> <span class="s">&quot;/blog/images&quot;</span>
+</span><span class='line'><span class="n">http_fonts_path</span> <span class="o">=</span> <span class="s">&quot;/blog/fonts&quot;</span>
+</span><span class='line'><span class="n">css_dir</span> <span class="o">=</span> <span class="s">&quot;public/blog/stylesheets&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Rakefile:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="cp">## -- Misc Configs -- ##</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">public_dir</span>      <span class="o">=</span> <span class="s">&quot;public/blog&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>No servidor, permite ter o blog em tecendobits/blog ao invés de tecendobits/blog/blog:
+echo &#8220;blog&#8221; > .gitignore # o git ignora o blog
+ln -s octopress/public/blog blog # link simbólico do public/blog para blog</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">rake</span> <span class="n">new_post</span><span class="p">[</span><span class="s">&quot;First Post with Octopress&quot;</span><span class="p">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>19/04</p>
+
+<p>Como customizar o template do Octopress?</p>
+
+<p>http://www.google.com/fonts/#</p>
+
+<p><link href='http://fonts.googleapis.com/css?family=Gochi+Hand'
+rel='stylesheet' type='text/css'></p>
+
+<p>Para editar, deixo o rake preview rolando e qndo faço modificações,
+rodo rake generate e visualizo em localhost:4000/blog</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">gabithume</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-19T00:08:00-03:00" pubdate data-updated="true">Apr 19<span>th</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/categories/test/'>test</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://tecendobits.cc/first-post-with-octopress/" data-via="gabithume" data-counturl="http://tecendobits.cc/first-post-with-octopress/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+      
+        <a class="basic-alignment right" href="/starting-things-to-opw/" title="Next Post: Mozilla Test Gardener in Mac OS X 10.8">Mozilla Test Gardener in Mac OS X 10.8 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section id="social">
+<a href="https://github.com/GabiThume/">
+    <div class="social-link">
+          <img src="/images/icons/github.png" width="32" height="32">
+</div>
+</a>
+
+    <a href="http://www.linkedin.com/in/gabithume">
+<div class="social-link">
+      <img src="/images/icons/linkedin.png" width="32" height="32">
+</div>
+    </a>
+
+    <a href="https://www.facebook.com/gabithume">
+<div class="social-link">
+      <img src="/images/icons/facebook.png" width="32" height="32">
+</div>
+    </a>
+
+
+<div class="social-link">
+    <a href="http://tecendobits.tumblr.com/">
+      <img src="/images/icons/tumblr.png" width="32" height="32">
+    </a>
+</div>
+
+<div class="social-link">
+    <a href="http://vimeo.com/gabithume">
+      <img src="/images/icons/vimeo.png" width="32" height="32">
+    </a>
+</div>
+
+<a href="mailto:gabithume@gmail.com">
+    <div class="social-link">
+          <img src="/images/icons/email.png" width="32" height="32">
+</div>
+</a>
+
+<div class="social-link">
+    <a href="atom.xml">
+      <img src="/images/icons/rss.png" width="32" height="32">
+    </a>
+</div>
+
+    <a href="https://plus.google.com/115961070759198455564/posts">
+<div class="social-link">
+      <img src="/images/icons/gplus2.png" width="32" height="32">
+</div>
+    </a>
+
+    <a href="https://twitter.com/gabithume">
+<div class="social-link">
+      <img src="/images/icons/twitter.png" width="32" height="32">
+</div>
+    </a>
+
+<div class="social-link">
+    <a href="http://instagram.com/gabithume#">
+      <img src="/images/icons/instagram.png" width="32" height="32">
+    </a>
+</div>
+
+
+<div class="social-link">
+    <a href="http://pinterest.com/gabithume/following/">
+      <img src="/images/icons/pinterest.png" width="32" height="32">
+    </a>
+</div>
+
+
+<div class="social-link">
+    <a href="https://delicious.com/gabithume">
+      <img src="/images/icons/delicious.png" width="32" height="32">
+    </a>
+</div>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/test-gardening-report-final-post/">Test Gardening Final Post - in numbers</a>
+      </li>
+    
+      <li class="post">
+        <a href="/test-gardening-report-week-13/">Test Gardening Report Week 13</a>
+      </li>
+    
+      <li class="post">
+        <a href="/test-gardening-report-week-11-12/">Test Gardening Report Week 11-12</a>
+      </li>
+    
+      <li class="post">
+        <a href="/manual-testing/">Manual Testing</a>
+      </li>
+    
+      <li class="post">
+        <a href="/test-gardening-report-week-9-10/">Test Gardening Report Week 9-10</a>
+      </li>
+    
+      <li class="post">
+        <a href="/test-gardening-report-week-7-8/">Test Gardening Report Week 7-8</a>
+      </li>
+    
+      <li class="post">
+        <a href="/test-gardening-report-week-5-6/">Test Gardening Report Week 5-6</a>
+      </li>
+    
+      <li class="post">
+        <a href="/test-gardening-report-week-3-4/">Test Gardening Report Week 3-4</a>
+      </li>
+    
+      <li class="post">
+        <a href="/test-gardening-report-week-1-2/">Test Gardening Report Week 1-2</a>
+      </li>
+    
+      <li class="post">
+        <a href="/mozilla-socorro-project/">Socorro Project</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/GabiThume">@GabiThume</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            <!-- jxhr.src = '/javascripts/libs/jXHR.js'; -->
+            jxhr.src = '//javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'GabiThume',
+            count: 10,
+            skip_forks: false,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section>
+  <h1>On Delicious</h1>
+  <div id="delicious"></div>
+  <script type="text/javascript" src="http://feeds.delicious.com/v2/json/gabithume?count=3&amp;sort=date&amp;callback=renderDeliciousLinks"></script>
+  <p><a href="http://delicious.com/gabithume">My Delicious Bookmarks &raquo;</a></p>
+</section>
+<section>
+  <h1>Tag Cloud</h1>
+    <span id="tag-cloud"><a href='/categories/bdd' style='font-size: 105.45454545454545%'>bdd</a> <a href='/categories/bug' style='font-size: 132.72727272727272%'>bug</a> <a href='/categories/code' style='font-size: 160.0%'>code</a> <a href='/categories/crash-stats' style='font-size: 116.36363636363636%'>crash stats</a> <a href='/categories/crash-stats' style='font-size: 105.45454545454545%'>crash-stats</a> <a href='/categories/documentation' style='font-size: 121.81818181818181%'>documentation</a> <a href='/categories/gnome' style='font-size: 160.0%'>gnome</a> <a href='/categories/mozilla' style='font-size: 160.0%'>mozilla</a> <a href='/categories/opw' style='font-size: 105.45454545454545%'>OPW</a> <a href='/categories/opw' style='font-size: 160.0%'>opw</a> <a href='/categories/socorro' style='font-size: 160.0%'>socorro</a> <a href='/categories/test' style='font-size: 154.54545454545456%'>test</a> </span>
+</section>
+  
+</aside>
+
+
+    </div>
+  </div>
+    </div>
+  </div>
+  <!-- <footer role="contentinfo"><p>
+  Gabriela Thum&eacute; - TecendoBits <span class="credit"> - Using <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>-->
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'tecendobits';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://tecendobits.cc/first-post-with-octopress/';
+        var disqus_url = 'http://tecendobits.cc/first-post-with-octopress/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,451 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: documentation | TecendoBits]]></title>
+  <link href="http://tecendobits.cc/categories/documentation/atom.xml" rel="self"/>
+  <link href="http://tecendobits.cc/"/>
+  <updated>2014-03-05T17:33:15-03:00</updated>
+  <id>http://tecendobits.cc/</id>
+  <author>
+    <name><![CDATA[gabithume]]></name>
+    <email><![CDATA[gabithume@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Test Gardening Report Week 9-10]]></title>
+    <link href="http://tecendobits.cc/test-gardening-report-week-9-10/"/>
+    <updated>2013-08-25T15:30:00-03:00</updated>
+    <id>http://tecendobits.cc/test-gardening-report-week-9-10</id>
+    <content type="html"><![CDATA[<p>This week closed a cycle of 2 months in this amazing OPW experience. I am so glad to be part of an incredible team like Socorro. I was reflecting about our hopes and expectations, sometimes we feel that we don't have to dream huge because the risk of the dream come true is little, but if we always dream at the lower limit, we never are going to experience the happiness of doing something that really challenges you. I know that doing challenging things all the time can be frustrating, but the gratification is so much higher than the fear of do not getting whatever you want.</p>
+
+<p>I am digressing into this because I have just one month till the end of the OPW and I am enjoying so much that I don't want it to end. But I am sure that because of this awesome experience I am rethinking a lot of thoughts that I have about myself, like my capability of doing what I really want (maybe sometimes I feel a little about getting into the impostor syndrome).</p>
+
+<!-- more -->
+
+
+<hr />
+
+<h3>Test for postgresql/utils.py</h3>
+
+<p>I wrote the tests for this code related to <a href=https://bugzilla.mozilla.org/show_bug.cgi?id=904238>Bug</a> in <a href=https://github.com/mozilla/socorro/pull/1398>Pull Request 1398</a>.</p>
+
+<hr />
+
+<h3>Middleware service</h3>
+
+<p>The middleware facilitates communications with a database from an application. So we can create a new service and then "call" it from the Socorro Public API by uri. I created a simple service that calls some "backfill_(.*)" function in PostgreSQL according to its parameters and the tests to check if the service is working well. The main problem was in the treatment of the parameters passed to the service.</p>
+
+<p>To link the new service in the middleware, I had to edit some files and create test in the middleware to see if it works as expected. The Bug related is the <a href=https://bugzilla.mozilla.org/show_bug.cgi?id=906962>906962</a> and all the code can be found at the <a href=https://github.com/mozilla/socorro/pull/1413>Pull Request 1413</a>. The files needed to create a new service in middleware are:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">docs</span><span class="o">/</span><span class="n">middleware</span><span class="p">.</span><span class="n">rst</span>
+</span><span class='line'><span class="n">scripts</span><span class="o">/</span><span class="n">config</span><span class="o">/</span><span class="n">webapiconfig</span><span class="p">.</span><span class="n">py</span><span class="p">.</span><span class="n">dist</span>
+</span><span class='line'><span class="n">socorro</span><span class="o">/</span><span class="n">external</span><span class="o">/</span><span class="n">postgresql</span><span class="o">/</span><span class="n">backfill</span><span class="p">.</span><span class="n">py</span>
+</span><span class='line'><span class="n">socorro</span><span class="o">/</span><span class="n">middleware</span><span class="o">/</span><span class="n">backfill_service</span><span class="p">.</span><span class="n">py</span>
+</span><span class='line'><span class="n">socorro</span><span class="o">/</span><span class="n">middleware</span><span class="o">/</span><span class="n">middleware_app</span><span class="p">.</span><span class="n">py</span>
+</span><span class='line'><span class="n">socorro</span><span class="o">/</span><span class="n">unittest</span><span class="o">/</span><span class="n">external</span><span class="o">/</span><span class="n">postgresql</span><span class="o">/</span><span class="n">test_backfill</span><span class="p">.</span><span class="n">py</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<hr />
+
+<h3>When your branch has to be rebased (I use this a LOT!)</h3>
+
+<p>The following commands can be used to update the master branch and then rebase your branch with the master branch:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">git</span> <span class="n">checkout</span> <span class="n">master</span>
+</span><span class='line'><span class="n">git</span> <span class="n">fetch</span> <span class="n">moz</span>
+</span><span class='line'><span class="n">git</span> <span class="n">merge</span> <span class="n">moz</span><span class="o">/</span><span class="n">master</span>
+</span><span class='line'><span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="n">master</span>
+</span><span class='line'><span class="n">git</span> <span class="n">status</span>
+</span><span class='line'><span class="n">git</span> <span class="n">checkout</span> <span class="n">your_branch</span>
+</span><span class='line'><span class="n">git</span> <span class="n">fetch</span> <span class="n">origin</span>      <span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span>
+</span><span class='line'><span class="n">git</span> <span class="n">rebase</span> <span class="n">origin</span><span class="o">/</span><span class="n">master</span>
+</span><span class='line'><span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="n">your_branch</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<hr />
+
+<h3>Work week</h3>
+
+<p>The team was located at Mountain View for a (what seems <em>awesome</em>) work week:</p>
+
+<p><a href=https://etherpad.mozilla.org/StabilityWeek2013-Notes>https://etherpad.mozilla.org/StabilityWeek2013-Notes</a>   <br/>
+<a href=https://etherpad.mozilla.org/ux-stability-workweek>https://etherpad.mozilla.org/ux-stability-workweek</a>       <br/>
+<a href=https://etherpad.mozilla.org/StabWeek-SocorroBreakouts>https://etherpad.mozilla.org/StabWeek-SocorroBreakouts</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Test Gardening Report Week 7-8]]></title>
+    <link href="http://tecendobits.cc/test-gardening-report-week-7-8/"/>
+    <updated>2013-08-11T12:52:00-03:00</updated>
+    <id>http://tecendobits.cc/test-gardening-report-week-7-8</id>
+    <content type="html"><![CDATA[<p>This is a short post about my seven and eight weeks contributing for Socorro. It is brief because I had problems with my etherpad-diary and I lost some of the comments, so I wrote here my code contributions during this time.</p>
+
+<hr />
+
+<h3>Automatic elastic search tests</h3>
+
+<p>Thanks to @adrian I made the integration test <code>test_elasticsearch_storage_app.py</code> be automatic and I closed the <a href = https://bugzilla.mozilla.org/show_bug.cgi?id=892672>Bug 892672</a>. The Pull Request related was the <a href=https://github.com/mozilla/socorro/pull/1383>1383</a>. Basically, what I did was to call the test code inside a shell script that Jenkins runs. To make elastic search test works, I configured the host to be <code>jenkins-es20</code> and setted up the environment before to call the test itself.</p>
+
+<!-- more -->
+
+
+<hr />
+
+<h3>Database tests</h3>
+
+<p>How to test code that uses database?</p>
+
+<p>By first, when dealing with database values we need to populate tables we are going to use in <code>setUp</code> function. This function runs before any test, so it is the best place for doing this.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">cursor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+</span><span class='line'><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s">&quot;&quot;&quot;&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="s">&lt;pre&gt;&lt;code&gt;INSERT INTO products</span>
+</span><span class='line'><span class="s">(product_name, sort, rapid_release_version, release_name)</span>
+</span><span class='line'><span class="s">VALUES</span>
+</span><span class='line'><span class="s">(&#39;Firefox&#39;, 1, &#39;8.0&#39;, &#39;firefox&#39;),</span>
+</span><span class='line'><span class="s">(&#39;Fennec&#39;, 2, &#39;11.0&#39;, &#39;mobile&#39;);</span>
+</span><span class='line'><span class="s">&lt;/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="s">&lt;p&gt;&quot;&quot;&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>After populate the tables with some fake data, we can manipulate the data to test what we want. For example: we have a product name, its version and a date for which we want to know what is the latest entry related to that product before the date we provided. In following case, given the today date, the latest entry was seven days ago:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">def</span> <span class="nf">test_latestEntryBeforeOrEqualTo</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="n">cursor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">product</span> <span class="o">=</span> <span class="s">&#39;Firefox&#39;</span>
+</span><span class='line'><span class="n">version</span> <span class="o">=</span> <span class="s">&#39;8.0&#39;</span>
+</span><span class='line'><span class="n">now</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">now</span><span class="o">.</span><span class="n">date</span><span class="p">()</span>
+</span><span class='line'><span class="n">to_date</span> <span class="o">=</span> <span class="n">now</span> <span class="o">-</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span><span class='line'><span class="n">lastweek</span> <span class="o">=</span> <span class="n">now</span> <span class="o">-</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">res</span> <span class="o">=</span> <span class="n">tcbs</span><span class="o">.</span><span class="n">latestEntryBeforeOrEqualTo</span><span class="p">(</span><span class="n">cursor</span><span class="p">,</span> <span class="n">to_date</span><span class="p">,</span> <span class="n">product</span><span class="p">,</span> <span class="n">version</span><span class="p">)</span>
+</span><span class='line'><span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="n">lastweek</span><span class="p">)</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>And at end of test, the<code>tearDown</code> method can be used to drop the tables, cleaning the database:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">def</span> <span class="nf">tearDown</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="s">&quot;&quot;&quot; Cleanup the database, delete tables and functions &quot;&quot;&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">cursor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+</span><span class='line'><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s">&quot;&quot;&quot;</span>
+</span><span class='line'><span class="s">    TRUNCATE tcbs, products, signatures</span>
+</span><span class='line'><span class="s">    CASCADE;</span>
+</span><span class='line'><span class="s">&quot;&quot;&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+</span><span class='line'>
+</span><span class='line'><span class="nb">super</span><span class="p">(</span><span class="n">IntegrationTestTCBS</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">tearDown</span><span class="p">()</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Knowing that, it is really interesting to develop tests for functions that manipulate databases. The <a href=https://github.com/mozilla/socorro/pull/1396>Pull Request 1396</a> and <a href=https://bugzilla.mozilla.org/show_bug.cgi?id=904243>Bug 904243</a> are related to a test of TopCrashers by Signature (TCBS).</p>
+
+<hr />
+
+<h3>Submitter App Test</h3>
+
+<p>Related to <a href=https://bugzilla.mozilla.org/show_bug.cgi?id=820512>Bug 820512</a> and my <a href=https://github.com/mozilla/socorro/pull/1368>Pull Request 1368</a>, @lars solved the problem I had by asking me to insert <code>force=True</code> on required configuration for the context of <code>socorro/processor/processor_app.py</code>. Merged :)</p>
+
+<hr />
+
+<h3>Test Documentation</h3>
+
+<p>Some instructions on socorro installation weren't working anymore, so I updated it at <a href=https://github.com/mozilla/socorro/pull/1381>Pull Request 1381</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Test Gardening Report Week 5-6]]></title>
+    <link href="http://tecendobits.cc/test-gardening-report-week-5-6/"/>
+    <updated>2013-07-28T12:07:00-03:00</updated>
+    <id>http://tecendobits.cc/test-gardening-report-week-5-6</id>
+    <content type="html"><![CDATA[<hr />
+
+<h3>Test Documentation</h3>
+
+<p>I finished a first version of documentation by fixing @peterbe suggestions on my <a href=https://github.com/mozilla/socorro/pull/1336>Pull Request 1336</a> and @selena merged the code into socorro repository :)</p>
+
+<hr />
+
+<h3>Automatic integration tests</h3>
+
+<p>At <a href=https://bugzilla.mozilla.org/show_bug.cgi?id=757447>Bug 757447</a> @adrian suggested me to integrate the two test scripts of <code>socorro/integrationtest/</code> into our test suite. So I filled in <a href=https://bugzilla.mozilla.org/show_bug.cgi?id=892672>Bug 892672</a>, which aims to automate those tests.</p>
+
+<!-- more -->
+
+
+<p>To run automatic emails integration test:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">python</span> <span class="n">socorro</span><span class="o">/</span><span class="n">integrationtest</span><span class="o">/</span><span class="n">test_automatic_emails_app</span><span class="p">.</span><span class="n">py</span> <span class="o">--</span><span class="n">test_email_address</span><span class="o">=</span><span class="n">someone</span><span class="err">@</span><span class="n">example</span><span class="p">.</span><span class="n">com</span> <span class="o">--</span><span class="n">test_mode</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>It sends an email to a specified email address and you have to manually check that the email was received. @rhelmer suggested we use restmail to make it automatic. But I cannot run properly because I don't have permission (user account) to Exact Target, and I am not going to have it. So I need to figure out a way to test restmail without this.</p>
+
+<p>The elastic search integration test (<code>test_elasticsearch_storage_app.py</code>) will require some specific configuration to run on jenkins (to connect to jenkins ES instance). To test it I needed to install elastic search from <a href=http://www.elasticsearch.org/download/>http://www.elasticsearch.org/download/</a> and run the command bellow:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">$</span> <span class="n">python</span> <span class="n">socorro</span><span class="o">/</span><span class="n">integrationtest</span><span class="o">/</span><span class="n">test_elasticsearch_storage_app</span><span class="p">.</span><span class="n">py</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>At this point, I got the following error:</p>
+
+<p><code>pyelasticsearch.exceptions.ElasticHttpError: (400, u'MapperParsingException[failed to parse [client_crash_date]]; nested: MapperParsingException[failed to parse date field [2012-04-08 10:52:42.0], tried both date format [yyyy-MM-dd\'T\'HH:mm:ssZZ||yyyy-MM-dd\'T\'HH:mm:ss.SSSSSSZZ], and timestamp number with locale [null]]; nested: IllegalArgumentException[Invalid format: "2012-04-08 10:52:42.0" is malformed at " 10:52:42.0"]; ')</code></p>
+
+<p>To run it, I needed to change <code>testcrash/processed_crash.json</code> date formats from <code>2012-04-08 10:52:42.0</code> to <code>2012-04-08T10:52:42.0+00:00</code>. For continue those tests I need to run jenkins or at least know what are the configurations that I need to set. I still don't know how to do it, so I am going to come back to this later.</p>
+
+<hr />
+
+<h3>Goals</h3>
+
+<p>I had a great meeting with @selenamarie, we discussed about <a href=https://etherpad.mozilla.org/socorro-testing>socorro-testing</a> goals:</p>
+
+<p>=> I finished a version of the testing documentation: <a href=https://github.com/GabiThume/socorro/blob/test_template/docs/unittesting.rst>https://github.com/GabiThume/socorro/blob/test_template/docs/unittesting.rst</a></p>
+
+<p>=> For more coverage in crashstats, @peterbe created 2 tickets untill now and I already solved them (Pull Request <a href=https://github.com/mozilla/socorro-crashstats/pull/401>401</a> and <a href=https://github.com/mozilla/socorro-crashstats/pull/402>402</a>).</p>
+
+<p>=> About testing postgres procedures, I did the first step, that was to discover how to run backfill_matviews() and @selenamarie is taking care of first steps to implement them.</p>
+
+<p>=> In integration tests I had some problems when i tried to automated it. First, I will not have access to exacttarget for automatic emails, and secondly: after I ran the elasticsearch test, I didnt figure out what configurations I need to set to pass it on jenkins. I am not sure how to continue that, but I am going to see the bugs of  adrian email</p>
+
+<p>=> <a href=https://bugzilla.mozilla.org/show_bug.cgi?id=874650>Refresh Socorro Test Suite</a>:</p>
+
+<p><a href=https://bugzilla.mozilla.org/show_bug.cgi?id=651661>Bug 651661</a> closed <br/>
+<a href=https://bugzilla.mozilla.org/show_bug.cgi?id=817461>Bug 651661</a> closed  <br/>
+<a href=https://bugzilla.mozilla.org/show_bug.cgi?id=864854>Bug 864854</a> closed  <br/>
+<a href=https://bugzilla.mozilla.org/show_bug.cgi?id=874918>Bug 874918</a> skiped for now, if you want to/have time go ahead and add them  <br/>
+<a href=https://bugzilla.mozilla.org/show_bug.cgi?id=874653>Bug 874653</a> leaving open until August workweek   <br/>
+<a href=https://bugzilla.mozilla.org/show_bug.cgi?id=866448>Bug 866448</a> closed   <br/>
+<a href=https://bugzilla.mozilla.org/show_bug.cgi?id=713973>Bug 713973</a> what was the old config system?  <br/>
+<a href=https://bugzilla.mozilla.org/show_bug.cgi?id=820512>Bug 820512</a> go ahead and try it out</p>
+
+<hr />
+
+<h3>Submitter App Test</h3>
+
+<p>Submitter app test is related to <a href=https://bugzilla.mozilla.org/show_bug.cgi?id=820512>Bug 820512</a>. So I wrote the test:</p>
+
+<p><div><script src='https://gist.github.com/6065972.js'></script>
+<noscript><pre><code></code></pre></noscript></div>
+</p>
+
+<p>But Jenkins failed at my <a href=https://github.com/mozilla/socorro/pull/1368>Pull Request 1368</a>. Seems something related to <code>import SubmitterApp</code> (<a href=https://github.com/mozilla/socorro/pull/1368#issuecomment-21886102>here</a>). I don't know how to solve it, maybe I need to wait untill @lars can have a look at it.</p>
+
+<hr />
+
+<h3>Meetings</h3>
+
+<p>I called in Weekly Meetings on <a href=https://wiki.mozilla.org/Breakpad/Status_Meetings/2013-July-17>17th July</a> and <a href=https://wiki.mozilla.org/Breakpad/Status_Meetings/2013-July-31>31st July</a> during this time.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Test Gardening Report Week 3-4]]></title>
+    <link href="http://tecendobits.cc/test-gardening-report-week-3-4/"/>
+    <updated>2013-07-14T20:19:00-03:00</updated>
+    <id>http://tecendobits.cc/test-gardening-report-week-3-4</id>
+    <content type="html"><![CDATA[<p>I started to run deeply on Test Gardening. I initiate to understand the architecture and the behavior of Socorro Project, but it is a project that constantly is changing technologies, so it is important to keep learning about it.</p>
+
+<hr />
+
+<h3>Bugs</h3>
+
+<p>I begin these weeks smashing some bugs related to Socorro Crashstats, dealing with mocks, urls and json:</p>
+
+<p><a href=https://bugzilla.mozilla.org/show_bug.cgi?id=888520>Bug 888520:</a> Add test for exploitable_crashes view. <a href=https://github.com/mozilla/socorro-crashstats/pull/401>Pull Request 401</a>. Was to create a <code>test_exploitable_crashes</code> function for <code>crashstats.exploitable_crashes</code> url:</p>
+
+<!-- more -->
+
+
+<p><div><script src='https://gist.github.com/5902363.js'></script>
+<noscript><pre><code></code></pre></noscript></div>
+</p>
+
+<p><a href=https://bugzilla.mozilla.org/show_bug.cgi?id=888952>Bug 888952:</a> Add test coverage for crontabber_state_json() view. <a href=https://github.com/mozilla/socorro-crashstats/pull/402>Pull Request 402</a>. I created a <code>test_crontabber_state_json</code> function to test <code>crontabber_state_json</code>:</p>
+
+<p><div><script src='https://gist.github.com/6118039.js'></script>
+<noscript><pre><code></code></pre></noscript></div>
+</p>
+
+<p>Socorro <a href=https://bugzilla.mozilla.org/show_bug.cgi?id=817461>Bug 817461</a> was open, but I tested it on my computer and worked, so I searched for the test and I found that Selena had already <a href=https://github.com/mozilla/socorro/commit/ade562e91c26d6c6c2f8c28cd8297d72a77d70bf>solved</a> but not had closed yet.</p>
+
+<p>In my OPW application I created a failing test for rank column in Topcrashes CSV, which was starting with 0 instead of 1 (<a href=https://bugzilla.mozilla.org/show_bug.cgi?id=533628>Bug 533628</a>). Then on time to actually fix it I had some problems because I needed to read each file of crashstats that uses <code>currentRank</code> variable and test its value. But when I found it, was just one simple operation <code>+1</code> that fixed it (<a href=https://github.com/mozilla/socorro-crashstats/pull/418>PR 418</a>).</p>
+
+<p>In <a href=https://bugzilla.mozilla.org/show_bug.cgi?id=757447>Bug 757447</a> the fillDB.py file was already deleted. But there were some instructions in socorro/integrationtest/README.txt about running fillDB, that doesn't exist. So I deleted that readme file (<a href=https://github.com/mozilla/socorro/pull/1334>PR 1334</a>). In this bug we started a discussion about making how to automate integration tests.</p>
+
+<hr />
+
+<h3>Git Branch</h3>
+
+<p>The best way to write code contribution to an external repository is by creating a <code>git branch</code>. The modifications have more sense when they are related to bug tickets. The following commands can be used to create a branch, go inside it, add the modifications, commit and push your contribution related to some bug in remote repository:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">git</span> <span class="n">checkout</span> <span class="o">-</span><span class="n">b</span> <span class="n">bug_bugnumber</span>
+</span><span class='line'><span class="n">make</span> <span class="n">your</span> <span class="n">modifications</span>
+</span><span class='line'><span class="n">git</span> <span class="n">add</span> <span class="n">changed_files</span>
+</span><span class='line'><span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">am</span> <span class="s">&quot;bug_bugnumber - message&quot;</span>
+</span><span class='line'><span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="n">branch_name</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<hr />
+
+<h3>Goals</h3>
+
+<p>I had my first meeting with @selenamarie through Skype. She asked me to take a look at <a href=https://etherpad.mozilla.org/webtools-q32013>Q3 team goals</a> and we discussed about my goals for this quarter, so became clear that I need to focus on some points (we are writing about it at <a href=https://etherpad.mozilla.org/socorro-testing>Socorro-Testing etherpad</a>):</p>
+
+<p>=> Documentation about test (some kind of a template: mocks usage, decorators, how to run (specific ones), requirements)  <br/>
+=> Testing postgres store procedures  <br/>
+=> More testing in socorro-crashstats  <br/>
+=> More coverage in socorro (wait for <a href=https://etherpad.mozilla.org/socorro-deprecation-station>deprecation</a>)  <br/>
+=> Selenium tests + django  <br/>
+=> Refresh Socorro Test Suite</p>
+
+<h4>Testing Postgres Store Procedures Goal</h4>
+
+<p>The first step was to have a look at the postgres stored procedures and how to run <code>backfill_matviews()</code>. So I read about backfills and updates on <code>socorro/external/postgresql/raw_sql/procs</code>. Then I asked myself: what is backfill?</p>
+
+<p>=> <strong>Backfill</strong> is to populate missing data from previous date when data was available. So, when we have a <code>NULL</code> data, we can fill it with some previous known. For example:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">ID</span>   <span class="n">Date</span> <span class="n">ID</span>    <span class="n">Value</span>
+</span><span class='line'><span class="n">id1</span>  <span class="mi">7</span><span class="o">/</span><span class="mo">01</span><span class="o">/</span><span class="mi">2013</span> <span class="mi">100</span>
+</span><span class='line'><span class="n">id2</span>  <span class="mi">7</span><span class="o">/</span><span class="mo">02</span><span class="o">/</span><span class="mi">2013</span> <span class="nb">NULL</span>
+</span><span class='line'><span class="n">id3</span>  <span class="mi">7</span><span class="o">/</span><span class="mo">03</span><span class="o">/</span><span class="mi">2013</span> <span class="mi">200</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>After backfill, this table became:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">ID</span>   <span class="n">Date</span> <span class="n">ID</span>    <span class="n">Value</span>
+</span><span class='line'><span class="n">id1</span>  <span class="mi">7</span><span class="o">/</span><span class="mo">01</span><span class="o">/</span><span class="mi">2013</span> <span class="mi">100</span>
+</span><span class='line'><span class="n">id2</span>  <span class="mi">7</span><span class="o">/</span><span class="mo">02</span><span class="o">/</span><span class="mi">2013</span> <span class="mi">100</span>
+</span><span class='line'><span class="n">id3</span>  <span class="mi">7</span><span class="o">/</span><span class="mo">03</span><span class="o">/</span><span class="mi">2013</span> <span class="mi">200</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>There is in socorro repository a <code>backfill</code> related to an update file. But how to run backfill of matviews (<code>socorro/external/postgresql/fakedata.py</code>)?   <br/>
+Setupdb file will call the backfill function, which will populate the matview:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">$</span> <span class="p">.</span><span class="o">/</span><span class="n">socorro</span><span class="o">/</span><span class="n">external</span><span class="o">/</span><span class="n">postgresql</span><span class="o">/</span><span class="n">setupdb_app</span><span class="p">.</span><span class="n">py</span>    <span class="o">--</span><span class="n">database_name</span><span class="o">=</span><span class="n">breakpad</span> <span class="o">--</span><span class="n">fakedata</span> <span class="o">--</span><span class="n">dropdb</span> <span class="o">--</span><span class="n">database_superusername</span><span class="o">=</span><span class="n">test</span> <span class="o">--</span><span class="n">database_superuserpassword</span><span class="o">=</span><span class="n">bPassword</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Or we can directly call <code>backfills_matviews</code>:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">$</span> <span class="n">psql</span> <span class="o">-</span><span class="n">d</span> <span class="s">&quot;breakpad&quot;</span> <span class="o">-</span><span class="n">c</span> <span class="s">&quot;SELECT backfill_matviews(date &#39;2013-06-30&#39;, current_date)&quot;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<h4>Test Documentation Goal</h4>
+
+<p>I discovered how to run specific tests in socorro-crashstats:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">$</span> <span class="n">virtualenv</span> <span class="o">--</span><span class="n">python</span><span class="o">=</span><span class="n">python2</span><span class="mf">.6</span> <span class="p">.</span><span class="n">virtualenv</span>
+</span><span class='line'><span class="n">$</span> <span class="n">source</span> <span class="p">.</span><span class="n">virtualenv</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">activate</span>
+</span><span class='line'><span class="n">$</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">/</span><span class="n">compiled</span><span class="p">.</span><span class="n">txt</span>
+</span><span class='line'><span class="n">$</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">/</span><span class="n">dev</span><span class="p">.</span><span class="n">txt</span>
+</span><span class='line'><span class="n">$</span> <span class="p">.</span><span class="o">/</span><span class="n">manage</span><span class="p">.</span><span class="n">py</span> <span class="n">test</span> <span class="n">crashstats</span><span class="o">/</span><span class="n">crashstats</span><span class="o">/</span><span class="n">tests</span><span class="o">/</span><span class="n">test_views</span><span class="p">.</span><span class="nl">py:</span><span class="n">TestViews</span><span class="p">.</span><span class="n">test_crontabber_state_json</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>And I started to <a href=https://github.com/GabiThume/socorro/commit/1d07aed15ed0b0a0bfa3b84355b6eb198c0c68ee>update</a> the testing documentation, which can be found at <a href=http://socorro.readthedocs.org/en/latest/unittesting.html>Socorro readthedocs</a>. I am going to publish this documentation at my blog later. It is really important for Socorro testing that it can works as a guide for write or run new tests.</p>
+
+<hr />
+
+<h3>Miscellany</h3>
+
+<p>A nice blog post about Socorro crash reports can be found at <a href=http://people.mozilla.org/~sguha/species.crash.report.html>http://people.mozilla.org/~sguha/species.crash.report.html</a>. It have some graphics to show how accurate the samples are estimates, their accuracy and sample rates of the Crash Report Signatures.</p>
+
+<hr />
+
+<h3>Meetings</h3>
+
+<p>I called in Weekly Meetings on <a href=https://wiki.mozilla.org/Breakpad/Status_Meetings/2013-July-03>3rd July</a> and <a href=https://wiki.mozilla.org/Breakpad/Status_Meetings/2013-July-10>10th July</a> during this time.</p>
+]]></content>
+  </entry>
+  
+</feed>

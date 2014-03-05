@@ -21,9 +21,8 @@ gabithume@gmail.com
 <strong>IRC Nick: </strong>
 gabithume
 
-<strong>Web Page / Blog / Microblog:</strong>  
-<a href=http://tecendobits.cc>http://tecendobits.cc</a>    
-<a href=http://tecendobits.cc/blog>http://tecendobits.cc/blog</a>         
+<strong>Web Page / Blog / Microblog:</strong>
+<a href=http://tecendobits.cc>http://tecendobits.cc</a>         
 <a href=http://github.com/GabiThume>http://github.com/GabiThume</a>     
 <a href=http://gitorious.org/~gabithume>http://gitorious.org/~gabithume</a>
 
@@ -53,7 +52,7 @@ Actually  I am working in a new bug [4] which is helping me to understand how to
 [0] https://wiki.mozilla.org/Socorro   
 [1] https://github.com/GabiThume/socorro   
 [2] https://github.com/mozilla/socorro/pull/1197    
-[3] http://tecendobits.cc/blog/starting-things-to-opw/    
+[3] http://tecendobits.cc/starting-things-to-opw/    
 [4] https://bugzilla.mozilla.org/show_bug.cgi?id=533628   
 
 <strong>Please describe your experience with any other FOSS projects as a user and as a contributor:</strong>        
@@ -134,7 +133,7 @@ I  imagine the whole process as an incremental development, in this way, I  can'
 I am planning to document my steps in a daily basis in an Etherpad [0] and my personal blog [1].
 
 [0] http://etherpad.mozilla.org/gabisocorro    
-[1] http://tecendobits.cc/blog    
+[1] http://tecendobits.cc/    
 
 <strong>Will you  have any other time commitments, such as school work, another    job,    planned vacation, etc., between June 17 and September 23?</strong>       
 Absolutely not, I graduated last year and since that I am totally free of commitments. I can work fulltime and will be totally commited to the project if selected.
