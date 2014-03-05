@@ -1,6 +1,13 @@
 body {
-    background-image:url('../images/sweet.png');
+   # background-image:url('../images/sweet.png');
     margin: 0;
+}
+
+#redButton {
+    margin: auto;
+    display: block;
+    width: 20em;
+    padding-top:20%;
 }
 
 #neon {
