@@ -36,6 +36,18 @@ Sep 23 2013 &hellip;">
 
 
   
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-48515502-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
 
 </head>
 
@@ -46,8 +58,9 @@ Sep 23 2013 &hellip;">
 </ul>
   
 <ul class="main-navigation">
-  <li><a href="/blog/../about.html">About</a></li>
-  <li><a href="/blog/portfolio">Projects</a></li>
+  <li><a href="/blog/about">About</a></li>
+  <!-- <li><a href="/blog/portfolio">Projects</a></li> -->
+  <li><a href="/blog/../">Projects</a></li>
   <li><a href="/blog/">Blog</a></li>
   <li><a href="/blog/blog/archives">Archives</a></li>
 </ul>
@@ -438,7 +451,8 @@ Sep 23 2013 &hellip;">
         if (!window.jXHR){
             var jxhr = document.createElement('script');
             jxhr.type = 'text/javascript';
-            jxhr.src = '/javascripts/libs/jXHR.js';
+            <!-- jxhr.src = '/javascripts/libs/jXHR.js'; -->
+            jxhr.src = '/blog/javascripts/libs/jXHR.js';
             var s = document.getElementsByTagName('script')[0];
             s.parentNode.insertBefore(jxhr, s);
         }
@@ -477,7 +491,7 @@ Sep 23 2013 &hellip;">
   Gabriela Thum&eacute; - TecendoBits <span class="credit"> - Using <a href="http://octopress.org">Octopress</a></span>
 </p>
 
-</footer>
+</footer>-->
   
 
 <script type="text/javascript">
@@ -488,11 +502,10 @@ Sep 23 2013 &hellip;">
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
       (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     }());
 </script>
-
 
 
 <div id="fb-root"></div>
@@ -503,9 +516,6 @@ Sep 23 2013 &hellip;">
   js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
-
-
-
 
 
   <script type="text/javascript">
@@ -521,6 +531,8 @@ Sep 23 2013 &hellip;">
 
 
 
- -->
+
+
+
 </body>
 </html>

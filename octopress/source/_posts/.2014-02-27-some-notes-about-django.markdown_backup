@@ -1,0 +1,39 @@
+---
+layout: post
+title: "Some notes about Django"
+date: 2014-02-27 16:51
+comments: true
+categories: [django, python, code]
+---
+
+Regarding if the "learning pyramid" it is accurate or not, I really believe that
+stuff just stay in my memory if I use it and preferenciable if I teachs it. It
+is obvious that I am not teaching anyone here, but I would like to pretend that,
+so I decided to post some notes about what I want to stay in my mind.
+
+I am going to start with <a href=https://www.djangoproject.com/>Django</a>!!
+
+<!-- more -->
+
+***
+
+### What is it and why would I want to use it?
+
+It is a <strong>awesome</strong> high-level web framework which alouds me to
+develop Web apps in Python! Why is that so great? Because you can write less
+code and lauch apps more quickly and easely than using PHP or something not in the Django
+high-level.
+
+***
+
+### Install
+
+You need python, some database (<code>PostgreSQL, MySQL, Oracle or SQLite</code>) and if you are going to deploy to production you need to
+install <code>Apache and mod_wsgi</code>.
+
+And easely install:
+{% codeblock lang:objc %}
+$ sudo easy_install django
+{% endcodeblock %}
+
+***

@@ -9,9 +9,9 @@ categories: [opw, gnome, mozilla, test]
 Below are some measurements of interesting stuff I did during the amazing
 OPW internship.
 
-**Total of days**: from June 17th to September 23th = 99   
-**Days of work**: 71   
-**Hour per day**: 8 in average  
+**Total of days**: from June 17th to September 23th (99 days)   
+**Days of work/fun**: 71   
+**Hour per day**: 8 (in average)  
 **Total hours**: 568   
 
 **Code lines**: 3939 +-  

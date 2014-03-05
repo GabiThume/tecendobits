@@ -86,8 +86,8 @@ googleplus_user:
 googleplus_hidden: true
 
 # Pinboard
-pinboard_user:
-pinboard_count: 3
+#pinboard_user:
+#pinboard_count: 3
 
 # Delicious
 delicious_user: gabithume
@@ -98,7 +98,7 @@ disqus_short_name: tecendobits
 disqus_show_comment_count: true
 
 # Google Analytics
-google_analytics_tracking_id:
+google_analytics_tracking_id: UA-48515502-1
 
 # Facebook Like
 facebook_like: true
