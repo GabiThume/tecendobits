@@ -5,11 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Test Gardening Report Week 5-6 - TecendoBits</title>
+  <title>OPW internship 2014 - TecendoBits</title>
   <meta name="author" content="gabithume">
 
   
-  <meta name="description" content="Test Documentation I finished a first version of documentation by fixing @peterbe suggestions on my Pull Request 1336 and @selena merged the code &hellip;">
+  <meta name="description" content="<a
+href=https://wiki.gnome.org/OutreachProgramForWomen/2014/MayAugust/SpreadTheWord> Spread The Word: &#8220;Free and Open Source Software (FOSS) is &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://tecendobits.cc/test-gardening-report-week-5-6">
+  <link rel="canonical" href="http://tecendobits.cc/opw-internship-2014">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="TecendoBits" type="application/atom+xml">
@@ -95,7 +96,7 @@
   
   <header>
     
-      <h1 class="entry-title">Test Gardening Report Week 5-6</h1>
+      <h1 class="entry-title">OPW Internship 2014</h1>
     
     
       <p class="meta">
@@ -111,7 +112,7 @@
   
 
 
-<time datetime="2013-07-28T12:07:00-03:00" pubdate data-updated="true">Jul 28<span>th</span>, 2013</time>
+<time datetime="2014-03-06T17:39:00-03:00" pubdate data-updated="true">Mar 6<span>th</span>, 2014</time>
         
          | <a href="#disqus_thread">Comments</a>
         
@@ -125,85 +126,34 @@
 	});
   </script>
 
-<div class="entry-content"><hr />
-
-<h3>Test Documentation</h3>
-
-<p>I finished a first version of documentation by fixing @peterbe suggestions on my <a href=https://github.com/mozilla/socorro/pull/1336>Pull Request 1336</a> and @selena merged the code into socorro repository :)</p>
-
-<hr />
-
-<h3>Automatic integration tests</h3>
-
-<p>At <a href=https://bugzilla.mozilla.org/show_bug.cgi?id=757447>Bug 757447</a> @adrian suggested me to integrate the two test scripts of <code>socorro/integrationtest/</code> into our test suite. So I filled in <a href=https://bugzilla.mozilla.org/show_bug.cgi?id=892672>Bug 892672</a>, which aims to automate those tests.</p>
+<div class="entry-content"><p><img class="right" src="https://wiki.gnome.org/OutreachProgramForWomen/2014/MayAugust/SpreadTheWord?action=AttachFile&do=get&target=opw-poster-2014-May-August.png"></p>
 
 <!-- more -->
 
 
-<p>To run automatic emails integration test:</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">python</span> <span class="n">socorro</span><span class="o">/</span><span class="n">integrationtest</span><span class="o">/</span><span class="n">test_automatic_emails_app</span><span class="p">.</span><span class="n">py</span> <span class="o">--</span><span class="n">test_email_address</span><span class="o">=</span><span class="n">someone</span><span class="err">@</span><span class="n">example</span><span class="p">.</span><span class="n">com</span> <span class="o">--</span><span class="n">test_mode</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>It sends an email to a specified email address and you have to manually check that the email was received. @rhelmer suggested we use restmail to make it automatic. But I cannot run properly because I don&#8217;t have permission (user account) to Exact Target, and I am not going to have it. So I need to figure out a way to test restmail without this.</p>
-
-<p>The elastic search integration test (<code>test_elasticsearch_storage_app.py</code>) will require some specific configuration to run on jenkins (to connect to jenkins ES instance). To test it I needed to install elastic search from <a href=http://www.elasticsearch.org/download/>http://www.elasticsearch.org/download/</a> and run the command bellow:</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">$</span> <span class="n">python</span> <span class="n">socorro</span><span class="o">/</span><span class="n">integrationtest</span><span class="o">/</span><span class="n">test_elasticsearch_storage_app</span><span class="p">.</span><span class="n">py</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>At this point, I got the following error:</p>
-
-<p><code>pyelasticsearch.exceptions.ElasticHttpError: (400, u'MapperParsingException[failed to parse [client_crash_date]]; nested: MapperParsingException[failed to parse date field [2012-04-08 10:52:42.0], tried both date format [yyyy-MM-dd\'T\'HH:mm:ssZZ||yyyy-MM-dd\'T\'HH:mm:ss.SSSSSSZZ], and timestamp number with locale [null]]; nested: IllegalArgumentException[Invalid format: "2012-04-08 10:52:42.0" is malformed at " 10:52:42.0"]; ')</code></p>
-
-<p>To run it, I needed to change <code>testcrash/processed_crash.json</code> date formats from <code>2012-04-08 10:52:42.0</code> to <code>2012-04-08T10:52:42.0+00:00</code>. For continue those tests I need to run jenkins or at least know what are the configurations that I need to set. I still don&#8217;t know how to do it, so I am going to come back to this later.</p>
-
 <hr />
 
-<h3>Goals</h3>
+<p> <a
+href=https://wiki.gnome.org/OutreachProgramForWomen/2014/MayAugust/SpreadTheWord></p>
 
-<p>I had a great meeting with @selenamarie, we discussed about <a href=https://etherpad.mozilla.org/socorro-testing>socorro-testing</a> goals:</p>
+<h1>Spread The Word:</a></h1>
 
-<p>=> I finished a version of the testing documentation: <a href=https://github.com/GabiThume/socorro/blob/test_template/docs/unittesting.rst>https://github.com/GabiThume/socorro/blob/test_template/docs/unittesting.rst</a></p>
+<p><em>&#8220;Free and Open Source Software (FOSS) is software that gives the user the freedom to use, copy, study, change, and improve it. FOSS contributors believe that this is the best way to develop software because it benefits society, creates a fun collaborative community around a project, and allows anyone to make innovative changes that reach many people.</p>
 
-<p>=> For more coverage in crashstats, @peterbe created 2 tickets untill now and I already solved them (Pull Request <a href=https://github.com/mozilla/socorro-crashstats/pull/401>401</a> and <a href=https://github.com/mozilla/socorro-crashstats/pull/402>402</a>).</p>
+<p><a href=https://www.google-melange.com/gsoc/homepage/google/gsoc2014>Google Summer of Code</a> is a global program that offers students stipends to write code for projects from 190 participating FOSS organizations. Participants work remotely from home, while getting guidance from an assigned mentor and collaborating within their project’s community. The application deadline for Google Summer of Code is March 21 and the program dates are May 19 to August 18. The stipend for the program is $5,500 (USD).</p>
 
-<p>=> About testing postgres procedures, I did the first step, that was to discover how to run backfill_matviews() and @selenamarie is taking care of first steps to implement them.</p>
+<p>In an effort to improve the gender diversity in FOSS, a number of organizations
+are offering <a href=http://gnome.org/opw >Outreach Program for Women</a> internships through a program organized by the GNOME Foundation. These internships are open to women (cis and trans) and genderqueer. The internships have the same structure, the same stipend and similar program dates. The application deadline for the Outreach Program for Women is March 19 and the program dates are May 19 to August 18. Unlike in Google Summer of Code, participants do not need to be students and non-coding projects are available. In addition to coding, projects include such tasks as graphic design, user experience design, documentation, bug triage and community engagement.</p>
 
-<p>=> In integration tests I had some problems when i tried to automated it. First, I will not have access to exacttarget for automatic emails, and secondly: after I ran the elasticsearch test, I didnt figure out what configurations I need to set to pass it on jenkins. I am not sure how to continue that, but I am going to see the bugs of  adrian email</p>
+<p>To apply for either program, you need to connect with a participating organization early, select a project you want to work on, create a project plan, and make a few relevant contributions.</p>
 
-<p>=> <a href=https://bugzilla.mozilla.org/show_bug.cgi?id=874650>Refresh Socorro Test Suite</a>:</p>
+<p>The <a href=http://code.google.com/p/google-summer-of-code/wiki/Mentors >mentorship opportunities</a> are also available throughout the year for anyone interested in getting started contributing to FOSS outside of the formal internship program. In addition to the organizations participating in the Outreach Program for Women, more organizations that offer informal mentorship to all newcomers are listed here:</p>
 
-<p><a href=https://bugzilla.mozilla.org/show_bug.cgi?id=651661>Bug 651661</a> closed <br/>
-<a href=https://bugzilla.mozilla.org/show_bug.cgi?id=817461>Bug 651661</a> closed  <br/>
-<a href=https://bugzilla.mozilla.org/show_bug.cgi?id=864854>Bug 864854</a> closed  <br/>
-<a href=https://bugzilla.mozilla.org/show_bug.cgi?id=874918>Bug 874918</a> skiped for now, if you want to/have time go ahead and add them  <br/>
-<a href=https://bugzilla.mozilla.org/show_bug.cgi?id=874653>Bug 874653</a> leaving open until August workweek   <br/>
-<a href=https://bugzilla.mozilla.org/show_bug.cgi?id=866448>Bug 866448</a> closed   <br/>
-<a href=https://bugzilla.mozilla.org/show_bug.cgi?id=713973>Bug 713973</a> what was the old config system?  <br/>
-<a href=https://bugzilla.mozilla.org/show_bug.cgi?id=820512>Bug 820512</a> go ahead and try it out</p>
+<p>A collection of questions that newcomers to FOSS often have is <a href=http://opensource.com/life/14/2/newcomer-frequently-asked-questions >answered</a>.</p>
 
-<hr />
+<p>Please consider applying for Google Summer of Code or FOSS Outreach Program for Women, encourage someone else to apply, or help spread the word by forwarding this message to any interested university and community groups.&#8221;</em></p>
 
-<h3>Submitter App Test</h3>
-
-<p>Submitter app test is related to <a href=https://bugzilla.mozilla.org/show_bug.cgi?id=820512>Bug 820512</a>. So I wrote the test:</p>
-
-<div><script src='https://gist.github.com/6065972.js'></script>
-<noscript><pre><code></code></pre></noscript></div>
-
-
-<p>But Jenkins failed at my <a href=https://github.com/mozilla/socorro/pull/1368>Pull Request 1368</a>. Seems something related to <code>import SubmitterApp</code> (<a href=https://github.com/mozilla/socorro/pull/1368#issuecomment-21886102>here</a>). I don&#8217;t know how to solve it, maybe I need to wait untill @lars can have a look at it.</p>
-
-<hr />
-
-<h3>Meetings</h3>
-
-<p>I called in Weekly Meetings on <a href=https://wiki.mozilla.org/Breakpad/Status_Meetings/2013-July-17>17th July</a> and <a href=https://wiki.mozilla.org/Breakpad/Status_Meetings/2013-July-31>31st July</a> during this time.</p>
+<p>Those oportunities are really <strong>AWESOME</strong>! Apply now! :)</p>
 </div>
 
 
@@ -226,21 +176,15 @@
   
 
 
-<time datetime="2013-07-28T12:07:00-03:00" pubdate data-updated="true">Jul 28<span>th</span>, 2013</time>
+<time datetime="2014-03-06T17:39:00-03:00" pubdate data-updated="true">Mar 6<span>th</span>, 2014</time>
       
-
-<span class="categories">
-  
-    <a class='category' href='/categories/bug/'>bug</a>, <a class='category' href='/categories/code/'>code</a>, <a class='category' href='/categories/documentation/'>documentation</a>, <a class='category' href='/categories/gnome/'>gnome</a>, <a class='category' href='/categories/mozilla/'>mozilla</a>, <a class='category' href='/categories/opw/'>opw</a>, <a class='category' href='/categories/socorro/'>socorro</a>, <a class='category' href='/categories/test/'>test</a>
-  
-</span>
 
 
     </p>
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://tecendobits.cc/test-gardening-report-week-5-6/" data-via="gabithume" data-counturl="http://tecendobits.cc/test-gardening-report-week-5-6/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://tecendobits.cc/opw-internship-2014/" data-via="gabithume" data-counturl="http://tecendobits.cc/opw-internship-2014/" >Tweet</a>
   
   
   
@@ -251,10 +195,8 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/test-gardening-report-week-3-4/" title="Previous Post: Test Gardening Report Week 3-4">&laquo; Test Gardening Report Week 3-4</a>
+        <a class="basic-alignment left" href="/test-gardening-report-final-post/" title="Previous Post: Test Gardening Final Post - in numbers">&laquo; Test Gardening Final Post - in numbers</a>
       
-      
-        <a class="basic-alignment right" href="/test-gardening-report-week-7-8/" title="Next Post: Test Gardening Report Week 7-8">Test Gardening Report Week 7-8 &raquo;</a>
       
     </p>
   </footer>
@@ -454,8 +396,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://tecendobits.cc/test-gardening-report-week-5-6/';
-        var disqus_url = 'http://tecendobits.cc/test-gardening-report-week-5-6/';
+        var disqus_identifier = 'http://tecendobits.cc/opw-internship-2014/';
+        var disqus_url = 'http://tecendobits.cc/opw-internship-2014/';
         var disqus_script = 'embed.js';
       
     (function () {
