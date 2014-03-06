@@ -14,8 +14,8 @@ categories:
 
  <a
 href=https://wiki.gnome.org/OutreachProgramForWomen/2014/MayAugust/SpreadTheWord>
-#Spread The Word:</a>
-
+#Spread The Word:
+</a>
 <em>"Free and Open Source Software (FOSS) is software that gives the user the freedom to use, copy, study, change, and improve it. FOSS contributors believe that this is the best way to develop software because it benefits society, creates a fun collaborative community around a project, and allows anyone to make innovative changes that reach many people. 
 
 <a href=https://www.google-melange.com/gsoc/homepage/google/gsoc2014>Google Summer of Code</a> is a global program that offers students stipends to write code for projects from 190 participating FOSS organizations. Participants work remotely from home, while getting guidance from an assigned mentor and collaborating within their project’s community. The application deadline for Google Summer of Code is March 21 and the program dates are May 19 to August 18. The stipend for the program is $5,500 (USD).

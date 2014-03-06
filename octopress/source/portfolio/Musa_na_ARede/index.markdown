@@ -17,7 +17,7 @@ Matéria publicada na revista AREDE, licenciada sob Creative Commons Atribuiçã
 Experimentos em arte e tecnologia abrem portas para o conhecimento livre
 (Bárbara Ablas)
 
-{% img right ../images/culturaimaginacao.jpg %}
+{% img right ../../images/culturaimaginacao.jpg %}
 
 Juntar arte e tecnologia dá samba. Ou techno music. E um grupo que está em sintonia total com essa composição tão criativa é o coletivo independente denominado Multimídias, Sistemas &amp; Arte, mais conhecido como MuSA. No plano conceitual, a proposta é estimular a criação, a reflexão e a troca de conhecimentos entre arte e tecnologia. Na prática, a galera fabrica interfaces tecnológicas alternativas de baixo custo. Com sucata de computadores e tecnologias livres, desenvolvem pesquisas e projetos experimentais em áreas como música, games, organismos cibernéticos, tecnologia “vestível”, entre outras interfaces interativas. “Começamos em 2008, como um núcleo de pesquisa que utilizava computação gráfica, sensores e atuadores retirados da sucata para dialogar com ambientes externos”, diz Vilson Vieira, integrante do MuSA e professor do curso de Ciências da Computação da Universidade de Santa Catarina (Udesc).</p>
 
