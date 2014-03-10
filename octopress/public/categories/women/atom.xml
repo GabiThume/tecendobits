@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: women | TecendoBits]]></title>
+  <link href="http://tecendobits.cc/categories/women/atom.xml" rel="self"/>
+  <link href="http://tecendobits.cc/"/>
+  <updated>2014-03-10T18:31:12-03:00</updated>
+  <id>http://tecendobits.cc/</id>
+  <author>
+    <name><![CDATA[gabithume]]></name>
+    <email><![CDATA[gabithume@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Why I think open source is better for women]]></title>
+    <link href="http://tecendobits.cc/why-oss-is-better-for-women/"/>
+    <updated>2014-03-07T12:34:00-03:00</updated>
+    <id>http://tecendobits.cc/why-oss-is-better-for-women</id>
+    <content type="html"><![CDATA[<p>The first answer that cross my mind is <strong>"OSS/FLOSS/FOSS is a world where you
+can express your opinion freely"</strong> and we cannot see this in many others environments.</p>
+
+<p>I usually don't start this kind of discussion because more than one time I was
+talking to men about it they didn't get it (most of them think there is
+nothing wrong having 5 girls in a class of 40 applicants accepted in a Computer
+Science course). I did my CS bachelor and I never understood why sometimes I was the only woman in
+the class. I still don't get it! In the high school my female friends were just as
+good in math as me, so I am sure they would be pretty excelent in CS. Women have been influential since the beginning in this area, and it is clear the ability to be
+great at it is not only given to men.</p>
+
+<p>But this reminds me that even I wasn't going to do CS, I chose psychology and I changed my mind
+after that because I did the exam (known as 'vestibular' here) to study in the University where my
+parents are located. There were only engineering choices and I opted for CS (I
+don't know why) and I was accepted. I had one semestre untill the exam to
+psychology course (in another town) so I started the CS bachelor. The main fact
+here is: <strong>I LOVED the classes since I got in!!</strong> Why in hell didn't I considered
+the possibility of it before?? And that's is one of the bigger causes
+of why we don't have more women in CS, they just don't know what they can do
+with it. And I am not sure if I know how to answer, because there are many factors to consider: how was my childhood? What were my toys? What was the
+profession of the women near me? What men talk about women about then? Also why didn't I know what a computer scientist does and how can women work
+(and be good) in it?</p>
+
+<p>One thing I remember while choosing my profession was this question: do you prefer to
+deal with people or to be in a office and just work with your computer? Of course
+my answer was people, because I didn't know what I could do with computers! It is
+a shame that the marketing around CS (at least here) is that a computer
+scientist don't interact with people and spend all the time drinking coffee and
+writing computer games (ok, some of them do that :) ). Why almost everyone in the outside think we
+don't interact with anyone? BTW, here begins the central topic: <strong>Open source is a
+better world for women because it allows you to interact with other people in many
+ways rather than in a proprietary project. </strong> Although a <a href=http://floss2013.libresoft.es/>recent</a> survey found that just 1 out 10
+open-source programmers are women!</p>
+
+<p>Yesterday I marked in a social network the women I know that are interested in computer stuff (to spread the
+world about OPW). Only 25! When I started to count the men I decided to stop
+couting about the 130. Those women are mostly not related to open source
+projects, I know so many more in other social networks (Github, Linkedin,
+IRC) and those are open source makers! <strong> This fact reminded me why I
+think it is better for women: It creates a HUGE community engaged where the meritocracy is
+the key point. Meritocracy is one of the topics I most love about open souce
+and also why I do like to encourage women to be part of. In this world surrounded
+by gender prejudice, no man or woman can tell you that you don't worth enough
+because by developing open source you prove YOU CAN without a single doubt. </strong>
+And that's a good way we can fight against the "impostor syndrome" which ties
+the hands of a lot of women.</p>
+]]></content>
+  </entry>
+  
+</feed>

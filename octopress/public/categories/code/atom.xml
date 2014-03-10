@@ -4,7 +4,7 @@
   <title><![CDATA[Category: code | TecendoBits]]></title>
   <link href="http://tecendobits.cc/categories/code/atom.xml" rel="self"/>
   <link href="http://tecendobits.cc/"/>
-  <updated>2014-03-06T18:35:14-03:00</updated>
+  <updated>2014-03-10T18:31:12-03:00</updated>
   <id>http://tecendobits.cc/</id>
   <author>
     <name><![CDATA[gabithume]]></name>
@@ -12,6 +12,60 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Why I think open source is better for women]]></title>
+    <link href="http://tecendobits.cc/why-oss-is-better-for-women/"/>
+    <updated>2014-03-07T12:34:00-03:00</updated>
+    <id>http://tecendobits.cc/why-oss-is-better-for-women</id>
+    <content type="html"><![CDATA[<p>The first answer that cross my mind is <strong>"OSS/FLOSS/FOSS is a world where you
+can express your opinion freely"</strong> and we cannot see this in many others environments.</p>
+
+<p>I usually don't start this kind of discussion because more than one time I was
+talking to men about it they didn't get it (most of them think there is
+nothing wrong having 5 girls in a class of 40 applicants accepted in a Computer
+Science course). I did my CS bachelor and I never understood why sometimes I was the only woman in
+the class. I still don't get it! In the high school my female friends were just as
+good in math as me, so I am sure they would be pretty excelent in CS. Women have been influential since the beginning in this area, and it is clear the ability to be
+great at it is not only given to men.</p>
+
+<p>But this reminds me that even I wasn't going to do CS, I chose psychology and I changed my mind
+after that because I did the exam (known as 'vestibular' here) to study in the University where my
+parents are located. There were only engineering choices and I opted for CS (I
+don't know why) and I was accepted. I had one semestre untill the exam to
+psychology course (in another town) so I started the CS bachelor. The main fact
+here is: <strong>I LOVED the classes since I got in!!</strong> Why in hell didn't I considered
+the possibility of it before?? And that's is one of the bigger causes
+of why we don't have more women in CS, they just don't know what they can do
+with it. And I am not sure if I know how to answer, because there are many factors to consider: how was my childhood? What were my toys? What was the
+profession of the women near me? What men talk about women about then? Also why didn't I know what a computer scientist does and how can women work
+(and be good) in it?</p>
+
+<p>One thing I remember while choosing my profession was this question: do you prefer to
+deal with people or to be in a office and just work with your computer? Of course
+my answer was people, because I didn't know what I could do with computers! It is
+a shame that the marketing around CS (at least here) is that a computer
+scientist don't interact with people and spend all the time drinking coffee and
+writing computer games (ok, some of them do that :) ). Why almost everyone in the outside think we
+don't interact with anyone? BTW, here begins the central topic: <strong>Open source is a
+better world for women because it allows you to interact with other people in many
+ways rather than in a proprietary project. </strong> Although a <a href=http://floss2013.libresoft.es/>recent</a> survey found that just 1 out 10
+open-source programmers are women!</p>
+
+<p>Yesterday I marked in a social network the women I know that are interested in computer stuff (to spread the
+world about OPW). Only 25! When I started to count the men I decided to stop
+couting about the 130. Those women are mostly not related to open source
+projects, I know so many more in other social networks (Github, Linkedin,
+IRC) and those are open source makers! <strong> This fact reminded me why I
+think it is better for women: It creates a HUGE community engaged where the meritocracy is
+the key point. Meritocracy is one of the topics I most love about open souce
+and also why I do like to encourage women to be part of. In this world surrounded
+by gender prejudice, no man or woman can tell you that you don't worth enough
+because by developing open source you prove YOU CAN without a single doubt. </strong>
+And that's a good way we can fight against the "impostor syndrome" which ties
+the hands of a lot of women.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Test Gardening Report Week 13]]></title>
@@ -256,140 +310,6 @@ No bug, just removing one of two psycopg2 requirements in Socorro installation: 
 <p><a href=https://etherpad.mozilla.org/StabilityWeek2013-Notes>https://etherpad.mozilla.org/StabilityWeek2013-Notes</a>   <br/>
 <a href=https://etherpad.mozilla.org/ux-stability-workweek>https://etherpad.mozilla.org/ux-stability-workweek</a>       <br/>
 <a href=https://etherpad.mozilla.org/StabWeek-SocorroBreakouts>https://etherpad.mozilla.org/StabWeek-SocorroBreakouts</a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Test Gardening Report Week 7-8]]></title>
-    <link href="http://tecendobits.cc/test-gardening-report-week-7-8/"/>
-    <updated>2013-08-11T12:52:00-03:00</updated>
-    <id>http://tecendobits.cc/test-gardening-report-week-7-8</id>
-    <content type="html"><![CDATA[<p>This is a short post about my seven and eight weeks contributing for Socorro. It is brief because I had problems with my etherpad-diary and I lost some of the comments, so I wrote here my code contributions during this time.</p>
-
-<hr />
-
-<h3>Automatic elastic search tests</h3>
-
-<p>Thanks to @adrian I made the integration test <code>test_elasticsearch_storage_app.py</code> be automatic and I closed the <a href = https://bugzilla.mozilla.org/show_bug.cgi?id=892672>Bug 892672</a>. The Pull Request related was the <a href=https://github.com/mozilla/socorro/pull/1383>1383</a>. Basically, what I did was to call the test code inside a shell script that Jenkins runs. To make elastic search test works, I configured the host to be <code>jenkins-es20</code> and setted up the environment before to call the test itself.</p>
-
-<!-- more -->
-
-
-<hr />
-
-<h3>Database tests</h3>
-
-<p>How to test code that uses database?</p>
-
-<p>By first, when dealing with database values we need to populate tables we are going to use in <code>setUp</code> function. This function runs before any test, so it is the best place for doing this.</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">cursor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
-</span><span class='line'><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s">&quot;&quot;&quot;&lt;/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="s">&lt;pre&gt;&lt;code&gt;INSERT INTO products</span>
-</span><span class='line'><span class="s">(product_name, sort, rapid_release_version, release_name)</span>
-</span><span class='line'><span class="s">VALUES</span>
-</span><span class='line'><span class="s">(&#39;Firefox&#39;, 1, &#39;8.0&#39;, &#39;firefox&#39;),</span>
-</span><span class='line'><span class="s">(&#39;Fennec&#39;, 2, &#39;11.0&#39;, &#39;mobile&#39;);</span>
-</span><span class='line'><span class="s">&lt;/code&gt;&lt;/pre&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="s">&lt;p&gt;&quot;&quot;&quot;</span><span class="p">)</span>
-</span><span class='line'><span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p>After populate the tables with some fake data, we can manipulate the data to test what we want. For example: we have a product name, its version and a date for which we want to know what is the latest entry related to that product before the date we provided. In following case, given the today date, the latest entry was seven days ago:</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">def</span> <span class="nf">test_latestEntryBeforeOrEqualTo</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="n">cursor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">product</span> <span class="o">=</span> <span class="s">&#39;Firefox&#39;</span>
-</span><span class='line'><span class="n">version</span> <span class="o">=</span> <span class="s">&#39;8.0&#39;</span>
-</span><span class='line'><span class="n">now</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">now</span><span class="o">.</span><span class="n">date</span><span class="p">()</span>
-</span><span class='line'><span class="n">to_date</span> <span class="o">=</span> <span class="n">now</span> <span class="o">-</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-</span><span class='line'><span class="n">lastweek</span> <span class="o">=</span> <span class="n">now</span> <span class="o">-</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">res</span> <span class="o">=</span> <span class="n">tcbs</span><span class="o">.</span><span class="n">latestEntryBeforeOrEqualTo</span><span class="p">(</span><span class="n">cursor</span><span class="p">,</span> <span class="n">to_date</span><span class="p">,</span> <span class="n">product</span><span class="p">,</span> <span class="n">version</span><span class="p">)</span>
-</span><span class='line'><span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="n">lastweek</span><span class="p">)</span>
-</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p>And at end of test, the<code>tearDown</code> method can be used to drop the tables, cleaning the database:</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">def</span> <span class="nf">tearDown</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="s">&quot;&quot;&quot; Cleanup the database, delete tables and functions &quot;&quot;&quot;</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">cursor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
-</span><span class='line'><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s">&quot;&quot;&quot;</span>
-</span><span class='line'><span class="s">    TRUNCATE tcbs, products, signatures</span>
-</span><span class='line'><span class="s">    CASCADE;</span>
-</span><span class='line'><span class="s">&quot;&quot;&quot;</span><span class="p">)</span>
-</span><span class='line'><span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
-</span><span class='line'>
-</span><span class='line'><span class="nb">super</span><span class="p">(</span><span class="n">IntegrationTestTCBS</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">tearDown</span><span class="p">()</span>
-</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p>Knowing that, it is really interesting to develop tests for functions that manipulate databases. The <a href=https://github.com/mozilla/socorro/pull/1396>Pull Request 1396</a> and <a href=https://bugzilla.mozilla.org/show_bug.cgi?id=904243>Bug 904243</a> are related to a test of TopCrashers by Signature (TCBS).</p>
-
-<hr />
-
-<h3>Submitter App Test</h3>
-
-<p>Related to <a href=https://bugzilla.mozilla.org/show_bug.cgi?id=820512>Bug 820512</a> and my <a href=https://github.com/mozilla/socorro/pull/1368>Pull Request 1368</a>, @lars solved the problem I had by asking me to insert <code>force=True</code> on required configuration for the context of <code>socorro/processor/processor_app.py</code>. Merged :)</p>
-
-<hr />
-
-<h3>Test Documentation</h3>
-
-<p>Some instructions on socorro installation weren't working anymore, so I updated it at <a href=https://github.com/mozilla/socorro/pull/1381>Pull Request 1381</a></p>
 ]]></content>
   </entry>
   
