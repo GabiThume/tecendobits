@@ -20,9 +20,9 @@ I am going to start with <a href=https://www.djangoproject.com/>Django</a>!!
 ### What is it and why would I want to use it?
 
 It is a <strong>awesome</strong> high-level web framework which alouds me to
-develop Web apps in Python! Why is that so great? Because you can write less
+develop Web applications in Python! Why is that so great? Because you can write less
 code and lauch apps more quickly and easely than using PHP or something not in the Django
-high-level.
+high-level. Also, Django focuses on automating as mush as possible.
 
 ***
 
@@ -35,5 +35,129 @@ And easely install:
 {% codeblock lang:objc %}
 $ sudo easy_install django
 {% endcodeblock %}
+
+You can check which version is installed by running:
+{% codeblock lang:objc %}
+python -c "import django; print(django.get_version())" 
+{% endcodeblock %}
+
+
+Let's autogenerate some basic code of a Django project (settings)
+{% codeblock lang:objc %}
+cd Desktop/CODE/
+sudo django-admin.py startproject randomdiet
+{% endcodeblock %}
+
+{% codeblock lang:objc %}
+randondiet/ # just a container
+    manage.py # a command-line utility
+    randondiet/ # python package
+        __init__.py # a empty file which tells python it is a package
+        settings.py # configurations (like DEBUG flag and the location of template dirs)
+        urls.py # a elegant URL scheme: mapping between URL patterns to Python functions (views)
+        wsgi.py # an application callable WSGI-compatible to serve the project (entry-point)
+{% endcodeblock %}
+
+Its time to test the Django <strong>development</strong> server (which has automatic reloading)
+{% codeblock lang:objc %}
+python manage.py runserver
+
+Validating models...
+
+0 errors found
+March 21, 2014 - 20:10:54
+Django version 1.6.2, using settings 'randomdiet.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CONTROL-C.
+{% endcodeblock %}
+
+The configuration uses SQLite by default, it is the easiest way to use a database in a project for test. Some of the applications specified in settings makes use of at least one database table, so we need to create those tables:
+
+python manage.py syncdb
+
+Creating tables ...
+Creating table django_admin_log
+Creating table auth_permission
+Creating table auth_group_permissions
+Creating table auth_group
+Creating table auth_user_groups
+Creating table auth_user_user_permissions
+Creating table auth_user
+Creating table django_content_type
+Creating table django_session
+
+You just installed Django's auth system, which means you don't have any superusers defined.
+Would you like to create one now? (yes/no):
+
+To see the created tables, you need to run the SQlite using as an argument the database name created in the app folder
+$ sqlite3 db.sqlite3
+.schema
+
+
+Now it is time to start an app (note the difference between a project and an app (a project is a collection of settings and apps for some web site))
+
+python manage.py startapp suggestions
+
+suggestions/
+    __init__.py
+    admin.py
+    models.py # database layout with additional metadata
+    tests.py
+    views.py
+
+create models: each of which represents a database field in the model.
+
+
+INSTALLED_APPS = (
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'suggestions',
+)
+
+python manage.py sql suggestions
+
+
+Now, run syncdb again to create those model tables in your database:
+
+$ python manage.py syncdb
+
+
+if you want to change tables (new versions came with migrations)
+$ sqlite3 db.sqlite3
+.schema
+drop table suggestions_food;
+
+
+from suggestions.models import Food, Group, Diet
+group1 = Group(name = "Grupo 1", number = 1)
+coalhada = Food(group_id = 1, name = 'coalhada', weight = '100', measurement = 0.5)
+group1.save()
+coalhada.save()
+
+Food.objects.all()
+Out[15]: [<Food: coalhada>]
+
+Food.objects.get(name = 'coalhada').group_id
+Out[21]: 1
+
+
+The philosophy here is that your site is edited by a staff, or a client, or maybe just you – and you don’t want to have to deal with creating backend interfaces just to manage content
+
+import models
+from django.contrib import admin
+
+admin.site.register(models.Food)
+
+
+
+Each view is responsible for doing one of two things: Returning an HttpResponse object containing the content for the requested page, or raising an exception such as Http404. The rest is up to you.
+
+Generally, a view retrieves data according to the parameters, loads a template and renders the template with the retrieved data. 
+A view is a “type” of Web page in your Django application that generally serves a specific function and has a specific template.
+
 
 ***

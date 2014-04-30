@@ -1,0 +1,13 @@
+---
+layout: post
+title: "Open Web"
+date: 2014-04-29 19:41
+comments: true
+categories: [web, code, mozilla]
+---
+
+My identity is mine!
+
+Keep the web free and open! ♥
+
+{% youtube Xm5i5kbIXzc 100% 480 %}

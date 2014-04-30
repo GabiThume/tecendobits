@@ -4,7 +4,7 @@
   <title><![CDATA[TecendoBits]]></title>
   <link href="http://tecendobits.cc/atom.xml" rel="self"/>
   <link href="http://tecendobits.cc/"/>
-  <updated>2014-03-10T18:31:12-03:00</updated>
+  <updated>2014-04-29T22:44:33-03:00</updated>
   <id>http://tecendobits.cc/</id>
   <author>
     <name><![CDATA[gabithume]]></name>
@@ -12,6 +12,20 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Open Web]]></title>
+    <link href="http://tecendobits.cc/open-web/"/>
+    <updated>2014-04-29T19:41:00-03:00</updated>
+    <id>http://tecendobits.cc/open-web</id>
+    <content type="html"><![CDATA[<p>My identity is mine!</p>
+
+<p>Keep the web free and open! ♥</p>
+
+<div class="embed-video-container"><iframe width="100%" height="480" src="http://www.youtube.com/embed/Xm5i5kbIXzc" frameborder="0" allowfullscreen></iframe></div>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Why I think open source is better for women]]></title>
